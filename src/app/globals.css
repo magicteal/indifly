@@ -1,2 +1,29 @@
 @import "tailwindcss";
 
+
+body {
+  background-color: #0F172A;
+  color: white;
+  font-family: var(--font-montserrat), sans-serif; /* Montserrat font apply kiya */
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(0.7);
+  }
+}
+
+.dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #F56522; /* Orange color */
+  border-radius: 50%;
+  animation: blink 2s infinite ease-in-out;
+  box-shadow: 0 0 10px #F56522, 0 0 20px #F56522;
+}
