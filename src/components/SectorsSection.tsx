@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import BrushStroke from "./BrushStroke"; // Import the new SVG component
 
@@ -18,9 +18,9 @@ const SectorsSection = () => {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: easeOut,
+        staggerChildren: 0.2,
       },
-      staggerChildren: 0.2,
     },
   };
 
@@ -52,9 +52,7 @@ const SectorsSection = () => {
             Our Sectors
           </h2>
 
-          <p className="mt-30 text-xl text-gray-700">
-            {" "}
-            {/* Corrected margin from mt-30 to mt-4 */}
+          <p className="mt-4 text-xl text-gray-700">
             Integrated, Inclusive & Innovative
           </p>
           <p className="mt-2 text-lg text-gray-500 max-w-3xl mx-auto">
