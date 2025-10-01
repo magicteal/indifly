@@ -5,6 +5,7 @@ import VenturesGrid from "@/components/VenturesGrid";
 import BharatSection from "@/components/BharatSection"; // Import kiya
 import Link from "next/link";
 import Image from "next/image";
+import SectorsSection from "@/components/SectorsSection";
 
 export default function Home() {
   const mainNavItems = [
@@ -34,6 +35,7 @@ export default function Home() {
       </Hero>
       <VenturesGrid />
       <BharatSection /> {/* Yahan add kiya */}
+      <SectorsSection />
       {/* Baaki ke sections yahan aayenge */}
     </main>
   );
