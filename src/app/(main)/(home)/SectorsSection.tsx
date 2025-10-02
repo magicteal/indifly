@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { motion, easeOut } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
-import BrushStroke from "./BrushStroke"; // Import the new SVG component
+import BrushStroke from "../../../components/BrushStroke"; // Import the new SVG component
 import { Container } from "@/components/ui/container";
 
 const SectorsSection = () => {

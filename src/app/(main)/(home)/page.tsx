@@ -1,11 +1,11 @@
-import Hero from "@/components/Hero";
-import VenturesGrid from "@/components/VenturesGrid";
-import BharatSection from "@/components/BharatSection"; // Import kiya
+import Hero from "./Hero";
+import VenturesGrid from "./VenturesGrid";
+import BharatSection from "./BharatSection";
 
-import SectorsSection from "@/components/SectorsSection";
-import ContactFooter from "@/components/ContactFooter";
-import { ContactForm } from "@/components/ContactForm";
-import { Footer } from "@/components/Footer";
+import SectorsSection from "./SectorsSection";
+// import ContactFooter from "@/components/ContactFooter";
+import { ContactForm } from "./ContactForm";
+import { Footer } from "./Footer";
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
 // src/components/BharatSection.tsx
 
-import IndiaMap from "./IndiaMap";
+import IndiaMap from "../../../components/IndiaMap";
 import { Section } from "@/components/ui/section";
 
 const BharatSection = () => {
@@ -37,8 +37,8 @@ const BharatSection = () => {
             <IndiaMap />
           </div>
         </div>
-  </div>
-  {/* Half Circles */}
+      </div>
+      {/* Half Circles */}
       <div className="absolute -bottom-24 -left-24">
         <svg
           width="250"
