@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google"; // Montserrat import kiya
 import "./globals.css";
-import TopBanner from "@/components/TopBanner";
+// import TopBanner from "@/components/TopBanner";
 // import Navbar from "@/components/Navbar";
 
 // Montserrat font ko setup kiya
@@ -22,12 +22,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={`${montserrat.variable} font-sans antialiased`}>
-        {" "}
-        {/* Class name update kiya */}
-        <TopBanner />
-        {/* <Navbar /> */}
+       
         {children}
       </body>
     </html>

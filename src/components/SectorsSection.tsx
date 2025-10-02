@@ -5,6 +5,7 @@ import { useState } from "react";
 import { motion, easeOut } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import BrushStroke from "./BrushStroke"; // Import the new SVG component
+import { Container } from "@/components/ui/container";
 
 const SectorsSection = () => {
   const [activeTab, setActiveTab] = useState("Indipe");
@@ -37,7 +38,7 @@ const SectorsSection = () => {
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Container>
         {/* Header */}
         <motion.div
           className="text-center mb-12 relative"
@@ -171,7 +172,7 @@ const SectorsSection = () => {
             </div>
           )}
         </div>
-      </div>
+      </Container>
     </motion.section>
   );
 };

@@ -1,11 +1,15 @@
 // src/components/BharatSection.tsx
 
 import IndiaMap from "./IndiaMap";
+import { Section } from "@/components/ui/section";
 
 const BharatSection = () => {
   return (
-    <section className="relative bg-gradient-to-br from-[#01295C] to-[#004FB3] py-20 text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
+    <Section
+      wrapperClassName="relative bg-gradient-to-br from-[#01295C] to-[#004FB3] text-white overflow-hidden"
+      className="py-20"
+    >
+      <div className="z-10 relative">
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Text Content */}
           <div className="md:w-1/2 text-center md:text-left">
@@ -33,8 +37,8 @@ const BharatSection = () => {
             <IndiaMap />
           </div>
         </div>
-      </div>
-      {/* Half Circles */}
+  </div>
+  {/* Half Circles */}
       <div className="absolute -bottom-24 -left-24">
         <svg
           width="250"
@@ -71,7 +75,7 @@ const BharatSection = () => {
           />
         </svg>
       </div>
-    </section>
+    </Section>
   );
 };
 
