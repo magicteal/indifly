@@ -1,4 +1,4 @@
-const Hero = ({ children }: { children: React.ReactNode }) => {
+const Hero = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
@@ -17,8 +17,6 @@ const Hero = ({ children }: { children: React.ReactNode }) => {
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
-
-      {children}
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">

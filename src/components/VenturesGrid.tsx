@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Container } from "@/components/ui/container";
 
 const VenturesGrid = () => {
   return (
-    <div className="relative bg-[#0F172A] -mt-32 pt-40 pb-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="relative bg-[#0F172A] -mt-32 pt-40 pb-20">
+      <Container>
         {/* Bento Grid container */}
         <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-6 h-[500px]">
           {/* Card 1: Our Ventures (Spanning 2x2) */}
@@ -73,7 +74,7 @@ const VenturesGrid = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 };
