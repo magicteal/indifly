@@ -38,22 +38,16 @@ const SectorsSection = () => {
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
     >
-      <Container>
+      <Container className="relative">
         {/* Header */}
-        <motion.div
-          className="text-center mb-12 relative"
-          variants={itemVariants}
-        >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-[350px] h-auto">
+        <motion.div className="text-center mb-12 " variants={itemVariants}>
+          <div className="absolute -top-30 left-1/2 -translate-x-1/2  pointer-events-none select-none">
+            <div className="w-[550px] h-auto">
               <BrushStroke />
             </div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white relative">
-            Our Sectors
-          </h2>
 
-          <p className="mt-4 text-xl text-gray-700">
+          <p className="mt-24 text-xl text-gray-700">
             Integrated, Inclusive & Innovative
           </p>
           <p className="mt-2 text-lg text-gray-500 max-w-3xl mx-auto">
@@ -92,10 +86,16 @@ const SectorsSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+              className="flex flex-col  md:flex-row gap-12 items-center"
             >
               {/* Left Side: Text Content */}
-              <div className="space-y-6">
+              <div
+                className="space-y-6 p-8 rounded-lg md:w-2/3 "
+                style={{
+                  background:
+                    "linear-gradient(73.45deg, #FECCB2 0%, #FFFFFF 110.01%)",
+                }}
+              >
                 <div className="flex space-x-2">
                   <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">
                     Wealth tech
@@ -148,7 +148,7 @@ const SectorsSection = () => {
               </div>
 
               {/* Right Side: Image Placeholders */}
-              <div className="relative h-96">
+              <div className="relative h-96 md:w-1/3">
                 {/* Main Image Placeholder */}
                 <div className="absolute bottom-0 right-0 h-80 w-80 bg-gray-200 rounded-lg shadow-lg flex items-center justify-center">
                   <p className="text-gray-500">Person Image</p>
