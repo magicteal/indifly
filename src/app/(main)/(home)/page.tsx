@@ -1,7 +1,7 @@
 import Hero from "./Hero";
 import VenturesGrid from "./VenturesGrid";
 import BharatSection from "./BharatSection";
-
+import ImpactOnBharat from "./ImpactOnBharat";
 import SectorsSection from "./SectorsSection";
 // import ContactFooter from "@/components/ContactFooter";
 import { ContactForm } from "./ContactForm";
@@ -14,6 +14,7 @@ export default function Home() {
       <VenturesGrid />
       <BharatSection />
       <SectorsSection />
+      <ImpactOnBharat />
       <ContactForm
         variant="contact"
         title="Contact Us"
