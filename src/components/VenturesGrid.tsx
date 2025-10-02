@@ -2,81 +2,121 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 
-const VenturesGrid = () => {
+export default function VenturesGrid(): JSX.Element {
   return (
-    <div className="relative bg-[#0F172A] -mt-32 pt-40 pb-20">
-      <Container>
-        {/* Bento Grid container */}
-        <div className="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-6 h-[500px]">
-          {/* Card 1: Our Ventures (Spanning 2x2) */}
-          <div className="col-span-1 md:col-span-2 row-span-2 bg-[#F6EFE9] p-8 rounded-2xl flex flex-col justify-between text-black shadow-lg">
-            <div>
-              <p className="text-blue-600 font-semibold text-sm uppercase tracking-wide">
-                Our
-              </p>
-              <h2 className="text-4xl lg:text-5xl font-bold mt-1">Ventures</h2>
-              <p className="text-gray-700 mt-4 text-base max-w-md">
-                Empowering individuals with secure, user-friendly financial
-                tools.
-              </p>
-              <Link href="/ventures">
-                <button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg text-sm transition-colors">
-                  Know More <span aria-hidden="true">→</span>
-                </button>
-              </Link>
-            </div>
-            <div className="self-end -mb-8">
-              <Image
-                src="/VenturesGridMan.svg"
-                alt="Man in blue shirt"
-                width={280}
-                height={280}
-                className="rounded-lg"
-              />
+    // Outer section: full width, custom stretched background
+    <section
+      className="relative -mt-32 pt-40 pb-20 w-full overflow-hidden"
+      style={{
+        // Stretches the SVG to fully fill the section area (may distort)
+        backgroundImage: "url('/VenturesGridBG.svg')",
+        backgroundSize: "100% 100%",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* Centered content wrapper (controls max width & horizontal padding) */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
+        {/* Grid container: 4 columns on md+ so we can place tiles precisely */}
+        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 items-stretch">
+          {/* Big left card (spans 2 cols x 2 rows on md+) */}
+          <div className="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl shadow-lg">
+            {/* Soft card background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#F7ECE6] to-[#EFDCD4]" />
+
+            {/* Card content (on top of background) */}
+            <div className="relative z-10 p-8 h-full flex flex-col justify-between">
+              <div className="max-w-md">
+                <p className="text-blue-700 font-semibold text-sm uppercase tracking-wide">
+                  OUR
+                </p>
+                <h2 className="text-4xl lg:text-5xl font-bold mt-1 text-[#0B2B4A]">
+                  Ventures
+                </h2>
+                <p className="text-[#4B5563] mt-4 text-base leading-relaxed">
+                  Empowering individuals with secure, user-friendly financial
+                  tools.
+                </p>
+              </div>
+
+              <div>
+                {/* Link used directly (no nested anchor) */}
+                <Link
+                  href="/ventures"
+                  className="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full text-sm transition-colors"
+                >
+                  Know More <span aria-hidden>→</span>
+                </Link>
+              </div>
             </div>
           </div>
 
-          {/* Card 2: inCORE */}
-          <div className="bg-[#F56522] p-8 rounded-2xl flex items-center justify-center shadow-lg">
+          {/* Top-right: inCORE (orange) */}
+          <div className="bg-[#F56522] p-6 rounded-2xl flex items-center justify-center shadow-lg">
             <Image
-              src="/incore-logo.svg"
-              alt="inCORE Logo"
-              width={140}
-              height={40}
+              src="/inCore.svg"
+              alt="inCORE"
+              width={160}
+              height={48}
               className="object-contain"
+              priority
             />
           </div>
 
-          {/* Card 3: INDsights */}
-          <div className="bg-blue-600 p-8 rounded-2xl flex items-center justify-center shadow-lg">
+          {/* Top-right: INDsights (blue) */}
+          <div className="bg-gradient-to-br from-[#1677FF] to-[#4AA3FF] p-6 rounded-2xl flex items-center justify-center shadow-lg">
             <h3 className="text-white text-3xl font-bold tracking-tight">
               INDsights
             </h3>
           </div>
 
-          {/* Card 4: Become our Partner */}
-          <div className="bg-blue-200/50 backdrop-blur-md p-8 rounded-2xl flex items-center justify-center text-center shadow-lg">
+          {/* Bottom-left of right column: Become our Partner */}
+          <div className="md:col-span-1 bg-gradient-to-r from-white/70 to-sky-100/70 backdrop-blur-md p-6 rounded-2xl flex items-center justify-center text-center shadow-lg">
             <Link
               href="/partner"
-              className="text-white text-3xl font-bold leading-snug hover:text-blue-300 transition-colors"
+              className="text-sky-700 text-2xl lg:text-3xl font-extrabold leading-snug hover:text-sky-500 transition-colors"
             >
-              Become our <br /> <span className="text-blue-400">Partner →</span>
+              Become our <span className="text-blue-400">Partner →</span>
             </Link>
           </div>
 
-          {/* Card 5: Get in Touch */}
-          <div className="bg-[#F6EFE9] p-8 rounded-2xl flex items-center justify-center text-center shadow-lg">
+          {/* Bottom-right: Get in Touch */}
+          <div className="md:col-span-1 bg-gradient-to-br from-[#FBF6F4] to-[#F6EFE9] p-6 rounded-2xl flex items-center justify-center text-center shadow-lg">
             <Link
               href="/contact"
-              className="text-black text-3xl font-bold leading-snug hover:text-[#F56522] transition-colors"
+              className="text-black text-2xl lg:text-3xl font-extrabold leading-snug hover:text-[#F56522] transition-colors"
             >
-              Get in <br /> <span className="text-[#F56522]">Touch →</span>
+              Get in <span className="text-[#F56522]">Touch →</span>
             </Link>
           </div>
         </div>
-      </Container>
-    </div>
-  );
-};
+      </div>
 
-export default VenturesGrid;
+      {/* ---------- PERSON ILLUSTRATION (OUTSIDE THE LEFT CARD) ---------- */}
+      {/* This is positioned absolutely relative to the outer section so it overlaps between the left card and the right tiles.
+          It is hidden on small screens (sm) for layout stability; adjust the breakpoints or sizes as needed. */}
+      <div className="pointer-events-none hidden md:block">
+        <div
+          // tuning the position: adjust left/right/top/bottom, width to match design precisely
+          className="absolute z-20"
+          style={{
+            // place the person so he overlaps between the left card and the partner tile
+            left: "40%", // tweak this percentage until the illustration exactly sits where you want
+            top: "26%", // tweak vertical position
+            transform: "translate(-10%, 0%)",
+            width: "360px",
+          }}
+        >
+          <Image
+            src="/VenturesGridMan.svg"
+            alt="Person"
+            width={300}
+            height={560}
+            className="object-contain select-none"
+            priority
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
