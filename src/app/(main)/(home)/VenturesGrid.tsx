@@ -1,22 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Container } from "@/components/ui/container";
+import BlueHex from "@public/home/bluehex.svg";
 
-export default function VenturesGrid(): JSX.Element {
+export default function VenturesGrid() {
   return (
     // Outer section: full width, custom stretched background
     <section
       className="relative -mt-32 pt-40 pb-20 w-full overflow-hidden"
       style={{
-        // Stretches the SVG to fully fill the section area (may distort)
-        backgroundImage: "url('/VenturesGridBG.svg')",
-        backgroundSize: "100% 100%",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        background:
+          "linear-gradient(180deg, rgba(7, 23, 44, 0) 0%, #07172C 37.5%)",
       }}
     >
       {/* Centered content wrapper (controls max width & horizontal padding) */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Grid container: 4 columns on md+ so we can place tiles precisely */}
         <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 items-stretch">
           {/* Big left card (spans 2 cols x 2 rows on md+) */}
@@ -92,9 +89,21 @@ export default function VenturesGrid(): JSX.Element {
         </div>
       </div>
 
+      {/* Decorative blue hexagons */}
+      <div className="pointer-events-none absolute inset-0 -z-0 select-none">
+        {/* Left hex */}
+        <div className="hidden md:block absolute left-[-70px] top-[46%] -translate-y-1/2 opacity-30 -rotate-12">
+          <BlueHex width={260} height={300} />
+        </div>
+        {/* Right hex */}
+        <div className="hidden md:block absolute scale-125 -right-30 -bottom-65 -translate-y-1/2 opacity-30 rotate-12">
+          <BlueHex width={300} height={340} />
+        </div>
+      </div>
+
       {/* ---------- PERSON ILLUSTRATION (OUTSIDE THE LEFT CARD) ---------- */}
       {/* This is positioned absolutely relative to the outer section so it overlaps between the left card and the right tiles.
-          It is hidden on small screens (sm) for layout stability; adjust the breakpoints or sizes as needed. */}
+        It is hidden on small screens (sm) for layout stability; adjust the breakpoints or sizes as needed. */}
       <div className="pointer-events-none hidden md:block">
         <div
           // tuning the position: adjust left/right/top/bottom, width to match design precisely
