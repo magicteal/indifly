@@ -6,6 +6,7 @@ import SectorsSection from "./SectorsSection";
 // import ContactFooter from "@/components/ContactFooter";
 import { ContactForm } from "./ContactForm";
 import { Footer } from "./Footer";
+import INDsights from "./INDsights";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <BharatSection />
       <SectorsSection />
       <ImpactOnBharat />
+      <INDsights />
       <ContactForm
         variant="contact"
         title="Contact Us"
