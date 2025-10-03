@@ -25,7 +25,7 @@ export default function HeroSection() {
           </h1>
 
           <div className="mt-10">
-            <Button asChild variant={"insurge"}>
+            <Button asChild size={"lg"} variant={"insurge"}>
               <Link href="#">Book a Consultation Call</Link>
             </Button>
           </div>
