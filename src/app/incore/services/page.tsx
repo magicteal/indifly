@@ -1,7 +1,7 @@
 import React from "react";
-import CoreOfferings from "./core-offerings";
-import HeroSection from "./Herosection";
-import WhyItMatters from "./why-it-matters";
+import CoreOfferings from "./coreOfferings";
+import HeroSection from "./heroSection";
+import WhyItMatters from "./whyItMatters";
 
 export default function Page() {
   return (
