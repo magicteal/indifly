@@ -1,8 +1,8 @@
-import React from "react";
 import { Section } from "@/components/ui/section";
+import React from "react";
 // SVGs as React components via SVGR
-import Hexagon from "@public/home/hexagon.svg";
 import Circle from "@public/home/circle.svg";
+import Hexagon from "@public/home/hexagon.svg";
 import Silhoutte from "@public/home/silhoutte.svg";
 import TitleBg from "@public/home/titilebg.svg";
 
@@ -24,31 +24,31 @@ export default function ImpactOnBharat() {
     >
       {/* Background decorative elements */}
       <div className="pointer-events-none select-none">
-        <Hexagon className="absolute -top-8 left-4 w-[180px] md:w-[240px] opacity-30 animate-pulse" />
-        <Circle className="absolute top-20 right-16 w-6 h-6 opacity-30 animate-bounce" />
-        <Circle className="absolute bottom-24 right-40 w-6 h-6 opacity-20 animate-bounce" />
+        <Hexagon className="absolute -top-8 left-4 w-[180px] animate-pulse opacity-30 md:w-[240px]" />
+        <Circle className="absolute top-20 right-16 h-6 w-6 animate-bounce opacity-30" />
+        <Circle className="absolute right-40 bottom-24 h-6 w-6 animate-bounce opacity-20" />
       </div>
 
       {/* Title Section */}
       <div className="relative z-10 mb-18 text-center">
-        <div className="relative inline-block isolate px-6">
+        <div className="relative isolate inline-block px-6">
           {/* Brush stroke background */}
           <TitleBg
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
-          <h2 className="relative z-10 text-3xl md:text-4xl font-extrabold text-[#F56522]">
+          <h2 className="relative z-10 text-3xl font-extrabold text-[#F56522] md:text-4xl">
             Impact on <span className="italic">Bharat</span>
           </h2>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="relative mb-10 z-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-6">
+      <div className="relative z-20 mx-auto mb-10 grid max-w-6xl grid-cols-1 gap-8 px-6 md:grid-cols-3">
         {stats.map((stat, index) => (
           <div
             key={index}
-            className="group relative rounded-[24px] border-2 border-solid border-red-800 bg-[#FFFFFF4D] hover:bg-[#FFFFFF66] p-10 text-center transition-all duration-300 hover:scale-[1.02] shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
+            className="group relative rounded-[24px] border-2 border-solid border-red-800 bg-[#FFFFFF4D] p-10 text-center shadow-[0_20px_60px_rgba(0,0,0,0.15)] transition-all duration-300 hover:scale-[1.02] hover:bg-[#FFFFFF66]"
             style={{
               backdropFilter: "blur(4px)",
               WebkitBackdropFilter: "blur(4px)",
@@ -60,10 +60,10 @@ export default function ImpactOnBharat() {
             }}
           >
             <div className="space-y-4">
-              <h3 className="text-5xl md:text-6xl font-extrabold text-white drop-shadow-sm">
+              <h3 className="text-5xl font-extrabold text-white drop-shadow-sm md:text-6xl">
                 {stat.value}
               </h3>
-              <p className="text-lg md:text-xl text-white/90 font-medium tracking-wide">
+              <p className="text-lg font-medium tracking-wide text-white/90 md:text-xl">
                 {stat.label}
               </p>
             </div>
@@ -72,7 +72,7 @@ export default function ImpactOnBharat() {
       </div>
 
       {/* Bottom cityscape silhouette */}
-      <Silhoutte className="pointer-events-none select-none absolute bottom-0 left-1/2 -translate-x-1/2 z-10 " />
+      <Silhoutte className="pointer-events-none absolute bottom-0 left-1/2 z-10 -translate-x-1/2 select-none" />
     </Section>
   );
 }

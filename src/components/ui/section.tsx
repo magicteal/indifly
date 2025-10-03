@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
+import type { ComponentPropsWithoutRef, ElementType } from "react";
 import { Container, type ContainerProps } from "./container";
-import type { ElementType, ComponentPropsWithoutRef } from "react";
 
 export type SectionProps<T extends ElementType = "section"> = {
   children: React.ReactNode;

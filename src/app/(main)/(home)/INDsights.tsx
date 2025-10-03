@@ -1,10 +1,10 @@
-import React from "react";
-import Image from "next/image";
 import { Container } from "@/components/ui/container";
+import Image from "next/image";
+import React from "react";
 
 // SVGs provided in public/home via SVGR loader
-import TitleBrush from "@public/home/titieINDsights.svg";
 import Hexagon from "@public/home/hexagonINDsights.svg";
+import TitleBrush from "@public/home/titieINDsights.svg";
 
 type Card = {
   id: number;
@@ -40,7 +40,7 @@ const cards: Card[] = [
 export default function INDsights() {
   return (
     <section
-      className=" w-full overflow-hidden"
+      className="w-full overflow-hidden"
       style={{ background: "#FFEDE4" }}
     >
       <Container className="relative py-16 md:py-24">
@@ -48,25 +48,25 @@ export default function INDsights() {
         <div className="pointer-events-none select-none">
           {/* top-left hexagon */}
           <Hexagon
-            className="absolute -left-35 top-15 opacity-40 scale-90 md:scale-100"
+            className="absolute top-15 -left-35 scale-90 opacity-40 md:scale-100"
             width={420}
             height={402}
           />
           {/* bottom-right hexagon */}
           <Hexagon
-            className="absolute -right-65 -bottom-30 rotate-6 opacity-30 hidden md:block"
+            className="absolute -right-65 -bottom-30 hidden rotate-6 opacity-30 md:block"
             width={420}
             height={402}
           />
         </div>
 
         {/* Title with brush stroke */}
-        <div className="mb-10 md:mb-14 flex w-full items-center justify-center">
+        <div className="mb-10 flex w-full items-center justify-center md:mb-14">
           {/* Brush */}
           <div className="relative">
-            <TitleBrush className="w-full h-auto" />
+            <TitleBrush className="h-auto w-full" />
             <div className="absolute inset-0 grid place-items-center">
-              <h2 className="text-white font-bold text-2xl md:text-3xl lg:text-4xl">
+              <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl">
                 INDsights
               </h2>
             </div>
@@ -78,12 +78,12 @@ export default function INDsights() {
           {cards.map((card) => (
             <article
               key={card.id}
-              className="rounded-2xl z-2 bg-white/95 shadow-[0_8px_40px_rgba(15,23,42,0.08)] ring-1 ring-black/5 p-6 flex flex-col"
+              className="z-2 flex flex-col rounded-2xl bg-white/95 p-6 shadow-[0_8px_40px_rgba(15,23,42,0.08)] ring-1 ring-black/5"
             >
               <h3 className="text-2xl font-extrabold text-[#0B2B4A]">
                 {card.title}
               </h3>
-              <p className="mt-3 text-slate-600 text-base leading-relaxed">
+              <p className="mt-3 text-base leading-relaxed text-slate-600">
                 {card.excerpt}
               </p>
 
@@ -98,7 +98,7 @@ export default function INDsights() {
               </div>
 
               <div className="mt-6">
-                <button className="w-full md:w-auto inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-slate-800 font-medium hover:bg-slate-50 transition-colors">
+                <button className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 font-medium text-slate-800 transition-colors hover:bg-slate-50 md:w-auto">
                   Read more{" "}
                   <span aria-hidden className="ml-2">
                     →

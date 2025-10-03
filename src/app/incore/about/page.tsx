@@ -1,8 +1,3 @@
-
 export default function AboutInCorePage() {
-  return (
-    <main>
-     
-    </main>
-  );
+  return <main></main>;
 }

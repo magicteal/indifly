@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 
 export const Footer = () => {
   return (
-    <footer className="relative text-white overflow-hidden font-sans bg-[#01295C]">
+    <footer className="relative overflow-hidden bg-[#01295C] font-sans text-white">
       <div className="relative">
         {/* Big Background Heading at bottom */}
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-center pointer-events-none overflow-hidden">

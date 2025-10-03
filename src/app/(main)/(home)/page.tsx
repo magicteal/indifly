@@ -1,8 +1,8 @@
-import Hero from "./Hero";
-import VenturesGrid from "./VenturesGrid";
 import BharatSection from "./BharatSection";
+import Hero from "./Hero";
 import ImpactOnBharat from "./ImpactOnBharat";
 import SectorsSection from "./SectorsSection";
+import VenturesGrid from "./VenturesGrid";
 // import ContactFooter from "@/components/ContactFooter";
 import { ContactForm } from "./ContactForm";
 import { Footer } from "./Footer";

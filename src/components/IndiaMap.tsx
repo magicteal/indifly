@@ -105,7 +105,7 @@ const IndiaMap = () => {
       </svg>
 
       {/* Blinking Dots */}
-      <div className="absolute top-0 left-0 w-full h-full">
+      <div className="absolute top-0 left-0 h-full w-full">
         <span className="dot" style={{ top: "25%", left: "40%" }}></span>
         <span
           className="dot"

@@ -35,7 +35,7 @@ export const incoreNavConfig: SiteConfig = {
 
 // Function to get navigation config based on current path
 export const getNavConfig = (pathname: string): SiteConfig => {
-  if (pathname.startsWith('/incore')) {
+  if (pathname.startsWith("/incore")) {
     return incoreNavConfig;
   }
   return indiflyNavConfig;
