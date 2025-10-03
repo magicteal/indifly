@@ -9,6 +9,8 @@ import IncoreINDsightsSection from "./component/IncoreINDsightsSection";
 import ProcessJourneySection from "./component/ProcessJourneySection";
 import Testimonials from "./component/Testimonials";
 import ClientsMarqueeSection from "./component/ClientsMarqueeSection";
+import DecorativeBannerSection from "./component/DecorativeBannerSection";
+
 
 export default function InCorePage() {
   return (
@@ -115,6 +117,7 @@ export default function InCorePage() {
         </Container>
 
         <WealthSection />
+        <DecorativeBannerSection />
         <ProcessJourneySection />
         <CaseStudiesSection />
         <IncoreINDsightsSection />
