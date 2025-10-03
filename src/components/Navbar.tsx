@@ -1,11 +1,11 @@
 ﻿"use client";
 
+import { Button } from "@/components/ui/button";
+import { getNavConfig, type NavItem } from "@/config/navigation";
+import { ChevronRight, Menu, Search, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { getNavConfig, type NavItem } from "@/config/navigation";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Search, ChevronRight } from "lucide-react";
 
 interface NavbarProps {
   logo: React.ReactNode;
@@ -15,81 +15,86 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ logo, navItems }) => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const currentNavItems = navItems || getNavConfig(pathname).navItems;
-  
+
   return (
-    <nav className="fixed top-0 md:top-14 left-0 w-full z-[60] font-sans">
-      <div className="max-w-7xl mx-auto px-0 md:px-4 lg:px-8">
-  <div className="relative flex items-center justify-between h-16 bg-white/10 backdrop-blur-lg px-4 md:px-6 border-b border-white md:rounded-xl md:border md:border-white">
+    <nav className="fixed top-0 left-0 z-[60] w-full font-sans md:top-14">
+      <div className="mx-auto max-w-7xl px-0 md:px-4 lg:px-8">
+        <div className="relative flex h-16 items-center justify-between border-b border-white bg-white/10 px-4 backdrop-blur-lg md:rounded-xl md:border md:border-white md:px-6">
           {/* Mobile Hamburger Menu Button  */}
           <div className="md:hidden">
             <Button
               variant="ghost"
               size="icon"
-              className="text-white hover:bg-white/20 transition-colors"
+              className="text-white transition-colors hover:bg-white/20"
               onClick={() => setIsOpen((v) => !v)}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
               aria-label={isOpen ? "Close menu" : "Open menu"}
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
 
           {/* Logo */}
-          <div className="flex-shrink-0 md:mr-auto">
-            {logo}
-          </div>
+          <div className="flex-shrink-0 md:mr-auto">{logo}</div>
 
           {/* Desktop Nav Links - centered */}
-          <div className="hidden md:flex items-center space-x-6 absolute left-1/2 -translate-x-1/2">
+          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center space-x-6 md:flex">
             {currentNavItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors relative group"
+                className="group relative text-sm font-medium text-gray-300 transition-colors hover:text-white"
               >
                 <span className="relative">
                   {item.label}
-                  <span className="absolute -left-3 top-1/2 transform -translate-y-1/2 w-1 h-4 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  <span className="absolute top-1/2 -left-3 h-4 w-1 -translate-y-1/2 transform rounded-full bg-red-500 opacity-0 transition-opacity group-hover:opacity-100"></span>
                 </span>
               </Link>
             ))}
           </div>
 
           {/* Search Icon */}
-          <div className="flex items-center justify-center h-10 w-10 bg-white/80 rounded-full cursor-pointer group hover:bg-white transition-colors">
+          <div className="group flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/80 transition-colors hover:bg-white">
             <Search className="h-5 w-5 text-orange-500" />
           </div>
           {/* Mobile dropdown menu panel - overlay, attached under navbar */}
           {isOpen && (
-              <div
-                id="mobile-menu"
-                className="md:hidden absolute left-0 right-0 top-full bg-gradient-to-b from-black/70 via-black/55 to-black/40 backdrop-blur-[30px] backdrop-saturate-150 border-b border-white/20 text-white px-4 py-4 ring-1 ring-white/10 shadow-xl"
-                role="menu"
-                aria-label="Mobile navigation"
-                style={{ zIndex: 70 }}
-              >
+            <div
+              id="mobile-menu"
+              className="absolute top-full right-0 left-0 border-b border-white/20 bg-gradient-to-b from-black/70 via-black/55 to-black/40 px-4 py-4 text-white shadow-xl ring-1 ring-white/10 backdrop-blur-[30px] backdrop-saturate-150 md:hidden"
+              role="menu"
+              aria-label="Mobile navigation"
+              style={{ zIndex: 70 }}
+            >
               <div className="flex flex-col space-y-1">
                 {currentNavItems.map((item, index) => (
                   <div key={item.label}>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
-                        <div className="w-1 h-6 bg-red-500 mr-4 rounded-full"></div>
+                        <div className="mr-4 h-6 w-1 rounded-full bg-red-500"></div>
                         <Link
                           href={item.href}
-                          className="text-white/90 hover:text-white text-lg font-medium transition-colors py-3 block"
+                          className="block py-3 text-lg font-medium text-white/90 transition-colors hover:text-white"
                           onClick={() => setIsOpen(false)}
                           role="menuitem"
                         >
                           {item.label}
                         </Link>
                       </div>
-                      <ChevronRight className="h-5 w-5 text-white/60" aria-hidden="true" />
+                      <ChevronRight
+                        className="h-5 w-5 text-white/60"
+                        aria-hidden="true"
+                      />
                     </div>
                     {index < currentNavItems.length - 1 && (
-                      <div className="ml-6 my-2">
+                      <div className="my-2 ml-6">
                         <hr className="border-white/20" />
                       </div>
                     )}

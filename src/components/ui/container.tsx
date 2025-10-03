@@ -28,7 +28,9 @@ export function Container({
   px = "px-4 md:px-6 lg:px-8",
 }: ContainerProps) {
   return (
-    <div className={cn("mx-auto", sizeMap[size], px, className)}>{children}</div>
+    <div className={cn("mx-auto", sizeMap[size], px, className)}>
+      {children}
+    </div>
   );
 }
 

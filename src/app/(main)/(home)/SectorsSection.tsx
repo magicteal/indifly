@@ -1,11 +1,11 @@
 // src/components/SectorsSection.tsx
 "use client";
 
+import { Container } from "@/components/ui/container";
+import { easeOut, motion } from "framer-motion";
 import { useState } from "react";
-import { motion, easeOut } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 import BrushStroke from "../../../components/BrushStroke"; // Import the new SVG component
-import { Container } from "@/components/ui/container";
 
 const SectorsSection = () => {
   const [activeTab, setActiveTab] = useState("Indipe");
@@ -40,9 +40,9 @@ const SectorsSection = () => {
     >
       <Container className="relative">
         {/* Header */}
-        <motion.div className="text-center mb-12 " variants={itemVariants}>
-          <div className="absolute -top-30 left-1/2 -translate-x-1/2  pointer-events-none select-none">
-            <div className="w-[550px] h-auto">
+        <motion.div className="mb-12 text-center" variants={itemVariants}>
+          <div className="pointer-events-none absolute -top-30 left-1/2 -translate-x-1/2 select-none">
+            <div className="h-auto w-[550px]">
               <BrushStroke />
             </div>
           </div>
@@ -50,7 +50,7 @@ const SectorsSection = () => {
           <p className="mt-24 text-xl text-gray-700">
             Integrated, Inclusive & Innovative
           </p>
-          <p className="mt-2 text-lg text-gray-500 max-w-3xl mx-auto">
+          <p className="mx-auto mt-2 max-w-3xl text-lg text-gray-500">
             Equipping diverse brands in multiple sectors with essential
             resources, expertise, and unwavering support
           </p>
@@ -58,10 +58,10 @@ const SectorsSection = () => {
 
         {/* Tabs */}
         <motion.div
-          className="flex justify-center mb-12"
+          className="mb-12 flex justify-center"
           variants={itemVariants}
         >
-          <div className="bg-gray-100 rounded-full p-1 flex space-x-1">
+          <div className="flex space-x-1 rounded-full bg-gray-100 p-1">
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -70,7 +70,7 @@ const SectorsSection = () => {
                   activeTab === tab
                     ? "bg-orange-500 text-white"
                     : "text-gray-600 hover:bg-gray-200"
-                } px-6 py-2 text-sm font-semibold rounded-full transition-colors duration-300 focus:outline-none`}
+                } rounded-full px-6 py-2 text-sm font-semibold transition-colors duration-300 focus:outline-none`}
               >
                 {tab}
               </button>
@@ -86,28 +86,28 @@ const SectorsSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col  md:flex-row gap-12 items-center"
+              className="flex flex-col items-center gap-12 md:flex-row"
             >
               {/* Left Side: Text Content */}
               <div
-                className="space-y-6 p-8 rounded-lg md:w-2/3 "
+                className="space-y-6 rounded-lg p-8 md:w-2/3"
                 style={{
                   background:
                     "linear-gradient(73.45deg, #FECCB2 0%, #FFFFFF 110.01%)",
                 }}
               >
                 <div className="flex space-x-2">
-                  <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800">
                     Wealth tech
                   </span>
-                  <span className="bg-orange-100 text-orange-800 text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-800">
                     Financial Services
                   </span>
-                  <span className="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">
+                  <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-800">
                     Payments
                   </span>
                 </div>
-                <h3 className="text-3xl font-bold leading-tight text-gray-900">
+                <h3 className="text-3xl leading-tight font-bold text-gray-900">
                   Seamless wealth creation and digital payments for all
                 </h3>
                 <p className="text-gray-600">
@@ -138,10 +138,10 @@ const SectorsSection = () => {
                   </li>
                 </ul>
                 <div className="flex items-center space-x-4 pt-4">
-                  <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                  <button className="rounded-lg bg-orange-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-orange-600">
                     Install the App
                   </button>
-                  <button className="text-gray-700 hover:text-black font-semibold flex items-center gap-2">
+                  <button className="flex items-center gap-2 font-semibold text-gray-700 hover:text-black">
                     Explore More <FiArrowRight />
                   </button>
                 </div>
@@ -150,22 +150,22 @@ const SectorsSection = () => {
               {/* Right Side: Image Placeholders */}
               <div className="relative h-96 md:w-1/3">
                 {/* Main Image Placeholder */}
-                <div className="absolute bottom-0 right-0 h-80 w-80 bg-gray-200 rounded-lg shadow-lg flex items-center justify-center">
+                <div className="absolute right-0 bottom-0 flex h-80 w-80 items-center justify-center rounded-lg bg-gray-200 shadow-lg">
                   <p className="text-gray-500">Person Image</p>
                 </div>
                 {/* UPI Image Placeholder */}
-                <div className="absolute top-0 right-10 h-24 w-40 bg-blue-500 rounded-lg shadow-lg flex items-center justify-center">
+                <div className="absolute top-0 right-10 flex h-24 w-40 items-center justify-center rounded-lg bg-blue-500 shadow-lg">
                   <p className="text-white">UPI Image</p>
                 </div>
                 {/* Small top-left image placeholder */}
-                <div className="absolute top-10 left-0 h-20 w-32 bg-gray-300 rounded-lg shadow-lg"></div>
+                <div className="absolute top-10 left-0 h-20 w-32 rounded-lg bg-gray-300 shadow-lg"></div>
                 {/* Small bottom-right image placeholder */}
-                <div className="absolute bottom-10 right-72 h-20 w-32 bg-gray-400 rounded-lg shadow-lg"></div>
+                <div className="absolute right-72 bottom-10 h-20 w-32 rounded-lg bg-gray-400 shadow-lg"></div>
               </div>
             </motion.div>
           )}
           {activeTab !== "Indipe" && (
-            <div className="text-center py-12">
+            <div className="py-12 text-center">
               <p className="text-gray-500">
                 Content for {activeTab} will be here.
               </p>

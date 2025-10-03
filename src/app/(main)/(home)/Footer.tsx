@@ -3,11 +3,11 @@ import { Container } from "@/components/ui/container";
 
 export const Footer = () => {
   return (
-    <footer className="relative text-white overflow-hidden font-sans bg-[#01295C]">
+    <footer className="relative overflow-hidden bg-[#01295C] font-sans text-white">
       <div className="relative">
         {/* Big Background Heading */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-          <h1 className=" mt-30 text-[18vw] md:text-[10.5vw] font-extrabold whitespace-nowrap text-[#021D41]">
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
+          <h1 className="mt-30 text-[18vw] font-extrabold whitespace-nowrap text-[#021D41] md:text-[10.5vw]">
             Badhna Aasaan Hai
           </h1>
         </div>
@@ -15,10 +15,10 @@ export const Footer = () => {
         <Container className="relative pt-10 pb-12">
           {/* Centered Footer Links Section */}
           <div className="flex justify-center">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16">
+            <div className="grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-16">
               {/* Column 1 */}
               <div>
-                <h3 className="font-bold mb-4 text-lg">Home</h3>
+                <h3 className="mb-4 text-lg font-bold">Home</h3>
                 <ul className="space-y-3 text-gray-400">
                   <li>
                     <a href="#" className="hover:text-white">
@@ -45,7 +45,7 @@ export const Footer = () => {
 
               {/* Column 2 */}
               <div>
-                <h3 className="font-bold mb-4 text-lg">inCore</h3>
+                <h3 className="mb-4 text-lg font-bold">inCore</h3>
                 <ul className="space-y-3 text-gray-400">
                   <li>
                     <a href="#" className="hover:text-white">
@@ -72,7 +72,7 @@ export const Footer = () => {
 
               {/* Column 3 */}
               <div>
-                <h3 className="font-bold mb-4 text-lg">Quick links</h3>
+                <h3 className="mb-4 text-lg font-bold">Quick links</h3>
                 <ul className="space-y-3 text-gray-400">
                   <li>
                     <a href="#" className="hover:text-white">

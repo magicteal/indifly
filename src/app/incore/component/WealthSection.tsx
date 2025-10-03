@@ -1,40 +1,38 @@
 // components/WealthSection.tsx
 "use client";
 
-
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import Section from "@/components/ui/section";
 import SectionHeader from "@/components/ui/section-header";
-
 
 export default function WealthSection() {
   return (
     <Section className="py-20">
       <SectionHeader label="What Compromises" title="InCORE" />
 
-  <div className="mt-12 flex flex-col md:flex-row gap-8 border border-white/10 rounded-[5rem] shadow-inner p-6 md:p-10 bg-gradient-to-br from-[#001631]/60 to-[#0e1a34]/60 relative overflow-hidden">
+      <div className="relative mt-12 flex flex-col gap-8 overflow-hidden rounded-[5rem] border border-white/10 bg-gradient-to-br from-[#001631]/60 to-[#0e1a34]/60 p-6 shadow-inner md:flex-row md:p-10">
         {/* Left Pills */}
-        <div className="flex flex-col gap-4 min-w-[200px]">
-          <div className="rounded-full px-4 py-2 text-white font-medium bg-gradient-to-r from-[#ff6a00] to-[#ff990b]">
+        <div className="flex min-w-[200px] flex-col gap-4">
+          <div className="rounded-full bg-gradient-to-r from-[#ff6a00] to-[#ff990b] px-4 py-2 font-medium text-white">
             CxO leadership
           </div>
-          <div className="rounded-full px-4 py-2 text-white font-medium bg-gradient-to-r from-[#007bff] to-[#3a86ff]">
+          <div className="rounded-full bg-gradient-to-r from-[#007bff] to-[#3a86ff] px-4 py-2 font-medium text-white">
             Functional pods
           </div>
-          <div className="rounded-full px-4 py-2 text-white font-medium bg-gradient-to-r from-[#00c851] to-[#04e762]">
+          <div className="rounded-full bg-gradient-to-r from-[#00c851] to-[#04e762] px-4 py-2 font-medium text-white">
             Execution
           </div>
         </div>
 
         {/* Right Content */}
-        <Card className="relative w-full bg-[#0e1a34]/60 border border-white/10 rounded-2xl shadow-xl overflow-hidden">
-          <CardContent className="p-8 relative z-10">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#ff6a00] to-[#ff990b]">
+        <Card className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0e1a34]/60 shadow-xl">
+          <CardContent className="relative z-10 p-8">
+            <h2 className="bg-gradient-to-r from-[#ff6a00] to-[#ff990b] bg-clip-text text-2xl font-bold text-transparent md:text-3xl lg:text-4xl">
               Seamless wealth creation <br /> and digital payments for all
             </h2>
 
-            <ul className="mt-6 space-y-2 text-gray-300 text-sm md:text-base">
+            <ul className="mt-6 space-y-2 text-sm text-gray-300 md:text-base">
               <li>• User-friendly mutual fund investments</li>
               <li>• Secure UPI transactions</li>
               <li>• Advanced portfolio tracking tools</li>
@@ -51,10 +49,10 @@ export default function WealthSection() {
           </CardContent>
 
           {/* Orange Bubbles Decoration */}
-          <div className="absolute bottom-4 right-4 flex gap-3">
-            <div className="w-16 h-16 rounded-full bg-gradient-to-t from-[#ff6a00] to-[#ff990b]" />
-            <div className="w-10 h-10 rounded-full bg-gradient-to-t from-[#ff6a00] to-[#ff990b]" />
-            <div className="w-6 h-6 rounded-full bg-gradient-to-t from-[#ff6a00] to-[#ff990b]" />
+          <div className="absolute right-4 bottom-4 flex gap-3">
+            <div className="h-16 w-16 rounded-full bg-gradient-to-t from-[#ff6a00] to-[#ff990b]" />
+            <div className="h-10 w-10 rounded-full bg-gradient-to-t from-[#ff6a00] to-[#ff990b]" />
+            <div className="h-6 w-6 rounded-full bg-gradient-to-t from-[#ff6a00] to-[#ff990b]" />
           </div>
         </Card>
       </div>

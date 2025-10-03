@@ -7,7 +7,11 @@ type TopBannerProps = {
   children?: React.ReactNode;
 };
 
-const TopBanner = ({ variant = "default", className, children }: TopBannerProps) => {
+const TopBanner = ({
+  variant = "default",
+  className,
+  children,
+}: TopBannerProps) => {
   // Gradients per spec
   const gradientClass =
     variant === "incore"
@@ -17,17 +21,17 @@ const TopBanner = ({ variant = "default", className, children }: TopBannerProps)
   return (
     <div
       className={cn(
-        "text-white text-center p-2 text-sm",
+        "p-2 text-center text-sm text-white",
         gradientClass,
-        className
+        className,
       )}
       role="region"
       aria-label={variant === "incore" ? "inCORE announcement" : "Announcement"}
     >
       {children ?? (
         <>
-          Get your business up & running with our unparalleled expertise | Use Code:{" "}
-          <span className="font-bold">Welcomeind</span>
+          Get your business up & running with our unparalleled expertise | Use
+          Code: <span className="font-bold">Welcomeind</span>
         </>
       )}
     </div>
