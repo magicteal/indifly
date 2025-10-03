@@ -49,7 +49,7 @@ body {
 }
 
 /* Tailwind v4 color token mappings (plain CSS version) */
-:root {
+@theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -64,6 +64,9 @@ body {
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-insurge: var(--insurge);
+  --color-insurge-foreground: var(--insurge-foreground);
+  --color-insurge-accent: var(--insurge-accent);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
@@ -99,6 +102,9 @@ body {
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
+  --insurge: oklch(0.7721 0.1726 64.13);
+  --insurge-foreground: oklch(1 0 0);
+  --insurge-accent: oklch(0.2938 0.0187 73.92);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
