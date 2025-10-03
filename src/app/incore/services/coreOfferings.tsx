@@ -1,152 +1,149 @@
 "use client";
 
-import type React from "react";
-
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import Container from "@/components/ui/container";
+import Cube from "@public/inCore/cube.svg";
+import CircledLine from "@public/inCore/text-circled-line.svg";
 import { ArrowRight } from "lucide-react";
-import { useState } from "react";
+import React from "react";
 
-const pills = [
-  "Brand Strategy & Toolkit",
-  "Performance Marketing",
-  "Social Media Management",
-  "Email, WhatsApp, & SMS Marketing",
-  "SEO & Website Development",
-  "Event Marketing",
-  "Pitch & Product Decks",
-];
+const offerings = [
+  {
+    label: "Brand Strategy & Toolkit",
+    lines: ["Logos,", "design systems,", "messaging", "frameworks"],
+  },
+  {
+    label: "Performance Marketing",
+    lines: ["Funnels,", "ad creatives,", "CRO & A/B", "experiments"],
+  },
+  {
+    label: "Social Media Management",
+    lines: ["Content,", "publishing,", "community", "growth"],
+  },
+  {
+    label: "Email, WhatsApp, & SMS Marketing",
+    lines: ["Flows,", "drip journeys,", "broadcasts", "automation"],
+  },
+  {
+    label: "SEO & Website Development",
+    lines: ["Tech SEO,", "content hubs,", "fast", "websites"],
+  },
+  {
+    label: "Event Marketing",
+    lines: ["Booths,", "collateral,", "lead gen", "ops"],
+  },
+  {
+    label: "Pitch & Product Decks",
+    lines: ["Narratives,", "visual systems,", "investor", "readiness"],
+  },
+] as const;
 
 export default function CoreOfferings() {
-  const [active] = useState(0);
-
+  const [active, setActive] = React.useState(0);
   return (
-    <div
-      className={cn(
-        "relative overflow-hidden rounded-[36px] p-6 text-center sm:p-8 md:p-10",
-        // background: vignette + subtle amber glow to the right
-        "bg-[radial-gradient(1000px_600px_at_90%_30%,rgba(255,199,0,0.18),transparent_60%),linear-gradient(180deg,#000000,rgba(20,20,21,0.9))]",
-      )}
-    >
-      {/* Top heading */}
-      <div className="mb-8 flex items-center gap-4 md:mb-10">
-        <h2 className="text-3xl font-semibold tracking-tight text-balance text-[var(--ink)] md:text-4xl">
-          Core
-        </h2>
+    <Container>
+      <div
+        className="relative rounded-4xl"
+        style={{
+          backgroundImage: "url('/inCore/coreOfferingsBg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* decorative cube */}
+        <Cube className="absolute -top-40 left-75 scale-30 rotate-12" />
 
-        <div className="relative">
-          <span className="text-3xl font-semibold text-[var(--accent)] italic md:text-4xl">
+        {/* heading */}
+        <div className="relative mb-15 pt-14 text-center text-2xl font-semibold italic md:mb-24 md:text-3xl">
+          <span className="mr-12">Core</span>
+          <span className="relative text-insurge">
             Offerings
+            <CircledLine className="pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 scale-70" />
           </span>
-          {/* Scribble oval */}
-          <svg
-            aria-hidden
-            className="pointer-events-none absolute inset-0 -z-10"
-            width="260"
-            height="56"
-            viewBox="0 0 260 56"
-            fill="none"
-          >
-            <ellipse
-              cx="130"
-              cy="28"
-              rx="118"
-              ry="22"
-              stroke="url(#stroke)"
-              strokeWidth="2.5"
-            />
-            <defs>
-              <linearGradient id="stroke" x1="0" y1="0" x2="260" y2="0">
-                <stop stopColor="#ffc700" />
-                <stop offset="1" stopColor="#e04a00" />
-              </linearGradient>
-            </defs>
-          </svg>
         </div>
 
-        {/* Optional tiny reference indicator (hidden for a11y/QA). Remove if not needed. */}
-        <span className="sr-only">
-          Reference image is available at /images/my-indify.png
-        </span>
-      </div>
+        {/* content grid */}
+        <ActiveContext.Provider value={{ active, setActive }}>
+          <div className="relative flex flex-col justify-center gap-6 pb-24 md:flex-row">
+            {/* left rail: offerings list */}
+            <OfferingsList />
 
-      {/* Main grid */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-[380px,1fr] md:gap-8">
-        {/* Left pill menu */}
-        <ul className="flex flex-col gap-4">
-          {pills.map((label, i) => (
-            <li key={label}>
-              <button
-                type="button"
-                className={cn(
-                  "w-full rounded-2xl px-6 py-4 text-left text-[15px] font-medium transition-colors md:text-[16px]",
-                  i === active
-                    ? // active pill with brand→accent gradient and light text
-                      "bg-[linear-gradient(100deg,var(--brand),var(--accent))] text-[var(--surface)]"
-                    : // inactive pill
-                      "bg-[color:color-mix(in_oklab,var(--surface),black_10%)]/90 text-[color:color-mix(in_oklab,var(--ink),transparent_35%)] hover:text-[var(--ink)]",
-                )}
-              >
-                {label}
-              </button>
-            </li>
-          ))}
-        </ul>
+            {/* right card */}
+            <div
+              className="relative w-[60%] overflow-hidden rounded-[28px] p-8 sm:p-10 md:p-12"
+              style={{
+                background:
+                  "linear-gradient(65.77deg, #2D231D 1.29%, rgba(21, 13, 9, 0) 98.98%)",
+              }}
+            >
+              <RightCopy />
 
-        {/* Right content card */}
-        <div className="relative rounded-3xl bg-[var(--surface)] p-6 sm:p-8 md:p-10">
-          {/* Inner subtle texture/spotlights */}
-          <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-70 mix-blend-screen [background:radial-gradient(600px_380px_at_20%_30%,rgba(255,255,255,0.06),transparent_60%),radial-gradient(520px_320px_at_80%_10%,rgba(255,199,0,0.06),transparent_70%)]" />
+              <Button className="mt-10" variant="insurge" size="lg">
+                Book a Consultation Call
+                <ArrowRight />
+              </Button>
 
-          <div className="relative z-10 max-w-xl">
-            <h3 className="text-3xl leading-tight font-extrabold tracking-tight text-pretty md:text-5xl">
-              <span className="block">Logos,</span>
-              <span className="block">design systems,</span>
-              <span className="block">messaging</span>
-              <span className="block">frameworks</span>
-            </h3>
-
-            <div className="mt-8">
-              <CtaButton>Book a Consultation Call</CtaButton>
+              <div className="pointer-events-none absolute -top-15 -right-10 size-56 rounded-full border !border-insurge" />
+              <div className="pointer-events-none absolute top-39 right-15 size-4 rounded-full bg-gradient-to-r from-[rgba(255,153,11,0.3)] to-[rgba(175,108,76,0.3)]" />
+              <div className="pointer-events-none absolute top-45 right-2 size-6 rounded-full bg-insurge" />
+              <div className="pointer-events-none absolute right-10 -bottom-10 size-36 rounded-full bg-gradient-to-b from-insurge/40 to-black/0" />
+              <div className="pointer-events-none absolute -right-8 -bottom-16 size-44 rounded-full border border-white/5 bg-white/5" />
             </div>
           </div>
-
-          {/* Decorative circles on the right */}
-          <DecorCircles />
-        </div>
+        </ActiveContext.Provider>
       </div>
-    </div>
+    </Container>
   );
 }
 
-function CtaButton({ children }: { children: React.ReactNode }) {
+// Local components to keep file tidy and state-contained
+function OfferingsList() {
+  const { active, setActive } = useActive();
   return (
-    <button
-      className={cn(
-        "group inline-flex items-center gap-2 rounded-full px-6 py-3",
-        "border-2 border-[var(--brand)]/60 text-[var(--ink)]",
-        "transition-colors hover:border-[var(--accent)]/70",
-      )}
-    >
-      <span className="text-[15px] md:text-base">{children}</span>
-      <ArrowRight className="size-4 translate-x-0 transition-transform group-hover:translate-x-0.5" />
-    </button>
+    <ul className="flex flex-col items-end gap-4">
+      {offerings.map((item, idx) => {
+        const isActive = idx === active;
+        return (
+          <li key={item.label}>
+            <Button
+              variant={isActive ? "insurge" : "insurgeSecondary"}
+              className={!isActive ? "font-light" : ""}
+              size="lg"
+              onClick={() => setActive(idx)}
+              aria-pressed={isActive}
+            >
+              {item.label}
+            </Button>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 
-function DecorCircles() {
+const ActiveContext = React.createContext<{
+  active: number;
+  setActive: (i: number) => void;
+} | null>(null);
+
+function useActive() {
+  const ctx = React.useContext(ActiveContext);
+  if (!ctx) throw new Error("useActive must be used within provider");
+  return ctx;
+}
+
+function RightCopy() {
+  const { active } = useActive();
+  const lines = offerings[active].lines;
+
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0">
-      {/* large bottom-right filled circle */}
-      <div className="absolute right-10 bottom-0 size-40 rounded-full bg-[radial-gradient(60%_60%_at_30%_20%,rgba(0,0,0,0.15),transparent_70%),linear-gradient(180deg,var(--brand),var(--accent))] opacity-70 md:right-16 md:size-56" />
-
-      {/* clipped corner orb */}
-      <div className="absolute right-0 bottom-0 h-28 w-24 rounded-tl-[28px] bg-[linear-gradient(180deg,var(--brand),var(--accent))] opacity-70 md:h-32 md:w-28" />
-
-      {/* stroked arcs */}
-      <div className="absolute top-[-6%] right-8 h-48 w-48 rounded-full border-2 border-[var(--brand)]/50 md:h-60 md:w-60" />
-      <div className="absolute top-[20%] right-2 size-6 rounded-full bg-[var(--brand)]/70" />
-      <div className="absolute top-[32%] right-0 size-8 rounded-full border-2 border-[var(--brand)]/50" />
-      <div className="absolute right-[26%] bottom-[24%] size-4 rounded-full border-2 border-[var(--brand)]/60" />
-    </div>
+    <h3 className="text-3xl leading-tight font-semibold md:text-5xl">
+      {lines.map((l, i) => (
+        <React.Fragment key={i}>
+          <span>{l}</span>
+          <br />
+        </React.Fragment>
+      ))}
+    </h3>
   );
 }
