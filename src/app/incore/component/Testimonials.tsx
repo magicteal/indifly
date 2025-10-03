@@ -1,11 +1,9 @@
-
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
-import { Star } from "lucide-react";
 import Section from "@/components/ui/section";
-import SectionHeader from "@/components/ui/section-header";
+import { Star } from "lucide-react";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -40,10 +38,10 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <Section className="relative py-20 ">
+    <Section className="relative py-20">
       {/* Decorative SVGs behind header */}
       <div
-        className="pointer-events-none absolute top-6 -left-4 md:top-24 md:-left-6 z-0"
+        className="pointer-events-none absolute top-6 -left-4 z-0 md:top-24 md:-left-6"
         aria-hidden="true"
       >
         <svg
@@ -93,7 +91,7 @@ export default function Testimonials() {
         </svg>
       </div>
       <div
-        className="pointer-events-none absolute bottom-[-7] right-4 top-auto md:top-10 md:right-6 md:bottom-auto z-0"
+        className="pointer-events-none absolute top-auto right-4 bottom-[-7] z-0 md:top-10 md:right-6 md:bottom-auto"
         aria-hidden="true"
       >
         <svg
@@ -142,38 +140,44 @@ export default function Testimonials() {
           </g>
         </svg>
       </div>
-      <SectionHeader title="Testimonials" className="relative z-10" />
 
       <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
         {testimonials.map((t, i) => (
           <Card
             key={i}
-            className="bg-[#2C4566] border border-white/20 rounded-xl shadow-md p-6 flex flex-col items-start"
+            className="flex flex-col items-start rounded-xl border border-white/20 bg-[#2C4566] p-6 shadow-md"
           >
-            <CardContent className="flex flex-col gap-4 items-stretch text-left w-full">
+            <CardContent className="flex w-full flex-col items-stretch gap-4 text-left">
               {/* Header row: left image (square) and right name/title */}
-              <div className="flex items-center gap-4 w-full">
-                <div className="w-16 h-16 relative overflow-hidden">
-                  <Image src={t.image} alt={t.name} fill className="object-cover" />
+              <div className="flex w-full items-center gap-4">
+                <div className="relative h-16 w-16 overflow-hidden">
+                  <Image
+                    src={t.image}
+                    alt={t.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="font-semibold text-white text-lg leading-tight truncate">{t.name}</h3>
-                  <p className="text-gray-400 text-sm">{t.title}</p>
+                  <h3 className="truncate text-lg leading-tight font-semibold text-white">
+                    {t.name}
+                  </h3>
+                  <p className="text-sm text-gray-400">{t.title}</p>
                 </div>
               </div>
 
               {/* Star rating */}
-              <div className="flex gap-1 justify-start mb-4 bg-[#0A2240] px-7 py-2 rounded-xl">
+              <div className="mb-4 flex justify-start gap-1 rounded-xl bg-[#0A2240] px-7 py-2">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
-                    className="w-5 h-5 fill-orange-400 text-orange-400"
+                    className="h-5 w-5 fill-orange-400 text-orange-400"
                   />
                 ))}
               </div>
 
               {/* Feedback */}
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-sm leading-relaxed text-gray-300">
                 &quot;{t.feedback}&quot;
               </p>
             </CardContent>
