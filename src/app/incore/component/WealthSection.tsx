@@ -68,9 +68,9 @@ export default function WealthSection() {
     <Section className="py-20">
       <SectionHeader label="What Compromises" title="InCORE" />
 
-  <div className="mt-12 flex flex-col md:flex-row gap-8 border border-white/10 rounded-[5rem] shadow-inner p-6 md:p-10 bg-white/5 backdrop-blur-xl backdrop-saturate-150 ring-1 ring-white/10 relative overflow-hidden">
+  <div className="mt-12 flex flex-col md:flex-row gap-6 md:gap-8 border border-white/10 rounded-2xl sm:rounded-3xl md:rounded-[5rem] shadow-inner p-4 sm:p-6 md:p-10 bg-white/5 backdrop-blur-xl backdrop-saturate-150 ring-1 ring-white/10 relative overflow-hidden">
         {/* Left Pills */}
-        <div className="flex flex-col gap-4 min-w-[200px]">
+        <div className="flex flex-col gap-3 sm:gap-4 w-full md:w-auto md:min-w-[200px]">
           {tabs.map((t) => (
             <button
               key={t.key}
@@ -78,7 +78,7 @@ export default function WealthSection() {
               onClick={() => setActive(t.key)}
               aria-pressed={active === t.key}
               className={cn(
-                "rounded-full px-4 py-2 text-white font-medium text-left cursor-pointer transition-all focus:outline-none hover:opacity-95",
+                "rounded-full px-4 py-2 text-white font-medium text-left cursor-pointer transition-all focus:outline-none hover:opacity-95 text-sm md:text-base",
                 active === t.key ? "ring-2 ring-white/30" : "ring-0",
                 pillGradientClass[t.key]
               )}
@@ -90,7 +90,7 @@ export default function WealthSection() {
 
         {/* Right Content */}
         <Card className="relative w-full bg-[#0e1a34]/60 border border-white/10 rounded-2xl shadow-xl overflow-hidden">
-          <CardContent className="p-8 relative z-10">
+          <CardContent className="p-5 sm:p-6 md:p-8 relative z-10">
             <h2
               className={cn(
                 "mt-1 font-bold leading-tight text-2xl md:text-3xl lg:text-4xl",
@@ -116,39 +116,37 @@ export default function WealthSection() {
 
             <Button
               variant="outline"
-              className="mt-6 rounded-full border-white text-white hover:bg-white/10 shadow-[0_0_16px_rgba(255,255,255,0.2)] hover:shadow-[0_0_24px_rgba(255,255,255,0.35)] transition-shadow"
+              className="mt-6 rounded-full border-2 border-white text-white hover:bg-white/10 shadow-[0_0_16px_rgba(255,255,255,0.2)] hover:shadow-[0_0_24px_rgba(255,255,255,0.35)] transition-shadow px-6 py-3 md:px-7 md:py-5 text-base md:text-lg"
             >
               Explore More →
             </Button>
           </CardContent>
-
-          {/* Gradient Bubbles Decoration */}
-          <div className="pointer-events-none select-none">
+          <div className="pointer-events-none select-none hidden md:block">
             {/* Big bottom-right circle */}
             <div
               className={cn(
-                "absolute bottom-3 right-3 w-24 h-24 rounded-full opacity-90",
+                "absolute -bottom-4 -right-1 w-24 h-24 rounded-full opacity-100",
                 bubbleGradientClass[active]
               )}
             />
             {/* Second smaller above-left of big */}
             <div
               className={cn(
-                "absolute bottom-[7.5rem] right-16 w-14 h-14 rounded-full opacity-90",
+                "absolute bottom-[4rem] right-16 w-14 h-14 rounded-full opacity-90",
                 bubbleGradientClass[active]
               )}
             />
             {/* Third smaller just above first */}
             <div
               className={cn(
-                "absolute bottom-[11rem] right-6 w-10 h-10 rounded-full opacity-90",
+                "absolute bottom-[7rem] right-6 w-10 h-10 rounded-full opacity-90",
                 bubbleGradientClass[active]
               )}
             />
             {/* Fourth smallest just above third */}
             <div
               className={cn(
-                "absolute bottom-[13.5rem] right-8 w-6 h-6 rounded-full opacity-90",
+                "absolute bottom-[11rem] right-14 w-6 h-6 rounded-full opacity-90",
                 bubbleGradientClass[active]
               )}
             />

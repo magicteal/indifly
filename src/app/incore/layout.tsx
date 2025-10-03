@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import TopBanner from "@/components/TopBanner";
+import { Footer } from "../(main)/(home)/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -33,6 +34,7 @@ export default function IncoreLayout({
       <Navbar logo={incoreLogo} />
 
       {children}
+      <Footer />
     </>
   );
 }
