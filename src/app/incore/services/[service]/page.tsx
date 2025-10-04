@@ -1,5 +1,5 @@
 import { ContactForm } from "@/components/ContactForm";
-import ApproachSection from "../ApproachSection";
+import ApproachSection from "./ApproachSection";
 import CoreOfferings from "./coreOfferings";
 import HeroSection from "./Herosection";
 import WhyItMatters from "./whyItMatters";

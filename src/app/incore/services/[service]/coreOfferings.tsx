@@ -6,6 +6,7 @@ import Container from "@/components/ui/container";
 import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
 import { ArrowRight } from "lucide-react";
+import { useParams } from "next/navigation";
 import React from "react";
 
 const offerings = [
@@ -40,6 +41,7 @@ const offerings = [
 ] as const;
 
 export default function CoreOfferings() {
+  const { service } = useParams<{ service: string }>();
   const theme = useServiceTheme();
   const [active, setActive] = React.useState(0);
 
@@ -48,7 +50,7 @@ export default function CoreOfferings() {
       <div
         className="relative rounded-4xl"
         style={{
-          backgroundImage: "url('/inCore/coreOfferingsBg.png')",
+          backgroundImage: `url('/inCore/cardGradient/${service}CardGradient.png')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
