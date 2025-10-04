@@ -11,10 +11,9 @@ export default function Page() {
       <ApproachSection />
       <WhyItMatters />
       <CoreOfferings />
-      <ContactForm
-        title="Get a Free Audit Done"
-        description="We are committed to processing the information in order to contact you and talk about your project. "
-      />
+      <div className="mt-36"></div>
+
+      <ContactForm />
     </main>
   );
 }
