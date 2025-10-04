@@ -1,5 +1,6 @@
 "use client";
 
+import { useServiceContent } from "@/app/incore/services/[service]/hooks/useServiceContent";
 import { useServiceTheme } from "@/app/incore/services/[service]/hooks/useServiceTheme";
 import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/container";
@@ -9,40 +10,10 @@ import { ArrowRight } from "lucide-react";
 import { useParams } from "next/navigation";
 import React from "react";
 
-const offerings = [
-  {
-    label: "Brand Strategy & Toolkit",
-    lines: "Logos, design systems, messaging frameworks",
-  },
-  {
-    label: "Performance Marketing",
-    lines: "Funnels, ad creatives, CRO & A/B experiments",
-  },
-  {
-    label: "Social Media Management",
-    lines: "Content, publishing, community growth",
-  },
-  {
-    label: "Email, WhatsApp, & SMS Marketing",
-    lines: "Flows, drip journeys, broadcasts, automation",
-  },
-  {
-    label: "SEO & Website Development",
-    lines: "Tech SEO, content hubs, fast websites",
-  },
-  {
-    label: "Event Marketing",
-    lines: "Booths, collateral, lead gen, ops",
-  },
-  {
-    label: "Pitch & Product Decks",
-    lines: "Narratives, visual systems, investor readiness",
-  },
-] as const;
-
 export default function CoreOfferings() {
   const { service } = useParams<{ service: string }>();
   const theme = useServiceTheme();
+  const content = useServiceContent();
   const [active, setActive] = React.useState(0);
 
   return (
@@ -110,7 +81,7 @@ export default function CoreOfferings() {
       <p
         className={`mt-10 text-center text-2xl font-semibold italic md:mt-16 md:text-3xl ${theme.text}`}
       >
-        A brilliant product still needs SURGE to be seen
+        {content.coreOfferings.tagline}
       </p>
     </Container>
   );
@@ -119,11 +90,12 @@ export default function CoreOfferings() {
 // Local components to keep file tidy and state-contained
 function OfferingsList() {
   const theme = useServiceTheme();
+  const content = useServiceContent();
   const { active, setActive } = useActive();
 
   return (
     <ul className="flex flex-col items-end gap-4">
-      {offerings.map((item, idx) => {
+      {content.coreOfferings.offerings.map((item, idx) => {
         const isActive = idx === active;
         const variant = isActive
           ? theme.buttonVariant
@@ -134,7 +106,7 @@ function OfferingsList() {
               | "insureSecondary");
 
         return (
-          <li key={item.label}>
+          <li key={item.name}>
             <Button
               variant={variant}
               className={!isActive ? "font-light" : ""}
@@ -142,7 +114,7 @@ function OfferingsList() {
               onClick={() => setActive(idx)}
               aria-pressed={isActive}
             >
-              {item.label}
+              {item.name}
             </Button>
           </li>
         );
@@ -164,13 +136,12 @@ function useActive() {
 
 function RightCopy() {
   const { active } = useActive();
-  const lines = offerings[active].lines;
+  const content = useServiceContent();
+  const current = content.coreOfferings.offerings[active];
 
   return (
     <h3 className="text-3xl leading-tight font-semibold md:text-5xl">
-      <React.Fragment>
-        <span>{lines}</span>
-      </React.Fragment>
+      <span>{current.description || current.name}</span>
     </h3>
   );
 }
