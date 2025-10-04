@@ -1,3 +1,6 @@
+"use client";
+
+import { useServiceTheme } from "@/app/incore/services/[service]/hooks/useServiceTheme";
 import MobileChat from "@public/inCore/mobile-chat.svg";
 import TextCircledLine from "@public/inCore/text-circled-line.svg";
 import type React from "react";
@@ -22,6 +25,8 @@ function Pill({ children }: { children: React.ReactNode }) {
 }
 
 export default function WhyItMatters() {
+  const theme = useServiceTheme();
+
   return (
     <section
       className="relative overflow-hidden"
@@ -38,7 +43,7 @@ export default function WhyItMatters() {
         <div className="mb-10 text-center text-3xl font-bold italic md:mb-16 md:text-4xl">
           <span className="mr-10">Why it </span>
           <div className="relative inline-block">
-            <span className="text-insurge">matters?</span>
+            <span className={theme.text}>matters?</span>
             <TextCircledLine className="absolute -top-2 left-1/2 translate-x-[-50%] scale-80" />
           </div>
         </div>

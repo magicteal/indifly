@@ -198,7 +198,7 @@ export default function DecorativeBannerSection() {
 
           {/* Clickable quadrants overlay */}
           <Link
-            href="/incore/services/inSurge"
+            href="/incore/services/insurge"
             aria-label="Open inSurge"
             className="group absolute top-0 left-1/2 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
           >
@@ -209,7 +209,7 @@ export default function DecorativeBannerSection() {
             <span className="sr-only">Top right – inSurge</span>
           </Link>
           <Link
-            href="/incore/services/inStack"
+            href="/incore/services/instack"
             aria-label="Open inStack"
             className="group absolute top-0 left-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
           >
@@ -220,7 +220,7 @@ export default function DecorativeBannerSection() {
             <span className="sr-only">Top left – inStack</span>
           </Link>
           <Link
-            href="/incore/services/inVolve"
+            href="/incore/services/involve"
             aria-label="Open inVolve"
             className="group absolute bottom-0 left-1/2 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
           >
@@ -231,7 +231,7 @@ export default function DecorativeBannerSection() {
             <span className="sr-only">Bottom right – inSure</span>
           </Link>
           <Link
-            href="/incore/services/inSure"
+            href="/incore/services/insure"
             aria-label="Open inSure"
             className="group absolute bottom-0 left-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
           >

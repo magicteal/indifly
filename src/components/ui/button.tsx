@@ -16,9 +16,22 @@ const buttonVariants = cva(
           "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        // insurge variants
         insurge: "bg-insurge text-insurge-foreground hover:bg-insurge/90",
         insurgeSecondary:
           "bg-insurge-accent text-insurge hover:bg-insurge-accent/90",
+        // instack variants
+        instack: "bg-instack text-instack-foreground hover:bg-instack/90",
+        instackSecondary:
+          "bg-instack-accent text-instack hover:bg-instack-accent/90",
+        // involve variants
+        involve: "bg-involve text-involve-foreground hover:bg-involve/90",
+        involveSecondary:
+          "bg-involve-accent text-involve hover:bg-involve-accent/90",
+        // insure variants
+        insure: "bg-insure text-insure-foreground hover:bg-insure/90",
+        insureSecondary:
+          "bg-insure-accent text-insure hover:bg-insure-accent/90",
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
