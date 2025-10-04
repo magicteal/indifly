@@ -1,6 +1,5 @@
 import { Container } from "@/components/ui/container";
 import Image from "next/image";
-import React from "react";
 
 // SVGs provided in public/home via SVGR loader
 import Hexagon from "@public/home/hexagonINDsights.svg";
