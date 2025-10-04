@@ -1,5 +1,5 @@
 import { ContactForm } from "@/components/ContactForm";
-import ApproachSection from "../ApproachSection";
+import ApproachSection from "./ApproachSection";
 import CoreOfferings from "./coreOfferings";
 import HeroSection from "./Herosection";
 import WhyItMatters from "./whyItMatters";
@@ -11,10 +11,8 @@ export default function Page() {
       <ApproachSection />
       <WhyItMatters />
       <CoreOfferings />
-      <ContactForm
-        title="Get a Free Audit Done"
-        description="We are committed to processing the information in order to contact you and talk about your project. "
-      />
+      <div className="mt-36" />
+      <ContactForm />
     </main>
   );
 }

@@ -17,11 +17,7 @@ export default function Home() {
       <SectorsSection />
       <ImpactOnBharat />
       <INDsights />
-      <ContactForm
-        variant="contact"
-        title="Contact Us"
-        description="We are committed to processing the information in order to contact you and talk about your project."
-      />
+      <ContactForm />
       <Footer />
       {/* <ContactFooter
         variant="contact"
