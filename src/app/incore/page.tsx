@@ -15,7 +15,7 @@ import WealthSection from "./component/WealthSection";
 export default function InCorePage() {
   return (
     <>
-      <main className="min-h-[80vh] flex-col items-center justify-center bg-[#001631] py-16 sm:py-20 md:py-28 lg:py-36">
+      <main className="min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-[#001631] py-16 sm:py-20 md:py-28 lg:py-36">
         <Container size="2xl" className="mt-20 md:mt-24">
           <div className="relative text-center">
             {/* Layered blur color blobs behind hero */}
@@ -176,18 +176,85 @@ export default function InCorePage() {
             </p>
           </div>
         </Container>
-        <WealthSection />
-        <DecorativeBannerSection />
-        <ProcessJourneySection />
 
-        <SectionHeader title="Case Studies" />
-        <CaseStudiesSection />
+        {/* Large blurred gradient frame from Process to Insights */}
+        <section className="relative w-full">
+          {/* Background layer with feathered mask */}
+          <div
+            className="pointer-events-none absolute inset-0 z-0"
+            aria-hidden="true"
+            style={{
+              WebkitMaskImage:
+                "radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)",
+              maskImage:
+                "radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)",
+            }}
+          >
+            {/* Top center rectangular – 091E38 */}
+            <div className="absolute top-0 left-1/2 h-[18%] w-[70%] max-w-[1100px] -translate-x-1/2 rounded-[96px] bg-[#091E38] opacity-40 blur-[160px] sm:blur-[200px]" />
 
-        <IncoreINDsightsSection />
-        <ClientsMarqueeSection />
+            {/* Top corner – 18A0FB (top-right) */}
+            <div className="absolute -top-[6%] -right-[6%] h-[35%] w-[35%] max-w-[560px] rounded-full bg-[#18A0FB] opacity-45 blur-[120px] sm:blur-[160px]" />
 
-        <SectionHeader title="Testimonials" className="relative z-10" />
-        <Testimonials />
+            {/* Center rectangular – 458BEA */}
+            <div className="absolute top-1/2 left-1/2 h-[22%] w-[60%] max-w-[980px] -translate-x-1/2 -translate-y-1/2 rounded-[96px] bg-[#458BEA] opacity-40 blur-[170px] sm:blur-[210px]" />
+
+            {/* Left middle edge – E04A00 */}
+            <div className="absolute top-1/2 -left-[8%] h-[28%] w-[22%] max-w-[360px] -translate-y-1/2 rounded-[64px] bg-[#E04A00] opacity-40 blur-[120px] sm:blur-[160px]" />
+
+            {/* Right middle edge – FFC700 */}
+            <div className="absolute top-1/2 -right-[8%] h-[28%] w-[22%] max-w-[360px] -translate-y-1/2 rounded-[64px] bg-[#FFC700] opacity-45 blur-[120px] sm:blur-[160px]" />
+
+            {/* Bottom left – 00C5DF */}
+            <div className="absolute -bottom-[10%] -left-[10%] h-[45%] w-[45%] max-w-[720px] rounded-full bg-[#00C5DF] opacity-55 blur-[120px] sm:blur-[160px]" />
+          </div>
+
+          {/* Foreground content */}
+          <div className="relative z-10">
+            <WealthSection />
+            <DecorativeBannerSection />
+            <ProcessJourneySection />
+
+            <SectionHeader title="Case Studies" />
+            <CaseStudiesSection />
+
+            <IncoreINDsightsSection />
+          </div>
+        </section>
+
+        {/* Large blurred gradient frame from Clients Marquee to Contact section */}
+        <section className="relative w-full overflow-x-clip">
+          {/* Background blob layer */}
+          <div
+            className="pointer-events-none absolute inset-0 z-0"
+            aria-hidden="true"
+          >
+            {/* Top center rectangular – 091E38 */}
+            <div className="absolute top-0 left-1/2 h-[18%] w-[70%] max-w-[1100px] -translate-x-1/2 rounded-[48px] bg-[#091E38] opacity-40 blur-[120px] sm:blur-[160px]"></div>
+
+            {/* Top corner – 18A0FB (top-right) */}
+            <div className="absolute -top-[6%] -right-[6%] h-[35%] w-[35%] max-w-[560px] rounded-full bg-[#18A0FB] opacity-45 blur-[120px] sm:blur-[160px]"></div>
+
+            {/* Center rectangular – 458BEA */}
+            <div className="absolute top-1/2 left-1/2 h-[22%] w-[60%] max-w-[980px] -translate-x-1/2 -translate-y-1/2 rounded-[48px] bg-[#458BEA] opacity-40 blur-[130px] sm:blur-[170px]"></div>
+
+            {/* Left middle edge – E04A00 */}
+            <div className="absolute top-1/2 -left-[8%] h-[28%] w-[22%] max-w-[360px] -translate-y-1/2 rounded-[64px] bg-[#E04A00] opacity-40 blur-[120px] sm:blur-[160px]"></div>
+
+            {/* Right middle edge – FFC700 */}
+            <div className="absolute top-1/2 -right-[8%] h-[28%] w-[22%] max-w-[360px] -translate-y-1/2 rounded-[64px] bg-[#FFC700] opacity-45 blur-[120px] sm:blur-[160px]"></div>
+
+            {/* Bottom left – 00C5DF (extended deeper to reach toward footer) */}
+            <div className="absolute -bottom-[16%] -left-[12%] h-[52%] w-[52%] max-w-[820px] rounded-full bg-[#00C5DF] opacity-55 blur-[140px] sm:blur-[180px]"></div>
+          </div>
+
+          {/* Foreground content */}
+
+          <ClientsMarqueeSection />
+
+          <SectionHeader title="Testimonials" className="relative z-10" />
+          <Testimonials />
+        </section>
       </main>
       <ContactForm
         variant="contact"
