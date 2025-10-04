@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ContactForm } from "../(main)/(home)/ContactForm";
 import CaseStudiesSection from "./component/CaseStudiesSection";
 import ClientsMarqueeSection from "./component/ClientsMarqueeSection";
+import DecorativeBannerSection from "./component/DecorativeBannerSection";
 import IncoreINDsightsSection from "./component/IncoreINDsightsSection";
 import ProcessJourneySection from "./component/ProcessJourneySection";
 import Testimonials from "./component/Testimonials";
@@ -176,6 +177,7 @@ export default function InCorePage() {
           </div>
         </Container>
         <WealthSection />
+        <DecorativeBannerSection />
         <ProcessJourneySection />
 
         <SectionHeader title="Case Studies" />
