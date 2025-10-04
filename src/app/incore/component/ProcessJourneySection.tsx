@@ -16,7 +16,7 @@ export default function ProcessJourney() {
 
       <div className="mt-10 flex justify-center">
         <Image
-          src="/process.png"
+          src="/process.svg"
           alt="InCORE process journey"
           width={1280}
           height={600}
