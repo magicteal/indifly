@@ -1,5 +1,6 @@
 "use client";
 
+import { useServiceTheme } from "@/app/incore/services/[service]/hooks/useServiceTheme";
 import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/container";
 import Cube from "@public/inCore/cube.svg";
@@ -39,7 +40,9 @@ const offerings = [
 ] as const;
 
 export default function CoreOfferings() {
+  const theme = useServiceTheme();
   const [active, setActive] = React.useState(0);
+
   return (
     <Container>
       <div
@@ -56,7 +59,7 @@ export default function CoreOfferings() {
         {/* heading */}
         <div className="relative mb-15 pt-14 text-center text-2xl font-semibold italic md:mb-24 md:text-3xl">
           <span className="mr-12">Core</span>
-          <span className="relative text-insurge">
+          <span className={`relative ${theme.text}`}>
             Offerings
             <CircledLine className="pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 scale-70" />
           </span>
@@ -78,15 +81,21 @@ export default function CoreOfferings() {
             >
               <RightCopy />
 
-              <Button className="mt-10" variant="insurge" size="lg">
+              <Button className="mt-10" variant={theme.buttonVariant} size="lg">
                 Book a Consultation Call
                 <ArrowRight />
               </Button>
 
-              <div className="pointer-events-none absolute -top-15 -right-10 size-56 rounded-full border !border-insurge" />
+              <div
+                className={`pointer-events-none absolute -top-15 -right-10 size-56 rounded-full border ${theme.border}`}
+              />
               <div className="pointer-events-none absolute top-39 right-15 size-4 rounded-full bg-gradient-to-r from-[rgba(255,153,11,0.3)] to-[rgba(175,108,76,0.3)]" />
-              <div className="pointer-events-none absolute top-45 right-2 size-6 rounded-full bg-insurge" />
-              <div className="pointer-events-none absolute right-10 -bottom-10 size-36 rounded-full bg-gradient-to-b from-insurge/40 to-black/0" />
+              <div
+                className={`pointer-events-none absolute top-45 right-2 size-6 rounded-full ${theme.bg}`}
+              />
+              <div
+                className={`pointer-events-none absolute right-10 -bottom-10 size-36 rounded-full bg-gradient-to-b ${theme.gradientFrom}/40 to-black/0`}
+              />
               <div className="pointer-events-none absolute -right-8 -bottom-16 size-44 rounded-full border border-white/5 bg-white/5" />
             </div>
           </div>
@@ -98,15 +107,25 @@ export default function CoreOfferings() {
 
 // Local components to keep file tidy and state-contained
 function OfferingsList() {
+  const theme = useServiceTheme();
   const { active, setActive } = useActive();
+
   return (
     <ul className="flex flex-col items-end gap-4">
       {offerings.map((item, idx) => {
         const isActive = idx === active;
+        const variant = isActive
+          ? theme.buttonVariant
+          : (theme.buttonSecondaryVariant as
+              | "insurgeSecondary"
+              | "instackSecondary"
+              | "involveSecondary"
+              | "insureSecondary");
+
         return (
           <li key={item.label}>
             <Button
-              variant={isActive ? "insurge" : "insurgeSecondary"}
+              variant={variant}
               className={!isActive ? "font-light" : ""}
               size="lg"
               onClick={() => setActive(idx)}
