@@ -1,6 +1,4 @@
 import { ContactForm } from "@/components/ContactForm";
-import CaseStudiesSection from "../../components/CaseStudiesSection";
-import Testimonials from "../../components/Testimonials";
 import CoreOfferings from "./coreOfferings";
 import HeroSection from "./Herosection";
 import WhyItMatters from "./whyItMatters";
@@ -11,8 +9,6 @@ export default function Page() {
       <HeroSection />
       <WhyItMatters />
       <CoreOfferings />
-      <CaseStudiesSection />
-      <Testimonials />
       <ContactForm
         title="Get a Free Audit Done"
         description="We are committed to processing the information in order to contact you and talk about your project. "
