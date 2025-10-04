@@ -45,7 +45,7 @@ const caseStudies = [
 
 export default function CaseStudies() {
   return (
-    <Section className="relative overflow-hidden py-20">
+    <Section className="relative overflow-hidden py-20" >
       {/* Decorative SVGs behind header */}
       <div
         className="pointer-events-none absolute top-6 -left-4 z-0 md:top-10 md:-left-6"

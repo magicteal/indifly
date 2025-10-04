@@ -214,10 +214,10 @@ export default function InCorePage() {
             <WealthSection />
             <DecorativeBannerSection />
             <ProcessJourneySection />
-
+<Container id="case-studies">
             <SectionHeader title="Case Studies" />
             <CaseStudiesSection />
-
+</Container>
             <IncoreINDsightsSection />
           </div>
         </section>

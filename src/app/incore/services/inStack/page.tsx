@@ -1,9 +1,9 @@
 import { ContactForm } from "@/app/(main)/(home)/ContactForm";
-import CaseStudiesSection from "../component/CaseStudiesSection";
-import Testimonials from "../component/Testimonials";
-import CoreOfferings from "./coreOfferings";
-import HeroSection from "./heroSection";
-import WhyItMatters from "./whyItMatters";
+import CaseStudiesSection from "../../component/CaseStudiesSection";
+import Testimonials from "../../component/Testimonials";
+import CoreOfferings from "../coreOfferings";
+import HeroSection from "../Herosection";
+import WhyItMatters from "../whyItMatters";
 
 export default function Page() {
   return (

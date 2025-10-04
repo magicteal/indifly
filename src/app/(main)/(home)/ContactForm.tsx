@@ -35,6 +35,7 @@ export const ContactForm = ({
     <section
       className="relative pt-16 sm:pt-20 md:pt-24 overflow-hidden font-sans"
       style={{ backgroundColor: "#01295C" }}
+      id="contact"
     >
       {/* Decorative Circles */}
       <div className="absolute top-1/4 left-[-40px] w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 border-2 border-white/10 rounded-full opacity-50 z-0"></div>

@@ -178,6 +178,7 @@ export default function DecorativeBannerSection() {
 		<Section
 			py="py-16"
 			className="relative"
+			id="services"
 			containerProps={{ className: "max-w-6xl" }}
 		>
 				<div className="relative w-full">
@@ -194,7 +195,7 @@ export default function DecorativeBannerSection() {
 
 						{/* Clickable quadrants overlay */}
 						<Link
-							href="/incore/inSurge"
+							href="/incore/services/inSurge"
 							aria-label="Open inSurge"
 							className="group absolute left-1/2 top-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
 						>
@@ -202,7 +203,7 @@ export default function DecorativeBannerSection() {
 							<span className="sr-only">Top right – inSurge</span>
 						</Link>
 						<Link
-							href="/incore/instack"
+							href="/incore/services/inStack"
 							aria-label="Open inStack"
 							className="group absolute left-0 top-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
 						>
@@ -211,7 +212,7 @@ export default function DecorativeBannerSection() {
 						</Link>
 						<Link
 							
-							href="/incore/involve"
+							href="/incore/services/inVolve"
 							aria-label="Open inVolve"
 							className="group absolute bottom-0 left-1/2 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
 						>
@@ -219,7 +220,7 @@ export default function DecorativeBannerSection() {
 							<span className="sr-only">Bottom right – inSure</span>
 						</Link>
 						<Link
-							href="/incore/insure"
+							href="/incore/services/inSure"
 							aria-label="Open inSure"
 							className="group absolute bottom-0 left-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
 						>

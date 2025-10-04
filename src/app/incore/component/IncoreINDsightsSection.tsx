@@ -40,7 +40,7 @@ const posts: Blog[] = [
 
 export default function IncoreINDsightsSection() {
   return (
-    <Section className="py-16 md:py-24 relative overflow-hidden">
+    <Section className="py-16 md:py-24 relative overflow-hidden" id="about-indifly-ventures">
       {/* Decorative SVGs behind header */}
       <div
         className="pointer-events-none absolute top-6 -left-4 md:top-10 md:-left-6 z-0"
