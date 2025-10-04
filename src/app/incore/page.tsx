@@ -4,14 +4,14 @@ import SectionHeader from "@/components/ui/section-header";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { ContactForm } from "../(main)/(home)/ContactForm";
-import CaseStudiesSection from "./component/CaseStudiesSection";
-import ClientsMarqueeSection from "./component/ClientsMarqueeSection";
-import DecorativeBannerSection from "./component/DecorativeBannerSection";
-import IncoreINDsightsSection from "./component/IncoreINDsightsSection";
-import ProcessJourneySection from "./component/ProcessJourneySection";
-import Testimonials from "./component/Testimonials";
-import WealthSection from "./component/WealthSection";
+import { ContactForm } from "../../components/ContactForm";
+import CaseStudiesSection from "./components/CaseStudiesSection";
+import ClientsMarqueeSection from "./components/ClientsMarqueeSection";
+import DecorativeBannerSection from "./components/DecorativeBannerSection";
+import IncoreINDsightsSection from "./components/IncoreINDsightsSection";
+import ProcessJourneySection from "./components/ProcessJourneySection";
+import Testimonials from "./components/Testimonials";
+import WealthSection from "./components/WealthSection";
 
 export default function InCorePage() {
   return (
