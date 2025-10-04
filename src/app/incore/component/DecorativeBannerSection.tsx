@@ -183,7 +183,7 @@ export default function DecorativeBannerSection() {
 		>
 				<div className="relative w-full">
 					{/* Maintain aspect ratio matching the source (1251x831 ~ 1.505) to reduce CLS */}
-					<div className="relative w-full overflow-hidden rounded-[5.5rem]" style={{ aspectRatio: "1251/831" }}>
+					<div className="relative w-full overflow-hidden md:rounded-[5.5rem]" style={{ aspectRatio: "1251/831" }}>
 						<Image
 							src="/puzzel.svg"
 							alt="Puzzle graphic"

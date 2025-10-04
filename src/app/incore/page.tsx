@@ -11,11 +11,20 @@ import IncoreINDsightsSection from "./component/IncoreINDsightsSection";
 import ProcessJourneySection from "./component/ProcessJourneySection";
 import Testimonials from "./component/Testimonials";
 import WealthSection from "./component/WealthSection";
+import TopBanner from "@/components/TopBanner";
 
 export default function InCorePage() {
   return (
     <>
+     {/* Fixed TopBanner on all viewports */}
+      <div className="fixed top-0 left-0 right-0 z-50 hidden md:block">
+        <TopBanner variant="incore" />
+      </div>
+      <div className="md:hidden fixed top-16 left-0 right-0 z-50">
+        <TopBanner variant="incore" />
+      </div>
       <main className="min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-[#001631] py-16 sm:py-20 md:py-28 lg:py-36">
+
         <Container size="2xl" className="mt-20 md:mt-24">
           <div className="relative text-center">
             {/* Layered blur color blobs behind hero */}
