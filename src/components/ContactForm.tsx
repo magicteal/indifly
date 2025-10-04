@@ -33,40 +33,42 @@ export const ContactForm = ({
 
   return (
     <section
-      className="relative pt-16 sm:pt-20 md:pt-24 overflow-hidden font-sans"
+      className="relative overflow-hidden pt-16 font-sans sm:pt-20 md:pt-24"
       style={{ backgroundColor: "#01295C" }}
       id="contact"
     >
       {/* Decorative Circles */}
-      <div className="absolute top-1/4 left-[-40px] w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 border-2 border-white/10 rounded-full opacity-50 z-0"></div>
-      <div className="hidden sm:block absolute top-2 right-2 w-48 h-48 md:w-64 md:h-64 border-2 border-white/10 rounded-full opacity-30 z-0"></div>
+      <div className="absolute top-1/4 left-[-40px] z-0 h-28 w-28 rounded-full border-2 border-white/10 opacity-50 sm:h-40 sm:w-40 md:h-48 md:w-48"></div>
+      <div className="absolute top-2 right-2 z-0 hidden h-48 w-48 rounded-full border-2 border-white/10 opacity-30 sm:block md:h-64 md:w-64"></div>
 
       <Container className="relative z-10">
         <div
           className={cn(
-            "relative rounded-2xl p-6 sm:p-8 md:p-12 mb-12",
-            backgroundClasses[variant]
+            "relative mb-12 rounded-2xl p-6 sm:p-8 md:p-12",
+            backgroundClasses[variant],
           )}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-x-24 lg:gap-y-12">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-x-24 lg:gap-y-12">
             {/* Left Side: Contact Info */}
             <div className="space-y-6 sm:space-y-8">
               <h2 className={cn(titleClasses[variant])}>{title}</h2>
-              <p className="text-gray-300 max-w-md text-base sm:text-lg">{description}</p>
+              <p className="max-w-md text-base text-gray-300 sm:text-lg">
+                {description}
+              </p>
               {showContactDetails && (
                 <div className="space-y-6 pt-4">
                   <div className="flex items-center gap-4">
-                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-orange-500" />
+                    <Mail className="h-5 w-5 text-orange-500 sm:h-6 sm:w-6" />
                     <span className="text-lg">example@teamindifly.com</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-orange-500" />
+                    <MapPin className="h-5 w-5 text-orange-500 sm:h-6 sm:w-6" />
                     <span className="text-lg">
                       4074 Ebert Summit Suite 375, Lake Leonardchester
                     </span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-orange-500" />
+                    <Phone className="h-5 w-5 text-orange-500 sm:h-6 sm:w-6" />
                     <span className="text-lg">+91 90769 33***</span>
                   </div>
                 </div>
@@ -102,7 +104,7 @@ export const ContactForm = ({
               ></textarea>
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold py-3.5 sm:py-4 rounded-lg text-base sm:text-lg hover:opacity-90 transition-opacity"
+                className="w-full rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 py-3.5 text-base font-bold text-white transition-opacity hover:opacity-90 sm:py-4 sm:text-lg"
               >
                 Submit
               </button>

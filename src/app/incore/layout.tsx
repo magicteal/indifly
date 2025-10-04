@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import TopBanner from "@/components/TopBanner";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { Footer } from "../(main)/(home)/Footer";
 
 export const metadata: Metadata = {
@@ -24,13 +24,13 @@ export default function IncoreLayout({
   return (
     <>
       {/* Fixed TopBanner on all viewports */}
-      <div className="fixed top-0 left-0 right-0 z-50 hidden md:block">
+      <div className="fixed top-0 right-0 left-0 z-50 hidden md:block">
         <TopBanner variant="incore" />
       </div>
-      <div className="md:hidden fixed top-16 left-0 right-0 z-50">
+      <div className="fixed top-16 right-0 left-0 z-50 md:hidden">
         <TopBanner variant="incore" />
       </div>
-      
+
       <Navbar logo={incoreLogo} />
 
       {children}

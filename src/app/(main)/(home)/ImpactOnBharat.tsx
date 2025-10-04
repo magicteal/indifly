@@ -1,5 +1,4 @@
 import { Section } from "@/components/ui/section";
-import React from "react";
 // SVGs as React components via SVGR
 import Circle from "@public/home/circle.svg";
 import Hexagon from "@public/home/hexagon.svg";

@@ -1,30 +1,29 @@
+import TopBanner from "@/components/TopBanner";
 import { Container } from "@/components/ui/container";
 import SectionHeader from "@/components/ui/section-header";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { ContactForm } from "../(main)/(home)/ContactForm";
-import CaseStudiesSection from "./component/CaseStudiesSection";
-import ClientsMarqueeSection from "./component/ClientsMarqueeSection";
-import DecorativeBannerSection from "./component/DecorativeBannerSection";
-import IncoreINDsightsSection from "./component/IncoreINDsightsSection";
-import ProcessJourneySection from "./component/ProcessJourneySection";
-import Testimonials from "./component/Testimonials";
-import WealthSection from "./component/WealthSection";
-import TopBanner from "@/components/TopBanner";
+import { ContactForm } from "../../components/ContactForm";
+import CaseStudiesSection from "./components/CaseStudiesSection";
+import ClientsMarqueeSection from "./components/ClientsMarqueeSection";
+import DecorativeBannerSection from "./components/DecorativeBannerSection";
+import IncoreINDsightsSection from "./components/IncoreINDsightsSection";
+import ProcessJourneySection from "./components/ProcessJourneySection";
+import Testimonials from "./components/Testimonials";
+import WealthSection from "./components/WealthSection";
 
 export default function InCorePage() {
   return (
     <>
-     {/* Fixed TopBanner on all viewports */}
-      <div className="fixed top-0 left-0 right-0 z-50 hidden md:block">
+      {/* Fixed TopBanner on all viewports */}
+      <div className="fixed top-0 right-0 left-0 z-50 hidden md:block">
         <TopBanner variant="incore" />
       </div>
-      <div className="md:hidden fixed top-16 left-0 right-0 z-50">
+      <div className="fixed top-16 right-0 left-0 z-50 md:hidden">
         <TopBanner variant="incore" />
       </div>
       <main className="min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-[#001631] py-16 sm:py-20 md:py-28 lg:py-36">
-
         <Container size="2xl" className="mt-20 md:mt-24">
           <div className="relative text-center">
             {/* Layered blur color blobs behind hero */}
@@ -223,10 +222,10 @@ export default function InCorePage() {
             <WealthSection />
             <DecorativeBannerSection />
             <ProcessJourneySection />
-<Container id="case-studies">
-            <SectionHeader title="Case Studies" />
-            <CaseStudiesSection />
-</Container>
+            <Container id="case-studies">
+              <SectionHeader title="Case Studies" />
+              <CaseStudiesSection />
+            </Container>
             <IncoreINDsightsSection />
           </div>
         </section>
