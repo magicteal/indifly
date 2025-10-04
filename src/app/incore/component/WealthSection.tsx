@@ -1,13 +1,11 @@
 "use client";
 
-
-import { useState } from "react";
-import { cn } from "@/lib/utils";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import Section from "@/components/ui/section";
 import SectionHeader from "@/components/ui/section-header";
-
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 export default function WealthSection() {
   const [active, setActive] = useState<"cxo" | "pods" | "execution">("cxo");
@@ -68,9 +66,9 @@ export default function WealthSection() {
     <Section className="py-20">
       <SectionHeader label="What Compromises" title="InCORE" />
 
-  <div className="mt-12 flex flex-col md:flex-row gap-6 md:gap-8 border border-white/10 rounded-2xl sm:rounded-3xl md:rounded-[5rem] shadow-inner p-4 sm:p-6 md:p-10 bg-white/5 backdrop-blur-xl backdrop-saturate-150 ring-1 ring-white/10 relative overflow-hidden">
+      <div className="relative mt-12 flex flex-col gap-6 overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 shadow-inner ring-1 ring-white/10 backdrop-blur-xl backdrop-saturate-150 sm:rounded-3xl sm:p-6 md:flex-row md:gap-8 md:rounded-[5rem] md:p-10">
         {/* Left Pills */}
-        <div className="flex flex-col gap-3 sm:gap-4 w-full md:w-auto md:min-w-[200px]">
+        <div className="flex w-full flex-col gap-3 sm:gap-4 md:w-auto md:min-w-[200px]">
           {tabs.map((t) => (
             <button
               key={t.key}
@@ -78,9 +76,9 @@ export default function WealthSection() {
               onClick={() => setActive(t.key)}
               aria-pressed={active === t.key}
               className={cn(
-                "rounded-full px-4 py-2 text-white font-medium text-left cursor-pointer transition-all focus:outline-none hover:opacity-95 text-sm md:text-base",
+                "cursor-pointer rounded-full px-4 py-2 text-left text-sm font-medium text-white transition-all hover:opacity-95 focus:outline-none md:text-base",
                 active === t.key ? "ring-2 ring-white/30" : "ring-0",
-                pillGradientClass[t.key]
+                pillGradientClass[t.key],
               )}
             >
               {t.label}
@@ -89,26 +87,25 @@ export default function WealthSection() {
         </div>
 
         {/* Right Content */}
-        <Card className="relative w-full bg-[#0e1a34]/60 border border-white/10 rounded-2xl shadow-xl overflow-hidden">
-          <CardContent className="p-5 sm:p-6 md:p-8 relative z-10">
+        <Card className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0e1a34]/60 shadow-xl">
+          <CardContent className="relative z-10 p-5 sm:p-6 md:p-8">
             <h2
               className={cn(
-                "mt-1 font-bold leading-tight text-2xl md:text-3xl lg:text-4xl",
-                "text-transparent bg-clip-text",
+                "mt-1 text-2xl leading-tight font-bold md:text-3xl lg:text-4xl",
+                "bg-clip-text text-transparent",
                 "[-webkit-background-clip:text]",
                 "[-webkit-text-fill-color:transparent]",
                 active === "cxo"
                   ? "bg-[linear-gradient(90deg,#E04A00_30%,#FF915C_100%)]"
                   : active === "pods"
-                  ? "bg-[linear-gradient(90deg,#006FFF_0%,#0B44FF_100%)]"
-                  : "bg-[linear-gradient(90deg,#04E762_0%,#00B59A_100%)]"
+                    ? "bg-[linear-gradient(90deg,#006FFF_0%,#0B44FF_100%)]"
+                    : "bg-[linear-gradient(90deg,#04E762_0%,#00B59A_100%)]",
               )}
             >
               {content.title}
             </h2>
 
-
-            <ul className="mt-6 space-y-2 text-gray-300 text-sm md:text-base">
+            <ul className="mt-6 space-y-2 text-sm text-gray-300 md:text-base">
               {content.bullets.map((b) => (
                 <li key={b}>• {b}</li>
               ))}
@@ -116,38 +113,38 @@ export default function WealthSection() {
 
             <Button
               variant="outline"
-              className="mt-6 rounded-full border-2 border-white text-white hover:bg-white/10 shadow-[0_0_16px_rgba(255,255,255,0.2)] hover:shadow-[0_0_24px_rgba(255,255,255,0.35)] transition-shadow px-6 py-3 md:px-7 md:py-5 text-base md:text-lg"
+              className="mt-6 rounded-full border-2 border-white px-6 py-3 text-base text-white shadow-[0_0_16px_rgba(255,255,255,0.2)] transition-shadow hover:bg-white/10 hover:shadow-[0_0_24px_rgba(255,255,255,0.35)] md:px-7 md:py-5 md:text-lg"
             >
               Explore More →
             </Button>
           </CardContent>
-          <div className="pointer-events-none select-none hidden md:block">
+          <div className="pointer-events-none hidden select-none md:block">
             {/* Big bottom-right circle */}
             <div
               className={cn(
-                "absolute -bottom-4 -right-1 w-24 h-24 rounded-full opacity-100",
-                bubbleGradientClass[active]
+                "absolute -right-1 -bottom-4 h-24 w-24 rounded-full opacity-100",
+                bubbleGradientClass[active],
               )}
             />
             {/* Second smaller above-left of big */}
             <div
               className={cn(
-                "absolute bottom-[4rem] right-16 w-14 h-14 rounded-full opacity-90",
-                bubbleGradientClass[active]
+                "absolute right-16 bottom-[4rem] h-14 w-14 rounded-full opacity-90",
+                bubbleGradientClass[active],
               )}
             />
             {/* Third smaller just above first */}
             <div
               className={cn(
-                "absolute bottom-[7rem] right-6 w-10 h-10 rounded-full opacity-90",
-                bubbleGradientClass[active]
+                "absolute right-6 bottom-[7rem] h-10 w-10 rounded-full opacity-90",
+                bubbleGradientClass[active],
               )}
             />
             {/* Fourth smallest just above third */}
             <div
               className={cn(
-                "absolute bottom-[11rem] right-14 w-6 h-6 rounded-full opacity-90",
-                bubbleGradientClass[active]
+                "absolute right-14 bottom-[11rem] h-6 w-6 rounded-full opacity-90",
+                bubbleGradientClass[active],
               )}
             />
           </div>

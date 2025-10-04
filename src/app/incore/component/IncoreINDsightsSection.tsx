@@ -1,11 +1,11 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import Section from "@/components/ui/section";
 import SectionHeader from "@/components/ui/section-header";
-import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 type Blog = {
   id: number;
@@ -40,10 +40,13 @@ const posts: Blog[] = [
 
 export default function IncoreINDsightsSection() {
   return (
-    <Section className="py-16 md:py-24 relative overflow-hidden" id="about-indifly-ventures">
+    <Section
+      className="relative overflow-hidden py-16 md:py-24"
+      id="about-indifly-ventures"
+    >
       {/* Decorative SVGs behind header */}
       <div
-        className="pointer-events-none absolute top-6 -left-4 md:top-10 md:-left-6 z-0"
+        className="pointer-events-none absolute top-6 -left-4 z-0 md:top-10 md:-left-6"
         aria-hidden="true"
       >
         <svg
@@ -93,7 +96,7 @@ export default function IncoreINDsightsSection() {
         </svg>
       </div>
       <div
-        className="pointer-events-none absolute right-[-10px] top-16 z-0"
+        className="pointer-events-none absolute top-16 right-[-10px] z-0"
         aria-hidden="true"
       >
         <svg
@@ -114,7 +117,7 @@ export default function IncoreINDsightsSection() {
         </svg>
       </div>
       <div
-        className="pointer-events-none absolute bottom-0 right-[-10px] z-0"
+        className="pointer-events-none absolute right-[-10px] bottom-0 z-0"
         aria-hidden="true"
       >
         <svg
@@ -170,30 +173,84 @@ export default function IncoreINDsightsSection() {
         {posts.map((p) => (
           <Card
             key={p.id}
-            className="relative overflow-hidden rounded-2xl bg-[#133258] border border-white/10 shadow-[0_8px_40px_rgba(2,10,30,0.25)]"
+            className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#133258] shadow-[0_8px_40px_rgba(2,10,30,0.25)]"
           >
             {/* Decorative SVGs behind content */}
             <div className="pointer-events-none absolute inset-0 z-0 opacity-20">
               {/* top-left complex shape */}
-              <svg className="absolute -top-6 -left-8 scale-75" width="220" height="208" viewBox="0 0 431 409" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+              <svg
+                className="absolute -top-6 -left-8 scale-75"
+                width="220"
+                height="208"
+                viewBox="0 0 431 409"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden
+              >
                 <g opacity="0.25">
-                  <path d="M234.589 -88.4803L183.897 138.302L-37.8516 207.794L12.8414 -18.9909L234.589 -88.4803Z" stroke="#1E4D88" strokeMiterlimit="10" strokeLinejoin="round"/>
-                  <path d="M234.59 -88.4799L183.898 138.302L354.95 295.597L405.643 68.8116L234.59 -88.4799Z" stroke="#1E4D88" strokeMiterlimit="10" strokeLinejoin="round"/>
-                  <path d="M52.6293 179.439L82.6379 45.1892L213.905 4.05253L315.164 97.1654L285.156 231.415L153.888 272.552L52.6293 179.439Z" fill="#0B2B4A"/>
-                  <path d="M-37.8531 207.795L12.8398 -18.9907L234.588 -88.4801L405.641 68.8115L354.948 295.597L133.203 365.087L-37.8531 207.795Z" stroke="#1E4D88" strokeMiterlimit="10" strokeLinejoin="round"/>
-                  <path d="M12.8422 -18.9906L183.898 138.302L405.643 68.8115L234.59 -88.48L12.8422 -18.9906Z" stroke="#1E4D88" strokeMiterlimit="10" strokeLinejoin="round"/>
-                  <path d="M183.896 138.302L133.203 365.087L354.948 295.597L405.641 68.8115L183.896 138.302Z" stroke="#1E4D88" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path
+                    d="M234.589 -88.4803L183.897 138.302L-37.8516 207.794L12.8414 -18.9909L234.589 -88.4803Z"
+                    stroke="#1E4D88"
+                    strokeMiterlimit="10"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M234.59 -88.4799L183.898 138.302L354.95 295.597L405.643 68.8116L234.59 -88.4799Z"
+                    stroke="#1E4D88"
+                    strokeMiterlimit="10"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M52.6293 179.439L82.6379 45.1892L213.905 4.05253L315.164 97.1654L285.156 231.415L153.888 272.552L52.6293 179.439Z"
+                    fill="#0B2B4A"
+                  />
+                  <path
+                    d="M-37.8531 207.795L12.8398 -18.9907L234.588 -88.4801L405.641 68.8115L354.948 295.597L133.203 365.087L-37.8531 207.795Z"
+                    stroke="#1E4D88"
+                    strokeMiterlimit="10"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M12.8422 -18.9906L183.898 138.302L405.643 68.8115L234.59 -88.48L12.8422 -18.9906Z"
+                    stroke="#1E4D88"
+                    strokeMiterlimit="10"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M183.896 138.302L133.203 365.087L354.948 295.597L405.641 68.8115L183.896 138.302Z"
+                    stroke="#1E4D88"
+                    strokeMiterlimit="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </g>
               </svg>
               {/* right ring */}
-              <svg className="absolute bottom-2 -right-3" width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                <circle cx="60" cy="60" r="58" stroke="#1E4D88" strokeOpacity="0.35" strokeWidth="2" />
+              <svg
+                className="absolute -right-3 bottom-2"
+                width="120"
+                height="120"
+                viewBox="0 0 120 120"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden
+              >
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="58"
+                  stroke="#1E4D88"
+                  strokeOpacity="0.35"
+                  strokeWidth="2"
+                />
               </svg>
             </div>
 
-            <CardContent className="relative z-10 p-6 flex flex-col h-full">
+            <CardContent className="relative z-10 flex h-full flex-col p-6">
               <h3 className="text-2xl font-extrabold text-white">{p.title}</h3>
-              <p className="mt-3 text-white/80 text-base leading-relaxed">{p.excerpt}</p>
+              <p className="mt-3 text-base leading-relaxed text-white/80">
+                {p.excerpt}
+              </p>
               <div className="mt-4 overflow-hidden rounded-xl">
                 <Image
                   src={p.image}
@@ -207,13 +264,16 @@ export default function IncoreINDsightsSection() {
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-full md:w-auto rounded-full border px-6 py-3 bg-transparent",
-                    "border-[#006FFF] text-transparent bg-clip-text",
+                    "w-full rounded-full border bg-transparent px-6 py-3 md:w-auto",
+                    "border-[#006FFF] bg-clip-text text-transparent",
                     "[-webkit-background-clip:text] [-webkit-text-fill-color:transparent]",
-                    "bg-[linear-gradient(90deg,#006FFF_0%,#8EC0FF_100%)] hover:bg-white/5"
+                    "bg-[linear-gradient(90deg,#006FFF_0%,#8EC0FF_100%)] hover:bg-white/5",
                   )}
                 >
-                  Read more <span aria-hidden className="ml-2">→</span>
+                  Read more{" "}
+                  <span aria-hidden className="ml-2">
+                    →
+                  </span>
                 </Button>
               </div>
             </CardContent>
