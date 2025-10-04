@@ -26,9 +26,10 @@ export function Container({
   className,
   size = "7xl",
   px = "px-4 md:px-6 lg:px-8",
-}: ContainerProps) {
+  ...props
+}: ContainerProps & React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn("mx-auto", sizeMap[size], px, className)}>
+    <div className={cn("mx-auto", sizeMap[size], px, className)} {...props}>
       {children}
     </div>
   );
