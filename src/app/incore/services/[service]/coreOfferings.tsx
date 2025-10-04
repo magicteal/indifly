@@ -12,31 +12,31 @@ import React from "react";
 const offerings = [
   {
     label: "Brand Strategy & Toolkit",
-    lines: ["Logos,", "design systems,", "messaging", "frameworks"],
+    lines: "Logos, design systems, messaging frameworks",
   },
   {
     label: "Performance Marketing",
-    lines: ["Funnels,", "ad creatives,", "CRO & A/B", "experiments"],
+    lines: "Funnels, ad creatives, CRO & A/B experiments",
   },
   {
     label: "Social Media Management",
-    lines: ["Content,", "publishing,", "community", "growth"],
+    lines: "Content, publishing, community growth",
   },
   {
     label: "Email, WhatsApp, & SMS Marketing",
-    lines: ["Flows,", "drip journeys,", "broadcasts", "automation"],
+    lines: "Flows, drip journeys, broadcasts, automation",
   },
   {
     label: "SEO & Website Development",
-    lines: ["Tech SEO,", "content hubs,", "fast", "websites"],
+    lines: "Tech SEO, content hubs, fast websites",
   },
   {
     label: "Event Marketing",
-    lines: ["Booths,", "collateral,", "lead gen", "ops"],
+    lines: "Booths, collateral, lead gen, ops",
   },
   {
     label: "Pitch & Product Decks",
-    lines: ["Narratives,", "visual systems,", "investor", "readiness"],
+    lines: "Narratives, visual systems, investor readiness",
   },
 ] as const;
 
@@ -46,7 +46,7 @@ export default function CoreOfferings() {
   const [active, setActive] = React.useState(0);
 
   return (
-    <Container>
+    <Container className="mt-36">
       <div
         className="relative rounded-4xl"
         style={{
@@ -91,7 +91,9 @@ export default function CoreOfferings() {
               <div
                 className={`pointer-events-none absolute -top-15 -right-10 size-56 rounded-full border ${theme.border}`}
               />
-              <div className="pointer-events-none absolute top-39 right-15 size-4 rounded-full bg-gradient-to-r from-[rgba(255,153,11,0.3)] to-[rgba(175,108,76,0.3)]" />
+              <div
+                className={`pointer-events-none absolute top-39 right-15 size-4 rounded-full ${theme.bg}`}
+              />
               <div
                 className={`pointer-events-none absolute top-45 right-2 size-6 rounded-full ${theme.bg}`}
               />
@@ -103,6 +105,13 @@ export default function CoreOfferings() {
           </div>
         </ActiveContext.Provider>
       </div>
+
+      {/* Tagline */}
+      <p
+        className={`mt-10 text-center text-2xl font-semibold italic md:mt-16 md:text-3xl ${theme.text}`}
+      >
+        A brilliant product still needs SURGE to be seen
+      </p>
     </Container>
   );
 }
@@ -159,12 +168,9 @@ function RightCopy() {
 
   return (
     <h3 className="text-3xl leading-tight font-semibold md:text-5xl">
-      {lines.map((l, i) => (
-        <React.Fragment key={i}>
-          <span>{l}</span>
-          <br />
-        </React.Fragment>
-      ))}
+      <React.Fragment>
+        <span>{lines}</span>
+      </React.Fragment>
     </h3>
   );
 }
