@@ -1,11 +1,13 @@
 import Section from "@/components/ui/section";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
 
 type BannerSvgProps = {
 	className?: string;
 };
 
-function PurpleBannerSvg({ className }: BannerSvgProps) {
+export function PurpleBannerSvg({ className }: BannerSvgProps) {
 	return (
 		<svg
 			className={cn("h-auto w-full", className)}
@@ -72,7 +74,7 @@ function PurpleBannerSvg({ className }: BannerSvgProps) {
 	);
 }
 
-function OrangeBannerSvg({ className }: BannerSvgProps) {
+export function OrangeBannerSvg({ className }: BannerSvgProps) {
 	return (
 		<svg
 			className={cn("h-auto w-full", className)}
@@ -103,7 +105,7 @@ function OrangeBannerSvg({ className }: BannerSvgProps) {
 	);
 }
 
-function GreenBannerSvg({ className }: BannerSvgProps) {
+export function GreenBannerSvg({ className }: BannerSvgProps) {
 	return (
 		<svg
 			className={cn("h-auto w-full", className)}
@@ -137,7 +139,7 @@ function GreenBannerSvg({ className }: BannerSvgProps) {
 	);
 }
 
-function BlueBannerSvg({ className }: BannerSvgProps) {
+export function BlueBannerSvg({ className }: BannerSvgProps) {
 	return (
 		<svg
 			className={cn("h-auto w-full", className)}
@@ -175,42 +177,57 @@ export default function DecorativeBannerSection() {
 	return (
 		<Section
 			py="py-16"
-			className="relative bg-gradient-to-b from-[#001225] via-[#001631] to-[#001225]"
+			className="relative"
 			containerProps={{ className: "max-w-6xl" }}
 		>
-			<div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/10 p-4 sm:p-6 md:p-8 lg:p-10 shadow-[0_0_45px_rgba(14,29,58,0.45)]">
-				<div className="pointer-events-none absolute inset-0">
-					<div className="absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-[#5C9EFF]/30 blur-3xl" />
-					<div className="absolute bottom-0 left-0 h-56 w-56 rounded-full bg-[#FF7E4D]/10 blur-3xl" />
-					<div className="absolute -bottom-16 right-0 h-60 w-60 rounded-full bg-[#47E6B1]/15 blur-3xl" />
-				</div>
+				<div className="relative w-full">
+					{/* Maintain aspect ratio matching the source (1251x831 ~ 1.505) to reduce CLS */}
+					<div className="relative w-full overflow-hidden rounded-[5.5rem]" style={{ aspectRatio: "1251/831" }}>
+						<Image
+							src="/puzzel.svg"
+							alt="Puzzle graphic"
+							fill
+							sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
+							className="object-contain"
+							priority={false}
+						/>
 
-				<div className="relative z-10 grid grid-cols-2 gap-3 sm:gap-4 md:gap-5">
-					<div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/10 shadow-inner">
-						<PurpleBannerSvg className="h-[135%] w-[135%]" />
-					</div>
-					<div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/10 shadow-inner">
-						<OrangeBannerSvg className="h-[135%] w-[135%]" />
-					</div>
-					<div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/10 shadow-inner">
-						<GreenBannerSvg className="h-[135%] w-[135%]" />
-					</div>
-					<div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/10 shadow-inner">
-						<BlueBannerSvg className="h-[135%] w-[135%]" />
+						{/* Clickable quadrants overlay */}
+						<Link
+							href="/incore/inSurge"
+							aria-label="Open inSurge"
+							className="group absolute left-1/2 top-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
+						>
+							<span aria-hidden className="pointer-events-none absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-active:opacity-100 group-focus-visible:opacity-100" />
+							<span className="sr-only">Top right – inSurge</span>
+						</Link>
+						<Link
+							href="/incore/instack"
+							aria-label="Open inStack"
+							className="group absolute left-0 top-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
+						>
+							<span aria-hidden className="pointer-events-none absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-active:opacity-100 group-focus-visible:opacity-100" />
+							<span className="sr-only">Top left – inStack</span>
+						</Link>
+						<Link
+							
+							href="/incore/involve"
+							aria-label="Open inVolve"
+							className="group absolute bottom-0 left-1/2 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
+						>
+							<span aria-hidden className="pointer-events-none absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-active:opacity-100 group-focus-visible:opacity-100" />
+							<span className="sr-only">Bottom right – inSure</span>
+						</Link>
+						<Link
+							href="/incore/insure"
+							aria-label="Open inSure"
+							className="group absolute bottom-0 left-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
+						>
+							<span aria-hidden className="pointer-events-none absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-active:opacity-100 group-focus-visible:opacity-100" />
+							<span className="sr-only">Bottom left – inVolve</span>
+						</Link>
 					</div>
 				</div>
-
-				<div className="pointer-events-none absolute left-1/2 top-1/2 z-20 flex h-28 w-28 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 backdrop-blur-md sm:h-32 sm:w-32 md:h-36 md:w-36">
-					<svg
-						className="h-full w-full"
-						viewBox="0 0 332 332"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<circle cx="166" cy="166" r="166" fill="#001C37" />
-					</svg>
-				</div>
-			</div>
 		</Section>
 	);
 }

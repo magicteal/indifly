@@ -19,7 +19,7 @@ export const Footer = () => {
               {/* Decorative circle to the left of Home */}
               <div className="pointer-events-none absolute left-0 top-1" aria-hidden="true">
                 <svg width="195" height="192" viewBox="0 0 195 192" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M194 96.0077C194 43.5431 150.805 1 97.5005 1C44.1962 1 1 43.5277 1 96.0077C1 148.472 44.1962 191 97.5005 191C150.805 191 194 148.472 194 96.0077Z" stroke="#153660" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M194 96.0077C194 43.5431 150.805 1 97.5005 1C44.1962 1 1 43.5277 1 96.0077C1 148.472 44.1962 191 97.5005 191C150.805 191 194 148.472 194 96.0077Z" stroke="#153660" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
 
               </div>
