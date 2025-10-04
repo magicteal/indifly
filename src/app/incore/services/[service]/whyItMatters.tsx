@@ -2,24 +2,32 @@
 
 import { useServiceTheme } from "@/app/incore/services/[service]/hooks/useServiceTheme";
 import Container from "@/components/ui/container";
-import MobileChat from "@public/inCore/mobile-chat.svg";
 import TextCircledLine from "@public/inCore/text-circled-line.svg";
+import { MoveRight } from "lucide-react";
 import type React from "react";
 
-const ITEMS: string[] = [
-  "Limited capital to sustain operations, hire talent, or scale.",
-  "Difficulty attracting investors due to unproven business models.",
-  "Limited capital to sustain operations, hire talent, or scale.",
-  "Difficulty attracting investors due to unproven business models.",
-  "Limited capital to sustain operations, hire talent, or scale.",
+const challanges = [
+  {
+    title: "Limited Resources",
+    description:
+      "Limited capital to sustain operations, hire talent, or scale.",
+  },
+  {
+    title: "High Competition",
+    description:
+      "Intense competition from other startups and established players.",
+  },
+  {
+    title: "Market Fit",
+    description: "Difficulty in finding and validating product-market fit.",
+  },
 ];
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative rounded-2xl bg-[#ac6a2d]/20 px-6 py-5">
       <div className="flex items-start gap-4">
-        <MobileChat className="shrink-0" />
-        <p className="text-lg leading-6 text-[#f3f3f3]">{children}</p>
+        <p className="text-lg">{children}</p>
       </div>
     </div>
   );
@@ -57,8 +65,11 @@ export default function WhyItMatters() {
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
         {/* Left: stacked list */}
         <div className="flex flex-col gap-4">
-          {ITEMS.map((text, i) => (
-            <Pill key={i}>{text}</Pill>
+          {challanges.map((ch, i) => (
+            <Pill key={i}>
+              <span className="font-bold">{ch.title} </span>
+              <MoveRight className="inline -translate-y-0.5" /> {ch.description}
+            </Pill>
           ))}
         </div>
       </div>
