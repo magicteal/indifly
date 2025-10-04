@@ -11,8 +11,7 @@ export default function Page() {
       <ApproachSection />
       <WhyItMatters />
       <CoreOfferings />
-      <div className="mt-36"></div>
-
+      <div className="mt-36" />
       <ContactForm />
     </main>
   );

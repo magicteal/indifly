@@ -1,4 +1,6 @@
+"use client";
 // src/components/ContactForm.tsx
+import { useServiceTheme } from "@/app/incore/services/[service]/hooks/useServiceTheme"; // added
 import { Container } from "@/components/ui/container";
 import { MapPin } from "lucide-react";
 import { Button } from "./ui/button";
@@ -6,6 +8,8 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 
 export const ContactForm = () => {
+  const theme = useServiceTheme();
+
   return (
     <section className="relative" id="contact">
       <Container className="relative z-10">
@@ -13,7 +17,9 @@ export const ContactForm = () => {
           <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-x-24 lg:gap-y-12">
             {/* Left Side: Contact Info */}
             <div className="space-y-6 sm:space-y-8">
-              <h2 className="text-3xl font-bold text-orange-500 sm:text-4xl md:text-5xl lg:text-6xl">
+              <h2
+                className={`text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl ${theme.text}`}
+              >
                 Let&apos;s Talk
               </h2>
               <p className="max-w-md text-base text-gray-300 sm:text-lg">
@@ -22,7 +28,7 @@ export const ContactForm = () => {
               </p>
               <div className="space-y-6 pt-4">
                 <div className="flex items-center gap-4">
-                  <MapPin className="h-5 w-5 text-orange-500 sm:h-6 sm:w-6" />
+                  <MapPin className={`h-5 w-5 sm:h-6 sm:w-6 ${theme.text}`} />
                   <span className="text-lg">
                     4074 Ebert Summit Suite 375
                     <br />
@@ -41,7 +47,7 @@ export const ContactForm = () => {
               <Textarea placeholder="Message" rows={3}></Textarea>
               <Button
                 type="submit"
-                variant="default"
+                variant={theme.buttonVariant}
                 size={"lg"}
                 className="w-full"
               >

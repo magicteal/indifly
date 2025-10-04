@@ -11,7 +11,7 @@ export type ServiceType = "insurge" | "instack" | "involve" | "insure";
 
 export interface ServiceTheme {
   // Service name
-  service: ServiceType;
+  service: ServiceType | "default"; // allow default
 
   // Text color classes
   text: string;
@@ -32,7 +32,7 @@ export interface ServiceTheme {
   gradientFromAccent: string;
 
   // Button variant name
-  buttonVariant: "insurge" | "instack" | "involve" | "insure";
+  buttonVariant: "insurge" | "instack" | "involve" | "insure" | "default";
   buttonSecondaryVariant: string;
 
   // Raw CSS variable names (for inline styles)
@@ -40,6 +40,25 @@ export interface ServiceTheme {
   cssVarForeground: string;
   cssVarAccent: string;
 }
+
+const defaultTheme: ServiceTheme = {
+  service: "default",
+  text: "text-primary",
+  textForeground: "text-primary-foreground",
+  bg: "bg-primary",
+  bgAccent: "bg-accent",
+  bgForeground: "bg-primary-foreground",
+  border: "border-primary",
+  borderAccent: "border-accent",
+  gradientFrom: "from-primary",
+  gradientTo: "to-primary",
+  gradientFromAccent: "from-accent",
+  buttonVariant: "default",
+  buttonSecondaryVariant: "secondary",
+  cssVar: "var(--color-primary)",
+  cssVarForeground: "var(--color-primary-foreground)",
+  cssVarAccent: "var(--color-accent)",
+};
 
 const serviceThemes: Record<ServiceType, ServiceTheme> = {
   insurge: {
@@ -124,9 +143,16 @@ const serviceThemes: Record<ServiceType, ServiceTheme> = {
 export function useServiceTheme(): ServiceTheme {
   const params = useParams<{ service?: string }>();
   const service = params?.service;
+  const normalized = Array.isArray(service) ? service[0] : service;
 
-  const normalizedService = Array.isArray(service) ? service[0] : service;
-  const serviceKey = (normalizedService as ServiceType) || "insurge";
+  if (!normalized) return defaultTheme; // no param => default
 
-  return serviceThemes[serviceKey] || serviceThemes.insurge;
+  if (
+    normalized &&
+    Object.prototype.hasOwnProperty.call(serviceThemes, normalized)
+  ) {
+    return serviceThemes[normalized as ServiceType];
+  }
+
+  return defaultTheme; // fallback for unknown
 }
