@@ -11,7 +11,7 @@ export const ContactForm = () => {
   const theme = useServiceTheme();
 
   return (
-    <section className="relative overflow-hidden pt-16 font-sans sm:pt-20 md:pt-24 mb-5" id="contact">
+    <section className="relative" id="contact">
       <Container className="relative z-10">
         <div className="relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-lg sm:p-8 md:p-12">
           <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-x-24 lg:gap-y-12">
