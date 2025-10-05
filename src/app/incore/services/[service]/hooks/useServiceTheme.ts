@@ -9,33 +9,66 @@ import { useParams } from "next/navigation";
 
 export type ServiceType = "insurge" | "instack" | "involve" | "insure";
 
+// New: function-like accessor that returns base class or an opacity variant (e.g. text-insurge/10)
+export type ColorAccessor = {
+  /** When called with no arg returns the base class (e.g. text-insurge) */
+  (opacity?: number | string): string;
+  /** Underlying base class name */
+  base: string;
+  /** Allowed opacities we safelist */
+  allowed: number[];
+  /** Explicit helper identical to direct call */
+  with: (opacity?: number | string) => string;
+  /** Ensures string interpolation `${theme.text}` works like before */
+  toString: () => string;
+};
+
+function makeColorAccessor(base: string, allowed: number[]): ColorAccessor {
+  // Build a map of allowed variants so Tailwind sees them as literal strings (safelist)
+  // NOTE: These arrays of literal class strings intentionally exist so Tailwind's scanner includes them.
+  const literalVariants = allowed.map((o) => `${base}/${o}`);
+  // Small trick to avoid tree-shaking in some bundlers
+  if (process.env.NODE_ENV === "test") console.debug(literalVariants.length);
+
+  const fn = ((opacity?: number | string) => {
+    if (opacity === undefined || opacity === null || opacity === "")
+      return base;
+    const num = typeof opacity === "string" ? parseInt(opacity, 10) : opacity;
+    if (!allowed.includes(num)) {
+      if (process.env.NODE_ENV !== "production") {
+        console.warn(
+          `Unsupported opacity ${opacity} for ${base}. Allowed: ${allowed.join(",")}`,
+        );
+      }
+      return base; // fallback silently
+    }
+    return `${base}/${num}`;
+  }) as ColorAccessor;
+
+  fn.base = base;
+  fn.allowed = allowed;
+  fn.with = (o?: number | string) => fn(o);
+  fn.toString = () => base;
+  return fn;
+}
+
+// Consolidated allowed opacities (expand if needed)
+const ALLOWED_OPACITIES = [10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90];
+
 export interface ServiceTheme {
-  // Service name
   service: ServiceType | "default"; // allow default
-
-  // Text color classes
-  text: string;
-  textForeground: string;
-
-  // Background color classes
+  text: ColorAccessor; // now function-like
+  textForeground: ColorAccessor;
   bg: string;
   bgAccent: string;
   bgForeground: string;
-
-  // Border color classes
   border: string;
   borderAccent: string;
-
-  // Gradient utilities (for from-/to- classes)
   gradientFrom: string;
   gradientTo: string;
   gradientFromAccent: string;
-
-  // Button variant name
   buttonVariant: "insurge" | "instack" | "involve" | "insure" | "default";
   buttonSecondaryVariant: string;
-
-  // Raw CSS variable names (for inline styles)
   cssVar: string;
   cssVarForeground: string;
   cssVarAccent: string;
@@ -43,8 +76,11 @@ export interface ServiceTheme {
 
 const defaultTheme: ServiceTheme = {
   service: "default",
-  text: "text-primary",
-  textForeground: "text-primary-foreground",
+  text: makeColorAccessor("text-primary", ALLOWED_OPACITIES),
+  textForeground: makeColorAccessor(
+    "text-primary-foreground",
+    ALLOWED_OPACITIES,
+  ),
   bg: "bg-primary",
   bgAccent: "bg-accent",
   bgForeground: "bg-primary-foreground",
@@ -63,8 +99,11 @@ const defaultTheme: ServiceTheme = {
 const serviceThemes: Record<ServiceType, ServiceTheme> = {
   insurge: {
     service: "insurge",
-    text: "text-insurge",
-    textForeground: "text-insurge-foreground",
+    text: makeColorAccessor("text-insurge", ALLOWED_OPACITIES),
+    textForeground: makeColorAccessor(
+      "text-insurge-foreground",
+      ALLOWED_OPACITIES,
+    ),
     bg: "bg-insurge",
     bgAccent: "bg-insurge-accent",
     bgForeground: "bg-insurge-foreground",
@@ -81,8 +120,11 @@ const serviceThemes: Record<ServiceType, ServiceTheme> = {
   },
   instack: {
     service: "instack",
-    text: "text-instack",
-    textForeground: "text-instack-foreground",
+    text: makeColorAccessor("text-instack", ALLOWED_OPACITIES),
+    textForeground: makeColorAccessor(
+      "text-instack-foreground",
+      ALLOWED_OPACITIES,
+    ),
     bg: "bg-instack",
     bgAccent: "bg-instack-accent",
     bgForeground: "bg-instack-foreground",
@@ -99,8 +141,11 @@ const serviceThemes: Record<ServiceType, ServiceTheme> = {
   },
   involve: {
     service: "involve",
-    text: "text-involve",
-    textForeground: "text-involve-foreground",
+    text: makeColorAccessor("text-involve", ALLOWED_OPACITIES),
+    textForeground: makeColorAccessor(
+      "text-involve-foreground",
+      ALLOWED_OPACITIES,
+    ),
     bg: "bg-involve",
     bgAccent: "bg-involve-accent",
     bgForeground: "bg-involve-foreground",
@@ -117,8 +162,11 @@ const serviceThemes: Record<ServiceType, ServiceTheme> = {
   },
   insure: {
     service: "insure",
-    text: "text-insure",
-    textForeground: "text-insure-foreground",
+    text: makeColorAccessor("text-insure", ALLOWED_OPACITIES),
+    textForeground: makeColorAccessor(
+      "text-insure-foreground",
+      ALLOWED_OPACITIES,
+    ),
     bg: "bg-insure",
     bgAccent: "bg-insure-accent",
     bgForeground: "bg-insure-foreground",
@@ -137,8 +185,11 @@ const serviceThemes: Record<ServiceType, ServiceTheme> = {
 
 /**
  * Hook to get theme configuration based on the current service route
- * Automatically reads the service param from Next.js useParams()
- * @returns ServiceTheme object with all class mappings
+ * Usage examples:
+ *  const theme = useServiceTheme();
+ *  <div className={theme.text}> // base color
+ *  <div className={theme.text(10)}> // 10% opacity variant
+ *  <div className={theme.text(60)}> // 60% variant (if allowed)
  */
 export function useServiceTheme(): ServiceTheme {
   const params = useParams<{ service?: string }>();
