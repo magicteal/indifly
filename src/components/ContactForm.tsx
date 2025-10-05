@@ -12,7 +12,7 @@ export const ContactForm = () => {
 
   return (
     <section
-      className={`relative ${theme.service === "default" ? "bg-secondary" : theme.service === "incore" ? "bg-[#001631]" : "bg-[#171717]"}`}
+      className={`relative overflow-clip ${theme.service === "default" ? "bg-secondary" : theme.service === "incore" ? "bg-[#001631]" : "bg-[#171717]"}`}
       id="contact"
     >
       <Container className="relative z-10 pt-24">
