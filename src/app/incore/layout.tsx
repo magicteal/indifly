@@ -32,7 +32,6 @@ export default function IncoreLayout({
       </div>
 
       <Navbar logo={incoreLogo} />
-
       {children}
       <Footer />
     </>

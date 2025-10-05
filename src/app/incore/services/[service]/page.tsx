@@ -6,12 +6,12 @@ import WhyItMatters from "./whyItMatters";
 
 export default function Page() {
   return (
-    <main className="min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-[#171717] pt-12">
+    <div className="bg-[#171717]">
       <HeroSection />
       <ApproachSection />
       <WhyItMatters />
       <CoreOfferings />
       <ContactForm />
-    </main>
+    </div>
   );
 }
