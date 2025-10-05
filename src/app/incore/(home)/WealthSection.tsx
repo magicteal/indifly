@@ -1,9 +1,9 @@
 "use client";
 
+import Section from "@/components/section";
+import SectionHeader from "@/components/section-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import Section from "@/components/ui/section";
-import SectionHeader from "@/components/ui/section-header";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 

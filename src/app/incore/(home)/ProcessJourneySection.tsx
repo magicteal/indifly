@@ -1,8 +1,8 @@
 // components/ProcessJourney.tsx
 "use client";
 
-import Section from "@/components/ui/section";
-import SectionHeader from "@/components/ui/section-header";
+import Section from "@/components/section";
+import SectionHeader from "@/components/section-header";
 import Image from "next/image";
 
 export default function ProcessJourney() {

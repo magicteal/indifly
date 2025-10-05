@@ -1,7 +1,7 @@
 "use client";
 
-import { Container } from "@/components/ui/container";
-import Section from "@/components/ui/section";
+import { Container } from "@/components/container";
+import Section from "@/components/section";
 import Image from "next/image";
 
 const logos: { src: string; alt: string }[] = [

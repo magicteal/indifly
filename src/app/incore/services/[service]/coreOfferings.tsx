@@ -1,20 +1,41 @@
 "use client";
 
-import { useServiceContent } from "@/app/incore/services/[service]/hooks/useServiceContent";
-import { useServiceTheme } from "@/app/incore/services/[service]/hooks/useServiceTheme";
+import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
-import Container from "@/components/ui/container";
+import type { ServiceTheme } from "@/lib/serviceContext";
+import { cn } from "@/lib/utils";
 import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
 import { ArrowRight } from "lucide-react";
-import { useParams } from "next/navigation";
 import React from "react";
 
-export default function CoreOfferings() {
-  const { service } = useParams<{ service: string }>();
-  const theme = useServiceTheme();
-  const content = useServiceContent();
+interface CoreOfferingsProps {
+  theme: ServiceTheme;
+  offerings: {
+    offerings: { name: string; description?: string }[];
+    tagline: string;
+  };
+  service: string;
+}
+
+export default function CoreOfferings({
+  theme,
+  offerings,
+  service,
+}: CoreOfferingsProps) {
   const [active, setActive] = React.useState(0);
+
+  const gradientBgMap: Record<string, string> = {
+    insurge:
+      "bg-[linear-gradient(65.77deg,_#2D231D_1.29%,_rgba(21,13,9,0)_98.98%)]",
+    instack:
+      "bg-[linear-gradient(65.77deg,_#1A171D_1.29%,_rgba(21,13,9,0)_98.98%)]",
+    involve:
+      "bg-[linear-gradient(65.77deg,_#0A1C32_1.29%,_rgba(21,13,9,0)_98.98%)]",
+    insure:
+      "bg-[linear-gradient(67.08deg,_#22362B_1.32%,_rgba(21,13,9,0)_115.47%)]",
+  };
+  const gradientClass = gradientBgMap[service] || gradientBgMap.insurge;
 
   return (
     <Container className="mt-36">
@@ -39,49 +60,56 @@ export default function CoreOfferings() {
         </div>
 
         {/* content grid */}
-        <ActiveContext.Provider value={{ active, setActive }}>
-          <div className="relative flex flex-col justify-center gap-6 pb-24 md:flex-row">
-            {/* left rail: offerings list */}
-            <OfferingsList />
+        <ThemeContext.Provider value={theme}>
+          <ActiveContext.Provider
+            value={{ active, setActive, items: offerings.offerings }}
+          >
+            <div className="relative flex flex-col justify-center gap-6 pb-24 md:flex-row">
+              {/* left rail: offerings list */}
+              <OfferingsList />
 
-            {/* right card */}
-            <div
-              className="relative w-[60%] overflow-hidden rounded-[28px] p-8 sm:p-10 md:p-12"
-              style={{
-                background:
-                  "linear-gradient(65.77deg, #2D231D 1.29%, rgba(21, 13, 9, 0) 98.98%)",
-              }}
-            >
-              <RightCopy />
+              {/* right card */}
+              <div
+                className={cn(
+                  "relative w-[60%] overflow-hidden rounded-[28px] p-8 sm:p-10 md:p-12",
+                  gradientClass,
+                )}
+              >
+                <RightCopy offerings={offerings.offerings} active={active} />
 
-              <Button className="mt-10" variant={theme.buttonVariant} size="lg">
-                Book a Consultation Call
-                <ArrowRight />
-              </Button>
+                <Button
+                  className="mt-10"
+                  variant={theme.buttonVariant}
+                  size="lg"
+                >
+                  Book a Consultation Call
+                  <ArrowRight />
+                </Button>
 
-              <div
-                className={`pointer-events-none absolute -top-15 -right-10 size-56 rounded-full border ${theme.border}`}
-              />
-              <div
-                className={`pointer-events-none absolute top-39 right-15 size-4 rounded-full ${theme.bg}`}
-              />
-              <div
-                className={`pointer-events-none absolute top-45 right-2 size-6 rounded-full ${theme.bg}`}
-              />
-              <div
-                className={`pointer-events-none absolute right-10 -bottom-10 size-36 rounded-full bg-gradient-to-b ${theme.gradientFrom}/40 to-black/0`}
-              />
-              <div className="pointer-events-none absolute -right-8 -bottom-16 size-44 rounded-full border border-white/5 bg-white/5" />
+                <div
+                  className={`pointer-events-none absolute -top-15 -right-10 size-56 rounded-full border ${theme.border}`}
+                />
+                <div
+                  className={`pointer-events-none absolute top-39 right-15 size-4 rounded-full ${theme.bg}`}
+                />
+                <div
+                  className={`pointer-events-none absolute top-45 right-2 size-6 rounded-full ${theme.bg}`}
+                />
+                <div
+                  className={`pointer-events-none absolute right-10 -bottom-10 size-36 rounded-full bg-gradient-to-b ${theme.gradientFrom}/40 to-black/0`}
+                />
+                <div className="pointer-events-none absolute -right-8 -bottom-16 size-44 rounded-full border border-white/5 bg-white/5" />
+              </div>
             </div>
-          </div>
-        </ActiveContext.Provider>
+          </ActiveContext.Provider>
+        </ThemeContext.Provider>
       </div>
 
       {/* Tagline */}
       <p
         className={`mt-10 text-center text-2xl font-semibold italic md:mt-16 md:text-3xl ${theme.text}`}
       >
-        {content.coreOfferings.tagline}
+        {offerings.tagline}
       </p>
     </Container>
   );
@@ -89,13 +117,13 @@ export default function CoreOfferings() {
 
 // Local components to keep file tidy and state-contained
 function OfferingsList() {
-  const theme = useServiceTheme();
-  const content = useServiceContent();
-  const { active, setActive } = useActive();
+  const { active, setActive, items } = useActive();
+  const theme = React.useContext(ThemeContext);
+  if (!theme) return null;
 
   return (
     <ul className="flex flex-col items-end gap-4">
-      {content.coreOfferings.offerings.map((item, idx) => {
+      {items.map((item, idx) => {
         const isActive = idx === active;
         const variant = isActive
           ? theme.buttonVariant
@@ -126,7 +154,10 @@ function OfferingsList() {
 const ActiveContext = React.createContext<{
   active: number;
   setActive: (i: number) => void;
+  items: { name: string; description?: string }[];
 } | null>(null);
+
+const ThemeContext = React.createContext<ServiceTheme | null>(null);
 
 function useActive() {
   const ctx = React.useContext(ActiveContext);
@@ -134,10 +165,14 @@ function useActive() {
   return ctx;
 }
 
-function RightCopy() {
-  const { active } = useActive();
-  const content = useServiceContent();
-  const current = content.coreOfferings.offerings[active];
+function RightCopy({
+  offerings,
+  active,
+}: {
+  offerings: { name: string; description?: string }[];
+  active: number;
+}) {
+  const current = offerings[active];
 
   return (
     <h3 className="text-3xl leading-tight font-semibold md:text-5xl">

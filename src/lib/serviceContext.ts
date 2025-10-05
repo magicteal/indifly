@@ -1,47 +1,38 @@
-/**
- * Custom hook for dynamic service-based theming
- * Provides all Tailwind class mappings for insurge/instack/involve/insure
- */
+// Shared service context utilities for server components.
+// Provides type-safe resolvers for service theme and content without relying on client hooks.
 
-"use client";
+import { getServiceContent } from "@/app/incore/services/[service]/content";
 
-import { useParams } from "next/navigation";
-
-export type ServiceType = "insurge" | "instack" | "involve" | "insure";
+// Core service and theme type definitions (migrated from deprecated hook)
+export type ServiceType =
+  | "insurge"
+  | "instack"
+  | "involve"
+  | "insure"
+  | "incore";
+export type ContentfulService = Exclude<ServiceType, "incore">;
 
 export interface ServiceTheme {
-  // Service name
-  service: ServiceType | "default"; // allow default
-
-  // Text color classes
+  service: ServiceType | "default";
   text: string;
   textForeground: string;
-
-  // Background color classes
   bg: string;
   bgAccent: string;
   bgForeground: string;
-
-  // Border color classes
   border: string;
   borderAccent: string;
-
-  // Gradient utilities (for from-/to- classes)
   gradientFrom: string;
   gradientTo: string;
   gradientFromAccent: string;
-
-  // Button variant name
   buttonVariant: "insurge" | "instack" | "involve" | "insure" | "default";
   buttonSecondaryVariant: string;
-
-  // Raw CSS variable names (for inline styles)
   cssVar: string;
   cssVarForeground: string;
   cssVarAccent: string;
 }
 
-const defaultTheme: ServiceTheme = {
+// Default (non-service) theme mirrors the hook's defaultServiceTheme
+export const defaultServiceTheme: ServiceTheme = {
   service: "default",
   text: "text-primary",
   textForeground: "text-primary-foreground",
@@ -60,7 +51,20 @@ const defaultTheme: ServiceTheme = {
   cssVarAccent: "var(--color-accent)",
 };
 
-const serviceThemes: Record<ServiceType, ServiceTheme> = {
+export const incoreServiceTheme: ServiceTheme = {
+  ...defaultServiceTheme,
+  service: "incore",
+};
+
+export type ServiceKey = "insurge" | "instack" | "involve" | "insure";
+
+const serviceKeys: ServiceKey[] = ["insurge", "instack", "involve", "insure"];
+export function isServiceKey(v: string): v is ServiceKey {
+  return (serviceKeys as string[]).includes(v);
+}
+
+// Theme map used for server resolution.
+const themes: Record<ServiceKey, ServiceTheme> = {
   insurge: {
     service: "insurge",
     text: "text-insurge",
@@ -135,24 +139,18 @@ const serviceThemes: Record<ServiceType, ServiceTheme> = {
   },
 };
 
-/**
- * Hook to get theme configuration based on the current service route
- * Automatically reads the service param from Next.js useParams()
- * @returns ServiceTheme object with all class mappings
- */
-export function useServiceTheme(): ServiceTheme {
-  const params = useParams<{ service?: string }>();
-  const service = params?.service;
-  const normalized = Array.isArray(service) ? service[0] : service;
+export function getServiceTheme(service: ServiceKey): ServiceTheme {
+  return themes[service];
+}
 
-  if (!normalized) return defaultTheme; // no param => default
+export function getServiceContext(service: ServiceKey) {
+  return {
+    service,
+    theme: getServiceTheme(service),
+    content: getServiceContent(service),
+  } as const;
+}
 
-  if (
-    normalized &&
-    Object.prototype.hasOwnProperty.call(serviceThemes, normalized)
-  ) {
-    return serviceThemes[normalized as ServiceType];
-  }
-
-  return defaultTheme; // fallback for unknown
+export function allServiceParams() {
+  return serviceKeys.map((service) => ({ service }));
 }

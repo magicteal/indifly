@@ -1,15 +1,13 @@
 "use client";
 
-import Container from "@/components/ui/container";
+import Container from "@/components/container";
+import type { ServiceTheme } from "@/lib/serviceContext";
 import InStackApproach from "@public/inCore/approach/instackApproach.svg";
 import InSureApproach from "@public/inCore/approach/insureApproach.svg";
 import InSurgeApproach from "@public/inCore/approach/insurgeApproach.svg";
 import InVolveApproach from "@public/inCore/approach/involveApproach.svg";
 import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
-import { useParams } from "next/navigation";
-import { useServiceContent } from "./hooks/useServiceContent";
-import { useServiceTheme } from "./hooks/useServiceTheme";
 
 const approachImages = {
   instack: InStackApproach,
@@ -18,12 +16,24 @@ const approachImages = {
   insurge: InSurgeApproach,
 };
 
-export default function ApproachSection() {
-  const { service } = useParams<{ service: string }>();
+interface ApproachSectionProps {
+  theme: ServiceTheme;
+  approach: {
+    description: string[];
+    steps: { title: string; description: string }[];
+  };
+  service: string;
+}
+
+export default function ApproachSection({
+  theme,
+  approach,
+  service,
+}: ApproachSectionProps) {
   const serviceKey = service as keyof typeof approachImages;
-  const theme = useServiceTheme();
-  const content = useServiceContent();
-  const positions = stepPositions[serviceKey] || stepPositions._default;
+  const positions =
+    (stepPositions as Record<string, string[]>)[serviceKey] ||
+    stepPositions._default;
 
   return (
     <Container>
@@ -49,7 +59,7 @@ export default function ApproachSection() {
 
         {/* dynamic description paragraphs */}
         <div className="mx-auto max-w-4xl px-6 text-center">
-          {content.ourApproach.description.map((p, i) => (
+          {approach.description.map((p, i) => (
             <p key={i} className="mt-4 text-base text-white/90">
               {p}
             </p>
@@ -64,7 +74,7 @@ export default function ApproachSection() {
           })()}
 
           {/* Steps mapped */}
-          {content.ourApproach.steps.map((step, index) => {
+          {approach.steps.map((step, index) => {
             const pos = positions[index] || stepPositions._default[index];
             return (
               <div key={step.title} className={pos}>
