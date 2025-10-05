@@ -6,6 +6,22 @@ import { Container } from "@/components/ui/container";
 export const Footer = () => {
   const theme = useServiceTheme();
 
+  // Map for non-default, non-incore faint headline colors
+  const faintMap: Record<"insurge" | "instack" | "involve" | "insure", string> =
+    {
+      insurge: "text-insurge/10",
+      instack: "text-instack/10",
+      involve: "text-involve/10",
+      insure: "text-insure/10",
+    };
+
+  let faint: string;
+  if (theme.service === "default")
+    faint = "text-[#021D41]"; // custom default tint
+  else if (theme.service === "incore")
+    faint = "text-[#071B36]"; // incore variant
+  else faint = faintMap[theme.service];
+
   return (
     <footer
       className={`relative overflow-hidden ${theme.service === "default" ? "bg-gradient-to-b from-[#01295C] to-[#00142D]" : theme.service === "incore" ? "bg-[#001631]" : "bg-[#171717]"} font-sans text-white`}
@@ -106,7 +122,7 @@ export const Footer = () => {
       {/* Big Background Heading at bottom */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-center overflow-hidden">
         <h1
-          className={`mb-[-1vw] text-[10.5vw] leading-none font-extrabold whitespace-nowrap ${theme.service === "default" ? "text-[#021D41]" : theme.service === "incore" ? "text-[#071B36]" : theme.text(10)} md:text-[10.5vw]`}
+          className={`mb-[-1vw] text-[10.5vw] leading-none font-extrabold whitespace-nowrap ${faint} md:text-[10.5vw]`}
         >
           Badhna Aasaan Hai
         </h1>

@@ -8,7 +8,7 @@
 import { useParams } from "next/navigation";
 import { getServiceContent } from "../content";
 import type { ServiceContent } from "../content/types";
-import type { ServiceType } from "./useServiceTheme";
+import type { ContentfulService } from "./useServiceTheme";
 
 /**
  * Hook to get content for the current service route
@@ -19,7 +19,7 @@ export function useServiceContent(): ServiceContent {
   const service = params?.service;
 
   const normalizedService = Array.isArray(service) ? service[0] : service;
-  const serviceKey = (normalizedService as ServiceType) || "insurge";
+  const serviceKey = (normalizedService as ContentfulService) || "insurge";
 
   return getServiceContent(serviceKey);
 }

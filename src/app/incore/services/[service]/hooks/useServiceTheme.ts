@@ -1,8 +1,7 @@
 /**
- * Custom hook for dynamic service-based theming
- * Provides all Tailwind class mappings for insurge/instack/involve/insure
+ * Simplified service theme hook (reverted): returns plain Tailwind class strings.
+ * Supports insurge / instack / involve / insure plus incore (alias of default primary) and a default theme.
  */
-
 "use client";
 
 import { useParams, usePathname } from "next/navigation";
@@ -12,58 +11,13 @@ export type ServiceType =
   | "instack"
   | "involve"
   | "insure"
-  | "incore"; // added incore
-
-// New: function-like accessor that returns base class or an opacity variant (e.g. text-insurge/10)
-export type ColorAccessor = {
-  /** When called with no arg returns the base class (e.g. text-insurge) */
-  (opacity?: number | string): string;
-  /** Underlying base class name */
-  base: string;
-  /** Allowed opacities we safelist */
-  allowed: number[];
-  /** Explicit helper identical to direct call */
-  with: (opacity?: number | string) => string;
-  /** Ensures string interpolation `${theme.text}` works like before */
-  toString: () => string;
-};
-
-function makeColorAccessor(base: string, allowed: number[]): ColorAccessor {
-  // Build a map of allowed variants so Tailwind sees them as literal strings (safelist)
-  // NOTE: These arrays of literal class strings intentionally exist so Tailwind's scanner includes them.
-  const literalVariants = allowed.map((o) => `${base}/${o}`);
-  // Small trick to avoid tree-shaking in some bundlers
-  if (process.env.NODE_ENV === "test") console.debug(literalVariants.length);
-
-  const fn = ((opacity?: number | string) => {
-    if (opacity === undefined || opacity === null || opacity === "")
-      return base;
-    const num = typeof opacity === "string" ? parseInt(opacity, 10) : opacity;
-    if (!allowed.includes(num)) {
-      if (process.env.NODE_ENV !== "production") {
-        console.warn(
-          `Unsupported opacity ${opacity} for ${base}. Allowed: ${allowed.join(",")}`,
-        );
-      }
-      return base; // fallback silently
-    }
-    return `${base}/${num}`;
-  }) as ColorAccessor;
-
-  fn.base = base;
-  fn.allowed = allowed;
-  fn.with = (o?: number | string) => fn(o);
-  fn.toString = () => base;
-  return fn;
-}
-
-// Consolidated allowed opacities (expand if needed)
-const ALLOWED_OPACITIES = [10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90];
+  | "incore";
+export type ContentfulService = Exclude<ServiceType, "incore">;
 
 export interface ServiceTheme {
   service: ServiceType | "default";
-  text: ColorAccessor; // now function-like
-  textForeground: ColorAccessor;
+  text: string;
+  textForeground: string;
   bg: string;
   bgAccent: string;
   bgForeground: string;
@@ -81,11 +35,8 @@ export interface ServiceTheme {
 
 const defaultTheme: ServiceTheme = {
   service: "default",
-  text: makeColorAccessor("text-primary", ALLOWED_OPACITIES),
-  textForeground: makeColorAccessor(
-    "text-primary-foreground",
-    ALLOWED_OPACITIES,
-  ),
+  text: "text-primary",
+  textForeground: "text-primary-foreground",
   bg: "bg-primary",
   bgAccent: "bg-accent",
   bgForeground: "bg-primary-foreground",
@@ -101,20 +52,13 @@ const defaultTheme: ServiceTheme = {
   cssVarAccent: "var(--color-accent)",
 };
 
-const incoreTheme: ServiceTheme = {
-  ...defaultTheme,
-  service: "incore",
-};
+const incoreTheme: ServiceTheme = { ...defaultTheme, service: "incore" };
 
 const serviceThemes: Record<Exclude<ServiceType, "incore">, ServiceTheme> = {
-  // original four services only
   insurge: {
     service: "insurge",
-    text: makeColorAccessor("text-insurge", ALLOWED_OPACITIES),
-    textForeground: makeColorAccessor(
-      "text-insurge-foreground",
-      ALLOWED_OPACITIES,
-    ),
+    text: "text-insurge",
+    textForeground: "text-insurge-foreground",
     bg: "bg-insurge",
     bgAccent: "bg-insurge-accent",
     bgForeground: "bg-insurge-foreground",
@@ -131,11 +75,8 @@ const serviceThemes: Record<Exclude<ServiceType, "incore">, ServiceTheme> = {
   },
   instack: {
     service: "instack",
-    text: makeColorAccessor("text-instack", ALLOWED_OPACITIES),
-    textForeground: makeColorAccessor(
-      "text-instack-foreground",
-      ALLOWED_OPACITIES,
-    ),
+    text: "text-instack",
+    textForeground: "text-instack-foreground",
     bg: "bg-instack",
     bgAccent: "bg-instack-accent",
     bgForeground: "bg-instack-foreground",
@@ -152,11 +93,8 @@ const serviceThemes: Record<Exclude<ServiceType, "incore">, ServiceTheme> = {
   },
   involve: {
     service: "involve",
-    text: makeColorAccessor("text-involve", ALLOWED_OPACITIES),
-    textForeground: makeColorAccessor(
-      "text-involve-foreground",
-      ALLOWED_OPACITIES,
-    ),
+    text: "text-involve",
+    textForeground: "text-involve-foreground",
     bg: "bg-involve",
     bgAccent: "bg-involve-accent",
     bgForeground: "bg-involve-foreground",
@@ -173,11 +111,8 @@ const serviceThemes: Record<Exclude<ServiceType, "incore">, ServiceTheme> = {
   },
   insure: {
     service: "insure",
-    text: makeColorAccessor("text-insure", ALLOWED_OPACITIES),
-    textForeground: makeColorAccessor(
-      "text-insure-foreground",
-      ALLOWED_OPACITIES,
-    ),
+    text: "text-insure",
+    textForeground: "text-insure-foreground",
     bg: "bg-insure",
     bgAccent: "bg-insure-accent",
     bgForeground: "bg-insure-foreground",
@@ -194,14 +129,6 @@ const serviceThemes: Record<Exclude<ServiceType, "incore">, ServiceTheme> = {
   },
 };
 
-/**
- * Hook to get theme configuration based on the current service route
- * Usage examples:
- *  const theme = useServiceTheme();
- *  <div className={theme.text}> // base color
- *  <div className={theme.text(10)}> // 10% opacity variant
- *  <div className={theme.text(60)}> // 60% variant (if allowed)
- */
 export function useServiceTheme(): ServiceTheme {
   const params = useParams<{ service?: string }>();
   const pathname = usePathname();
@@ -214,11 +141,6 @@ export function useServiceTheme(): ServiceTheme {
   ) {
     return serviceThemes[normalized as Exclude<ServiceType, "incore">];
   }
-
-  // If we're under /incore (including its root or subpages) but not a specific service param, return incore theme
-  if (pathname?.startsWith("/incore")) {
-    return incoreTheme;
-  }
-
+  if (pathname?.startsWith("/incore")) return incoreTheme;
   return defaultTheme;
 }
