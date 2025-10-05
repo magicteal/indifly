@@ -8,9 +8,9 @@ export const Footer = () => {
 
   return (
     <footer
-      className={`relative overflow-hidden ${theme.service === "default" ? "bg-secondary" : "bg-[#171717]"} font-sans text-white`}
+      className={`relative overflow-hidden ${theme.service === "default" ? "bg-gradient-to-b from-[#01295C] to-[#00142D]" : theme.service === "incore" ? "bg-[#001631]" : "bg-[#171717]"} font-sans text-white`}
     >
-      <Container className="relative z-1 pt-10 pb-28 md:pb-32">
+      <Container className="relative z-1 pt-24 pb-28 md:pb-36">
         {/* Centered Footer Links Section */}
         <div className="flex justify-center">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 md:gap-16">
@@ -106,7 +106,7 @@ export const Footer = () => {
       {/* Big Background Heading at bottom */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-center overflow-hidden">
         <h1
-          className={`mb-[-1vw] text-[10.5vw] leading-none font-extrabold whitespace-nowrap ${theme.service !== "default" ? theme.text(10) : "text-[#071B36]"} md:text-[10.5vw]`}
+          className={`mb-[-1vw] text-[10.5vw] leading-none font-extrabold whitespace-nowrap ${theme.service === "default" ? "text-[#021D41]" : theme.service === "incore" ? "text-[#071B36]" : theme.text(10)} md:text-[10.5vw]`}
         >
           Badhna Aasaan Hai
         </h1>

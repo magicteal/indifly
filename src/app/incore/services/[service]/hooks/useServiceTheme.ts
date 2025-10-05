@@ -5,9 +5,14 @@
 
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
-export type ServiceType = "insurge" | "instack" | "involve" | "insure";
+export type ServiceType =
+  | "insurge"
+  | "instack"
+  | "involve"
+  | "insure"
+  | "incore"; // added incore
 
 // New: function-like accessor that returns base class or an opacity variant (e.g. text-insurge/10)
 export type ColorAccessor = {
@@ -56,7 +61,7 @@ function makeColorAccessor(base: string, allowed: number[]): ColorAccessor {
 const ALLOWED_OPACITIES = [10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90];
 
 export interface ServiceTheme {
-  service: ServiceType | "default"; // allow default
+  service: ServiceType | "default";
   text: ColorAccessor; // now function-like
   textForeground: ColorAccessor;
   bg: string;
@@ -96,7 +101,13 @@ const defaultTheme: ServiceTheme = {
   cssVarAccent: "var(--color-accent)",
 };
 
-const serviceThemes: Record<ServiceType, ServiceTheme> = {
+const incoreTheme: ServiceTheme = {
+  ...defaultTheme,
+  service: "incore",
+};
+
+const serviceThemes: Record<Exclude<ServiceType, "incore">, ServiceTheme> = {
+  // original four services only
   insurge: {
     service: "insurge",
     text: makeColorAccessor("text-insurge", ALLOWED_OPACITIES),
@@ -193,17 +204,21 @@ const serviceThemes: Record<ServiceType, ServiceTheme> = {
  */
 export function useServiceTheme(): ServiceTheme {
   const params = useParams<{ service?: string }>();
+  const pathname = usePathname();
   const service = params?.service;
   const normalized = Array.isArray(service) ? service[0] : service;
-
-  if (!normalized) return defaultTheme; // no param => default
 
   if (
     normalized &&
     Object.prototype.hasOwnProperty.call(serviceThemes, normalized)
   ) {
-    return serviceThemes[normalized as ServiceType];
+    return serviceThemes[normalized as Exclude<ServiceType, "incore">];
   }
 
-  return defaultTheme; // fallback for unknown
+  // If we're under /incore (including its root or subpages) but not a specific service param, return incore theme
+  if (pathname?.startsWith("/incore")) {
+    return incoreTheme;
+  }
+
+  return defaultTheme;
 }
