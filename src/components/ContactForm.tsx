@@ -7,7 +7,13 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 
-export const ContactForm = () => {
+export const ContactForm = ({
+  title = "Let\'s Talk",
+  description = `Reach out to us with your queries, suggestions and applications.\n                We’d be happy to explore the next growth opportunity!`,
+}: {
+  title?: string;
+  description?: string;
+}) => {
   const theme = useServiceTheme();
 
   return (
@@ -20,11 +26,10 @@ export const ContactForm = () => {
               <h2
                 className={`text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl ${theme.text}`}
               >
-                Let&apos;s Talk
+                {title}
               </h2>
-              <p className="max-w-md text-base text-gray-300 sm:text-lg">
-                Reach out to us with your queries, suggestions and applications.
-                We’d be happy to explore the next growth opportunity!
+              <p className="max-w-md text-base text-gray-300 sm:text-lg whitespace-pre-line">
+                {description}
               </p>
               <div className="space-y-6 pt-4">
                 <div className="flex items-center gap-4">

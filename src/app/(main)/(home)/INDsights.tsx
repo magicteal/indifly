@@ -1,40 +1,14 @@
 import { Container } from "@/components/ui/container";
-import Image from "next/image";
+// Image is rendered by the reusable BlogCard component
 
 // SVGs provided in public/home via SVGR loader
 import Hexagon from "@public/home/hexagonINDsights.svg";
 import TitleBrush from "@public/home/titieINDsights.svg";
 
-type Card = {
-  id: number;
-  title: string;
-  excerpt: string;
-  image: string;
-};
+import { blogs } from "@/data/blogs";
+import BlogCard from "@/components/BlogCard";
 
-const cards: Card[] = [
-  {
-    id: 1,
-    title: "Lorem Ipsum blog Title",
-    excerpt:
-      "Lorem Ipsum Subtext Title Lorem Ipsum Subtext Title Lorem Ipsum Subtext Title Lorem Ipsum Subtext Title",
-    image: "/home/blog.png",
-  },
-  {
-    id: 2,
-    title: "Lorem Ipsum blog Title",
-    excerpt:
-      "Lorem Ipsum Subtext Title Lorem Ipsum Subtext Title Lorem Ipsum Subtext Title Lorem Ipsum Subtext Title",
-    image: "/home/blog.png",
-  },
-  {
-    id: 3,
-    title: "Lorem Ipsum blog Title",
-    excerpt:
-      "Lorem Ipsum Subtext Title Lorem Ipsum Subtext Title Lorem Ipsum Subtext Title Lorem Ipsum Subtext Title",
-    image: "/home/blog.png",
-  },
-];
+const featured = blogs.filter((b) => b.featured);
 
 export default function INDsights() {
   return (
@@ -74,37 +48,8 @@ export default function INDsights() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {cards.map((card) => (
-            <article
-              key={card.id}
-              className="z-2 flex flex-col rounded-2xl bg-white/95 p-6 shadow-[0_8px_40px_rgba(15,23,42,0.08)] ring-1 ring-black/5"
-            >
-              <h3 className="text-2xl font-extrabold text-[#0B2B4A]">
-                {card.title}
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-slate-600">
-                {card.excerpt}
-              </p>
-
-              <div className="mt-4 overflow-hidden rounded-xl">
-                <Image
-                  src={card.image}
-                  alt="Blog preview"
-                  width={640}
-                  height={360}
-                  className="h-56 w-full object-cover"
-                />
-              </div>
-
-              <div className="mt-6">
-                <button className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 font-medium text-slate-800 transition-colors hover:bg-slate-50 md:w-auto">
-                  Read more{" "}
-                  <span aria-hidden className="ml-2">
-                    →
-                  </span>
-                </button>
-              </div>
-            </article>
+          {featured.map((card) => (
+            <BlogCard key={card.slug} title={card.title} excerpt={card.excerpt} image={card.image} slug={card.slug} date={card.date} readTime={card.readTime} tags={card.tags} />
           ))}
         </div>
       </Container>
