@@ -1,5 +1,5 @@
-import Navbar from "@/app/components/navbar/Navbar";
-import TopBanner from "@/app/components/TopBanner";
+import Navbar from "@/components/layout/navbar/Navbar";
+import TopBanner from "@/components/layout/TopBanner";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";

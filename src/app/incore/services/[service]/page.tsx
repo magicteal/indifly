@@ -1,6 +1,6 @@
-import { ContactForm } from "@/app/components/ContactForm";
-import { Footer } from "@/app/components/Footer";
 import GradientFrame from "@/components/GradientFrame";
+import { ContactForm } from "@/components/layout/ContactForm";
+import { Footer } from "@/components/layout/Footer";
 import {
   allServiceParams,
   getServiceContext,

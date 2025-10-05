@@ -1,6 +1,9 @@
 ﻿"use client";
 
-import { getNavConfig, type NavItem } from "@/app/components/navbar/navigation";
+import {
+  getNavConfig,
+  type NavItem,
+} from "@/components/layout/navbar/navigation";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Menu, Search, X } from "lucide-react";
 import Link from "next/link";
