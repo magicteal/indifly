@@ -25,7 +25,7 @@ export default function InCorePage() {
       <div className="fixed top-16 right-0 left-0 z-50 md:hidden">
         <TopBanner variant="incore" />
       </div>
-      <main className="min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-[#001631] py-16 sm:py-20 md:py-28 lg:py-36">
+      <main className="min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-[#001631] pt-16 sm:pt-20 md:pt-28 lg:pt-36">
         <Container size="2xl" className="mt-20 md:mt-24">
           <div className="relative text-center">
             {/* Layered blur color blobs behind hero */}
@@ -265,9 +265,9 @@ export default function InCorePage() {
           <SectionHeader title="Testimonials" className="relative z-10" />
           <Testimonials />
         </section>
+        <ContactForm theme={incoreServiceTheme} />
+        <Footer theme={incoreServiceTheme} />
       </main>
-      <ContactForm theme={incoreServiceTheme} />
-      <Footer theme={incoreServiceTheme} />
     </>
   );
 }

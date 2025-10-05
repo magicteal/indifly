@@ -18,8 +18,12 @@ export default function Home() {
       <SectorsSection />
       <ImpactOnBharat />
       <INDsights />
-      <ContactForm theme={defaultServiceTheme} />
-      <Footer theme={defaultServiceTheme} />
+      <div className="bg-secondary">
+        <ContactForm theme={defaultServiceTheme} />
+      </div>
+      <div className="bg-gradient-to-b from-[#01295C] to-[#00142D]">
+        <Footer theme={defaultServiceTheme} />
+      </div>
       {/* <ContactFooter
         variant="contact"
         title="Contact Us"

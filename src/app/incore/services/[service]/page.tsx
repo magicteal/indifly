@@ -1,5 +1,6 @@
 import { ContactForm } from "@/app/components/ContactForm";
 import { Footer } from "@/app/components/Footer";
+import GradientFrame from "@/components/GradientFrame";
 import {
   allServiceParams,
   getServiceContext,
@@ -31,37 +32,39 @@ export default async function Page({
 
   return (
     <div className="bg-[#171717]">
-      {/* Hero needs hero1 slice & theme */}
-      <HeroSection
-        theme={ctx.theme}
-        hero={ctx.content.hero1}
-        service={ctx.service}
-      />
+      <GradientFrame preset={ctx.service}>
+        {/* Hero needs hero1 slice & theme */}
+        <HeroSection
+          theme={ctx.theme}
+          hero={ctx.content.hero1}
+          service={ctx.service}
+        />
 
-      {/* Approach needs approach slice & theme */}
-      <ApproachSection
-        theme={ctx.theme}
-        approach={ctx.content.ourApproach}
-        service={ctx.service}
-      />
+        {/* Approach needs approach slice & theme */}
+        <ApproachSection
+          theme={ctx.theme}
+          approach={ctx.content.ourApproach}
+          service={ctx.service}
+        />
 
-      {/* WhyItMatters slice */}
-      <WhyItMatters
-        theme={ctx.theme}
-        whyItMatters={ctx.content.whyItMatters}
-        service={ctx.service}
-      />
+        {/* WhyItMatters slice */}
+        <WhyItMatters
+          theme={ctx.theme}
+          whyItMatters={ctx.content.whyItMatters}
+          service={ctx.service}
+        />
 
-      {/* Core offerings */}
-      <CoreOfferings
-        theme={ctx.theme}
-        offerings={ctx.content.coreOfferings}
-        service={ctx.service}
-      />
+        {/* Core offerings */}
+        <CoreOfferings
+          theme={ctx.theme}
+          offerings={ctx.content.coreOfferings}
+          service={ctx.service}
+        />
 
-      {/* Contact form only needs theme (client component) */}
-      <ContactForm theme={ctx.theme} />
-      <Footer theme={ctx.theme} />
+        {/* Contact form only needs theme (client component) */}
+        <ContactForm theme={ctx.theme} />
+        <Footer theme={ctx.theme} />
+      </GradientFrame>
     </div>
   );
 }
