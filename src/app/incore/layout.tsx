@@ -3,7 +3,7 @@ import TopBanner from "@/app/components/TopBanner";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Footer } from "../components/Footer";
+// Footer removed; now added per-page to allow context-specific theming
 
 export const metadata: Metadata = {
   title: {
@@ -33,7 +33,6 @@ export default function IncoreLayout({
 
       <Navbar logo={incoreLogo} />
       <div className="overflow-x-clip">{children}</div>
-      <Footer />
     </>
   );
 }

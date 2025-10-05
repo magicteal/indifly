@@ -5,6 +5,7 @@ import SectorsSection from "./SectorsSection";
 import VenturesGrid from "./VenturesGrid";
 // import ContactFooter from "@/components/ContactFooter";
 import { ContactForm } from "@/app/components/ContactForm";
+import { defaultServiceTheme } from "@/lib/serviceContext";
 import { Footer } from "../../components/Footer";
 import INDsights from "./INDsights";
 
@@ -17,8 +18,8 @@ export default function Home() {
       <SectorsSection />
       <ImpactOnBharat />
       <INDsights />
-      <ContactForm />
-      <Footer />
+      <ContactForm theme={defaultServiceTheme} />
+      <Footer theme={defaultServiceTheme} />
       {/* <ContactFooter
         variant="contact"
         title="Contact Us"
