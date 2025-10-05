@@ -1,4 +1,4 @@
-import { Container } from "@/components/ui/container";
+import { Container } from "@/components/container";
 import Image from "next/image";
 
 // SVGs provided in public/home via SVGR loader

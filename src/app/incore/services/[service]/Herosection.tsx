@@ -2,8 +2,8 @@
 
 import { useServiceContent } from "@/app/incore/services/[service]/hooks/useServiceContent";
 import { useServiceTheme } from "@/app/incore/services/[service]/hooks/useServiceTheme";
+import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
-import Container from "@/components/ui/container";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "@/components/ui/container";
+import Container from "@/components/container";
 import InStackApproach from "@public/inCore/approach/instackApproach.svg";
 import InSureApproach from "@public/inCore/approach/insureApproach.svg";
 import InSurgeApproach from "@public/inCore/approach/insurgeApproach.svg";

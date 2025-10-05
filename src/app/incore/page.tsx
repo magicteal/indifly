@@ -1,10 +1,10 @@
-import TopBanner from "@/components/TopBanner";
-import { Container } from "@/components/ui/container";
-import SectionHeader from "@/components/ui/section-header";
+import TopBanner from "@/app/components/TopBanner";
+import { Container } from "@/components/container";
+import SectionHeader from "@/components/section-header";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { ContactForm } from "../../components/ContactForm";
+import { ContactForm } from "../components/ContactForm";
 import CaseStudiesSection from "./components/CaseStudiesSection";
 import ClientsMarqueeSection from "./components/ClientsMarqueeSection";
 import DecorativeBannerSection from "./components/DecorativeBannerSection";
