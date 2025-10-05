@@ -1,6 +1,6 @@
 // src/components/BharatSection.tsx
 
-import { Section } from "@/components/ui/section";
+import { Section } from "@/components/section";
 import IndiaMap from "../../../components/IndiaMap";
 
 const BharatSection = () => {

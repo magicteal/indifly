@@ -1,12 +1,11 @@
-import { Container } from "@/components/ui/container";
-// Image is rendered by the reusable BlogCard component
+import { Container } from "@/components/container";
 
 // SVGs provided in public/home via SVGR loader
 import Hexagon from "@public/home/hexagonINDsights.svg";
 import TitleBrush from "@public/home/titieINDsights.svg";
 
-import { blogs } from "@/data/blogs";
 import BlogCard from "@/components/BlogCard";
+import { blogs } from "@/data/blogs";
 
 const featured = blogs.filter((b) => b.featured);
 
@@ -49,7 +48,16 @@ export default function INDsights() {
         {/* Cards */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {featured.map((card) => (
-            <BlogCard key={card.slug} title={card.title} excerpt={card.excerpt} image={card.image} slug={card.slug} date={card.date} readTime={card.readTime} tags={card.tags} />
+            <BlogCard
+              key={card.slug}
+              title={card.title}
+              excerpt={card.excerpt}
+              image={card.image}
+              slug={card.slug}
+              date={card.date}
+              readTime={card.readTime}
+              tags={card.tags}
+            />
           ))}
         </div>
       </Container>

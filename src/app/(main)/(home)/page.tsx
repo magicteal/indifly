@@ -4,8 +4,9 @@ import ImpactOnBharat from "./ImpactOnBharat";
 import SectorsSection from "./SectorsSection";
 import VenturesGrid from "./VenturesGrid";
 // import ContactFooter from "@/components/ContactFooter";
-import { ContactForm } from "@/components/ContactForm";
-import { Footer } from "./Footer";
+import { ContactForm } from "@/app/components/ContactForm";
+import { defaultServiceTheme } from "@/lib/serviceContext";
+import { Footer } from "../../components/Footer";
 import INDsights from "./INDsights";
 
 export default function Home() {
@@ -17,8 +18,12 @@ export default function Home() {
       <SectorsSection />
       <ImpactOnBharat />
       <INDsights />
-      <ContactForm />
-      <Footer />
+      <div className="bg-secondary">
+        <ContactForm theme={defaultServiceTheme} />
+      </div>
+      <div className="bg-gradient-to-b from-[#01295C] to-[#00142D]">
+        <Footer theme={defaultServiceTheme} />
+      </div>
       {/* <ContactFooter
         variant="contact"
         title="Contact Us"

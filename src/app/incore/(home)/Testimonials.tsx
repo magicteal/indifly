@@ -1,7 +1,7 @@
 "use client";
 
+import Section from "@/components/section";
 import { Card, CardContent } from "@/components/ui/card";
-import Section from "@/components/ui/section";
 import { Star } from "lucide-react";
 import Image from "next/image";
 

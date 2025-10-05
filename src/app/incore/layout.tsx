@@ -1,9 +1,9 @@
-import Navbar from "@/components/Navbar";
-import TopBanner from "@/components/TopBanner";
+import Navbar from "@/app/components/navbar/Navbar";
+import TopBanner from "@/app/components/TopBanner";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Footer } from "../(main)/(home)/Footer";
+// Footer removed; now added per-page to allow context-specific theming
 
 export const metadata: Metadata = {
   title: {
@@ -32,9 +32,7 @@ export default function IncoreLayout({
       </div>
 
       <Navbar logo={incoreLogo} />
-
-      {children}
-      <Footer />
+      <div className="overflow-x-clip">{children}</div>
     </>
   );
 }

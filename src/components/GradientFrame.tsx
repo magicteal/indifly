@@ -1,3 +1,4 @@
+import { ServiceType } from "@/lib/serviceContext";
 import React from "react";
 
 type Blob = {
@@ -27,7 +28,7 @@ type GradientFrameProps = {
   // additional class for inner content wrapper
   innerClassName?: string;
   // preset name for common blob layouts (eg. 'instack')
-  preset?: "instack" | "insurge" | "insure" | "involve" | "default";
+  preset?: ServiceType;
 };
 
 export default function GradientFrame({
