@@ -1,9 +1,9 @@
 /**
  * Central export for all service content
- * Provides type-safe content access for all services
+ * Provides type-safe content access for all services (excluding 'incore' which reuses another set)
  */
 
-import type { ServiceType } from "../hooks/useServiceTheme";
+import type { ContentfulService } from "../hooks/useServiceTheme";
 import { instackContent } from "./instack";
 import { insureContent } from "./insure";
 import { insurgeContent } from "./insurge";
@@ -16,8 +16,10 @@ export { instackContent, insureContent, insurgeContent, involveContent };
 // Export types
 export type * from "./types";
 
+// Services that actually have dedicated content files (exclude 'incore')
+
 // Content map for easy access
-export const serviceContentMap: Record<ServiceType, ServiceContent> = {
+export const serviceContentMap: Record<ContentfulService, ServiceContent> = {
   insurge: insurgeContent,
   instack: instackContent,
   involve: involveContent,
@@ -25,10 +27,8 @@ export const serviceContentMap: Record<ServiceType, ServiceContent> = {
 };
 
 /**
- * Get content for a specific service
- * @param service - The service name
- * @returns ServiceContent object
+ * Get content for a specific service.
  */
-export function getServiceContent(service: ServiceType): ServiceContent {
+export function getServiceContent(service: ContentfulService): ServiceContent {
   return serviceContentMap[service] || insurgeContent;
 }

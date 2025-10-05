@@ -1,41 +1,33 @@
 /**
- * Custom hook for dynamic service-based theming
- * Provides all Tailwind class mappings for insurge/instack/involve/insure
+ * Simplified service theme hook (reverted): returns plain Tailwind class strings.
+ * Supports insurge / instack / involve / insure plus incore (alias of default primary) and a default theme.
  */
-
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 
-export type ServiceType = "insurge" | "instack" | "involve" | "insure";
+export type ServiceType =
+  | "insurge"
+  | "instack"
+  | "involve"
+  | "insure"
+  | "incore";
+export type ContentfulService = Exclude<ServiceType, "incore">;
 
 export interface ServiceTheme {
-  // Service name
-  service: ServiceType | "default"; // allow default
-
-  // Text color classes
+  service: ServiceType | "default";
   text: string;
   textForeground: string;
-
-  // Background color classes
   bg: string;
   bgAccent: string;
   bgForeground: string;
-
-  // Border color classes
   border: string;
   borderAccent: string;
-
-  // Gradient utilities (for from-/to- classes)
   gradientFrom: string;
   gradientTo: string;
   gradientFromAccent: string;
-
-  // Button variant name
   buttonVariant: "insurge" | "instack" | "involve" | "insure" | "default";
   buttonSecondaryVariant: string;
-
-  // Raw CSS variable names (for inline styles)
   cssVar: string;
   cssVarForeground: string;
   cssVarAccent: string;
@@ -60,7 +52,9 @@ const defaultTheme: ServiceTheme = {
   cssVarAccent: "var(--color-accent)",
 };
 
-const serviceThemes: Record<ServiceType, ServiceTheme> = {
+const incoreTheme: ServiceTheme = { ...defaultTheme, service: "incore" };
+
+const serviceThemes: Record<Exclude<ServiceType, "incore">, ServiceTheme> = {
   insurge: {
     service: "insurge",
     text: "text-insurge",
@@ -135,24 +129,18 @@ const serviceThemes: Record<ServiceType, ServiceTheme> = {
   },
 };
 
-/**
- * Hook to get theme configuration based on the current service route
- * Automatically reads the service param from Next.js useParams()
- * @returns ServiceTheme object with all class mappings
- */
 export function useServiceTheme(): ServiceTheme {
   const params = useParams<{ service?: string }>();
+  const pathname = usePathname();
   const service = params?.service;
   const normalized = Array.isArray(service) ? service[0] : service;
-
-  if (!normalized) return defaultTheme; // no param => default
 
   if (
     normalized &&
     Object.prototype.hasOwnProperty.call(serviceThemes, normalized)
   ) {
-    return serviceThemes[normalized as ServiceType];
+    return serviceThemes[normalized as Exclude<ServiceType, "incore">];
   }
-
-  return defaultTheme; // fallback for unknown
+  if (pathname?.startsWith("/incore")) return incoreTheme;
+  return defaultTheme;
 }
