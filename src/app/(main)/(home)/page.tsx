@@ -4,8 +4,8 @@ import ImpactOnBharat from "./ImpactOnBharat";
 import SectorsSection from "./SectorsSection";
 import VenturesGrid from "./VenturesGrid";
 // import ContactFooter from "@/components/ContactFooter";
-import { ContactForm } from "@/components/ContactForm";
-import { Footer } from "./Footer";
+import { ContactForm } from "@/app/components/ContactForm";
+import { Footer } from "../../components/Footer";
 import INDsights from "./INDsights";
 
 export default function Home() {

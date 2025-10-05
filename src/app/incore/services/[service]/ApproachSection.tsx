@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "@/components/ui/container";
+import Container from "@/components/container";
 import InStackApproach from "@public/inCore/approach/instackApproach.svg";
 import InSureApproach from "@public/inCore/approach/insureApproach.svg";
 import InSurgeApproach from "@public/inCore/approach/insurgeApproach.svg";
@@ -8,8 +8,8 @@ import InVolveApproach from "@public/inCore/approach/involveApproach.svg";
 import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
 import { useParams } from "next/navigation";
+import { useServiceTheme } from "../../../../hooks/useServiceTheme";
 import { useServiceContent } from "./hooks/useServiceContent";
-import { useServiceTheme } from "./hooks/useServiceTheme";
 
 const approachImages = {
   instack: InStackApproach,

@@ -1,8 +1,8 @@
 // components/CaseStudies.tsx
 "use client";
 
+import Section from "@/components/section";
 import { Card, CardContent } from "@/components/ui/card";
-import Section from "@/components/ui/section";
 
 const caseStudies = [
   {

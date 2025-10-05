@@ -3,7 +3,7 @@
  * Provides type-safe content access for all services (excluding 'incore' which reuses another set)
  */
 
-import type { ContentfulService } from "../hooks/useServiceTheme";
+import type { ContentfulService } from "../../../../../hooks/useServiceTheme";
 import { instackContent } from "./instack";
 import { insureContent } from "./insure";
 import { insurgeContent } from "./insurge";

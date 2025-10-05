@@ -1,8 +1,8 @@
 "use client";
 
 import { useServiceContent } from "@/app/incore/services/[service]/hooks/useServiceContent";
-import { useServiceTheme } from "@/app/incore/services/[service]/hooks/useServiceTheme";
-import Container from "@/components/ui/container";
+import Container from "@/components/container";
+import { useServiceTheme } from "@/hooks/useServiceTheme";
 import TextCircledLine from "@public/inCore/text-circled-line.svg";
 import { MoveRight } from "lucide-react";
 import type React from "react";

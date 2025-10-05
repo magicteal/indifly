@@ -1,7 +1,7 @@
 // src/components/SectorsSection.tsx
 "use client";
 
-import { Container } from "@/components/ui/container";
+import { Container } from "@/components/container";
 import { easeOut, motion } from "framer-motion";
 import { useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
