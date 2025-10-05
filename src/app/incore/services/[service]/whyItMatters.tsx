@@ -1,7 +1,7 @@
 "use client";
 
 import Container from "@/components/container";
-import type { ServiceTheme } from "@/lib/serviceContext";
+import type { ServiceKey, ServiceTheme } from "@/lib/serviceContext";
 import TextCircledLine from "@public/inCore/text-circled-line.svg";
 import { MoveRight } from "lucide-react";
 import type React from "react";
@@ -13,12 +13,25 @@ interface WhyItMattersProps {
     challenges: { title: string; description: string }[];
     tagline: string;
   };
-  service: string;
+  service: ServiceKey;
 }
 
-function Pill({ children }: { children: React.ReactNode }) {
+function Pill({
+  children,
+  service,
+}: {
+  children: React.ReactNode;
+  service: ServiceKey;
+}) {
+  const bgClasses = {
+    insurge: "bg-[#AC6B2D33]",
+    instack: "bg-[#31076C33]",
+    involve: "bg-[#01295C33]",
+    insure: "bg-[#19312333]",
+  };
+  const bgClass = bgClasses[service] || "bg-white";
   return (
-    <div className="relative rounded-2xl bg-[#ac6a2d]/20 px-6 py-5">
+    <div className={`${bgClass} relative rounded-2xl px-6 py-5`}>
       <div className="flex items-start gap-4">
         <p className="text-lg">{children}</p>
       </div>
@@ -29,6 +42,7 @@ function Pill({ children }: { children: React.ReactNode }) {
 export default function WhyItMatters({
   theme,
   whyItMatters,
+  service,
 }: WhyItMattersProps) {
   return (
     <div className="relative">
@@ -54,7 +68,7 @@ export default function WhyItMatters({
           {/* Left: stacked list */}
           <div className="flex flex-col gap-4">
             {whyItMatters.challenges.map((ch, i) => (
-              <Pill key={i}>
+              <Pill service={service} key={i}>
                 <span className="font-bold">{ch.title} </span>
                 <MoveRight className="inline -translate-y-0.5" />{" "}
                 {ch.description}

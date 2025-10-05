@@ -11,20 +11,26 @@ Purpose: Give an AI immediate, correct context to add/modify features safely in 
 ### Routing & Site Structure
 
 - Main site grouped under `src/app/(main)`; landing page at `(home)/page.tsx` composes section components (e.g. `Hero`, `VenturesGrid`, `BharatSection`, `INDsights`). Keep page files lean—push logic into section components.
-- Microsite `inCORE`: `src/app/incore` with its own `layout.tsx` plus `(home)` folder housing marketing sections (`CaseStudiesSection`, `ProcessJourneySection`, etc.).
-- Dynamic service pages: `src/app/incore/services/[service]/` (service keys: `insurge`, `instack`, `involve`, `insure`). Each service page assembles: `Herosection`, `whyItMatters`, `coreOfferings`, `ApproachSection` using content hooks.
+- Microsite `inCORE`: `src/app/incore` with its own `layout.tsx` plus `(home)` folder housing marketing sections (`CaseStudiesSection`, `ProcessJourneySection`, etc.). Footer is now page-level (not in the incore layout) to allow service-specific theming separately.
+- Dynamic service pages: `src/app/incore/services/[service]/` (service keys: `insurge`, `instack`, `involve`, `insure`). Each service page is a SERVER COMPONENT that resolves its theme + content via `getServiceContext(service)` from `src/lib/serviceContext.ts` and passes slices (hero, approach, whyItMatters, coreOfferings) down as props.
 - Navigation auto-selects config via `getNavConfig(pathname)` (`src/app/components/navbar/navigation.ts`). Override only if a component explicitly passes custom nav items.
 
 ### Theming & Service Variants
 
-- Use `useServiceTheme()` (`src/hooks/useServiceTheme.ts`) inside service route components to retrieve Tailwind token class names (e.g. `text-insurge`, gradients `from-insurge to-insurge`). Never hardcode service color hex values.
-- Top gradient banner: `TopBanner` inspects pathname for a service keyword (instack / insurge / insure / involve) to swap gradients; otherwise uses `variant="incore"` or default.
-- Buttons: variant names include core plus service-specific ones (`insurge`, `instack`, `involve`, `insure`) and their secondary variants (see `src/components/ui/button.tsx`). Pick the service-derived variant from the theme hook instead of guessing.
+- Themes are defined centrally in `src/lib/serviceContext.ts` (exports: `defaultServiceTheme`, `incoreServiceTheme`, `getServiceTheme`, `getServiceContext`). Theme is resolved server-side for service pages (via `getServiceContext`) or imported directly for marketing pages, then passed to client components (`ContactForm`, `Footer`).
+- Use the class strings from `ServiceTheme` (e.g. `text-insurge`, `from-insure`)—never inline hex for branded colors. If a new brand token is required, add a CSS variable + usage class in `globals.css`.
+- `TopBanner` infers gradient variant from pathname for visual framing outside the service card contexts.
+- Buttons: variant names include service-specific + secondary variants (see `src/components/ui/button.tsx`). Use `theme.buttonVariant` / `theme.buttonSecondaryVariant` rather than guessing.
 
 ### Content System for Services
 
-- Service textual/structured content centralized in `content/*.ts` under `[service]/content`. `index.ts` exports a resolver `getServiceContent` used by hook `useServiceContent()`; components consume structured objects, not raw strings sprinkled around.
-- When adding a new service: (1) add its content file + register in `index.ts`; (2) extend `ServiceType` + theme entry in `useServiceTheme.ts`; (3) add gradient handling in `TopBanner`; (4) create assets under `public/inCore/` (mirroring existing naming patterns) if needed.
+- Service textual/structured content lives in `src/app/incore/services/[service]/content/`. `index.ts` exposes `getServiceContent(service)` consumed by server resolvers (no hook). `getServiceContext(service)` returns `{ service, theme, content }` for convenience in server page components.
+- When adding a new service:
+  1.  Create its content file + export in `content/index.ts`.
+  2.  Add its theme entry to the `themes` map in `serviceContext.ts` and extend `ServiceType` / `ServiceKey`.
+  3.  Add gradient handling (if needed) in any gradient maps (e.g. card gradients in `coreOfferings.tsx`, `TopBanner` path logic).
+  4.  Place assets under `public/inCore/` following existing naming (e.g. `serviceNameCardGradient.png`).
+  5.  (Optional) Add static params if pattern changes (currently `generateStaticParams` auto covers all keys).
 
 ### Styling & Primitives
 
@@ -44,11 +50,11 @@ Purpose: Give an AI immediate, correct context to add/modify features safely in 
 
 ### Patterns & Conventions
 
-- Keep page components minimal; encapsulate data-less presentation logic in colocated section files.
-- Prefer hooks for cross-cutting context (theme & content) rather than prop-drilling.
-- When extending theming or content, update all central registries first (theme map, content index) so downstream hooks stay pure.
-- Avoid duplicating gradient logic—extend `TopBanner` conditional instead.
-- Accessibility: `TopBanner` already sets `role="region"` + `aria-label`; mirror this pattern when adding similar global banners.
+- Keep page components minimal; compute data (theme + content) once at the server page boundary, then pass only the slices each section needs (`hero`, `approach`, etc.).
+- Prefer pure functions + explicit prop passing for clarity and bundle reduction.
+- When extending theming or content, update central registries (`serviceContext.ts` themes / types, `content/index.ts`).
+- Avoid duplicating gradient logic—centralize service-specific gradients in a small map (as done in `coreOfferings.tsx`).
+- Accessibility: `TopBanner` sets `role="region"` + `aria-label`; reuse that approach for any global decorative regions.
 
 ### Gotchas / Avoid
 
@@ -59,9 +65,15 @@ Purpose: Give an AI immediate, correct context to add/modify features safely in 
 
 ### Quick Reference (additions or changes)
 
-1. New service: update theme, content, gradients, navigation (if needed). 4 touchpoints only.
-2. New section on a page: create a `PascalCaseSection.tsx` file and import into the page’s component list.
-3. Need a variant button color: extend variants in `button.tsx` and align with tokens set in `globals.css`.
+1. New service (5 touchpoints):
+   - Add content file + export in `content/index.ts`.
+   - Add theme entry + extend `ServiceType` / `ServiceKey` in `serviceContext.ts`.
+   - Add any gradient mapping (e.g. `coreOfferings` gradient map, `TopBanner` condition if needed).
+   - Add assets under `public/inCore/` (hero art, gradients, icons).
+   - (If navigation differs) extend nav config.
+2. New section: create `PascalCaseSection.tsx` and import into the page; accept only needed props (avoid over-fetching).
+3. New button variant color: extend in `button.tsx` + add CSS variable tokens in `globals.css`.
+4. Footer theming: pass an explicit `ServiceTheme` prop (page-level responsibility).
 
 ### When Unsure
 
