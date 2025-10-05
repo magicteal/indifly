@@ -3,6 +3,7 @@
 import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
 import type { ServiceTheme } from "@/lib/serviceContext";
+import { cn } from "@/lib/utils";
 import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
 import { ArrowRight } from "lucide-react";
@@ -23,6 +24,18 @@ export default function CoreOfferings({
   service,
 }: CoreOfferingsProps) {
   const [active, setActive] = React.useState(0);
+
+  const gradientBgMap: Record<string, string> = {
+    insurge:
+      "bg-[linear-gradient(65.77deg,_#2D231D_1.29%,_rgba(21,13,9,0)_98.98%)]",
+    instack:
+      "bg-[linear-gradient(65.77deg,_#1A171D_1.29%,_rgba(21,13,9,0)_98.98%)]",
+    involve:
+      "bg-[linear-gradient(65.77deg,_#0A1C32_1.29%,_rgba(21,13,9,0)_98.98%)]",
+    insure:
+      "bg-[linear-gradient(67.08deg,_#22362B_1.32%,_rgba(21,13,9,0)_115.47%)]",
+  };
+  const gradientClass = gradientBgMap[service] || gradientBgMap.insurge;
 
   return (
     <Container className="mt-36">
@@ -57,11 +70,10 @@ export default function CoreOfferings({
 
               {/* right card */}
               <div
-                className="relative w-[60%] overflow-hidden rounded-[28px] p-8 sm:p-10 md:p-12"
-                style={{
-                  background:
-                    "linear-gradient(65.77deg, #2D231D 1.29%, rgba(21, 13, 9, 0) 98.98%)",
-                }}
+                className={cn(
+                  "relative w-[60%] overflow-hidden rounded-[28px] p-8 sm:p-10 md:p-12",
+                  gradientClass,
+                )}
               >
                 <RightCopy offerings={offerings.offerings} active={active} />
 
