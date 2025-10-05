@@ -1,12 +1,12 @@
-import TopBanner from "@/app/components/TopBanner";
 import { Container } from "@/components/container";
+import TopBanner from "@/components/layout/TopBanner";
 import SectionHeader from "@/components/section-header";
 import { incoreServiceTheme } from "@/lib/serviceContext";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import { ContactForm } from "../../components/ContactForm";
-import { Footer } from "../../components/Footer";
+import { ContactForm } from "../../../components/layout/ContactForm";
+import { Footer } from "../../../components/layout/Footer";
 import CaseStudiesSection from "./CaseStudiesSection";
 import ClientsMarqueeSection from "./ClientsMarqueeSection";
 import DecorativeBannerSection from "./DecorativeBannerSection";
