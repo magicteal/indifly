@@ -1,20 +1,13 @@
-"use client";
-// src/components/ContactForm.tsx
 import { Container } from "@/components/container";
-import { useServiceTheme } from "@/hooks/useServiceTheme"; // added
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import type { ServiceTheme } from "@/lib/serviceContext";
 import { MapPin } from "lucide-react";
-import { Button } from "../../components/ui/button";
-import { Input } from "../../components/ui/input";
-import { Textarea } from "../../components/ui/textarea";
 
-export const ContactForm = () => {
-  const theme = useServiceTheme();
-
+export const ContactForm = ({ theme }: { theme: ServiceTheme }) => {
   return (
-    <section
-      className={`relative overflow-clip ${theme.service === "default" ? "bg-secondary" : theme.service === "incore" ? "bg-[#001631]" : "bg-[#171717]"}`}
-      id="contact"
-    >
+    <section className="relative overflow-clip" id="contact">
       <Container className="relative z-10 pt-24">
         <div className="relative rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-lg sm:p-8 md:p-12">
           <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-x-24 lg:gap-y-12">

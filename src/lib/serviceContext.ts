@@ -1,11 +1,9 @@
-/**
- * Simplified service theme hook (reverted): returns plain Tailwind class strings.
- * Supports insurge / instack / involve / insure plus incore (alias of default primary) and a default theme.
- */
-"use client";
+// Shared service context utilities for server components.
+// Provides type-safe resolvers for service theme and content without relying on client hooks.
 
-import { useParams, usePathname } from "next/navigation";
+import { getServiceContent } from "@/app/incore/services/[service]/content";
 
+// Core service and theme type definitions (migrated from deprecated hook)
 export type ServiceType =
   | "insurge"
   | "instack"
@@ -33,7 +31,8 @@ export interface ServiceTheme {
   cssVarAccent: string;
 }
 
-const defaultTheme: ServiceTheme = {
+// Default (non-service) theme mirrors the hook's defaultServiceTheme
+export const defaultServiceTheme: ServiceTheme = {
   service: "default",
   text: "text-primary",
   textForeground: "text-primary-foreground",
@@ -52,9 +51,20 @@ const defaultTheme: ServiceTheme = {
   cssVarAccent: "var(--color-accent)",
 };
 
-const incoreTheme: ServiceTheme = { ...defaultTheme, service: "incore" };
+export const incoreServiceTheme: ServiceTheme = {
+  ...defaultServiceTheme,
+  service: "incore",
+};
 
-const serviceThemes: Record<Exclude<ServiceType, "incore">, ServiceTheme> = {
+export type ServiceKey = "insurge" | "instack" | "involve" | "insure";
+
+const serviceKeys: ServiceKey[] = ["insurge", "instack", "involve", "insure"];
+export function isServiceKey(v: string): v is ServiceKey {
+  return (serviceKeys as string[]).includes(v);
+}
+
+// Theme map used for server resolution.
+const themes: Record<ServiceKey, ServiceTheme> = {
   insurge: {
     service: "insurge",
     text: "text-insurge",
@@ -129,18 +139,18 @@ const serviceThemes: Record<Exclude<ServiceType, "incore">, ServiceTheme> = {
   },
 };
 
-export function useServiceTheme(): ServiceTheme {
-  const params = useParams<{ service?: string }>();
-  const pathname = usePathname();
-  const service = params?.service;
-  const normalized = Array.isArray(service) ? service[0] : service;
+export function getServiceTheme(service: ServiceKey): ServiceTheme {
+  return themes[service];
+}
 
-  if (
-    normalized &&
-    Object.prototype.hasOwnProperty.call(serviceThemes, normalized)
-  ) {
-    return serviceThemes[normalized as Exclude<ServiceType, "incore">];
-  }
-  if (pathname?.startsWith("/incore")) return incoreTheme;
-  return defaultTheme;
+export function getServiceContext(service: ServiceKey) {
+  return {
+    service,
+    theme: getServiceTheme(service),
+    content: getServiceContent(service),
+  } as const;
+}
+
+export function allServiceParams() {
+  return serviceKeys.map((service) => ({ service }));
 }

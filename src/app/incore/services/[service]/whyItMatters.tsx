@@ -1,11 +1,20 @@
 "use client";
 
-import { useServiceContent } from "@/app/incore/services/[service]/hooks/useServiceContent";
 import Container from "@/components/container";
-import { useServiceTheme } from "@/hooks/useServiceTheme";
+import type { ServiceTheme } from "@/lib/serviceContext";
 import TextCircledLine from "@public/inCore/text-circled-line.svg";
 import { MoveRight } from "lucide-react";
 import type React from "react";
+
+interface WhyItMattersProps {
+  theme: ServiceTheme;
+  whyItMatters: {
+    description: string;
+    challenges: { title: string; description: string }[];
+    tagline: string;
+  };
+  service: string;
+}
 
 function Pill({ children }: { children: React.ReactNode }) {
   return (
@@ -17,10 +26,10 @@ function Pill({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function WhyItMatters() {
-  const theme = useServiceTheme();
-  const content = useServiceContent();
-
+export default function WhyItMatters({
+  theme,
+  whyItMatters,
+}: WhyItMattersProps) {
   return (
     <div className="relative">
       <Container className="mt-36">
@@ -37,14 +46,14 @@ export default function WhyItMatters() {
         <div
           className={`mb-8 text-center text-lg font-light md:mb-12 md:text-xl`}
         >
-          {content.whyItMatters.description}
+          {whyItMatters.description}
         </div>
 
         {/* Card */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Left: stacked list */}
           <div className="flex flex-col gap-4">
-            {content.whyItMatters.challenges.map((ch, i) => (
+            {whyItMatters.challenges.map((ch, i) => (
               <Pill key={i}>
                 <span className="font-bold">{ch.title} </span>
                 <MoveRight className="inline -translate-y-0.5" />{" "}
@@ -57,7 +66,7 @@ export default function WhyItMatters() {
         <p
           className={`mt-10 text-center text-2xl font-semibold italic md:mt-16 md:text-3xl ${theme.text}`}
         >
-          {content.whyItMatters.tagline}
+          {whyItMatters.tagline}
         </p>
       </Container>
 

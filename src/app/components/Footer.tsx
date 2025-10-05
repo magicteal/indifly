@@ -1,11 +1,7 @@
-"use client";
-
 import { Container } from "@/components/container";
-import { useServiceTheme } from "@/hooks/useServiceTheme";
+import type { ServiceTheme } from "@/lib/serviceContext";
 
-export const Footer = () => {
-  const theme = useServiceTheme();
-
+export const Footer = ({ theme }: { theme: ServiceTheme }) => {
   // Map for non-default, non-incore faint headline colors
   const faintMap: Record<"insurge" | "instack" | "involve" | "insure", string> =
     {
@@ -23,9 +19,7 @@ export const Footer = () => {
   else faint = faintMap[theme.service];
 
   return (
-    <footer
-      className={`relative overflow-hidden ${theme.service === "default" ? "bg-gradient-to-b from-[#01295C] to-[#00142D]" : theme.service === "incore" ? "bg-[#001631]" : "bg-[#171717]"} font-sans text-white`}
-    >
+    <footer className="relative overflow-hidden font-sans text-white">
       <Container className="relative z-1 pt-24 pb-28 md:pb-36">
         {/* Centered Footer Links Section */}
         <div className="flex justify-center">
