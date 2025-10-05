@@ -6,7 +6,7 @@ import WhyItMatters from "./whyItMatters";
 
 export default function Page() {
   return (
-    <div className="overflow-x-clip bg-[#171717]">
+    <div className="bg-[#171717]">
       <HeroSection />
       <ApproachSection />
       <WhyItMatters />
