@@ -28,7 +28,7 @@ export default function WhyItMatters() {
         <div className="mb-8 text-center text-3xl font-bold italic md:mb-12 md:text-4xl">
           <span className="mr-10">Why it </span>
           <div className="relative inline-block">
-            <span className={theme.text}>matters?</span>
+            <span className={`${theme.text}`}>matters?</span>
             <TextCircledLine className="absolute -top-2 left-1/2 translate-x-[-50%] scale-80" />
           </div>
         </div>

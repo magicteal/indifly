@@ -18,7 +18,7 @@ export default function HeroSection() {
         <div className="relative z-10">
           <div className="text-2xl font-bold tracking-wide">
             <span>in</span>
-            <span className={theme.text}>{content.hero1.text[0]}</span>
+            <span className={`${theme.text}`}>{content.hero1.text[0]}</span>
           </div>
 
           <h1 className="mt-3 text-4xl leading-tight md:text-5xl">
