@@ -1,11 +1,9 @@
-"use client";
-// src/components/ContactForm.tsx
 import { Container } from "@/components/container";
-import type { ServiceTheme } from "@/lib/serviceContext"; // using unified server types
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import type { ServiceTheme } from "@/lib/serviceContext";
 import { MapPin } from "lucide-react";
-import { Button } from "../../components/ui/button";
-import { Input } from "../../components/ui/input";
-import { Textarea } from "../../components/ui/textarea";
 
 export const ContactForm = ({ theme }: { theme: ServiceTheme }) => {
   return (

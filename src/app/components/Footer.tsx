@@ -1,13 +1,7 @@
-"use client";
-
 import { Container } from "@/components/container";
 import type { ServiceTheme } from "@/lib/serviceContext";
 
-interface FooterProps {
-  theme: ServiceTheme;
-}
-
-export const Footer = ({ theme }: FooterProps) => {
+export const Footer = ({ theme }: { theme: ServiceTheme }) => {
   // Map for non-default, non-incore faint headline colors
   const faintMap: Record<"insurge" | "instack" | "involve" | "insure", string> =
     {
