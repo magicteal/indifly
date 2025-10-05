@@ -1,9 +1,9 @@
 "use client";
 
 import { useServiceContent } from "@/app/incore/services/[service]/hooks/useServiceContent";
-import { useServiceTheme } from "@/app/incore/services/[service]/hooks/useServiceTheme";
 import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
+import { useServiceTheme } from "@/hooks/useServiceTheme";
 import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
 import { ArrowRight } from "lucide-react";

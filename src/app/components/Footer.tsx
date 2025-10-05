@@ -1,7 +1,7 @@
 "use client";
 
-import { useServiceTheme } from "@/app/incore/services/[service]/hooks/useServiceTheme";
 import { Container } from "@/components/container";
+import { useServiceTheme } from "@/hooks/useServiceTheme";
 
 export const Footer = () => {
   const theme = useServiceTheme();

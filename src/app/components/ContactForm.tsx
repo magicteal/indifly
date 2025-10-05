@@ -1,7 +1,7 @@
 "use client";
 // src/components/ContactForm.tsx
-import { useServiceTheme } from "@/app/incore/services/[service]/hooks/useServiceTheme"; // added
 import { Container } from "@/components/container";
+import { useServiceTheme } from "@/hooks/useServiceTheme"; // added
 import { MapPin } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";

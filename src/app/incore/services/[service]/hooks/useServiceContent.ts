@@ -6,9 +6,9 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import type { ContentfulService } from "../../../../../hooks/useServiceTheme";
 import { getServiceContent } from "../content";
 import type { ServiceContent } from "../content/types";
-import type { ContentfulService } from "./useServiceTheme";
 
 /**
  * Hook to get content for the current service route
