@@ -2,15 +2,44 @@
 "use client";
 
 import { Container } from "@/components/container";
+import { Button } from "@/components/ui/button";
 import { easeOut, motion } from "framer-motion";
-import { useState } from "react";
+import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
-import BrushStroke from "../../../components/BrushStroke"; // Import the new SVG component
+import BrushStroke from "../../../components/BrushStroke";
+import { ourSectors } from "./sectorsContent";
 
 const SectorsSection = () => {
-  const [activeTab, setActiveTab] = useState("Indipe");
+  // Top-level category state
+  const [activeCategory, setActiveCategory] = useState(ourSectors[0].title);
+  // Second-level sector (brand) state
+  const [activeSector, setActiveSector] = useState(
+    ourSectors[0].sectors[0].name,
+  );
 
-  const tabs = ["Indipe", "Indiconnect", "IndiNXT"];
+  // Derive lists for render
+  const categories = useMemo(() => ourSectors.map((c) => c.title), []);
+  const currentCategory = useMemo(
+    () => ourSectors.find((c) => c.title === activeCategory) ?? ourSectors[0],
+    [activeCategory],
+  );
+  const currentSector = useMemo(
+    () =>
+      currentCategory.sectors.find((s) => s.name === activeSector) ||
+      currentCategory.sectors[0],
+    [currentCategory, activeSector],
+  );
+
+  // When category changes, reset sector to first in that category
+  useEffect(() => {
+    // Ensure activeSector always belongs to the currently active category
+    if (!currentCategory.sectors.some((s) => s.name === activeSector)) {
+      setActiveSector(currentCategory.sectors[0].name);
+    }
+    // We intentionally ignore setting when activeSector changes on its own; only validate on category change or sectors list change.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCategory, currentCategory.sectors]);
 
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -56,121 +85,97 @@ const SectorsSection = () => {
           </p>
         </motion.div>
 
-        {/* Tabs */}
+        {/* Category Tabs */}
         <motion.div
-          className="mb-12 flex justify-center"
+          className="mb-6 flex justify-center"
           variants={itemVariants}
         >
-          <div className="flex space-x-1 rounded-full bg-gray-100 p-1">
-            {tabs.map((tab) => (
+          <div className="flex flex-wrap gap-3 p-1">
+            {categories.map((cat) => (
               <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`${
-                  activeTab === tab
-                    ? "bg-orange-500 text-white"
-                    : "text-gray-600 hover:bg-gray-200"
-                } rounded-full px-6 py-2 text-sm font-semibold transition-colors duration-300 focus:outline-none`}
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`$${" "} ${
+                  activeCategory === cat
+                    ? "bg-[#0B44FF] text-white"
+                    : "bg-accent text-secondary hover:bg-gray-200"
+                } rounded-lg px-5 py-2 text-sm font-semibold transition-colors duration-300 focus:outline-none`}
               >
-                {tab}
+                {cat}
               </button>
             ))}
           </div>
         </motion.div>
 
-        {/* Tab Content */}
-        <div>
-          {activeTab === "Indipe" && (
+        {/* Active sector content */}
+        <div className="flex flex-col items-center gap-12 md:flex-row">
+          {/* Left Side: Text Content */}
+          <div
+            className="space-y-6 rounded-l-lg p-8"
+            style={{
+              background:
+                "linear-gradient(73.45deg, #FECCB2 0%, rgba(254,204,178,0.75) 28%, rgba(254,204,178,0.38) 48%, rgba(254,204,178,0.15) 63%, #FFFFFF 78%, #FFFFFF 100%)",
+            }}
+          >
+            {/* Sector (brand) tabs inside selected category */}
+            <div className="flex justify-start gap-2">
+              {currentCategory.sectors.map((sector) => {
+                const selected = sector.name === currentSector.name;
+                return (
+                  <button
+                    key={sector.name}
+                    onClick={() => setActiveSector(sector.name)}
+                    className={
+                      selected
+                        ? "rounded-md border bg-secondary px-3 py-1 text-xs font-semibold text-white"
+                        : "rounded-md border !border-secondary px-3 py-1 text-xs font-semibold text-secondary"
+                    }
+                    aria-pressed={selected}
+                  >
+                    {sector.name}
+                  </button>
+                );
+              })}
+            </div>
             <motion.div
-              key="indipe"
+              key={`${activeCategory}-${currentSector.name}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col items-center gap-12 md:flex-row"
+              transition={{ duration: 0.4 }}
             >
-              {/* Left Side: Text Content */}
-              <div
-                className="space-y-6 rounded-lg p-8 md:w-2/3"
-                style={{
-                  background:
-                    "linear-gradient(73.45deg, #FECCB2 0%, #FFFFFF 110.01%)",
-                }}
-              >
-                <div className="flex space-x-2">
-                  <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800">
-                    Wealth tech
-                  </span>
-                  <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-800">
-                    Financial Services
-                  </span>
-                  <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-800">
-                    Payments
-                  </span>
-                </div>
-                <h3 className="text-3xl leading-tight font-bold text-gray-900">
-                  Seamless wealth creation and digital payments for all
-                </h3>
-                <p className="text-gray-600">
-                  Empowering individuals with secure, user-friendly financial
-                  tools. From UPI transactions to personalized wealth
-                  management, we make financial growth accessible to everyone.
-                </p>
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-center gap-3">
-                    <span className="text-orange-500">✓</span> User-friendly
-                    mutual fund investments
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-orange-500">✓</span> Secure UPI
-                    transactions
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-orange-500">✓</span> Advanced
-                    portfolio tracking tools
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-orange-500">✓</span> Personalized
-                    financial guidance
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-orange-500">✓</span> Partner program
-                    for mutual fund distribution
-                  </li>
-                </ul>
-                <div className="flex items-center space-x-4 pt-4">
-                  <button className="rounded-lg bg-orange-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-orange-600">
-                    Install the App
-                  </button>
-                  <button className="flex items-center gap-2 font-semibold text-gray-700 hover:text-black">
-                    Explore More <FiArrowRight />
-                  </button>
-                </div>
+              <div className="text-md mt-1 mb-1 font-semibold text-secondary">
+                {currentSector.focusArea}
               </div>
-
-              {/* Right Side: Image Placeholders */}
-              <div className="relative h-96 md:w-1/3">
-                {/* Main Image Placeholder */}
-                <div className="absolute right-0 bottom-0 flex h-80 w-80 items-center justify-center rounded-lg bg-gray-200 shadow-lg">
-                  <p className="text-gray-500">Person Image</p>
-                </div>
-                {/* UPI Image Placeholder */}
-                <div className="absolute top-0 right-10 flex h-24 w-40 items-center justify-center rounded-lg bg-blue-500 shadow-lg">
-                  <p className="text-white">UPI Image</p>
-                </div>
-                {/* Small top-left image placeholder */}
-                <div className="absolute top-10 left-0 h-20 w-32 rounded-lg bg-gray-300 shadow-lg"></div>
-                {/* Small bottom-right image placeholder */}
-                <div className="absolute right-72 bottom-10 h-20 w-32 rounded-lg bg-gray-400 shadow-lg"></div>
+              <h3 className="text-2xl leading-tight text-gray-600">
+                {currentSector.description[0]}
+              </h3>
+              <p className="text-gray-600">{currentSector.description[1]}</p>
+              <ul className="mt-4 font-medium text-gray-700">
+                {currentSector.bulletPoints.map((point) => (
+                  <li key={point}>• &nbsp;{point}</li>
+                ))}
+              </ul>
+              <div className="mt-12 flex items-center space-x-4">
+                <Button size="lg" className="rounded-full">
+                  {currentSector.actions === "Install App"
+                    ? "Install the App"
+                    : currentSector.actions}
+                </Button>
+                <Button size={"lg"} variant={"outline"}>
+                  Explore More <FiArrowRight />
+                </Button>
               </div>
             </motion.div>
-          )}
-          {activeTab !== "Indipe" && (
-            <div className="py-12 text-center">
-              <p className="text-gray-500">
-                Content for {activeTab} will be here.
-              </p>
-            </div>
-          )}
+          </div>
+          {/* Right Side: Image Placeholders (common across sectors) */}
+          <div className="relative h-96 shrink-0 md:w-2/5">
+            <Image
+              src="/home/ourSectors.png"
+              alt="Sector Illustration"
+              fill
+              className="object-cover"
+            />
+          </div>
         </div>
       </Container>
     </motion.section>

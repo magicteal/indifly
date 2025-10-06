@@ -2,67 +2,92 @@ import type { ServiceContent } from "./types";
 
 export const insureContent: ServiceContent = {
   hero1: {
-    text: ["SURE", "Integrated expertise for", "startup success"],
-    button: "Book a Consultation Call",
+    text: [
+      "SURE",
+      "From first contract to compliance,",
+      "stay protected with inSURE",
+    ],
+    button: "Book a Legal Consultation",
   },
   ourApproach: {
     description: [
-      "We build with the founders as co-creators, not as service vendors. Our approach is collaborative, integrated, and focused on long-term success. We don't just provide services; we become a part of your journey.",
-      "Our team becomes an extension of yours, working hand-in-hand to achieve your vision.",
+      "Legal should enable, not obstruct. ",
+      "At inSURE, we simplify complexity so founders can focus on growth.",
     ],
     steps: [
       {
-        title: "Collaborative",
-        description:
-          "We build with the founders as co-creators, not as service vendors",
+        title: "Set Up",
+        description: "Incorporate, register, and create legal clarity",
       },
       {
-        title: "Integrated",
-        description:
-          "Our approach is collaborative, integrated, and focused on long-term success.",
+        title: "Shield",
+        description: "Guard against risks through contracts and compliance.",
       },
       {
-        title: "Committed",
-        description:
-          "We don't just provide services; we become a part of your journey.",
+        title: "Scale",
+        description: "Stay investor-ready with governance and dispute support.",
       },
     ],
   },
   whyItMatters: {
-    description:
-      "Startups face unique challenges that require specialized solutions. From limited resources to high competition, the hurdles are many. Our services are designed to address these specific challenges, helping startups navigate their path to success.",
+    description: "Most startups falter legally because:",
     challenges: [
       {
-        title: "Limited Resources",
-        description:
-          "Limited capital to sustain operations, hire talent, or scale.",
+        title: "Weak company structures",
+        description: "Future fundraising hits roadblocks.",
       },
       {
-        title: "High Competition",
-        description:
-          "Intense competition from other startups and established players.",
+        title: "Missed compliance",
+        description: "Penalties and delays damage momentum.",
       },
       {
-        title: "Market Fit",
-        description: "Difficulty in finding and validating product-market fit.",
+        title: "Generic contracts",
+        description: "Founders and IP remain unprotected.",
+      },
+      {
+        title: "Poor governance",
+        description: "Decisions lack clarity and accountability.",
+      },
+      {
+        title: "Unprepared disputes",
+        description: "Conflicts drain time, energy, and capital.",
       },
     ],
-    tagline: "Tailored solutions for startup challenges.",
+    tagline: "inSURE solves all of this!",
   },
   coreOfferings: {
     offerings: [
       {
-        name: "Legal Entity Setup",
+        name: "Company Formation & Secretarial Support",
         description:
-          "Get your company registered and ready to operate legally.",
+          "End-to-end setup: incorporations, statutory registers, board resolutions, and filings.",
       },
-      { name: "Regulatory Compliance", description: "" },
-      { name: "Contract Drafting", description: "" },
-      { name: "IP Protection", description: "" },
-      { name: "Data Privacy Compliance", description: "" },
-      { name: "Fundraising Legal Support", description: "" },
-      { name: "Legal Advisory", description: "" },
+      {
+        name: "Regulatory Compliance",
+        description:
+          "Timely adherence to corporate laws and evolving industry regulations.",
+      },
+      {
+        name: "Contracts & Agreements",
+        description:
+          "Drafting and reviewing shareholder agreements, NDAs, MoUs, and commercial contracts.",
+      },
+      {
+        name: "Corporate Governance",
+        description:
+          "Guidance on board structure, transparency, and founder safeguards.",
+      },
+      {
+        name: "Liaison Services",
+        description:
+          "Interface with regulators including Registrar of Companies and RBI.",
+      },
+      {
+        name: "Dispute Resolution Support",
+        description:
+          "Preliminary legal opinions, arbitration guidance, and litigation referrals.",
+      },
     ],
-    tagline: "All under one roof, tailored for startups.",
+    tagline: "Future-ready companies start with future-proof legal",
   },
 };

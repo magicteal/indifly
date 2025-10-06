@@ -15,7 +15,7 @@ export default function ImpactOnBharat() {
   return (
     <Section
       wrapperClassName="relative overflow-hidden"
-      className="py-24"
+      className="mt-24 py-24"
       // exact background per spec
       style={{
         background: "linear-gradient(95.65deg, #E04A00 29.81%, #FF915C 100%)",
