@@ -70,8 +70,12 @@ export default function WhyItMatters({
             {whyItMatters.challenges.map((ch, i) => (
               <Pill service={service} key={i}>
                 <span className="font-bold">{ch.title} </span>
-                <MoveRight className="inline -translate-y-0.5" />{" "}
-                {ch.description}
+                {ch.description !== "" && (
+                  <>
+                    <MoveRight className="inline -translate-y-0.5" />{" "}
+                    {ch.description}
+                  </>
+                )}
               </Pill>
             ))}
           </div>
