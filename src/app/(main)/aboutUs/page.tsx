@@ -89,7 +89,7 @@ export default function AboutUsPage() {
           <TitleBrush className="h-auto w-full" />
           <div className="absolute inset-0 grid place-items-center">
             <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl">
-              Our Sectors
+              ROADMAP
             </h2>
           </div>
         </div>
