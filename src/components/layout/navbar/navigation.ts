@@ -16,7 +16,7 @@ export const indiflyNavConfig: SiteConfig = {
     { href: "/our-portfolio", label: "Our Portfolio" },
     { href: "/incore", label: "inCORE" },
     { href: "#insights", label: "INDsights" },
-    { href: "#about-us", label: "About us" },
+    { href: "/aboutUs", label: "About us" },
     { href: "#get-in-touch", label: "Get in Touch" },
   ],
 };
