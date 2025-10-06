@@ -7,6 +7,7 @@ import {
   IoLogoLinkedin,
   IoLogoTwitter,
 } from "react-icons/io5";
+import { footerLinkGroups } from "./footerLinks";
 
 export const Footer = ({ theme }: { theme: ServiceTheme }) => {
   // Map for non-default, non-incore faint headline colors
@@ -108,90 +109,24 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
             </div>
           </div>
 
-          {/* Link Columns */}
+          {/* Link Columns (refactored to map over config) */}
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:col-span-1 md:grid-cols-3 lg:col-span-3">
-            {/* Column 1 */}
-            <div className="relative">
-              <h3 className={`mb-4 text-lg font-bold ${theme.text}`}>Home</h3>
-              <ul className="space-y-3 text-gray-300/80">
-                <li>
-                  <a href="#" className="hover:text-white">
-                    About inCORE
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Contact US
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Customer Stories
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    About IndiFly
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 2 */}
-            <div>
-              <h3 className={`mb-4 text-lg font-bold ${theme.text}`}>inCore</h3>
-              <ul className="space-y-3 text-gray-300/80">
-                <li>
-                  <a href="#" className="hover:text-white">
-                    inSurge (Marketing & Growth)
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    inStack (Tech & Product)
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    inVolve (HR & Culture)
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    inSure (Legal & Compliance)
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 3 */}
-            <div>
-              <h3 className={`mb-4 text-lg font-bold ${theme.text}`}>
-                Quick links
-              </h3>
-              <ul className="space-y-3 text-gray-300/80">
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Blogs
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    Terms & Conditions
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white">
-                    SiteMap
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {footerLinkGroups.map((group) => (
+              <div key={group.heading} className="relative">
+                <h3 className={`mb-4 text-lg font-bold ${theme.text}`}>
+                  {group.heading}
+                </h3>
+                <ul className="space-y-3 text-gray-300/80">
+                  {group.links.map((link) => (
+                    <li key={link.href + link.label}>
+                      <a href={link.href} className="hover:text-white">
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </Container>
