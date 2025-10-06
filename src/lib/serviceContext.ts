@@ -11,7 +11,8 @@ export type ServiceType =
   | "insure"
   | "incore"
   | "light"; // lightweight non-content key for light themed pages (About)
-export type ContentfulService = Exclude<ServiceType, "incore">;
+// Contentful services are those that have dedicated content files. Exclude non-content keys.
+export type ContentfulService = Exclude<ServiceType, "incore" | "light">;
 
 export interface ServiceTheme {
   service: ServiceType | "default";

@@ -13,7 +13,7 @@ import CaseStudiesSection from "./CaseStudiesSection";
 import ClientsMarqueeSection from "./ClientsMarqueeSection";
 import IncoreINDsightsSection from "./IncoreINDsightsSection";
 import ProcessJourneySection from "./ProcessJourneySection";
-import Testimonials from "./Testimonials";
+// import Testimonials from "./Testimonials";
 import WealthSection from "./WealthSection";
 
 export default function InCorePage() {
