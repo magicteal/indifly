@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import BlogCard from "@/components/BlogCard";
 import { Footer } from "@/components/layout/Footer";
-import { defaultServiceTheme } from "@/lib/serviceContext";
+import { lightTheme } from "@/lib/serviceContext";
 import GradientFrame from "./gradient";
 
 const PAGE_SIZE = 6;
@@ -134,11 +134,11 @@ export default async function BlogPage({
           <div className="relative overflow-hidden rounded-2xl">
             <GradientFrame variant="v1" className="opacity-40" />
             <div className="relative z-10">
-              <ContactForm theme={defaultServiceTheme} />
+              <ContactForm theme={lightTheme} />
             </div>
           </div>
         </div>
-        <Footer theme={defaultServiceTheme} />
+        <Footer theme={lightTheme} />
       </div>
     </main>
   );

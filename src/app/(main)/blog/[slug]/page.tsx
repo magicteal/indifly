@@ -4,7 +4,7 @@ import { Container } from "@/components/container";
 import { ContactForm } from "@/components/layout/ContactForm";
 import { Footer } from "@/components/layout/Footer";
 import { blogs } from "@/data/blogs";
-import { defaultServiceTheme } from "@/lib/serviceContext";
+import { lightTheme } from "@/lib/serviceContext";
 import Hexagon from "@public/home/hexagonINDsights.svg";
 import TitleBrush from "@public/home/titieINDsights.svg";
 import { Linkedin } from "lucide-react";
@@ -230,11 +230,11 @@ export default async function BlogDetail({
         <div className="relative overflow-hidden rounded-2xl">
           <GradientFrame variant="v1" className="opacity-70" />
           <div className="relative z-10">
-            <ContactForm theme={defaultServiceTheme} />
+            <ContactForm theme={lightTheme} />
           </div>
         </div>
       </div>
-      <Footer theme={defaultServiceTheme} />
+      <Footer theme={lightTheme} />
     </main>
   );
 }
