@@ -125,7 +125,7 @@ export default function AboutUsPage() {
           empower aspiring entrepreneurs
         </p>
 
-        <div className="mt-12 space-y-16">
+        <div className="mt-12">
           {teamGroups.map((group) => (
             <div key={group.title} className="mx-auto max-w-6xl px-6">
               <h3 className="text-left text-xl font-semibold text-[#1B1B1F] md:text-2xl">
@@ -137,6 +137,7 @@ export default function AboutUsPage() {
                     key={m.name}
                     name={m.name}
                     role={m.role}
+                    linkedin={m.linkedin}
                     imageUrl={m.imageUrl}
                   />
                 ))}

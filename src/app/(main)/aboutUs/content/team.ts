@@ -2,6 +2,7 @@ export type TeamMember = {
   name: string;
   role: string;
   imageUrl: string;
+  linkedin?: string; // LinkedIn profile URL to be added by content editors
 };
 
 export type TeamGroup = {
@@ -14,30 +15,51 @@ export const teamGroups: TeamGroup[] = [
     title: "Promoters & Directors",
     members: [
       {
-        name: "A. Sharma",
-        role: "Promoter & Director",
-        imageUrl: "/members/Abhinath-Shinde.png",
+        name: "Abhinath Shinde",
+        role: "Co-Founder & Director",
+        imageUrl: "/members/promotersAndDirectors/Abhinath-Shinde.png",
+        linkedin: "https://www.linkedin.com/in/abhinath-shinde-0990aa178/",
       },
-      { name: "B. Verma", role: "Director", imageUrl: "/home/silhoutte.svg" },
+      {
+        name: "Smita Vishvjeet Thombare",
+        role: "Co-Founder & Director",
+        imageUrl: "/members/promotersAndDirectors/Smita-Vishvjeet-Thombare.png",
+        linkedin: "",
+      },
+      {
+        name: "Vishvjeet Thombre",
+        role: "Co-Founder & CEO",
+        imageUrl: "/members/promotersAndDirectors/Vishvjeet-Thombre.png",
+        linkedin: "https://www.linkedin.com/in/vishvjeetthombre/",
+      },
     ],
   },
   {
     title: "Founding Team Member",
     members: [
       {
-        name: "C. Gupta",
-        role: "Founding Engineer",
-        imageUrl: "/home/silhoutte.svg",
+        name: "Shankar Shahu Bhore",
+        role: "Executive Director & CEO",
+        imageUrl: "/members/founding/Shankar-Shahu-Bhore.png",
+        linkedin: "https://www.linkedin.com/in/shankar-bhore-514181263/",
       },
       {
-        name: "D. Patel",
-        role: "Founding Designer",
-        imageUrl: "/home/silhoutte.svg",
+        name: "Amit Tiwari",
+        role: "Executive Director",
+        imageUrl: "/members/founding/Amit-Tiwari.png",
+        linkedin: "",
       },
       {
-        name: "E. Rao",
-        role: "Founding Product",
-        imageUrl: "/home/silhoutte.svg",
+        name: "Amar Kurund",
+        role: "Executive Director",
+        imageUrl: "/members/founding/Amar-Kurund.png",
+        linkedin: "https://www.linkedin.com/in/amar-kurund-aaba37249/",
+      },
+      {
+        name: "Ajit Dhapate",
+        role: "Executive Director",
+        imageUrl: "/members/founding/Ajit-dhapate.png",
+        linkedin: "https://www.linkedin.com/in/ajit-dhapate-38543478/",
       },
     ],
   },
@@ -45,17 +67,29 @@ export const teamGroups: TeamGroup[] = [
     title: "Key Managerial Personnel",
     members: [
       {
-        name: "F. Iyer",
-        role: "Operations Lead",
-        imageUrl: "/home/silhoutte.svg",
+        name: "Sagayanathan Amalanathan",
+        role: "Group CTO",
+        imageUrl: "/members/keyManagerial/Sagayanathan-Amalanathan.png",
+        linkedin: "https://www.linkedin.com/in/sag0612/",
       },
-      { name: "G. Das", role: "Finance Lead", imageUrl: "/home/silhoutte.svg" },
       {
-        name: "H. Khan",
-        role: "Marketing Lead",
-        imageUrl: "/home/silhoutte.svg",
+        name: "Afsa Chorwadwala",
+        role: "Group CMO",
+        imageUrl: "/members/keyManagerial/Afsa-Chorwadwala.png",
+        linkedin: "https://www.linkedin.com/in/afsa-chorwadwala/",
       },
-      { name: "I. Roy", role: "HR Lead", imageUrl: "/home/silhoutte.svg" },
+      {
+        name: "Bharati Sonar",
+        role: "Group CHRO",
+        imageUrl: "/members/keyManagerial/Bharati-Sonar.png",
+        linkedin: "https://www.linkedin.com/in/bharati-sonar-507722a0/",
+      },
+      {
+        name: "Sakshi Chindak",
+        role: "Group Company Secretary",
+        imageUrl: "/members/keyManagerial/Sakshi-Chindak.png",
+        linkedin: "https://www.linkedin.com/in/cs-sakshi-chindak-428a83203/",
+      },
     ],
   },
 ];
