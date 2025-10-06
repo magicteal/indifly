@@ -13,22 +13,24 @@ const BharatSection = () => {
         <div className="flex flex-col items-center gap-12 md:flex-row">
           {/* Text Content */}
           <div className="text-center md:w-1/2 md:text-left">
-            <h2 className="text-4xl leading-tight font-bold md:text-3xl">
-              Creating platforms and ecosystems for{" "}
-              <span className="text-[#F56522]">mission-driven founders</span>{" "}
-              that cultivate brands bringing about{" "}
-              <span className="text-[#F56522]">digital inclusion</span> and{" "}
-              <span className="text-[#F56522]">transformative growth</span> in
-              the emerging regions of {/* Corrected Gradient for "Bharat" */}
-              <span className="bg-gradient-to-r from-[#FF9933] via-[#FFFFFF] to-[#138808] bg-clip-text text-6xl text-transparent">
+            <h2 className="text-4xl leading-tight md:text-3xl">
+              We create platforms and ecosystems for{" "}
+              <span className="bg-gradient-to-r from-[#E5BA9F] to-[#FFFFFF] bg-clip-text text-transparent">
+                mission-driven founders
+              </span>{" "}
+              that cultivate brands bringing about digital inclusion and
+              transformative growth in the emerging regions of
+              <br />
+              <span className="bg-gradient-to-r from-[#FF9933] via-[#FFFFFF] to-[#138808] bg-clip-text text-6xl font-bold text-transparent">
                 Bharat.
               </span>
             </h2>
             {/* Corrected Sub-heading */}
-            <p className="mt-8 text-4xl leading-tight font-bold md:text-3xl">
-              For the people, to the people, and by the people to build a
-              brighter,{" "}
-              <span className="text-[#F56522]">more equitable future.</span>
+            <p className="mt-8 text-4xl md:text-3xl">
+              We are a venture builder co-creating alongside founders in their
+              journey{" "}
+              <span className="font-semibold">from idea to industry</span> and{" "}
+              <span className="font-semibold">beyond.</span>
             </p>
           </div>
 
