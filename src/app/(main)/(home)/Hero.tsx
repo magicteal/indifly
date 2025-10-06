@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="relative aspect-[16/9] w-full overflow-hidden">
       {/* Video Background */}
       <video
         autoPlay
