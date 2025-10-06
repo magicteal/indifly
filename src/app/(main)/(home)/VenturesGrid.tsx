@@ -50,20 +50,22 @@ export default function VenturesGrid() {
 
           {/* Top-right: inCORE (orange) */}
           <div className="flex items-center justify-center rounded-2xl bg-[#F56522] p-6 shadow-lg">
-            <Image
-              src="/inCore.svg"
-              alt="inCORE"
-              width={160}
-              height={48}
-              className="object-contain"
-              priority
-            />
+            <Link href="/incore">
+              <Image
+                src="/inCore.svg"
+                alt="inCORE"
+                width={160}
+                height={48}
+                className="object-contain"
+                priority
+              />
+            </Link>
           </div>
 
           {/* Top-right: INDsights (blue) */}
           <div className="flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#1677FF] to-[#4AA3FF] p-6 shadow-lg">
             <h3 className="text-3xl font-bold tracking-tight text-white">
-              INDsights
+              <Link href="/blog">INDsights</Link>
             </h3>
           </div>
 
@@ -80,7 +82,7 @@ export default function VenturesGrid() {
           {/* Bottom-right: Get in Touch */}
           <div className="flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#FBF6F4] to-[#F6EFE9] p-6 text-center shadow-lg md:col-span-1">
             <Link
-              href="/contact"
+              href="#contact"
               className="text-2xl leading-snug font-extrabold text-black transition-colors hover:text-[#F56522] lg:text-3xl"
             >
               Get in <span className="text-[#F56522]">Touch →</span>
