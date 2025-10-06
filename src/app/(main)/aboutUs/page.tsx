@@ -2,10 +2,10 @@ import {
   BentoCard,
   BentoGrid,
 } from "@/app/(main)/aboutUs/components/BentoGrid";
+import { teamGroups } from "@/app/(main)/aboutUs/content/team";
 import { ContactForm } from "@/components/layout/ContactForm";
 import { Footer } from "@/components/layout/Footer";
 import Section from "@/components/section";
-import { teamGroups } from "@/data/team";
 import { defaultServiceTheme } from "@/lib/serviceContext";
 import aboutHero from "@public/aboutHero.png";
 import TitleBrush from "@public/home/titieINDsights.svg";
