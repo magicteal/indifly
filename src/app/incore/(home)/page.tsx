@@ -3,7 +3,8 @@ import TopBanner from "@/components/layout/TopBanner";
 import SectionHeader from "@/components/section-header";
 import { incoreServiceTheme } from "@/lib/serviceContext";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+// Hero artwork now uses SVG component import (responsive via ?flex query)
+import InCoreHero from "@public/inCore/inCoreHero.svg?flex";
 import Link from "next/link";
 import DecorativeBannerSection from "../../../components/DecorativeBannerSection";
 import { ContactForm } from "../../../components/layout/ContactForm";
@@ -26,7 +27,7 @@ export default function InCorePage() {
         <TopBanner variant="incore" />
       </div>
       <main className="min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-[#001631] pt-16 sm:pt-20 md:pt-28 lg:pt-36">
-        <Container size="2xl" className="mt-20 md:mt-24">
+        <Container>
           <div className="relative text-center">
             {/* Layered blur color blobs behind hero */}
             <div
@@ -62,17 +63,14 @@ export default function InCorePage() {
                 )}
               >
                 Integrated expertise for
-                <span className="font-bold"> startup success</span>
+                <p className="font-bold"> startup success</p>
               </h1>
 
-              <div className="mt-6 flex justify-center sm:mt-8">
-                <Image
-                  src="/incorehero2.png"
-                  alt="inCORE hero"
-                  width={900}
-                  height={500}
+              <div className="mt-10 flex justify-center sm:mt-14 md:mt-16">
+                <InCoreHero
                   className="h-auto w-full max-w-xl sm:max-w-2xl"
-                  priority
+                  role="img"
+                  aria-label="inCORE hero illustration"
                 />
               </div>
 
