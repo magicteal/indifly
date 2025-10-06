@@ -1,4 +1,7 @@
-import { BentoCard, BentoGrid } from "@/components/bento/BentoGrid";
+import {
+  BentoCard,
+  BentoGrid,
+} from "@/app/(main)/aboutUs/components/BentoGrid";
 import { ContactForm } from "@/components/layout/ContactForm";
 import { Footer } from "@/components/layout/Footer";
 import Section from "@/components/section";
@@ -13,6 +16,7 @@ import VenturesGridinCore from "@public/VenturesGridinCore.svg";
 import VenturesGridMan from "@public/VenturesGridMan.svg";
 import Image from "next/image";
 import GradientFrame from "../blog/gradient";
+import { JourneyTimeline } from "./components/JourneyTimeline";
 import { ProfileCard } from "./components/ProfileCard";
 
 export default function AboutUsPage() {
@@ -79,14 +83,39 @@ export default function AboutUsPage() {
         </div>
       </div>
 
+      {/* Title with brush stroke */}
+      <div className="my-10 flex w-full items-center justify-center">
+        <div className="relative">
+          <TitleBrush className="h-auto w-full" />
+          <div className="absolute inset-0 grid place-items-center">
+            <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl">
+              Our Sectors
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <p className="mx-auto text-center text-xl font-bold text-[#0B44FF]">
+        Our Journey
+      </p>
+      <p className="mx-auto mt-2 max-w-3xl px-6 text-center text-lg text-neutral-800">
+        Empowering communities through innovative solutions since 2017.
+      </p>
+
+      {/* Timeline Section */}
+      <section className="mt-8">
+        <JourneyTimeline />
+      </section>
+
       {/* Team Section */}
       <Section className="py-16 md:py-24">
-        <div className="mb-10 flex w-full items-center justify-center md:mb-14">
+        {/* Title with brush stroke */}
+        <div className="mb-10 flex w-full items-center justify-center">
           <div className="relative">
-            <TitleBrush className="h-auto w-[340px] md:w-[420px]" />
+            <TitleBrush className="h-auto w-full" />
             <div className="absolute inset-0 grid place-items-center">
-              <h2 className="lg:text- text-2xl font-bold text-white md:text-3xl">
-                Meet the team
+              <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl">
+                Meet the Team
               </h2>
             </div>
           </div>

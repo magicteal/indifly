@@ -73,7 +73,6 @@ const SectorsSection = () => {
         <motion.div className="text-center" variants={itemVariants}>
           {/* Title with brush stroke */}
           <div className="mb-10 flex w-full items-center justify-center">
-            {/* Brush */}
             <div className="relative">
               <TitleBrush className="h-auto w-full" />
               <div className="absolute inset-0 grid place-items-center">
