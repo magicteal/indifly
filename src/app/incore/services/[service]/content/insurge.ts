@@ -12,15 +12,15 @@ export const insurgeContent: ServiceContent = {
     ],
     steps: [
       {
-        title: "Discover",
+        title: "",
         description: "Deep dives into your market, brand, and audience.",
       },
       {
-        title: "Design",
+        title: "",
         description: "Campaigns, assets, and funnels that move the needle.",
       },
       {
-        title: "Deliver",
+        title: "",
         description: "Relentless execution with measurable outcomes.",
       },
     ],

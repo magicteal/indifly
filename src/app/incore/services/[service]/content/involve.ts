@@ -12,15 +12,15 @@ export const involveContent: ServiceContent = {
     ],
     steps: [
       {
-        title: "Discover",
+        title: "",
         description: "Understand business goals and talent needs.",
       },
       {
-        title: "Design",
+        title: "",
         description: "Structure policies, processes, and people strategy.",
       },
       {
-        title: "Deliver",
+        title: "",
         description: "Execute hiring, compliance, and culture initiatives.",
       },
     ],

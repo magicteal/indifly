@@ -49,7 +49,7 @@ export default function ApproachSection({
         <Cube className="absolute top-40 right-7 scale-30 rotate-12" />
 
         {/* heading */}
-        <div className="relative mb-5 pt-14 text-2xl font-semibold italic md:text-3xl">
+        <div className="relative mb-8 pt-14 text-2xl font-semibold italic md:text-3xl">
           <span className="mr-12">Our</span>
           <span className={`relative ${theme.text}`}>
             Approach
@@ -60,13 +60,13 @@ export default function ApproachSection({
         {/* dynamic description paragraphs */}
         <div className="mx-auto max-w-4xl px-6 text-center">
           {approach.description.map((p, i) => (
-            <p key={i} className="mt-4 text-base text-white/90">
+            <p key={i} className="mt-0 text-base text-white/90">
               {p}
             </p>
           ))}
         </div>
 
-        <div className="relative mt-12 mb-28">
+        <div className="relative mt-28 mb-32">
           {/* Approach Image */}
           {(() => {
             const ApproachImage = approachImages[serviceKey];
@@ -83,7 +83,7 @@ export default function ApproachSection({
                 >
                   {step.title}
                 </div>
-                <div className="max-w-48">{step.description}</div>
+                <div className="max-w-60">{step.description}</div>
               </div>
             );
           })}
@@ -99,27 +99,27 @@ const stepPositions: Record<string, string[]> = {
   _default: [
     "absolute -top-10 -left-23 text-right",
     "absolute -top-10 -right-23 text-left",
-    "absolute -bottom-20 left-1/2 w-48 -translate-x-1/2 text-center",
+    "absolute -bottom-20 left-1/2 -translate-x-1/2 text-center",
   ],
   // Per-service customizations
   insurge: [
-    "absolute -top-12 -left-20 text-right",
-    "absolute -top-8 -right-24 text-left",
-    "absolute -bottom-24 left-1/2 w-52 -translate-x-1/2 text-center",
+    "absolute -top-14 -left-20 text-right",
+    "absolute -top-14 -right-24 text-left",
+    "absolute -bottom-13 left-1/2 -translate-x-1/2 text-center",
   ],
   instack: [
-    "absolute -top-14 -left-25 text-right",
-    "absolute -top-6 -right-20 text-left",
-    "absolute -bottom-16 left-1/2 w-48 -translate-x-1/2 text-center",
+    "absolute -top-22 -left-20 text-right",
+    "absolute -top-22 -right-18 text-left",
+    "absolute -bottom-21 left-1/2  -translate-x-1/2 text-center",
   ],
   involve: [
-    "absolute -top-8 -left-22 text-right",
-    "absolute -top-12 -right-22 text-left",
-    "absolute -bottom-18 left-1/2 w-48 -translate-x-1/2 text-center",
+    "absolute -top-14 -left-18 text-right",
+    "absolute -top-14 -right-22 text-left",
+    "absolute -bottom-13 left-1/2 -translate-x-1/2 text-center",
   ],
   insure: [
-    "absolute -top-11 -left-21 text-right",
-    "absolute -top-9 -right-21 text-left",
-    "absolute -bottom-22 left-1/2 w-48 -translate-x-1/2 text-center",
+    "absolute -top-22 -left-21 text-right",
+    "absolute -top-22 -right-21 text-left",
+    "absolute -bottom-21 left-1/2 -translate-x-1/2 text-center",
   ],
 };
