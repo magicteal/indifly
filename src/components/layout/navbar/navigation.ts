@@ -13,7 +13,7 @@ export interface SiteConfig {
 export const indiflyNavConfig: SiteConfig = {
   name: "indifly",
   navItems: [
-    { href: "#our-portfolio", label: "Our Portfolio" },
+    { href: "/#our-portfolio", label: "Our Portfolio" },
     { href: "/incore", label: "inCORE" },
     { href: "/blog", label: "INDsights" },
     { href: "/aboutUs", label: "About us" },
@@ -27,7 +27,7 @@ export const incoreNavConfig: SiteConfig = {
   navItems: [
     { href: "/incore#services", label: "Services" },
     { href: "/aboutUs", label: "About Indifly Ventures" },
-    { href: "/incore#contact", label: "Contact" },
+    { href: "#contact", label: "Contact" },
   ],
 };
 
