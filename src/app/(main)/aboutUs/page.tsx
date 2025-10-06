@@ -1,7 +1,3 @@
-import {
-  BentoCard,
-  BentoGrid,
-} from "@/app/(main)/aboutUs/components/BentoGrid";
 import { teamGroups } from "@/app/(main)/aboutUs/content/team";
 import { ContactForm } from "@/components/layout/ContactForm";
 import { Footer } from "@/components/layout/Footer";
@@ -9,13 +5,11 @@ import Section from "@/components/section";
 import { defaultServiceTheme } from "@/lib/serviceContext";
 import aboutHero from "@public/aboutHero.png";
 import TitleBrush from "@public/home/titieINDsights.svg";
-import IndianMap from "@public/indianMap.svg";
-import VenturesGridBG from "@public/VenturesGridBG.svg";
-import VenturesGridBox from "@public/VenturesGridBox.svg";
-import VenturesGridinCore from "@public/VenturesGridinCore.svg";
-import VenturesGridMan from "@public/VenturesGridMan.svg";
+// Collage imports moved into CompanyCollage component
+// Collage assets now imported within CompanyCollage component
 import Image from "next/image";
 import GradientFrame from "../blog/gradient";
+import { CompanyCollage } from "./CompanyCollage";
 import { JourneyTimeline } from "./components/JourneyTimeline";
 import { ProfileCard } from "./components/ProfileCard";
 
@@ -147,52 +141,7 @@ export default function AboutUsPage() {
         </div>
       </Section>
 
-      {/* Company Collage (Bento Grid) */}
-      <Section className="py-12 md:py-16">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold text-[#1B1B1F] md:text-2xl">
-              Company Collage
-            </h3>
-            <p className="text-sm text-[#3C3C3C]">
-              Snapshots from our journey and the ecosystem we are building.
-            </p>
-          </div>
-
-          <BentoGrid>
-            <BentoCard
-              id="map"
-              className="h-[220px] sm:col-span-2 lg:col-span-2"
-              title="Building across Bharat"
-              image={<IndianMap className="h-full w-full" />}
-            />
-            <BentoCard
-              id="incore"
-              className="h-[460px] lg:row-span-2"
-              title="inCORE"
-              image={<VenturesGridinCore className="h-full w-full" />}
-            />
-            <BentoCard
-              id="bg"
-              className="h-[220px]"
-              title="Ventures"
-              image={<VenturesGridBG className="h-full w-full" />}
-            />
-            <BentoCard
-              id="people"
-              className="h-[220px] sm:col-span-2"
-              title="People first"
-              image={<VenturesGridMan className="h-full w-full" />}
-            />
-            <BentoCard
-              id="box"
-              className="h-[220px]"
-              title="Product & Design"
-              image={<VenturesGridBox className="h-full w-full" />}
-            />
-          </BentoGrid>
-        </div>
-      </Section>
+      <CompanyCollage />
 
       <div className="relative overflow-hidden">
         <div className="relative overflow-hidden rounded-2xl">
