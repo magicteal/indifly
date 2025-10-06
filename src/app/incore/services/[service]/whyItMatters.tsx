@@ -64,7 +64,7 @@ export default function WhyItMatters({
         </div>
 
         {/* Card */}
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
+        <div className="flex flex-row justify-center">
           {/* Left: stacked list */}
           <div className="flex flex-col gap-4">
             {whyItMatters.challenges.map((ch, i) => (
