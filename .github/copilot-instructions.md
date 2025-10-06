@@ -43,6 +43,33 @@ Purpose: Give an AI immediate, correct context to add/modify features safely in 
 - SVG imports become React components by default (SVGR configured in `next.config.ts`). Append `?url` only when you must pass a file path to `<Image>` or CSS. E.g. `import Icon from "@public/inCore.svg"; <Icon />` vs `import mapUrl from "@public/indianMap.svg?url";`.
 - Keep new service/microsite images under logical folders (`public/home`, `public/inCore/...`). Reuse existing naming patterns (camelCase base, no spaces).
 
+#### SVG sizing variants (selective responsive control)
+
+We support three import modes for SVGs:
+
+1. Component (default): `import Art from "@public/inCore/hero/involveHero.svg";` → Retains intrinsic `width`/`height` exported by design tool.
+2. URL: `import artUrl from "@public/inCore/hero/involveHero.svg?url";` → Returns a file URL for `<Image>` or CSS `background-image`.
+3. Flex/Responsive (dimensionless): `import ArtFlex from "@public/inCore/hero/involveHero.svg?flex";` → Uses SVGR with `removeDimensions`, stripping `width`/`height` so Tailwind classes can control sizing (`w-... h-auto`). Only apply `?flex` to artwork that must resize (e.g. hero illustrations) to avoid suddenly scaling icons globally.
+
+Example (hero):
+
+```tsx
+import HeroArt from "@public/inCore/hero/insurgeHero.svg?flex";
+<HeroArt className="h-auto w-full max-w-[640px]" />;
+```
+
+If an SVG still clips when resized, ensure it has a correct `viewBox` and no unnecessary `<clipPath>` masking the full canvas. For persistent issues, manually remove `width`/`height` from the source file and add `overflow="visible"`.
+
+#### Dev bundler note
+
+Development now runs with classic webpack (not Turbopack). The `?flex` query behavior is implemented via the webpack rule in `next.config.ts`. If you ever need to force webpack explicitly (in case config changes), set:
+
+```powershell
+$env:NEXT_DISABLE_TURBOPACK=1; npm run dev
+```
+
+Avoid adding new SVG handling elsewhere—extend the existing rule instead.
+
 ### Scripts / Tooling
 
 - Dev: `npm run dev` (Turbopack). Production: `npm run build` then `npm start`.
