@@ -3,11 +3,11 @@
 
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
+import TitleBrush from "@public/home/titieINDsights.svg";
 import { easeOut, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
-import BrushStroke from "../../../components/BrushStroke";
 import { ourSectors } from "./sectorsContent";
 
 const SectorsSection = () => {
@@ -61,7 +61,7 @@ const SectorsSection = () => {
 
   return (
     <motion.section
-      className="bg-white py-20 text-black"
+      className="mt-24 bg-white text-black"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
@@ -69,14 +69,21 @@ const SectorsSection = () => {
     >
       <Container className="relative">
         {/* Header */}
-        <motion.div className="mb-12 text-center" variants={itemVariants}>
-          <div className="pointer-events-none absolute -top-30 left-1/2 -translate-x-1/2 select-none">
-            <div className="h-auto w-[550px]">
-              <BrushStroke />
+        <motion.div className="text-center" variants={itemVariants}>
+          {/* Title with brush stroke */}
+          <div className="mb-10 flex w-full items-center justify-center">
+            {/* Brush */}
+            <div className="relative">
+              <TitleBrush className="h-auto w-full" />
+              <div className="absolute inset-0 grid place-items-center">
+                <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl">
+                  Our Sectors
+                </h2>
+              </div>
             </div>
           </div>
 
-          <p className="mt-24 text-xl text-gray-700">
+          <p className="text-xl text-gray-700">
             Integrated, Inclusive & Innovative
           </p>
           <p className="mx-auto mt-2 max-w-3xl text-lg text-gray-500">
@@ -87,7 +94,7 @@ const SectorsSection = () => {
 
         {/* Category Tabs */}
         <motion.div
-          className="mb-6 flex justify-center"
+          className="mt-6 mb-6 flex justify-center"
           variants={itemVariants}
         >
           <div className="flex flex-wrap gap-3 p-1">
@@ -108,17 +115,18 @@ const SectorsSection = () => {
         </motion.div>
 
         {/* Active sector content */}
-        <div className="flex flex-col items-center gap-12 md:flex-row">
-          {/* Left Side: Text Content */}
-          <div
-            className="space-y-6 rounded-l-lg p-8"
-            style={{
-              background:
-                "linear-gradient(73.45deg, #FECCB2 0%, rgba(254,204,178,0.75) 28%, rgba(254,204,178,0.38) 48%, rgba(254,204,178,0.15) 63%, #FFFFFF 78%, #FFFFFF 100%)",
-            }}
-          >
+        {/* Text + Image wrapper */}
+        <div
+          className="flex flex-col overflow-hidden rounded-lg md:flex-row md:items-stretch"
+          style={{
+            background:
+              "linear-gradient(73.45deg, #FECCB2 0%, rgba(254,204,178,0.75) 28%, rgba(254,204,178,0.38) 48%, rgba(254,204,178,0.15) 63%, #FFFFFF 78%, #FFFFFF 100%)",
+          }}
+        >
+          {/* Text Content */}
+          <div className="w-full p-6 md:w-3/5 md:p-8">
             {/* Sector (brand) tabs inside selected category */}
-            <div className="flex justify-start gap-2">
+            <div className="flex flex-wrap gap-2 overflow-x-auto pb-2">
               {currentCategory.sectors.map((sector) => {
                 const selected = sector.name === currentSector.name;
                 return (
@@ -128,7 +136,7 @@ const SectorsSection = () => {
                     className={
                       selected
                         ? "rounded-md border bg-secondary px-3 py-1 text-xs font-semibold text-white"
-                        : "rounded-md border !border-secondary px-3 py-1 text-xs font-semibold text-secondary"
+                        : "rounded-md border !border-secondary px-3 py-1 text-xs font-semibold text-secondary hover:bg-secondary/10"
                     }
                     aria-pressed={selected}
                   >
@@ -139,41 +147,51 @@ const SectorsSection = () => {
             </div>
             <motion.div
               key={`${activeCategory}-${currentSector.name}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
             >
-              <div className="text-md mt-1 mb-1 font-semibold text-secondary">
+              <div className="text-md mt-3 mb-2 font-semibold text-secondary">
                 {currentSector.focusArea}
               </div>
-              <h3 className="text-2xl leading-tight text-gray-600">
+              <h3 className="text-2xl leading-tight text-gray-700">
                 {currentSector.description[0]}
               </h3>
-              <p className="text-gray-600">{currentSector.description[1]}</p>
-              <ul className="mt-4 font-medium text-gray-700">
+              <p className="mt-2 text-gray-600">
+                {currentSector.description[1]}
+              </p>
+              <ul className="mt-4 space-y-1 font-medium text-gray-700">
                 {currentSector.bulletPoints.map((point) => (
-                  <li key={point}>• &nbsp;{point}</li>
+                  <li key={point} className="flex">
+                    <span className="mr-2" aria-hidden>
+                      •
+                    </span>
+                    <span>{point}</span>
+                  </li>
                 ))}
               </ul>
-              <div className="mt-12 flex items-center space-x-4">
-                <Button size="lg" className="rounded-full">
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Button size="lg" className="min-w-[160px] rounded-full">
                   {currentSector.actions === "Install App"
                     ? "Install the App"
                     : currentSector.actions}
                 </Button>
-                <Button size={"lg"} variant={"outline"}>
+                <Button size="lg" variant="outline" className="rounded-full">
                   Explore More <FiArrowRight />
                 </Button>
               </div>
             </motion.div>
           </div>
-          {/* Right Side: Image Placeholders (common across sectors) */}
-          <div className="relative h-96 shrink-0 md:w-2/5">
+          {/* Image (placed after text so it appears below on mobile) */}
+          <div className="flex w-full items-center justify-center self-end md:w-2/5">
             <Image
               src="/home/ourSectors.png"
-              alt="Sector Illustration"
-              fill
-              className="object-cover"
+              alt="Brands across sectors illustration"
+              width={640}
+              height={640}
+              priority
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="h-auto max-h-80 w-full object-contain md:max-h-none"
             />
           </div>
         </div>
