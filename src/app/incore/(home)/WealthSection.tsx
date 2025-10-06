@@ -2,7 +2,6 @@
 
 import Section from "@/components/section";
 import SectionHeader from "@/components/section-header";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -64,7 +63,7 @@ export default function WealthSection() {
   const content = contentByTab[active];
   return (
     <Section className="py-20">
-      <SectionHeader label="What Compromises" title="InCORE" />
+      <SectionHeader label="What Comprises" title="InCORE" />
 
       <div className="relative mt-12 flex flex-col gap-6 overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 shadow-inner ring-1 ring-white/10 backdrop-blur-xl backdrop-saturate-150 sm:rounded-3xl sm:p-6 md:flex-row md:gap-8 md:rounded-[5rem] md:p-10">
         {/* Left Pills */}
@@ -111,12 +110,12 @@ export default function WealthSection() {
               ))}
             </ul>
 
-            <Button
+            {/* <Button
               variant="outline"
               className="mt-6 rounded-full border-2 border-white px-6 py-3 text-base text-white shadow-[0_0_16px_rgba(255,255,255,0.2)] transition-shadow hover:bg-white/10 hover:shadow-[0_0_24px_rgba(255,255,255,0.35)] md:px-7 md:py-5 md:text-lg"
             >
               Explore More →
-            </Button>
+            </Button> */}
           </CardContent>
           <div className="pointer-events-none hidden select-none md:block">
             {/* Big bottom-right circle */}

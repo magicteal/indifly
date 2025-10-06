@@ -17,7 +17,7 @@ export default function IncoreLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const incoreLogo = (
     <Link href="/incore">
-      <Image src="/incorelogo.png" alt="inCORE Logo" width={100} height={40} />
+      <Image src="/incorelogo2.png" alt="inCORE Logo" width={100} height={40} />
     </Link>
   );
 

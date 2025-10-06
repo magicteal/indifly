@@ -24,7 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ logo, navItems }) => {
   return (
     <nav className="fixed top-0 left-0 z-[60] w-full font-sans md:top-14">
       <div className="mx-auto max-w-7xl px-0 md:px-4 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between border-b border-white bg-white/10 px-4 backdrop-blur-lg md:rounded-xl md:border md:border-white md:px-6">
+        <div className="relative flex h-16 items-center justify-between border-b border-white bg-white/30 px-4 backdrop-blur-lg md:rounded-xl md:border md:border-white md:px-6">
           {/* Mobile Hamburger Menu Button  */}
           <div className="md:hidden">
             <Button
@@ -53,7 +53,7 @@ const Navbar: React.FC<NavbarProps> = ({ logo, navItems }) => {
               <Link
                 key={item.label}
                 href={item.href}
-                className="group relative text-sm font-medium text-gray-300 transition-colors hover:text-white"
+                className="group text-md relative font-medium text-gray-900 transition-colors hover:text-gray-800"
               >
                 <span className="relative">
                   {item.label}
