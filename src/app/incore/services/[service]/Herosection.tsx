@@ -2,20 +2,40 @@
 
 import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
-import type { ServiceTheme } from "@/lib/serviceContext";
-import Image from "next/image";
+import type { ServiceKey, ServiceTheme } from "@/lib/serviceContext";
+import InstackHero from "@public/inCore/hero/instackHero.svg";
+import InsureHero from "@public/inCore/hero/insureHero.svg";
+import InsurgeHero from "@public/inCore/hero/insurgeHero.svg";
+import InvolveHero from "@public/inCore/hero/involveHero.svg";
 import Link from "next/link";
 
 interface HeroSectionProps {
   theme: ServiceTheme;
   hero: { text: [string, string, string]; button: string };
-  service: string;
+  service: ServiceKey;
 }
 
-export default function HeroSection({ theme, hero }: HeroSectionProps) {
+export default function HeroSection({
+  theme,
+  hero,
+  service,
+}: HeroSectionProps) {
+  // Map service key to its hero SVG component once (tree-shake friendly)
+  const heroMap: Record<
+    ServiceKey,
+    React.ComponentType<React.SVGProps<SVGSVGElement>>
+  > = {
+    insurge: InsurgeHero,
+    instack: InstackHero,
+    involve: InvolveHero,
+    insure: InsureHero,
+  };
+
+  const HeroArt = heroMap[service];
+
   return (
     <section className="relative overflow-hidden">
-      <Container className="mt-16 mb-24 flex flex-col items-center justify-between md:mt-56 md:flex-row">
+      <Container className="mt-16 mb-24 flex flex-col items-center justify-between gap-24 md:mt-56 md:flex-row">
         {/* Left copy block */}
         <div className="relative z-10">
           <div className="text-2xl font-bold tracking-wide">
@@ -39,14 +59,13 @@ export default function HeroSection({ theme, hero }: HeroSectionProps) {
         </div>
 
         {/* Right artwork card */}
-        <div className="relative z-10">
-          <Image
-            src="/inCore/inCoreServiceHero.png"
-            alt="Hero"
-            width={592}
-            height={333}
+        {HeroArt && (
+          <HeroArt
+            className="shrink-0"
+            role="img"
+            aria-label={`${service} service hero artwork`}
           />
-        </div>
+        )}
       </Container>
     </section>
   );
