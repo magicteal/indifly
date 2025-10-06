@@ -38,9 +38,9 @@ export default function CoreOfferings({
   const gradientClass = gradientBgMap[service] || gradientBgMap.insurge;
 
   return (
-    <Container className="mt-36">
+    <Container className="mt-24">
       <div
-        className="relative rounded-4xl"
+        className="relative rounded-4xl p-8"
         style={{
           backgroundImage: `url('/inCore/cardGradient/${service}CardGradient.png')`,
           backgroundSize: "cover",
@@ -48,7 +48,7 @@ export default function CoreOfferings({
         }}
       >
         {/* decorative cube */}
-        <Cube className="absolute -top-40 left-75 scale-30 rotate-12" />
+        <Cube className="absolute -top-40 left-75 hidden scale-30 rotate-12 md:block" />
 
         {/* heading */}
         <div className="relative mb-15 pt-14 text-center text-2xl font-semibold italic md:mb-24 md:text-3xl">
@@ -64,14 +64,16 @@ export default function CoreOfferings({
           <ActiveContext.Provider
             value={{ active, setActive, items: offerings.offerings }}
           >
-            <div className="relative flex flex-col justify-center gap-6 pb-24 md:flex-row">
+            <div className="relative mx-auto flex w-full max-w-5xl flex-col justify-center gap-6 pb-24 md:flex-row md:items-start">
               {/* left rail: offerings list */}
-              <OfferingsList />
+              <div className="w-full md:w-auto md:flex-shrink-0">
+                <OfferingsList />
+              </div>
 
               {/* right card */}
               <div
                 className={cn(
-                  "relative w-[60%] overflow-hidden rounded-[28px] p-8 sm:p-10 md:p-12",
+                  "relative w-full overflow-hidden rounded-[28px] p-6 sm:p-8 md:min-h-[380px] md:flex-1 md:p-12",
                   gradientClass,
                 )}
               >
@@ -122,7 +124,7 @@ function OfferingsList() {
   if (!theme) return null;
 
   return (
-    <ul className="flex flex-col items-end gap-4">
+    <ul className="flex w-full flex-col gap-4 md:w-auto md:items-end">
       {items.map((item, idx) => {
         const isActive = idx === active;
         const variant = isActive
@@ -137,7 +139,11 @@ function OfferingsList() {
           <li key={item.name}>
             <Button
               variant={variant}
-              className={!isActive ? "font-light" : ""}
+              className={cn(
+                "justify-start md:justify-center",
+                !isActive && "w-full font-light",
+                isActive && "w-full md:w-auto",
+              )}
               size="lg"
               onClick={() => setActive(idx)}
               aria-pressed={isActive}
