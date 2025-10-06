@@ -117,15 +117,18 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
               >
                 Let&apos;s Talk
               </h2>
-              <p className="max-w-md text-base text-gray-300 sm:text-lg">
+              <p
+                className={`max-w-md text-base ${theme.textForeground} sm:text-lg`}
+              >
                 Reach out to us with your queries, suggestions and applications.
                 We’d be happy to explore the next growth opportunity!
               </p>
               <div className="space-y-6 pt-4">
                 <div className="flex items-center gap-4">
                   <MapPin className={`h-5 w-5 sm:h-6 sm:w-6 ${theme.text}`} />
-                  <span className="text-lg">
-                    4074 Ebert Summit Suite 375 <br /> Lake Leonardchester
+                  <span className={`text-lg ${theme.textForeground}`}>
+                    Office No. 412, 4th Floor, Tower 2, World Trade Center,
+                    Kharadi, Pune, Maharashtra 411014
                   </span>
                 </div>
               </div>
