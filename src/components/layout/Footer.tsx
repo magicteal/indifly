@@ -11,22 +11,26 @@ import { footerLinkGroups } from "./footerLinks";
 
 export const Footer = ({ theme }: { theme: ServiceTheme }) => {
   // Map for non-default, non-incore faint headline colors
-  const faintMap: Record<"insurge" | "instack" | "involve" | "insure", string> =
-    {
-      insurge: "text-insurge/10",
-      instack: "text-instack/10",
-      involve: "text-involve/10",
-      insure: "text-insure/10",
-    };
+  const faintMap: Record<
+    "insurge" | "instack" | "involve" | "insure" | "light",
+    string
+  > = {
+    insurge: "text-insurge/10",
+    instack: "text-instack/10",
+    involve: "text-involve/10",
+    insure: "text-insure/10",
+    light: "text-[#FFE9E9]",
+  };
 
   let faint: string;
   if (theme.service === "default")
     faint = "text-[#021D41]"; // custom default tint
   else if (theme.service === "incore")
     faint = "text-[#071B36]"; // incore variant
-  else faint = faintMap[theme.service];
+  else faint = faintMap[theme.service as keyof typeof faintMap];
 
-  const isServiceTheme = theme.service !== "default"; // any real service (insurge, instack, involve, insure, incore)
+  const isServiceTheme =
+    theme.service !== "default" && theme.service !== "light"; // exclude light theme from service branding
 
   return (
     <footer className="relative overflow-hidden font-sans text-white">
@@ -37,7 +41,13 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
           <div className="max-w-md">
             <div className="mb-6 flex items-center gap-3">
               <Image
-                src={isServiceTheme ? "/incorelogo2.png" : "/indiflyLogo2.svg"}
+                src={
+                  isServiceTheme
+                    ? "/incorelogo2.png"
+                    : theme.service === "light"
+                      ? "/indiflyLogo.svg"
+                      : "/indiflyLogo2.svg"
+                }
                 alt={isServiceTheme ? "inCORE" : "IndiFly"}
                 width={isServiceTheme ? 240 : 210}
                 height={70}
@@ -45,11 +55,15 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
                 className="h-auto w-[210px] md:w-[240px]"
               />
             </div>
-            <h2 className="text-xl leading-snug font-extrabold md:text-2xl">
+            <h2
+              className={`text-xl leading-snug ${theme.textForeground} font-extrabold md:text-2xl`}
+            >
               Building <span className={theme.text}>Ventures,</span> Building
               <span className={theme.text}> Nation.</span>
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-gray-300/90 md:text-[0.9rem]">
+            <p
+              className={`mt-4 text-sm leading-relaxed ${theme.textForeground} md:text-[0.9rem]`}
+            >
               A venture builder empowering mission-driven founders with
               resources, functional expertise and strategic partnerships to{" "}
               <span className={`font-semibold italic ${theme.text}`}>
@@ -57,17 +71,21 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
               </span>
             </p>
             <div className="mt-8">
-              <p className="mb-3 text-xs font-medium tracking-wide text-gray-400 uppercase">
+              <p
+                className={`mb-3 text-xs font-medium tracking-wide ${theme.textForeground} uppercase`}
+              >
                 Connect with us:
               </p>
-              <ul className="flex flex-wrap items-center gap-4 text-lg text-gray-300/80">
+              <ul
+                className={`flex flex-wrap items-center gap-4 text-lg ${theme.textForeground}`}
+              >
                 <li>
                   <a
                     href="https://in.linkedin.com/company/indifly-ventures"
                     aria-label="LinkedIn"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors hover:text-white"
+                    className="transition-colors"
                   >
                     <IoLogoLinkedin />
                   </a>
@@ -78,7 +96,7 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
                     aria-label="X / Twitter"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors hover:text-white"
+                    className="transition-colors"
                   >
                     <IoLogoTwitter />
                   </a>
@@ -89,7 +107,7 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
                     aria-label="Facebook"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors hover:text-white"
+                    className="transition-colors"
                   >
                     <IoLogoFacebook />
                   </a>
@@ -100,7 +118,7 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
                     aria-label="Instagram"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors hover:text-white"
+                    className="transition-colors"
                   >
                     <IoLogoInstagram />
                   </a>
@@ -116,12 +134,10 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
                 <h3 className={`mb-4 text-lg font-bold ${theme.text}`}>
                   {group.heading}
                 </h3>
-                <ul className="space-y-3 text-gray-300/80">
+                <ul className={`space-y-3 ${theme.textForeground}`}>
                   {group.links.map((link) => (
                     <li key={link.href + link.label}>
-                      <a href={link.href} className="hover:text-white">
-                        {link.label}
-                      </a>
+                      <a href={link.href}>{link.label}</a>
                     </li>
                   ))}
                 </ul>

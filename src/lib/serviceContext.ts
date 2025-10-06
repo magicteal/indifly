@@ -9,7 +9,8 @@ export type ServiceType =
   | "instack"
   | "involve"
   | "insure"
-  | "incore";
+  | "incore"
+  | "light"; // lightweight non-content key for light themed pages (About)
 export type ContentfulService = Exclude<ServiceType, "incore">;
 
 export interface ServiceTheme {
@@ -54,6 +55,27 @@ export const defaultServiceTheme: ServiceTheme = {
 export const incoreServiceTheme: ServiceTheme = {
   ...defaultServiceTheme,
   service: "incore",
+};
+
+// About page custom theme: uses strong orange accent for headings while ensuring footer/contact legibility
+// Not a service, so keep button variants default; we provide explicit text + background utility classes.
+export const lightTheme: ServiceTheme = {
+  service: "light",
+  text: "text-primary", // vivid orange accent for key headings
+  textForeground: "text-neutral-700",
+  bg: "bg-white",
+  bgAccent: "bg-[#FFF4EE]", // soft tint background blocks if needed
+  bgForeground: "bg-neutral-900",
+  border: "border-neutral-200",
+  borderAccent: "border-[#F56522]",
+  gradientFrom: "from-[#F56522]",
+  gradientTo: "to-[#FF915C]",
+  gradientFromAccent: "from-[#FF915C]",
+  buttonVariant: "default",
+  buttonSecondaryVariant: "secondary",
+  cssVar: "#F56522",
+  cssVarForeground: "#111827",
+  cssVarAccent: "#FF915C",
 };
 
 export type ServiceKey = "insurge" | "instack" | "involve" | "insure";

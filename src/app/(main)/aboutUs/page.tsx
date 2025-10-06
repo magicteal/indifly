@@ -2,7 +2,7 @@ import { teamGroups } from "@/app/(main)/aboutUs/content/team";
 import { ContactForm } from "@/components/layout/ContactForm";
 import { Footer } from "@/components/layout/Footer";
 import Section from "@/components/section";
-import { defaultServiceTheme } from "@/lib/serviceContext";
+import { lightTheme } from "@/lib/serviceContext";
 import aboutHero from "@public/aboutHero.png";
 import TitleBrush from "@public/home/titieINDsights.svg";
 // Collage imports moved into CompanyCollage component
@@ -147,11 +147,11 @@ export default function AboutUsPage() {
         <div className="relative overflow-hidden rounded-2xl">
           <GradientFrame variant="v1" className="opacity-40" />
           <div className="relative z-10">
-            <ContactForm theme={defaultServiceTheme} />
+            <ContactForm theme={lightTheme} />
           </div>
         </div>
       </div>
-      <Footer theme={defaultServiceTheme} />
+      <Footer theme={lightTheme} />
     </main>
   );
 }
