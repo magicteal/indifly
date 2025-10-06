@@ -4,6 +4,7 @@
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 import { easeOut, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import BrushStroke from "../../../components/BrushStroke";
@@ -110,10 +111,10 @@ const SectorsSection = () => {
         <div className="flex flex-col items-center gap-12 md:flex-row">
           {/* Left Side: Text Content */}
           <div
-            className="space-y-6 rounded-l-lg p-8 md:w-2/3"
+            className="space-y-6 rounded-l-lg p-8"
             style={{
               background:
-                "linear-gradient(73.45deg, #FECCB2 0%, #FFFFFF 110.01%)",
+                "linear-gradient(73.45deg, #FECCB2 0%, rgba(254,204,178,0.75) 28%, rgba(254,204,178,0.38) 48%, rgba(254,204,178,0.15) 63%, #FFFFFF 78%, #FFFFFF 100%)",
             }}
           >
             {/* Sector (brand) tabs inside selected category */}
@@ -167,15 +168,13 @@ const SectorsSection = () => {
             </motion.div>
           </div>
           {/* Right Side: Image Placeholders (common across sectors) */}
-          <div className="relative h-96 md:w-1/3">
-            <div className="absolute right-0 bottom-0 flex h-80 w-80 items-center justify-center rounded-lg bg-gray-200 shadow-lg">
-              <p className="text-gray-500">Person Image</p>
-            </div>
-            <div className="absolute top-0 right-10 flex h-24 w-40 items-center justify-center rounded-lg bg-blue-500 shadow-lg">
-              <p className="text-white">UPI Image</p>
-            </div>
-            <div className="absolute top-10 left-0 h-20 w-32 rounded-lg bg-gray-300 shadow-lg" />
-            <div className="absolute right-72 bottom-10 h-20 w-32 rounded-lg bg-gray-400 shadow-lg" />
+          <div className="relative h-96 shrink-0 md:w-2/5">
+            <Image
+              src="/home/ourSectors.png"
+              alt="Sector Illustration"
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
       </Container>
