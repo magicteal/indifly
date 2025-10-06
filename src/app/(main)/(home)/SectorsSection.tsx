@@ -83,8 +83,9 @@ const SectorsSection = () => {
             </div>
           </div>
 
-          <p className="text-xl text-gray-700">
-            Integrated, Inclusive & Innovative
+          <p className="text-xl font-bold text-primary">
+            Integrated, <span className="text-[#0252D4]">Inclusive</span> &
+            Innovative
           </p>
           <p className="mx-auto mt-2 max-w-3xl text-lg text-gray-500">
             Equipping diverse brands in multiple sectors with essential
