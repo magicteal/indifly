@@ -8,9 +8,9 @@ import { FiArrowRight } from "react-icons/fi";
 import BrushStroke from "../../../components/BrushStroke"; // Import the new SVG component
 
 const SectorsSection = () => {
-  const [activeTab, setActiveTab] = useState("Indipe");
+  const [activeTab, setActiveTab] = useState("Payments");
 
-  const tabs = ["Indipe", "Indiconnect", "IndiNXT"];
+  const tabs = ["Payments", "Financial Services", "ONDC Logistics"];
 
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -61,16 +61,16 @@ const SectorsSection = () => {
           className="mb-12 flex justify-center"
           variants={itemVariants}
         >
-          <div className="flex space-x-1 rounded-full bg-gray-100 p-1">
+          <div className="flex gap-5 p-1">
             {tabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`${
                   activeTab === tab
-                    ? "bg-orange-500 text-white"
-                    : "text-gray-600 hover:bg-gray-200"
-                } rounded-full px-6 py-2 text-sm font-semibold transition-colors duration-300 focus:outline-none`}
+                    ? "bg-[#0B44FF] text-white"
+                    : "bg-accent text-secondary hover:bg-gray-200"
+                } rounded-lg px-6 py-2 text-sm font-semibold transition-colors duration-300 focus:outline-none`}
               >
                 {tab}
               </button>
@@ -80,9 +80,9 @@ const SectorsSection = () => {
 
         {/* Tab Content */}
         <div>
-          {activeTab === "Indipe" && (
+          {activeTab === "Payments" && (
             <motion.div
-              key="indipe"
+              key="payments"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
@@ -97,15 +97,21 @@ const SectorsSection = () => {
                 }}
               >
                 <div className="flex space-x-2">
-                  <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800">
-                    Wealth tech
+                  {/* (selected) */}
+                  <span className="rounded-md border bg-secondary px-3 py-1 text-xs font-semibold text-white">
+                    Indipe
                   </span>
-                  <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-800">
-                    Financial Services
+                  {/* (unselected) */}
+                  <span className="rounded-md border !border-secondary px-3 py-1 text-xs font-semibold text-secondary">
+                    IndiConnect
                   </span>
-                  <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-800">
-                    Payments
+                  <span className="rounded-md border !border-secondary px-3 py-1 text-xs font-semibold text-secondary">
+                    IndiNXT
                   </span>
+                </div>
+
+                <div className="text-md mt-4 mb-1 font-semibold text-secondary">
+                  Wealth Management
                 </div>
                 <h3 className="text-3xl leading-tight font-bold text-gray-900">
                   Seamless wealth creation and digital payments for all
@@ -164,7 +170,7 @@ const SectorsSection = () => {
               </div>
             </motion.div>
           )}
-          {activeTab !== "Indipe" && (
+          {activeTab !== "Payments" && (
             <div className="py-12 text-center">
               <p className="text-gray-500">
                 Content for {activeTab} will be here.
