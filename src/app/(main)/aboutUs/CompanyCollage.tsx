@@ -25,7 +25,7 @@ const collageImages: string[] = [
 
 export function CompanyCollage() {
   return (
-    <Section className="py-12 md:py-16">
+    <Section id="company-collage" className="py-12 md:py-16">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-6">
           <h3 className="text-xl font-semibold text-[#1B1B1F] md:text-2xl">

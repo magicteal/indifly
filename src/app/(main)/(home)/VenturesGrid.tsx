@@ -39,7 +39,7 @@ export default function VenturesGrid() {
               <div>
                 {/* Link used directly (no nested anchor) */}
                 <Link
-                  href="/ventures"
+                  href="#our-portfolio"
                   className="mt-6 inline-block rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
                 >
                   Know More <span aria-hidden>→</span>
@@ -72,10 +72,10 @@ export default function VenturesGrid() {
           {/* Bottom-left of right column: Become our Partner */}
           <div className="flex items-center justify-center rounded-2xl bg-gradient-to-r from-white/70 to-sky-100/70 p-6 text-center shadow-lg backdrop-blur-md md:col-span-1">
             <Link
-              href="/partner"
+              href="/aboutUs#company-collage"
               className="text-2xl leading-snug font-extrabold text-sky-700 transition-colors hover:text-sky-500 lg:text-3xl"
             >
-              Become our <span className="text-blue-400">Partner →</span>
+              Life at <p className="text-blue-400">IndiFly →</p>
             </Link>
           </div>
 
