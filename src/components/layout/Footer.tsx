@@ -25,6 +25,8 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
     faint = "text-[#071B36]"; // incore variant
   else faint = faintMap[theme.service];
 
+  const isServiceTheme = theme.service !== "default"; // any real service (insurge, instack, involve, insure, incore)
+
   return (
     <footer className="relative overflow-hidden font-sans text-white">
       <Container className="relative z-1 pt-24 pb-28 md:pb-36">
@@ -34,9 +36,9 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
           <div className="max-w-md">
             <div className="mb-6 flex items-center gap-3">
               <Image
-                src="/indiflyLogo2.svg"
-                alt="IndiFly"
-                width={210}
+                src={isServiceTheme ? "/incorelogo2.png" : "/indiflyLogo2.svg"}
+                alt={isServiceTheme ? "inCORE" : "IndiFly"}
+                width={isServiceTheme ? 240 : 210}
                 height={70}
                 priority
                 className="h-auto w-[210px] md:w-[240px]"
