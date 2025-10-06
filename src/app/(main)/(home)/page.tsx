@@ -8,6 +8,7 @@ import { ContactForm } from "@/components/layout/ContactForm";
 import { defaultServiceTheme } from "@/lib/serviceContext";
 import { Footer } from "../../../components/layout/Footer";
 import INDsights from "./INDsights";
+import InCoreServices from "./inCoreServices";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <VenturesGrid />
       <BharatSection />
       <SectorsSection />
+      <InCoreServices />
       <ImpactOnBharat />
       <INDsights />
       <div className="bg-secondary">
