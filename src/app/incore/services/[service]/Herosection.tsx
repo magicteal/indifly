@@ -56,7 +56,7 @@ export default function HeroSection({
 
           <div className="mt-8 flex justify-center md:justify-start">
             <Button asChild size="lg" variant={theme.buttonVariant}>
-              <Link href="#">{hero.button}</Link>
+              <Link href="#contact">{hero.button}</Link>
             </Button>
           </div>
         </div>

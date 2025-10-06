@@ -6,7 +6,7 @@ import type { ServiceTheme } from "@/lib/serviceContext";
 import { cn } from "@/lib/utils";
 import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 interface CoreOfferingsProps {
@@ -83,9 +83,9 @@ export default function CoreOfferings({
                   className="mt-10"
                   variant={theme.buttonVariant}
                   size="lg"
+                  asChild
                 >
-                  Book a Consultation Call
-                  <ArrowRight />
+                  <Link href="#contact">Book a Consultation Call</Link>
                 </Button>
 
                 <div
@@ -109,7 +109,7 @@ export default function CoreOfferings({
 
       {/* Tagline */}
       <p
-        className={`mt-10 text-center text-2xl font-semibold italic md:mt-16 md:text-3xl ${theme.text}`}
+        className={`mt-10 text-center text-2xl font-semibold text-white italic md:mt-16 md:text-3xl`}
       >
         {offerings.tagline}
       </p>
