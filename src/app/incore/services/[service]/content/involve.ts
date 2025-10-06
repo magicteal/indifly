@@ -2,67 +2,82 @@ import type { ServiceContent } from "./types";
 
 export const involveContent: ServiceContent = {
   hero1: {
-    text: ["VOLVE", "Integrated expertise for", "startup success"],
-    button: "Book a Consultation Call",
+    text: ["VOLVE", "From teams of 10 to 100,", "scale people with inVOLVE"],
+    button: "Book an HR Consultation",
   },
   ourApproach: {
     description: [
-      "We build with the founders as co-creators, not as service vendors. Our approach is collaborative, integrated, and focused on long-term success. We don't just provide services; we become a part of your journey.",
-      "Our team becomes an extension of yours, working hand-in-hand to achieve your vision.",
+      "Teams don’t just grow — they need to be built with intent.",
+      "At inVOLVE, we shape culture, talent, and systems that scale.",
     ],
     steps: [
       {
-        title: "Collaborative",
-        description:
-          "We build with the founders as co-creators, not as service vendors",
+        title: "Discover",
+        description: "Understand business goals and talent needs.",
       },
       {
-        title: "Integrated",
-        description:
-          "Our approach is collaborative, integrated, and focused on long-term success.",
+        title: "Design",
+        description: "Structure policies, processes, and people strategy.",
       },
       {
-        title: "Committed",
-        description:
-          "We don't just provide services; we become a part of your journey.",
+        title: "Deliver",
+        description: "Execute hiring, compliance, and culture initiatives.",
       },
     ],
   },
   whyItMatters: {
-    description:
-      "Startups face unique challenges that require specialized solutions. From limited resources to high competition, the hurdles are many. Our services are designed to address these specific challenges, helping startups navigate their path to success.",
+    description: "Startups face people challenges like:",
     challenges: [
       {
-        title: "Limited Resources",
-        description:
-          "Limited capital to sustain operations, hire talent, or scale.",
+        title: "Talent gaps slow down execution.",
+        description: "",
       },
       {
-        title: "High Competition",
-        description:
-          "Intense competition from other startups and established players.",
+        title: "Compliance gets overlooked until it hurts.",
+        description: "",
       },
       {
-        title: "Market Fit",
-        description: "Difficulty in finding and validating product-market fit.",
+        title: "Culture fades as teams grow.",
+        description: "",
+      },
+      {
+        title: "Processes lag behind scale.",
+        description: "",
+      },
+      {
+        title: "Onboarding isn’t built for retention.",
+        description: "",
       },
     ],
-    tagline: "Tailored solutions for startup challenges.",
+    tagline: "inVOLVE solves all of this!",
   },
   coreOfferings: {
     offerings: [
       {
-        name: "Talent Acquisition",
-        description:
-          "Find and hire the right people for your growing startup team.",
+        name: "Recruitment & Onboarding",
+        description: "Find the right talent and bring them in seamlessly.",
       },
-      { name: "Culture Building", description: "" },
-      { name: "HR Policy Development", description: "" },
-      { name: "Employee Onboarding", description: "" },
-      { name: "Performance Management", description: "" },
-      { name: "Team Building Activities", description: "" },
-      { name: "Leadership Coaching", description: "" },
+      {
+        name: "Compliance & Payroll",
+        description: "Stay aligned, accurate, and timely — from PF to POSH.",
+      },
+      {
+        name: "Policies & Playbooks",
+        description: "Culture-first guidelines that scale with the company.",
+      },
+      {
+        name: "HR Tech Setup",
+        description: "Tools for attendance, leaves, payroll, and workflows.",
+      },
+      {
+        name: "Lifecycle Management",
+        description: "Smooth handling from hire to retire.",
+      },
+      {
+        name: "Culture Design",
+        description: "Shape an identity teams want to belong to.",
+      },
     ],
-    tagline: "All under one roof, tailored for startups.",
+    tagline: "A strong product needs strong people — inVOLVE builds both.",
   },
 };

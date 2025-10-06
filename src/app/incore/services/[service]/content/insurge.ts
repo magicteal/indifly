@@ -2,52 +2,55 @@ import type { ServiceContent } from "./types";
 
 export const insurgeContent: ServiceContent = {
   hero1: {
-    text: ["SURGE", "Integrated expertise for", "startup success"],
-    button: "Book a Consultation Call",
+    text: ["SURGE", "From spark to scale,", "fuel your growth with inSURGE"],
+    button: "Book a consultation call",
   },
   ourApproach: {
     description: [
-      "We build with the founders as co-creators, not as service vendors. Our approach is collaborative, integrated, and focused on long-term success. We don't just provide services; we become a part of your journey.",
-      "Our team becomes an extension of yours, working hand-in-hand to achieve your vision.",
+      "Growth doesn’t happen by chance.",
+      "At inSURGE, we break it into clarity, creativity, and consistency.",
     ],
     steps: [
       {
-        title: "Collaborative",
-        description:
-          "We build with the founders as co-creators, not as service vendors",
+        title: "Discover",
+        description: "Deep dives into your market, brand, and audience.",
       },
       {
-        title: "Integrated",
-        description:
-          "Our approach is collaborative, integrated, and focused on long-term success.",
+        title: "Design",
+        description: "Campaigns, assets, and funnels that move the needle.",
       },
       {
-        title: "Committed",
-        description:
-          "We don't just provide services; we become a part of your journey.",
+        title: "Deliver",
+        description: "Relentless execution with measurable outcomes.",
       },
     ],
   },
   whyItMatters: {
     description:
-      "Startups face unique challenges that require specialized solutions. From limited resources to high competition, the hurdles are many. Our services are designed to address these specific challenges, helping startups navigate their path to success.",
+      "Startups don’t fail because of lack of ambition. They fail because:",
     challenges: [
       {
-        title: "Limited Resources",
-        description:
-          "Limited capital to sustain operations, hire talent, or scale.",
+        title: "No clear brand voice",
+        description: "They look like everyone else.",
       },
       {
-        title: "High Competition",
-        description:
-          "Intense competition from other startups and established players.",
+        title: "Over-reliance on one channel",
+        description: "Ads burn cash, don’t build equity.",
       },
       {
-        title: "Market Fit",
-        description: "Difficulty in finding and validating product-market fit.",
+        title: "Content inconsistency",
+        description: "Audience drifts, community never forms.",
+      },
+      {
+        title: "Weak funnels",
+        description: "Leads leak, conversions stall.",
+      },
+      {
+        title: "No performance visibility",
+        description: "Efforts can’t be measured, scaled, or trusted.",
       },
     ],
-    tagline: "Tailored solutions for startup challenges.",
+    tagline: "inSURGE solves all of this!",
   },
   coreOfferings: {
     offerings: [
@@ -56,13 +59,37 @@ export const insurgeContent: ServiceContent = {
         description:
           "Logos, design systems, messaging frameworks — everything your brand needs to stand tall and stay consistent.",
       },
-      { name: "Performance Marketing", description: "" },
-      { name: "Social Media Management", description: "" },
-      { name: "Email, WhatsApp, & SMS Marketing", description: "" },
-      { name: "SEO & Website Development", description: "" },
-      { name: "Event Marketing", description: "" },
-      { name: "Pitch & Product Decks", description: "" },
+      {
+        name: "Performance Marketing",
+        description:
+          "Meta & Google ads, remarketing, and funnels engineered to optimize every rupee.",
+      },
+      {
+        name: "Social Media Management",
+        description:
+          "Content calendars, reels, influencer tie-ups, and campaigns that don’t just post — they resonate.",
+      },
+      {
+        name: "Email, WhatsApp & SMS Marketing",
+        description:
+          "Full-funnel automation that keeps your audience close and conversion-ready.",
+      },
+      {
+        name: "SEO & Website Development",
+        description:
+          "Landing pages built to convert and search presence that compounds over time.",
+      },
+      {
+        name: "Event Marketing",
+        description:
+          "From event collaterals to amplification kits — everything to own the room and the buzz beyond.",
+      },
+      {
+        name: "Pitch & Product Decks",
+        description:
+          "Investor decks, sales decks, and product storytelling designed to win minds and money.",
+      },
     ],
-    tagline: "All under one roof, tailored for startups.",
+    tagline: "A brilliant product still needs SURGE to be seen",
   },
 };
