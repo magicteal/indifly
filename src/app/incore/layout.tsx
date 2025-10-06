@@ -32,6 +32,7 @@ export default function IncoreLayout({
       </div>
 
       <Navbar logo={incoreLogo} />
+      <div className="h-24 md:h-8" />
       <div className="overflow-x-clip">{children}</div>
     </>
   );
