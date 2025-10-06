@@ -260,8 +260,8 @@ export default function InCorePage() {
 
           <ClientsMarqueeSection />
 
-          <SectionHeader title="Testimonials" className="relative z-10" />
-          <Testimonials />
+          {/* <SectionHeader title="Testimonials" className="relative z-10" />
+          <Testimonials /> */}
         </section>
         <ContactForm theme={incoreServiceTheme} />
         <Footer theme={incoreServiceTheme} />
