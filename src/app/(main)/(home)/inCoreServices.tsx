@@ -6,16 +6,18 @@ import Container from "@/components/container";
 export default function InCoreServices() {
   return (
     <Container>
-      <div className="mt-24 w-full space-y-4 text-center">
+      <div className="mt-24 w-full space-y-4 text-center text-neutral-800">
         <h2 className="text-5xl font-bold">
-          Integrated expertise, delivered at every stage.
+          Integrated expertise, delivered at{" "}
+          <span className="text-primary">every stage.</span>
         </h2>
-        <p className="mb-0 text-2xl font-medium">
+        <p className="mt-8 mb-0 text-2xl font-medium">
           We don’t just advise – we embed.
         </p>
         <p className="text-xl">
-          With inSTACK, inSURGE, inSURE, and inVOLVE founders gain the muscle of
-          execution alongside strategic leadership guidance.
+          With <span className="font-medium">inSTACK, inSURGE, inSURE,</span>{" "}
+          and <span className="font-medium">inVOLVE</span> founders gain the
+          muscle of execution alongside strategic leadership guidance.
         </p>
       </div>
       <DecorativeBannerSection />
