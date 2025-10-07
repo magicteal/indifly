@@ -26,10 +26,15 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
   const [sheetName, setSheetName] = useState("");
   const pathname = usePathname(); // Get the current URL path
 
-  // --- Google Apps Script Web App URL ---
-  // !! URL has been updated !!
-  const SCRIPT_URL =
+  // Primary Google Apps Script (multi-sheet) for non-/incore pages
+  const PRIMARY_SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbx8DkkCIwO2UP6fGEPe6xIPo1hFzQ0Q1nCgIrCG0NmdAm8H4PViau-5_pnwfivePSw18A/exec";
+
+  // Dedicated Apps Script for /incore (separate spreadsheet)
+  const INCORE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbxfY3NBd-pUT-_bdi5xmELWuT_2IIfsD5UbktcUDbnRgp4K2yEcjm257Jhczu3m9RJ8xQ/exec";
+  // If incore script still expects a sheet name we supply a constant; harmless if ignored
+  const INCORE_SHEET_NAME = "IncoreHomeContacts";
 
   // This useEffect will run whenever the page path changes
   useEffect(() => {
@@ -42,8 +47,13 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
     };
 
     // 2. Set the sheetName based on the current path
-    const currentSheet = pathSheetMap[pathname] || "DefaultContacts"; // Use 'DefaultContacts' as a fallback
-    setSheetName(currentSheet);
+    const currentSheet = pathSheetMap[pathname] || "DefaultContacts"; // Use 'DefaultContacts' as a fallback for primary script only
+    // Only set sheet for non-/incore paths (incore has its own script + sheet internal)
+    if (!pathname.startsWith("/incore")) {
+      setSheetName(currentSheet);
+    } else {
+      setSheetName("");
+    }
 
     console.log(`Current Path: ${pathname}, Target Sheet: ${currentSheet}`);
   }, [pathname]); // It re-runs if the pathname changes
@@ -62,8 +72,10 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
       return;
     }
 
-    // Check if sheetName has been set
-    if (!sheetName) {
+    const isIncoreRoute = pathname.startsWith("/incore");
+
+    // For non-incore routes we still require a sheetName
+    if (!isIncoreRoute && !sheetName) {
       toast.error("Form is not configured correctly. Please refresh the page.");
       return;
     }
@@ -71,23 +83,63 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
     setIsSubmitting(true);
     const loadingToast = toast.loading("Submitting your message...");
 
-    const dataToSubmit = new URLSearchParams({
+    const params: Record<string, string> = {
       ...formData,
-      // Backward compatibility: send 'phone' as well until old script retired
-      phone: formData.number,
-      sheetName: sheetName, // Use the sheetName from the component's state
-    });
+      phone: formData.number, // backward compatibility param
+    };
+    // Always send a sheetName; primary uses dynamic; incore uses constant (ignored if script doesn't need it)
+    params.sheetName = isIncoreRoute ? INCORE_SHEET_NAME : sheetName;
+    const dataToSubmit = new URLSearchParams(params);
 
     try {
-      const response = await fetch(SCRIPT_URL, {
-        method: "POST",
-        body: dataToSubmit,
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      });
+      const response = await fetch(
+        isIncoreRoute ? INCORE_SCRIPT_URL : PRIMARY_SCRIPT_URL,
+        {
+          method: "POST",
+          body: dataToSubmit,
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        },
+      );
 
-      const result = await response.json();
-      if (result.result === "success") {
-        toast.success("Message sent successfully!", { id: loadingToast });
+      const rawText = await response.text();
+      let parsed: unknown = null;
+      try {
+        parsed = JSON.parse(rawText);
+      } catch {
+        // Non-JSON response; we'll fallback to text heuristics
+      }
+
+      type ParsedResponse = {
+        result?: string;
+        status?: string;
+        message?: string;
+      };
+      const isParsedResponse = (val: unknown): val is ParsedResponse =>
+        !!val && typeof val === "object";
+
+      // console.debug("ContactForm submission debug", {
+      //   route: pathname,
+      //   isIncoreRoute,
+      //   endpoint: isIncoreRoute ? INCORE_SCRIPT_URL : PRIMARY_SCRIPT_URL,
+      //   submittedParams: params,
+      //   rawText,
+      //   parsed,
+      // });
+
+      const success = (() => {
+        if (isParsedResponse(parsed)) {
+          if (parsed.result === "success" || parsed.status === "success")
+            return true;
+        }
+        return /success/i.test(rawText);
+      })();
+
+      if (success) {
+        const successMsg =
+          isParsedResponse(parsed) && parsed.message
+            ? parsed.message
+            : "Message sent successfully!";
+        toast.success(successMsg, { id: loadingToast });
         setFormData({
           name: "",
           email: "",
@@ -96,7 +148,11 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
           message: "",
         });
       } else {
-        throw new Error(result.message || "Failed to send message.");
+        const errorMsg =
+          isParsedResponse(parsed) && parsed.message
+            ? parsed.message
+            : "Failed to send message.";
+        throw new Error(errorMsg);
       }
     } catch (error) {
       console.error("Submission Error:", error);
