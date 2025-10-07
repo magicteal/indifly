@@ -24,7 +24,7 @@ export const teamGroups: TeamGroup[] = [
         name: "Smita Vishvjeet Thombare",
         role: "Co-Founder & Director",
         imageUrl: "/members/promotersAndDirectors/Smita-Vishvjeet-Thombare.png",
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/smita-thombre-a57489348/",
       },
       {
         name: "Vishvjeet Thombre",

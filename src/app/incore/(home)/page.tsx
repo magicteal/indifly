@@ -10,7 +10,7 @@ import DecorativeBannerSection from "../../../components/DecorativeBannerSection
 import { ContactForm } from "../../../components/layout/ContactForm";
 import { Footer } from "../../../components/layout/Footer";
 import CaseStudiesSection from "./CaseStudiesSection";
-import ClientsMarqueeSection from "./ClientsMarqueeSection";
+// import ClientsMarqueeSection from "./ClientsMarqueeSection";
 import IncoreINDsightsSection from "./IncoreINDsightsSection";
 import ProcessJourneySection from "./ProcessJourneySection";
 // import Testimonials from "./Testimonials";
@@ -258,7 +258,7 @@ export default function InCorePage() {
 
           {/* Foreground content */}
 
-          <ClientsMarqueeSection />
+          {/* <ClientsMarqueeSection /> */}
 
           {/* <SectionHeader title="Testimonials" className="relative z-10" />
           <Testimonials /> */}
