@@ -30,7 +30,7 @@ const Navbar: React.FC<NavbarProps> = ({ logo, navItems }) => {
             <Button
               variant="ghost"
               size="icon"
-              className="text-white transition-colors hover:bg-white/20"
+              className="text-gray-900 transition-colors hover:bg-white/20"
               onClick={() => setIsOpen((v) => !v)}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
@@ -71,7 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({ logo, navItems }) => {
           {isOpen && (
             <div
               id="mobile-menu"
-              className="absolute top-full right-0 left-0 border-b border-white/20 bg-gradient-to-b from-black/70 via-black/55 to-black/40 px-4 py-4 text-white shadow-xl ring-1 ring-white/10 backdrop-blur-[30px] backdrop-saturate-150 md:hidden"
+              className="absolute top-full right-0 left-0 bg-[#000000] px-4 py-4 text-white shadow-xl md:hidden"
               role="menu"
               aria-label="Mobile navigation"
               style={{ zIndex: 70 }}
