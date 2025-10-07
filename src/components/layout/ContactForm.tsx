@@ -127,8 +127,8 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
                 <div className="flex items-center gap-4">
                   <MapPin className={`h-5 w-5 sm:h-6 sm:w-6 ${theme.text}`} />
                   <span className={`text-lg ${theme.textForeground}`}>
-                    Office No. 412, 4th Floor, Tower 2, World Trade Center,
-                    Kharadi, Pune, Maharashtra 411014
+                    Office No. 706, 7th Floor, TOWER-2, WORLD TRADE CENTER, EON
+                    Free Zone, Kharadi, Pune, Maharashtra 411014
                   </span>
                 </div>
               </div>
