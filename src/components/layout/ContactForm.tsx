@@ -18,7 +18,7 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+    number: "",
     company: "",
     message: "",
   });
@@ -57,7 +57,7 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.phone) {
+    if (!formData.name || !formData.email || !formData.number) {
       toast.error("Please fill in all required fields.");
       return;
     }
@@ -73,6 +73,8 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
 
     const dataToSubmit = new URLSearchParams({
       ...formData,
+      // Backward compatibility: send 'phone' as well until old script retired
+      phone: formData.number,
       sheetName: sheetName, // Use the sheetName from the component's state
     });
 
@@ -89,7 +91,7 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
         setFormData({
           name: "",
           email: "",
-          phone: "",
+          number: "",
           company: "",
           message: "",
         });
@@ -151,10 +153,10 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
                 required
               />
               <Input
-                name="phone"
+                name="number"
                 type="tel"
                 placeholder="Phone number *"
-                value={formData.phone}
+                value={formData.number}
                 onChange={handleChange}
                 required
               />
