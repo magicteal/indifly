@@ -7,7 +7,7 @@ import type { ServiceTheme } from "@/lib/serviceContext";
 import { MapPin } from "lucide-react";
 import { usePathname } from "next/navigation"; // Import the hook
 import { useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
+import { toast } from "sonner"; // swapped from react-hot-toast to sonner
 
 // The component no longer needs the 'sheetName' prop
 interface ContactFormProps {

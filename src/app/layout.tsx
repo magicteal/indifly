@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google"; // Montserrat import kiya
 import "./globals.css";
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${montserrat.variable} font-sans antialiased`}>
         {children}
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );
