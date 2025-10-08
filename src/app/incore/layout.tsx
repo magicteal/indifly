@@ -1,17 +1,8 @@
 import Navbar from "@/components/layout/navbar/Navbar";
 import TopBanner from "@/components/layout/TopBanner";
 import { incoreServiceTheme } from "@/lib/serviceContext";
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-// Footer removed; now added per-page to allow context-specific theming
-
-export const metadata: Metadata = {
-  title: {
-    default: "inCORE",
-    template: "%s | inCORE",
-  },
-};
 
 export default function IncoreLayout({
   children,
