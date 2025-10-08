@@ -47,7 +47,7 @@ export const teamGroups: TeamGroup[] = [
         name: "Amit Tiwari",
         role: "Executive Director",
         imageUrl: "/members/founding/Amit-Tiwari.png",
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/in/aamit-tiwari-603709118/",
       },
       {
         name: "Amar Kurund",
