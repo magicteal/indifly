@@ -10,7 +10,7 @@ import TitleBrush from "@public/home/titieINDsights.svg";
 import Image from "next/image";
 import GradientFrame from "../blog/gradient";
 import { CompanyCollage } from "./CompanyCollage";
-import { JourneyTimeline } from "./components/JourneyTimeline";
+import { JourneyTimeline } from "./JourneyTimeline";
 import { ProfileCard } from "./components/ProfileCard";
 
 export default function AboutUsPage() {
