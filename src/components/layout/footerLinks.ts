@@ -45,11 +45,11 @@ export const footerLinkGroups: FooterLinkGroup[] = [
       { label: "Blogs", href: "/blog" },
       {
         label: "Privacy Policy",
-        href: "https://www.indiflyventures.com/privacy-policy",
+        href: "/privacy-policy",
       },
       {
         label: "Terms & Conditions",
-        href: "https://www.indiflyventures.com/terms-and-conditions",
+        href: "/terms-and-conditions",
       },
       // { label: "SiteMap", href: "/sitemap.xml" },
     ],
