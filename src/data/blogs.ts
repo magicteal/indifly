@@ -12,7 +12,7 @@ export type Blog = {
   author?: {
     name: string;
     role?: string;
-      bio?: string;
+    bio?: string;
     avatar?: string;
     linkedin?: string;
     experience?: string;

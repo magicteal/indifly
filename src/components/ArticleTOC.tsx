@@ -36,7 +36,7 @@ export default function ArticleTOC({ items }: Props) {
           setActive(visible[0].target.id);
         }
       },
-      { threshold: [0.25, 0.5, 0.75] }
+      { threshold: [0.25, 0.5, 0.75] },
     );
 
     elList.forEach((el) => obs.observe(el));
@@ -56,7 +56,7 @@ export default function ArticleTOC({ items }: Props) {
     <div className="rounded-xl border p-4">
       <div className="flex items-start gap-4">
         {/* gradient bar is shown per-item; reserve a thin gutter */}
-        <div className="w-[6px] flex flex-col items-center">
+        <div className="flex w-[6px] flex-col items-center">
           {/* empty column to align with item bars */}
         </div>
 
@@ -70,7 +70,7 @@ export default function ArticleTOC({ items }: Props) {
                 <li key={id} className="flex items-start gap-3">
                   <span
                     aria-hidden
-                    className={`w-[4px] rounded-full ${isActive ? "h-full self-stretch" : "h-3 mt-1"} [background:linear-gradient(180deg,#E04A00_30%,#FF915C_100%)]`}
+                    className={`w-[4px] rounded-full ${isActive ? "h-full self-stretch" : "mt-1 h-3"} [background:linear-gradient(180deg,#E04A00_30%,#FF915C_100%)]`}
                     style={{ flex: "0 0 4px" }}
                   />
 
