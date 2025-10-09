@@ -1,4 +1,12 @@
+import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
+import remarkSupersub from "remark-supersub";
+
+const withMDX = createMDX({
+  options: {
+    remarkPlugins: [remarkSupersub],
+  },
+});
 
 const nextConfig: NextConfig = {
   webpack(config) {
@@ -69,6 +77,7 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);

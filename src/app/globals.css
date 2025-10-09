@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 /* Optional animations package; uncomment if needed and confirmed working */
 /* @import "tw-animate-css"; */
 
@@ -220,4 +221,12 @@ body {
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Support pages: list-style helpers for MDX wrappers */
+.prose .alpha ol {
+  list-style-type: lower-alpha;
+}
+.prose .roman ol {
+  list-style-type: lower-roman;
 }

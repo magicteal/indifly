@@ -1,3 +1,5 @@
+*.mdx
+
 # dependencies
 /node_modules
 
