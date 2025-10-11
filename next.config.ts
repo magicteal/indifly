@@ -1,10 +1,11 @@
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
+import remarkGfm from "remark-gfm";
 import remarkSupersub from "remark-supersub";
 
 const withMDX = createMDX({
   options: {
-    remarkPlugins: [remarkSupersub],
+    remarkPlugins: [remarkGfm, remarkSupersub],
   },
 });
 
