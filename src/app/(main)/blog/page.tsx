@@ -1,35 +1,20 @@
 import { Container } from "@/components/container";
 import { ContactForm } from "@/components/layout/ContactForm";
-import { blogs } from "@/data/blogs";
-import Image from "next/image";
-import Link from "next/link";
 
 import BlogCard from "@/components/BlogCard";
 import { Footer } from "@/components/layout/Footer";
+import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
 import { lightTheme } from "@/lib/serviceContext";
 import GradientFrame from "./gradient";
 
-const PAGE_SIZE = 6;
-
-export default async function BlogPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  const resolvedParams = await searchParams;
-  const pageParam = resolvedParams.page;
-  const page =
-    parseInt(
-      typeof pageParam === "string"
-        ? pageParam
-        : Array.isArray(pageParam)
-          ? pageParam[0]
-          : "1",
-    ) || 1;
-  const start = (page - 1) * PAGE_SIZE;
-  const paged = blogs.slice(start, start + PAGE_SIZE);
-
-  const featured = blogs.find((b) => b.featured) || blogs[0];
+export default async function BlogPage() {
+  const slugs = listBlogSlugs();
+  const posts = await Promise.all(
+    slugs.map(async (slug) => {
+      const mod = await importBlogModule(slug);
+      return { slug, title: mod.meta?.title ?? slug };
+    }),
+  );
 
   return (
     <main style={{ background: "#FFFFFF" }}>
@@ -48,47 +33,6 @@ export default async function BlogPage({
               our journey forward!
             </p>
           </div>
-
-          {/* Featured */}
-          {featured && (
-            <section className="mt-12">
-              <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-2">
-                <div className="overflow-hidden rounded-xl">
-                  <Image
-                    src={featured.image}
-                    alt={featured.title}
-                    width={800}
-                    height={560}
-                    className="h-full w-full rounded-xl object-cover"
-                  />
-                </div>
-                <div className="rounded-xl p-8 text-[#1B1B1F] shadow-lg">
-                  <div className="text-sm text-slate-500">
-                    {new Date(featured.date).toLocaleDateString()} •{" "}
-                    {featured.readTime}
-                  </div>
-                  <h2 className="mt-2 text-2xl font-bold">{featured.title}</h2>
-                  <p className="mt-3 text-slate-700">{featured.excerpt}</p>
-                  <div className="mt-4 flex gap-2">
-                    {featured.tags?.map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-2xl border-2 border-[#1B1B1F] px-3 py-1 text-sm"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <Link
-                    href={`/blog/${featured.slug}`}
-                    className="mt-6 inline-block rounded-full bg-[#D15A31] px-5 py-2 text-white"
-                  >
-                    Read article
-                  </Link>
-                </div>
-              </div>
-            </section>
-          )}
         </Container>
       </div>
 
@@ -100,34 +44,13 @@ export default async function BlogPage({
           {/* List */}
           <section>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              {paged.map((b) => (
-                <BlogCard
-                  key={b.slug}
-                  title={b.title}
-                  excerpt={b.excerpt}
-                  image={b.image}
-                  slug={b.slug}
-                  date={b.date}
-                  readTime={b.readTime}
-                  tags={b.tags}
-                />
+              {posts.map((b) => (
+                <BlogCard key={b.slug} title={b.title} slug={b.slug} />
               ))}
             </div>
 
             {/* Pagination */}
-            <div className="mt-8 flex justify-center gap-2">
-              {Array.from({ length: Math.ceil(blogs.length / PAGE_SIZE) }).map(
-                (_, i) => (
-                  <Link
-                    key={i}
-                    href={`/blog?page=${i + 1}`}
-                    className={`rounded px-3 py-1 ${i + 1 === page ? "bg-[#D15A31] text-white" : "border"}`}
-                  >
-                    {i + 1}
-                  </Link>
-                ),
-              )}
-            </div>
+            {/* Pagination intentionally omitted for MDX-based listing (add later if needed) */}
           </section>
         </Container>
         <div className="relative overflow-hidden">

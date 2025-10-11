@@ -3,13 +3,11 @@ import { ContactForm } from "@/components/layout/ContactForm";
 import { Footer } from "@/components/layout/Footer";
 import { lightTheme } from "@/lib/serviceContext";
 import { notFound } from "next/navigation";
-import fs from "node:fs";
-import path from "node:path";
+import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
 import type { ComponentType } from "react";
 import GradientFrame from "../gradient";
 
 type MDXMeta = { authorNote?: string };
-type MDXModule = { default: ComponentType; meta?: MDXMeta };
 
 export default async function BlogDetail({
   params,
@@ -21,9 +19,7 @@ export default async function BlogDetail({
   let Post: ComponentType | null = null;
   let meta: MDXMeta | undefined;
   try {
-    const mod = (await import(
-      /* webpackInclude: /\.mdx$/ */ `./content/${slug}.mdx`
-    )) as MDXModule;
+    const mod = await importBlogModule(slug);
     Post = mod.default;
     meta = mod.meta;
   } catch {
@@ -95,19 +91,7 @@ export default async function BlogDetail({
 }
 
 export function generateStaticParams() {
-  const contentDir = path.join(
-    process.cwd(),
-    "src",
-    "app",
-    "(main)",
-    "blog",
-    "[slug]",
-    "content",
-  );
-  const files = fs
-    .readdirSync(contentDir)
-    .filter((f) => f.toLowerCase().endsWith(".mdx"));
-  return files.map((f) => ({ slug: f.replace(/\.mdx$/i, "") }));
+  return listBlogSlugs().map((slug) => ({ slug }));
 }
 
 export const dynamicParams = false;
