@@ -5,11 +5,11 @@ import Hexagon from "@public/home/hexagonINDsights.svg";
 import TitleBrush from "@public/home/titieINDsights.svg";
 
 import BlogCard from "@/components/BlogCard";
-import { blogs } from "@/data/blogs";
+import { getRecentBlogs } from "@/lib/blogs";
 
-const featured = blogs.filter((b) => b.featured);
+export default async function INDsights() {
+  const recentBlogs = await getRecentBlogs();
 
-export default function INDsights() {
   return (
     <section
       className="w-full overflow-hidden"
@@ -47,17 +47,8 @@ export default function INDsights() {
 
         {/* Cards */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {featured.map((card) => (
-            <BlogCard
-              key={card.slug}
-              title={card.title}
-              excerpt={card.excerpt}
-              image={card.image}
-              slug={card.slug}
-              date={card.date}
-              readTime={card.readTime}
-              tags={card.tags}
-            />
+          {recentBlogs.map((card) => (
+            <BlogCard key={card.slug} title={card.title} slug={card.slug} />
           ))}
         </div>
       </Container>
