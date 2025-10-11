@@ -32,7 +32,7 @@ export default async function BlogDetail({
 
   return (
     <main className="pt-16" style={{ background: "#FFFFFF" }}>
-      <Container className="mt-20 md:mt-24">
+      <Container className="my-20 md:my-24">
         {/* <GradientFrame variant="v2" className="opacity-50" /> */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Main column */}
