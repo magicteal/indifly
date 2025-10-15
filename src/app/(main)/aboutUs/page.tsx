@@ -11,13 +11,9 @@ export default function AboutUsPage() {
   return (
     <main>
       <HeroSection />
-
       <JourneyTimeline />
-
       <TeamSection />
-
       <CompanyCollage />
-
       <div className="relative">
         <GradientFrame variant="v1" className="opacity-40" />
         <ContactForm theme={lightTheme} />
