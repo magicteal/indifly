@@ -32,6 +32,13 @@ const buttonVariants = cva(
         insure: "bg-insure text-insure-foreground hover:bg-insure/90",
         insureSecondary:
           "bg-insure-accent text-insure hover:bg-insure-accent/90",
+        // venture variants (gradient buttons)
+        indipe: "bg-gradient-to-r from-[#E04A00] to-[#FF915C] text-white hover:opacity-90",
+        sec2pay: "bg-gradient-to-r from-[#006FFF] to-[#8EC0FF] text-white hover:opacity-90",
+        indiconnect: "bg-gradient-to-r from-[#E04A00] to-[#FF915C] text-white hover:opacity-90",
+        indikendra: "bg-gradient-to-r from-[#006FFF] to-[#8EC0FF] text-white hover:opacity-90",
+        indinxt: "bg-gradient-to-r from-[#E04A00] to-[#FF915C] text-white hover:opacity-90",
+        indispeed: "bg-gradient-to-r from-[#FF990B] to-[#AF6C4C] text-white hover:opacity-90",
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",

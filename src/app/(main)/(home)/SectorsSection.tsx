@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { ourSectors } from "./sectorsContent";
+import Link from "next/link";
 
 const SectorsSection = () => {
   // Top-level category state
@@ -178,7 +179,9 @@ const SectorsSection = () => {
                     : currentSector.actions}
                 </Button>
                 <Button size="lg" variant="outline" className="rounded-full">
+                    <Link href={`/ventures/${currentSector.name.toLowerCase()}`} className="inline-flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold">
                   Explore More <FiArrowRight />
+                  </Link>
                 </Button>
               </div>
             </motion.div>
