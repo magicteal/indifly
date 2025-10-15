@@ -24,19 +24,13 @@ export function TeamSection() {
 
       <div className="mt-12">
         {teamGroups.map((group) => (
-          <div key={group.title} className="mx-auto max-w-6xl px-6">
+          <div key={group.title} className="mx-auto mt-12 max-w-6xl px-6">
             <h3 className="text-left text-xl font-semibold text-[#1B1B1F] md:text-2xl">
               {group.title}
             </h3>
-            <div className="mt-6 grid grid-cols-1 place-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {group.members.map((m) => (
-                <ProfileCard
-                  key={m.name}
-                  name={m.name}
-                  role={m.role}
-                  linkedin={m.linkedin}
-                  imageUrl={m.imageUrl}
-                />
+            <div className="mt-6 grid grid-cols-1 place-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {group.members.map((member) => (
+                <ProfileCard key={member.name} {...member} />
               ))}
             </div>
           </div>
