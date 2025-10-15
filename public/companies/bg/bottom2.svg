@@ -1,0 +1,24 @@
+<svg width="1472" height="1331" viewBox="0 0 1472 1331" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.6">
+<mask id="mask0_201_3917" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="1472" height="1331">
+<path d="M1472 0L0 0L5.71376e-05 1330.69L1472 1330.69L1472 0Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_201_3917)">
+<g filter="url(#filter0_f_201_3917)">
+<path d="M1575.61 849.955L1150.44 849.955L1150.44 1042.75L1575.61 1042.75L1575.61 849.955Z" fill="#FFC700"/>
+<path d="M1407 1038.34L350.921 1038.34L350.921 1410.69L1407 1410.69L1407 1038.34Z" fill="#3A86FF"/>
+<path d="M460.742 1017.27L-20.4189 1017.27L-20.4189 1296.95L460.742 1296.95L460.742 1017.27Z" fill="#8338EC"/>
+<path d="M464.016 677.84L-211.513 677.84L-211.513 951.723L464.016 951.723L464.016 677.84Z" fill="#006FFF"/>
+<path d="M1464.61 748.172L878.305 748.172L878.305 1083.29L1464.61 1083.29L1464.61 748.172Z" fill="#006FFF"/>
+<path d="M1708.56 358.215L914.673 358.215L914.673 671.815L1708.56 671.815L1708.56 358.215Z" fill="#8D809E"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_201_3917" x="-586.513" y="-16.7852" width="2670.07" height="1802.48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="187.5" result="effect1_foregroundBlur_201_3917"/>
+</filter>
+</defs>
+</svg>
