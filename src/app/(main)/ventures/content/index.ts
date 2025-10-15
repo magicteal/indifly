@@ -1,11 +1,11 @@
-import type { VentureKey, VentureContent } from "./types";
+import type { VentureContent, VentureKey } from "./types";
 
-import indipe from "./indipe";
-import sec2pay from "./sec2pay";
 import indiconnect from "./indiconnect";
 import indikendra from "./indikendra";
 import indinxt from "./indinxt";
+import indipe from "./indipe";
 import indispeed from "./indispeed";
+import sec2pay from "./sec2pay";
 
 const contents: Record<VentureKey, VentureContent> = {
   indipe,

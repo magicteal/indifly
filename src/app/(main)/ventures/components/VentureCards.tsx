@@ -1,18 +1,20 @@
 "use client";
-import { Container } from "@/components/container";
-import { useMemo, useRef, useEffect } from "react";
-import { VentureKey, getAllVentureThemes, getVentureTheme } from "@/lib/ventureContext";
 import { getVentureContent } from "@/app/(main)/ventures/content";
-import Image from "next/image";
-import { ComponentType, SVGProps } from "react";
-import { StaticImageData } from "next/image";
-import PlayStore from "@public/companies/playStore.svg";
+import { Container } from "@/components/container";
+import {
+  VentureKey,
+  getAllVentureThemes,
+  getVentureTheme,
+} from "@/lib/ventureContext";
 import IndiConnect from "@public/companies/indiConnectHero.svg?flex";
 import IndiKendraHero from "@public/companies/indiKendraHero.svg?flex";
 import IndiNXTHero from "@public/companies/indiNXTHero.svg?flex";
 import IndipeHero from "@public/companies/indipeHero.svg?flex";
 import IndiSpeedHero from "@public/companies/indispeedHero.svg?flex";
+import PlayStore from "@public/companies/playStore.svg";
 import Sec2PayHero from "@public/companies/sec2payHero.svg?flex";
+import Image, { StaticImageData } from "next/image";
+import { ComponentType, SVGProps, useEffect, useMemo, useRef } from "react";
 // top-left icons
 import IndipeIcon from "@public/companies/indipeIcon.svg";
 import Sec2PayIcon from "@public/companies/sec2payIcon.svg";
@@ -21,7 +23,10 @@ import IndiKendraWordmark from "@public/companies/indiKendra.svg?flex";
 import IndiNXTWordmark from "@public/companies/indiNXT.svg?flex";
 import IndiSpeedWordmark from "@public/companies/indiSpeed.svg?flex";
 
-type SvgOrUrl = ComponentType<SVGProps<SVGSVGElement>> | string | StaticImageData;
+type SvgOrUrl =
+  | ComponentType<SVGProps<SVGSVGElement>>
+  | string
+  | StaticImageData;
 const heroMap: Record<VentureKey, SvgOrUrl> = {
   indipe: IndipeHero,
   sec2pay: Sec2PayHero,
@@ -34,7 +39,11 @@ const heroMap: Record<VentureKey, SvgOrUrl> = {
 // Per-venture overlay placement/sizing for the right hero art
 const heroArtConfig: Record<
   VentureKey,
-  { container: string; artClassName: string; imageSize?: { w: number; h: number } }
+  {
+    container: string;
+    artClassName: string;
+    imageSize?: { w: number; h: number };
+  }
 > = {
   indipe: {
     container: " md:-right-[20%] md:-bottom-[18%]",
@@ -74,15 +83,24 @@ const iconMap: Partial<Record<VentureKey, SvgOrUrl>> = {
   sec2pay: Sec2PayIcon,
 };
 
-export default function VentureCards({ active, onChangeAction }: { active: VentureKey; onChangeAction: (k: VentureKey) => void }) {
+export default function VentureCards({
+  active,
+  onChangeAction,
+}: {
+  active: VentureKey;
+  onChangeAction: (k: VentureKey) => void;
+}) {
   const ventures = useMemo(() => getAllVentureThemes(), []);
   const theme = getVentureTheme(active);
   const content = useMemo(() => getVentureContent(active), [active]);
   const tabsContainerRef = useRef<HTMLDivElement>(null);
   const activeTabRef = useRef<HTMLButtonElement>(null);
 
-  const isComponent = (x: SvgOrUrl): x is ComponentType<SVGProps<SVGSVGElement>> => typeof x === "function";
-  const isStatic = (x: SvgOrUrl): x is StaticImageData => typeof x === "object" && x !== null && "src" in x;
+  const isComponent = (
+    x: SvgOrUrl,
+  ): x is ComponentType<SVGProps<SVGSVGElement>> => typeof x === "function";
+  const isStatic = (x: SvgOrUrl): x is StaticImageData =>
+    typeof x === "object" && x !== null && "src" in x;
   const isString = (x: SvgOrUrl): x is string => typeof x === "string";
 
   // Scroll active tab to center on mobile
@@ -94,7 +112,7 @@ export default function VentureCards({ active, onChangeAction }: { active: Ventu
       const buttonLeft = button.offsetLeft;
       const buttonWidth = button.offsetWidth;
       const scrollPosition = buttonLeft - containerWidth / 2 + buttonWidth / 2;
-      
+
       container.scrollTo({
         left: scrollPosition,
         behavior: "smooth",
@@ -106,15 +124,28 @@ export default function VentureCards({ active, onChangeAction }: { active: Ventu
     <section className=" ">
       <Container>
         {/* Tabs - scrollable on mobile */}
-        <div className="m-4 sm:m-6 -mx-4 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none]" ref={tabsContainerRef}>
-          <div className="flex min-w-full items-center justify-start sm:justify-center gap-2 px-4 [&::-webkit-scrollbar]:hidden" role="tablist" aria-label="Ventures">
+        <div
+          className="m-4 -mx-4 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] sm:m-6"
+          ref={tabsContainerRef}
+        >
+          <div
+            className="flex min-w-full items-center justify-start gap-2 px-4 sm:justify-center [&::-webkit-scrollbar]:hidden"
+            role="tablist"
+            aria-label="Ventures"
+          >
             {ventures.map((v) => (
               <button
                 key={v.key}
                 ref={active === v.key ? activeTabRef : null}
                 onClick={() => onChangeAction(v.key)}
-                className={`${active === v.key ? "text-white" : "text-[#446FA7] bg-[#E6EAEF]"} rounded-md px-3 py-1 text-sm font-semibold whitespace-nowrap`}
-                style={active === v.key ? { background: `linear-gradient(90deg, ${v.gradientFrom}, ${v.gradientTo})` } : undefined}
+                className={`${active === v.key ? "text-white" : "bg-[#E6EAEF] text-[#446FA7]"} rounded-md px-3 py-1 text-sm font-semibold whitespace-nowrap`}
+                style={
+                  active === v.key
+                    ? {
+                        background: `linear-gradient(90deg, ${v.gradientFrom}, ${v.gradientTo})`,
+                      }
+                    : undefined
+                }
                 role="tab"
                 aria-selected={active === v.key}
               >
@@ -125,10 +156,12 @@ export default function VentureCards({ active, onChangeAction }: { active: Ventu
         </div>
 
         {/* Gradient Card wrapper to match Figma width */}
-        <div className="mx-auto w-full max-w-[1071px] relative overflow-visible">
+        <div className="relative mx-auto w-full max-w-[1071px] overflow-visible">
           <div
-            className="relative z-10 flex flex-col h-auto w-full overflow-visible rounded-3xl border text-white min-h-[400px] sm:min-h-[450px] md:h-[558px]"
-            style={{ background: `linear-gradient(90deg, ${theme.gradientFrom}, ${theme.gradientTo})` }}
+            className="relative z-10 flex h-auto min-h-[400px] w-full flex-col overflow-visible rounded-3xl border text-white sm:min-h-[450px] md:h-[558px]"
+            style={{
+              background: `linear-gradient(90deg, ${theme.gradientFrom}, ${theme.gradientTo})`,
+            }}
           >
             <div className="flex-1 p-5 pr-5 md:p-8 md:pr-[420px]">
               {/* top-left icon (only for indipe, sec2pay) */}
@@ -137,44 +170,54 @@ export default function VentureCards({ active, onChangeAction }: { active: Ventu
                 if (!Icon) return null;
                 return (
                   <div className="mb-10 sm:mb-5">
-                    {isComponent(Icon) ? (
-                      (() => {
-                        const C = Icon;
-                        return <C className="h-10 w-auto sm:h-12 md:h-14 overflow-visible" />;
-                      })()
-                    ) : (
-                      (() => {
-                        const src = isString(Icon) ? Icon : (isStatic(Icon) ? Icon : undefined);
-                        return src ? (
-                          <Image
-                            src={src}
-                            alt={`${theme.name} icon`}
-                            width={56}
-                            height={56}
-                            style={{ height: "auto", width: "auto", maxHeight: 56 }}
-                          />
-                        ) : null;
-                      })()
-                    )}
+                    {isComponent(Icon)
+                      ? (() => {
+                          const C = Icon;
+                          return (
+                            <C className="h-10 w-auto overflow-visible sm:h-12 md:h-14" />
+                          );
+                        })()
+                      : (() => {
+                          const src = isString(Icon)
+                            ? Icon
+                            : isStatic(Icon)
+                              ? Icon
+                              : undefined;
+                          return src ? (
+                            <Image
+                              src={src}
+                              alt={`${theme.name} icon`}
+                              width={56}
+                              height={56}
+                              style={{
+                                height: "auto",
+                                width: "auto",
+                                maxHeight: 56,
+                              }}
+                            />
+                          ) : null;
+                        })()}
                   </div>
                 );
               })()}
 
               {/* Title or wordmark (same visual block size) */}
-              <div className="mt-1 flex min-h-10 sm:min-h-12 items-center">
+              <div className="mt-1 flex min-h-10 items-center sm:min-h-12">
                 {active === "indikendra" ? (
-                  <IndiKendraWordmark className="h-8 sm:h-10 md:h-12 w-auto overflow-visible" />
+                  <IndiKendraWordmark className="h-8 w-auto overflow-visible sm:h-10 md:h-12" />
                 ) : active === "indinxt" ? (
-                  <IndiNXTWordmark className="h-8 sm:h-10 md:h-12 w-auto overflow-visible" />
+                  <IndiNXTWordmark className="h-8 w-auto overflow-visible sm:h-10 md:h-12" />
                 ) : active === "indispeed" ? (
-                  <IndiSpeedWordmark className="h-8 sm:h-10 md:h-12 w-auto overflow-visible" />
+                  <IndiSpeedWordmark className="h-8 w-auto overflow-visible sm:h-10 md:h-12" />
                 ) : (
-                  <h3 className="text-2xl sm:text-[28px] md:text-[32px] leading-none font-bold">{theme.name}</h3>
+                  <h3 className="text-2xl leading-none font-bold sm:text-[28px] md:text-[32px]">
+                    {theme.name}
+                  </h3>
                 )}
               </div>
-              <p className="mt-3 sm:mt-4 max-w-xl text-white/90 text-sm sm:text-base leading-relaxed">{content.hero.description}</p>
-              
-             
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/90 sm:mt-4 sm:text-base">
+                {content.hero.description}
+              </p>
             </div>
 
             {/* Play Store button - always at bottom */}
@@ -185,7 +228,9 @@ export default function VentureCards({ active, onChangeAction }: { active: Ventu
             </div>
           </div>
           {/* Right hero image overlay above the card */}
-          <div className={`pointer-events-none absolute z-20 hidden sm:flex items-end overflow-visible right-0 bottom-0 ${heroArtConfig[active].container}`}>
+          <div
+            className={`pointer-events-none absolute right-0 bottom-0 z-20 hidden items-end overflow-visible sm:flex ${heroArtConfig[active].container}`}
+          >
             {(() => {
               const Art = heroMap[active];
               const cfg = heroArtConfig[active];
@@ -193,7 +238,7 @@ export default function VentureCards({ active, onChangeAction }: { active: Ventu
                 const C = Art;
                 return <C className={`object-contain ${cfg.artClassName}`} />;
               }
-              const src = isString(Art) ? Art : (isStatic(Art) ? Art : undefined);
+              const src = isString(Art) ? Art : isStatic(Art) ? Art : undefined;
               return src ? (
                 <Image
                   src={src}

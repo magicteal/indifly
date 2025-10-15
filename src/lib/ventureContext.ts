@@ -21,7 +21,13 @@ export type VentureTheme = {
   gradientFrom: string;
   gradientTo: string;
   gradientFromAccent: string;
-  buttonVariant: "indipe" | "sec2pay" | "indiconnect" | "indikendra" | "indinxt" | "indispeed";
+  buttonVariant:
+    | "indipe"
+    | "sec2pay"
+    | "indiconnect"
+    | "indikendra"
+    | "indinxt"
+    | "indispeed";
   buttonSecondaryVariant: string;
   cssVar: string;
   cssVarForeground: string;
@@ -158,8 +164,6 @@ export function getVentureTheme(key: VentureKey): VentureTheme {
 export function getAllVentureThemes(): VentureTheme[] {
   return Object.values(themes);
 }
-
-
 
 // Convenience context similar to services: theme + content
 import { getVentureContent } from "@/app/(main)/ventures/content";

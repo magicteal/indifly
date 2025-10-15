@@ -1,9 +1,9 @@
 import { Container } from "@/components/container";
 import { ContactForm } from "@/components/layout/ContactForm";
 import { Footer } from "@/components/layout/Footer";
+import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
 import { lightTheme } from "@/lib/serviceContext";
 import { notFound } from "next/navigation";
-import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
 import type { ComponentType } from "react";
 import GradientFrame from "../gradient";
 

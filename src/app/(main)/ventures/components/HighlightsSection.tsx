@@ -1,9 +1,9 @@
 "use client";
 import { Container } from "@/components/container";
 import type { VentureKey, VentureTheme } from "@/lib/ventureContext";
-import { getVentureContent } from "../content";
 import Middle1 from "@public/companies/bg/middle1.svg?flex";
 import Middle2 from "@public/companies/bg/middle2.svg?flex";
+import { getVentureContent } from "../content";
 
 type Card = { title: string; subtitle: string; points: string[] };
 
@@ -32,20 +32,21 @@ export default function HighlightsSection({
   return (
     <section className="relative py-16 sm:py-20 md:py-24">
       {/* Background overlay - full bleed */}
-      <div className="pointer-events-none absolute   w-[100vw]">
+      <div className="pointer-events-none absolute w-[100vw]">
         <Overlay className="h-full w-full" />
       </div>
 
       <Container>
-
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 ">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {cards.map((card, idx) => (
             <article
               key={idx}
-              className="group relative flex h-full flex-col rounded-lg border border-white/20 bg-white/60 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md min-h-[260px] sm:min-h-[280px] md:min-h-[300px]"
+              className="group relative flex h-full min-h-[260px] flex-col rounded-lg border border-white/20 bg-white/60 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md sm:min-h-[280px] md:min-h-[300px]"
             >
               {/* Small bold gradient title */}
-              <h3 className={`text-sm font-semibold ${theme.text}`}>{card.title}</h3>
+              <h3 className={`text-sm font-semibold ${theme.text}`}>
+                {card.title}
+              </h3>
               {/* Medium subtitle in #3C3C3C */}
               <p className="mt-2 text-base font-medium text-[#3C3C3C]">
                 {card.subtitle}

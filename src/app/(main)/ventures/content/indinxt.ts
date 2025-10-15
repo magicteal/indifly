@@ -4,7 +4,8 @@ const content: VentureContent = defineVenture({
   key: "indinxt",
   hero: {
     tagline: "UPI for Bharat",
-    description: "IndiNXT powers banks, fintechs, and enterprises with the transaction backbone they need to scale. From UPI switches to fraud management, IndiNXT combines reliability, security, and intelligence to keep Bharat — and the world — moving.",
+    description:
+      "IndiNXT powers banks, fintechs, and enterprises with the transaction backbone they need to scale. From UPI switches to fraud management, IndiNXT combines reliability, security, and intelligence to keep Bharat — and the world — moving.",
   },
   cards: [
     {
