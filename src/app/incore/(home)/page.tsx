@@ -162,7 +162,7 @@ export default function InCorePage() {
 
         <Container className="w-full">
           {/* Supporting paragraphs below hero */}
-          <div className="mx-auto mt-12 max-w-7xl space-y-6 text-base text-white/90 md:text-lg">
+          <div className="mx-auto mt-12 max-w-7xl space-y-6 text-center text-base text-white/90 md:text-lg">
             <p>
               <span className="font-bold">The startup ecosystem&apos;s</span>{" "}
               need for integrated expertise has never been greater. In
