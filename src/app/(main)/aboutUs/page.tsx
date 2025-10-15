@@ -7,6 +7,7 @@ import aboutHero from "@public/aboutHero.png";
 import TitleBrush from "@public/home/titieINDsights.svg";
 // Collage imports moved into CompanyCollage component
 // Collage assets now imported within CompanyCollage component
+import Container from "@/components/container";
 import Image from "next/image";
 import GradientFrame from "../blog/gradient";
 import { CompanyCollage } from "./CompanyCollage";
@@ -15,10 +16,11 @@ import { ProfileCard } from "./components/ProfileCard";
 
 export default function AboutUsPage() {
   return (
-    <main className="bg-white">
+    <main>
       {/* Full-bleed hero */}
-      <div className="relative w-full">
-        <div className="absolute inset-0 z-0 min-h-[420px] md:min-h-[560px]">
+      <div className="relative aspect-[9/16] w-full overflow-hidden sm:aspect-[2/1]">
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
           <Image
             src={aboutHero}
             alt="About hero"
@@ -28,50 +30,32 @@ export default function AboutUsPage() {
           />
         </div>
         {/* subtle gray overlay */}
-        <div className="absolute inset-0 z-[5] bg-black/40" />
+        <div className="absolute inset-0 z-[5] bg-black/50 md:bg-black/40" />
 
-        <div className="relative z-20 flex min-h-[420px] items-center md:min-h-[560px]">
-          <div className="w-full">
-            <div className="mx-auto max-w-3xl px-6 text-center">
-              <h2
-                className="text-2xl font-extrabold md:text-3xl"
-                style={{
-                  background: "linear-gradient(90deg,#E04A00,#FF915C)",
-                  WebkitBackgroundClip: "text",
-                  color: "transparent",
-                }}
-              >
-                VISION
-              </h2>
-              <p className="mt-4 text-lg text-white/95 drop-shadow">
-                To foster entrepreneurship for inclusive growth of Bharat
-              </p>
+        <Container className="relative z-20 flex h-full w-full items-center text-center">
+          <div>
+            <h2 className="text-xl font-extrabold text-primary">VISION</h2>
+            <p className="text-base font-extrabold sm:text-xl lg:text-3xl">
+              To foster entrepreneurship for inclusive growth of Bharat
+            </p>
 
-              <h3
-                className="mt-8 text-xl font-semibold text-white md:text-2xl"
-                style={{
-                  background: "linear-gradient(90deg,#E04A00,#FF915C)",
-                  WebkitBackgroundClip: "text",
-                  color: "transparent",
-                }}
-              >
-                MISSION
-              </h3>
-              <p className="mx-auto mt-4 max-w-2xl text-base text-white/90">
-                To create platforms and ecosystems for mission-driven founders
-                and cultivate brands that bring transformative growth in the
-                emerging regions of Bharat through digital inclusion.
-              </p>
-            </div>
+            <h3 className="mt-5 text-xl font-extrabold text-primary md:mt-10">
+              MISSION
+            </h3>
+            <p className="mx-auto text-base sm:text-xl lg:text-3xl">
+              To create platforms and ecosystems for mission-driven founders and
+              cultivate brands that bring transformative growth in the emerging
+              regions of Bharat through digital inclusion.
+            </p>
           </div>
-        </div>
+        </Container>
 
         {/* Bottom headline on hero */}
         <div className="absolute inset-x-0 bottom-6 z-20 px-6">
           <div className="mx-auto max-w-6xl text-center">
-            <h1 className="text-2xl leading-tight font-bold text-white md:text-3xl">
-              Building <span className="text-[#F56522]">Ventures,</span>{" "}
-              Building <span className="text-[#F56522]">Nation.</span>
+            <h1 className="text-xl font-bold text-white md:text-3xl">
+              Building <span className="text-primary">Ventures,</span> Building{" "}
+              <span className="text-primary">Nation.</span>
             </h1>
           </div>
         </div>
