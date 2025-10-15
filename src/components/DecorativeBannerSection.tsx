@@ -188,7 +188,7 @@ export default function DecorativeBannerSection() {
           style={{ aspectRatio: "1251/831" }}
         >
           <Image
-            src="/puzzel.svg"
+            src="/inCoreServices.svg"
             alt="Puzzle graphic"
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"

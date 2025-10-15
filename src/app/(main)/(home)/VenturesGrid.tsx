@@ -1,4 +1,5 @@
 import BlueHex from "@public/home/bluehex.svg";
+import VenturesGridMan from "@public/VenturesGridMan.svg?flex";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,13 +18,10 @@ export default function VenturesGrid() {
         {/* Grid container: 4 columns on md+ so we can place tiles precisely */}
         <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-4 md:grid-rows-2">
           {/* Big left card (spans 2 cols x 2 rows on md+) */}
-          <div className="relative overflow-hidden rounded-2xl shadow-lg md:col-span-2 md:row-span-2">
-            {/* Soft card background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#F7ECE6] to-[#EFDCD4]" />
-
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#F7ECE6] to-[#EFDCD4] shadow-lg md:col-span-2 md:row-span-2 md:overflow-visible">
             {/* Card content (on top of background) */}
-            <div className="relative z-10 flex h-full flex-col justify-between p-8">
-              <div className="max-w-md">
+            <div className="flex h-full flex-col justify-between p-8">
+              <div className="max-w-[80%]">
                 <p className="text-sm font-semibold tracking-wide text-blue-700 uppercase">
                   OUR
                 </p>
@@ -46,6 +44,7 @@ export default function VenturesGrid() {
                 </Link>
               </div>
             </div>
+            <VenturesGridMan className="pointer-events-none absolute -right-5 -bottom-2 z-20 w-40 sm:w-48 md:-right-20 md:-bottom-2.5 md:w-56 lg:w-60 xl:-right-30 xl:-bottom-3 xl:w-72" />
           </div>
 
           {/* Top-right: inCORE (orange) */}
@@ -100,32 +99,6 @@ export default function VenturesGrid() {
         {/* Right hex */}
         <div className="absolute -right-30 -bottom-65 hidden -translate-y-1/2 scale-125 rotate-12 opacity-30 md:block">
           <BlueHex width={300} height={340} />
-        </div>
-      </div>
-
-      {/* ---------- PERSON ILLUSTRATION (OUTSIDE THE LEFT CARD) ---------- */}
-      {/* This is positioned absolutely relative to the outer section so it overlaps between the left card and the right tiles.
-        It is hidden on small screens (sm) for layout stability; adjust the breakpoints or sizes as needed. */}
-      <div className="pointer-events-none hidden md:block">
-        <div
-          // tuning the position: adjust left/right/top/bottom, width to match design precisely
-          className="absolute z-20"
-          style={{
-            // place the person so he overlaps between the left card and the partner tile
-            left: "40%", // tweak this percentage until the illustration exactly sits where you want
-            top: "26%", // tweak vertical position
-            transform: "translate(-10%, 0%)",
-            width: "360px",
-          }}
-        >
-          <Image
-            src="/VenturesGridMan.svg"
-            alt="Person"
-            width={300}
-            height={560}
-            className="object-contain select-none"
-            priority
-          />
         </div>
       </div>
     </section>
