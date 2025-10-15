@@ -9,7 +9,13 @@ import {
 } from "react-icons/io5";
 import { footerLinkGroups } from "./footerLinks";
 
-export const Footer = ({ theme, isVenture = false }: { theme: ServiceTheme; isVenture?: boolean }) => {
+export const Footer = ({
+  theme,
+  isVenture = false,
+}: {
+  theme: ServiceTheme;
+  isVenture?: boolean;
+}) => {
   // Map for non-default, non-incore faint headline colors
   const faintMap: Record<
     "insurge" | "instack" | "involve" | "insure" | "light",
@@ -39,7 +45,7 @@ export const Footer = ({ theme, isVenture = false }: { theme: ServiceTheme; isVe
     theme.service !== "default" && theme.service !== "light"; // exclude light theme from service branding
 
   return (
-    <footer className="relative overflow-hidden font-sans ">
+    <footer className="relative overflow-hidden font-sans">
       <Container className="relative z-1 pt-24 pb-28 md:pb-36">
         {/* Footer grid layout including new left branding block */}
         <div className="grid gap-14 md:grid-cols-2 md:gap-20 lg:grid-cols-[minmax(380px,_480px)_repeat(3,minmax(0,1fr))] lg:gap-28">
@@ -156,7 +162,7 @@ export const Footer = ({ theme, isVenture = false }: { theme: ServiceTheme; isVe
 
       {/* Big Background Heading at bottom */}
       <h1
-        className={`pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 transform text-[5.7vw] leading-36 font-extrabold whitespace-nowrap ${faint}`}
+        className={`pointer-events-none absolute bottom-0 left-1/2 mb-[-0.5vw] -translate-x-1/2 transform text-[5.7vw] font-extrabold whitespace-nowrap ${faint}`}
       >
         Building Ventures. Building Nation.
       </h1>
