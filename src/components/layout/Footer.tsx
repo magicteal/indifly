@@ -66,6 +66,7 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
             >
               A venture builder empowering mission-driven founders with
               resources, functional expertise and strategic partnerships to{" "}
+              <br />
               <span className={`font-semibold italic ${theme.text}`}>
                 dream, build, and grow.
               </span>
