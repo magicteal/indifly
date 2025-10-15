@@ -1,8 +1,8 @@
 import BharatSection from "./BharatSection";
 import Hero from "./Hero";
 import ImpactOnBharat from "./ImpactOnBharat";
-import SectorsSection from "./SectorsSection";
 import VenturesGrid from "./VenturesGrid";
+import SectorsSection from "./sectors/SectorsSection";
 // import ContactFooter from "@/components/ContactFooter";
 import { ContactForm } from "@/components/layout/ContactForm";
 import { defaultServiceTheme } from "@/lib/serviceContext";
