@@ -72,9 +72,9 @@ export default async function VentureDetailPage({ params }: { params: Promise<{ 
                     );
                 })()}
 
-                {/* Content with higher z-index */}        
+                {/* Content with higher z-index */}
                 <ContactForm theme={ventureTheme as unknown as ServiceTheme} />
-                <Footer theme={ventureTheme as unknown as ServiceTheme} />
+                <Footer theme={ventureTheme as unknown as ServiceTheme} isVenture />
 
             </div>
         </main>

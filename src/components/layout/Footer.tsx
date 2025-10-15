@@ -9,7 +9,7 @@ import {
 } from "react-icons/io5";
 import { footerLinkGroups } from "./footerLinks";
 
-export const Footer = ({ theme }: { theme: ServiceTheme }) => {
+export const Footer = ({ theme, isVenture = false }: { theme: ServiceTheme; isVenture?: boolean }) => {
   // Map for non-default, non-incore faint headline colors
   const faintMap: Record<
     "insurge" | "instack" | "involve" | "insure" | "light",
@@ -23,17 +23,23 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
   };
 
   let faint: string;
-  if (theme.service === "default")
+  if (isVenture) {
+    // Use venture gradient text class if available on adapted theme
+    const ventureText = (theme as unknown as { text?: string }).text;
+    faint = `${ventureText ?? "text-[#021D41]"} opacity-20`;
+  } else if (theme.service === "default") {
     faint = "text-[#021D41]"; // custom default tint
-  else if (theme.service === "incore")
+  } else if (theme.service === "incore") {
     faint = "text-[#071B36]"; // incore variant
-  else faint = faintMap[theme.service as keyof typeof faintMap];
+  } else {
+    faint = faintMap[theme.service as keyof typeof faintMap];
+  }
 
   const isServiceTheme =
     theme.service !== "default" && theme.service !== "light"; // exclude light theme from service branding
 
   return (
-    <footer className="relative overflow-hidden font-sans text-white">
+    <footer className="relative overflow-hidden font-sans ">
       <Container className="relative z-1 pt-24 pb-28 md:pb-36">
         {/* Footer grid layout including new left branding block */}
         <div className="grid gap-14 md:grid-cols-2 md:gap-20 lg:grid-cols-[minmax(380px,_480px)_repeat(3,minmax(0,1fr))] lg:gap-28">
