@@ -31,6 +31,12 @@ const SectorsSection = () => {
     [currentCategory, activeSector],
   );
 
+  // Derive image src for the currently selected sector directly from its name
+  const currentSectorImage = useMemo(
+    () => `/home/sectors/${currentSector.name}.png`,
+    [currentSector.name],
+  );
+
   // When category changes, reset sector to first in that category
   useEffect(() => {
     // Ensure activeSector always belongs to the currently active category
@@ -183,17 +189,18 @@ const SectorsSection = () => {
               </div>
             </motion.div>
           </div>
-          {/* Image (placed after text so it appears below on mobile) */}
+          {/* Image */}
           <div className="flex w-full items-center justify-center self-end md:w-2/5">
-            <Image
-              src="/home/ourSectors.png"
-              alt="Brands across sectors illustration"
-              width={640}
-              height={640}
-              priority
-              sizes="(max-width: 768px) 100vw, 40vw"
-              className="h-auto max-h-80 w-full object-contain md:max-h-none"
-            />
+            <div className="relative h-[280px] w-full sm:h-[320px] md:h-[360px] lg:h-[420px]">
+              <Image
+                src={currentSectorImage}
+                alt={`${currentSector.name} illustration`}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 40vw"
+                className="object-contain"
+              />
+            </div>
           </div>
         </div>
       </Container>
