@@ -96,7 +96,7 @@ export const ourSectors: SectorCategory[] = [
           "Utility & bill payments made simple",
           "Train, bus & flight bookings at your doorstep",
           "Insurance services (health, vehicle, life)",
-          "eGovernance support: Aadhaar, PAN, other govt services",
+          "eGovernance support: Aadhaar, PAN, other government services",
         ],
         actions: "Install App",
       },
