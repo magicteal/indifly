@@ -148,13 +148,11 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
       </Container>
 
       {/* Big Background Heading at bottom */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-center overflow-hidden">
-        <h1
-          className={`mb-[-1vw] text-[10.5vw] leading-none font-extrabold whitespace-nowrap ${faint} md:text-[10.5vw]`}
-        >
-          Badhna Aasaan Hai
-        </h1>
-      </div>
+      <h1
+        className={`pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 transform text-[5.7vw] font-extrabold whitespace-nowrap ${faint}`}
+      >
+        Building Ventures. Building Nation.
+      </h1>
     </footer>
   );
 };
