@@ -9,6 +9,7 @@ import Bottom1 from "@public/companies/bg/bottom1.svg?flex";
 import Bottom2 from "@public/companies/bg/bottom2.svg?flex";
 import { ContactForm } from "@/components/layout/ContactForm";
 import { Footer } from "@/components/layout/Footer";
+import HighlightsSection from "../components/HighlightsSection";
 
 
 export default async function VentureDetailPage({ params }: { params: Promise<{ venture: VentureKey }> }) {
@@ -49,6 +50,7 @@ export default async function VentureDetailPage({ params }: { params: Promise<{ 
                 );
             })()}
             <VenturesHero defaultActive={venture} />
+            <HighlightsSection venture={venture} theme={ventureTheme} />
 
             {/* Per-venture bottom overlay with ContactForm and Footer */}
             <div className="relative w-full border-4 border-red-500">

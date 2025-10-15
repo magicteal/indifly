@@ -17,6 +17,7 @@ export type VentureContent = {
   };
   highlights?: Array<{ title: string; description: string }>;
   features?: Array<{ title: string; points: string[] }>;
+  cards?: Array<{ title: string; subtitle: string; points: string[] }>;
   // extend as we build pages
 };
 
