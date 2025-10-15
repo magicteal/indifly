@@ -149,7 +149,7 @@ export const Footer = ({ theme }: { theme: ServiceTheme }) => {
 
       {/* Big Background Heading at bottom */}
       <h1
-        className={`pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 transform text-[5.7vw] font-extrabold whitespace-nowrap ${faint}`}
+        className={`pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 transform text-[5.7vw] leading-36 font-extrabold whitespace-nowrap ${faint}`}
       >
         Building Ventures. Building Nation.
       </h1>
