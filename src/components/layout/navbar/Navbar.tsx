@@ -6,13 +6,22 @@ import {
 } from "@/components/layout/navbar/navigation";
 import { Button } from "@/components/ui/button";
 import { ServiceTheme } from "@/lib/serviceContext";
-import { ChevronRight, Menu, Search, X } from "lucide-react";
+import { ChevronRight, Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
+interface NavbarLogoProps {
+  href: string;
+  src: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+}
+
 interface NavbarProps {
-  logo: React.ReactNode;
+  logo: NavbarLogoProps;
   navItems?: NavItem[];
   theme?: ServiceTheme;
 }
@@ -46,8 +55,21 @@ const Navbar: React.FC<NavbarProps> = ({ logo, navItems, theme }) => {
             </Button>
           </div>
 
-          {/* Logo */}
-          <div className="flex-shrink-0 md:mr-auto">{logo}</div>
+          {/* Logo - centered on mobile, left-aligned on desktop */}
+          <div className="absolute left-1/2 flex-shrink-0 -translate-x-1/2 md:static md:mr-auto md:ml-0 md:translate-x-0">
+            <Link
+              href={logo.href}
+              aria-label={logo.alt ?? "Logo"}
+              className="inline-flex items-center"
+            >
+              <Image
+                src={logo.src}
+                alt={logo.alt ?? "Logo"}
+                width={logo.width ?? 100}
+                height={logo.height ?? 40}
+              />
+            </Link>
+          </div>
 
           {/* Desktop Nav Links - centered */}
           <div className="absolute left-1/2 hidden -translate-x-1/2 items-center space-x-6 md:flex">
@@ -66,9 +88,9 @@ const Navbar: React.FC<NavbarProps> = ({ logo, navItems, theme }) => {
           </div>
 
           {/* Search Icon */}
-          <div className="group flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/80 transition-colors hover:bg-white">
+          {/* <div className="group flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white/80 transition-colors hover:bg-white">
             <Search className="h-5 w-5 text-orange-500" />
-          </div>
+          </div> */}
           {/* Mobile dropdown menu panel - overlay, attached under navbar */}
           {isOpen && (
             <div

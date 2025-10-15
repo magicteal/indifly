@@ -1,18 +1,10 @@
 import Navbar from "@/components/layout/navbar/Navbar";
 import TopBanner from "@/components/layout/TopBanner";
 import { incoreServiceTheme } from "@/lib/serviceContext";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function IncoreLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const incoreLogo = (
-    <Link href="/incore">
-      <Image src="/incorelogo2.png" alt="inCORE Logo" width={100} height={40} />
-    </Link>
-  );
-
   return (
     <>
       {/* Fixed TopBanner on all viewports */}
@@ -23,7 +15,10 @@ export default function IncoreLayout({
         <TopBanner variant="incore" />
       </div>
 
-      <Navbar logo={incoreLogo} theme={incoreServiceTheme} />
+      <Navbar
+        logo={{ href: "/incore", src: "/incorelogo2.png", alt: "inCORE Logo" }}
+        theme={incoreServiceTheme}
+      />
       <div className="h-24 bg-black md:h-8" />
       <div className="overflow-x-clip">{children}</div>
     </>

@@ -1,22 +1,9 @@
 import Navbar from "@/components/layout/navbar/Navbar";
 import TopBanner from "@/components/layout/TopBanner";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function MainLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const mainLogo = (
-    <Link href="/">
-      <Image
-        src="/indiflyLogo.svg"
-        alt="Indifly Logo"
-        width={100}
-        height={40}
-      />
-    </Link>
-  );
-
   return (
     <>
       {/* Fixed TopBanner on all viewports */}
@@ -28,7 +15,9 @@ export default function MainLayout({
       </div>
       {/* Add spacer to account for fixed banner + fixed navbar heights */}
       <div className="h-24 md:h-8" />
-      <Navbar logo={mainLogo} />
+      <Navbar
+        logo={{ href: "/", src: "/indiflyLogo.svg", alt: "Indifly Logo" }}
+      />
       {children}
     </>
   );
