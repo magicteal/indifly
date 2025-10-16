@@ -3,6 +3,7 @@ import TopBanner from "@/components/layout/TopBanner";
 import SectionHeader from "@/components/section-header";
 import { incoreServiceTheme } from "@/lib/serviceContext";
 import { cn } from "@/lib/utils";
+import { SectionGradient } from "@/app/incore/services/[service]/PageGradients";
 // Hero artwork now uses SVG component import (responsive via ?flex query)
 import InCoreHero from "@public/inCore/inCoreHero.svg?flex";
 import Link from "next/link";
@@ -29,31 +30,12 @@ export default function InCorePage() {
       <main className="min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-[#001631] pt-16 sm:pt-20 md:pt-28 lg:pt-36">
         <Container>
           <div className="relative text-center">
-            {/* Layered blur color blobs behind hero */}
-            <div
-              className="pointer-events-none absolute inset-0 flex items-center justify-center"
-              aria-hidden="true"
-            >
-              <div className="relative h-[80vw] max-h-[700px] w-[80vw] max-w-[700px] sm:h-[70vw] sm:w-[70vw]">
-                {/* 00DFDF at right bottom corner */}
-                <div className="absolute right-0 bottom-0 h-[38%] w-[38%] rounded-full bg-[#00DFDF] blur-[60px] sm:blur-[90px]"></div>
-
-                {/* 0A7CFF at right corner (top-right) */}
-                <div className="absolute top-0 right-0 h-[35%] w-[35%] rounded-full bg-[#0A7CFF] blur-[60px] sm:blur-[90px]"></div>
-
-                {/* 7733FF at top center */}
-                <div className="absolute top-0 left-1/2 h-[40%] w-[40%] -translate-x-1/2 rounded-full bg-[#7733FF] blur-[60px] sm:blur-[90px]"></div>
-
-                {/* 7733FF at bottom center */}
-                <div className="absolute bottom-0 left-1/2 h-[35%] w-[35%] -translate-x-1/2 rounded-full bg-[#7733FF] blur-[60px] sm:blur-[90px]"></div>
-
-                {/* FF469D at left top corner */}
-                <div className="absolute top-0 left-0 h-[32%] w-[32%] rounded-full bg-[#FF469D] blur-[60px] sm:blur-[90px]"></div>
-
-                {/* FF7847 at left (center-left) */}
-                <div className="absolute top-1/2 left-0 h-[36%] w-[36%] -translate-y-1/2 rounded-full bg-[#FF7847] blur-[60px] sm:blur-[90px]"></div>
-              </div>
-            </div>
+            {/* Hero gradient background reusing SectionGradient utility */}
+            <SectionGradient
+              service="incoreHome"
+              variant="homeHero"
+              className=" top-1/2 -translate-y-1/2"
+            />
 
             {/* Foreground hero content */}
             <div className="relative z-10">
@@ -186,85 +168,51 @@ export default function InCorePage() {
         </Container>
 
         {/* Large blurred gradient frame from Process to Insights */}
-        <section className="relative w-full">
-          {/* Background layer with feathered mask */}
-          <div
-            className="pointer-events-none absolute inset-0 z-0"
-            aria-hidden="true"
-            style={{
-              WebkitMaskImage:
-                "radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)",
-              maskImage:
-                "radial-gradient(120% 100% at 50% 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 95%)",
-            }}
-          >
-            {/* Top center rectangular – 091E38 */}
-            <div className="absolute top-0 left-1/2 h-[18%] w-[70%] max-w-[1100px] -translate-x-1/2 rounded-[96px] bg-[#091E38] opacity-40 blur-[160px] sm:blur-[200px]" />
+        <section className="relative">
+          <SectionGradient
+            service="incoreHome"
+            variant="homeMiddle"
+          />
 
-            {/* Top corner – 18A0FB (top-right) */}
-            <div className="absolute -top-[6%] -right-[6%] h-[35%] w-[35%] max-w-[560px] rounded-full bg-[#18A0FB] opacity-45 blur-[120px] sm:blur-[160px]" />
-
-            {/* Center rectangular – 458BEA */}
-            <div className="absolute top-1/2 left-1/2 h-[22%] w-[60%] max-w-[980px] -translate-x-1/2 -translate-y-1/2 rounded-[96px] bg-[#458BEA] opacity-40 blur-[170px] sm:blur-[210px]" />
-
-            {/* Left middle edge – E04A00 */}
-            <div className="absolute top-1/2 -left-[8%] h-[28%] w-[22%] max-w-[360px] -translate-y-1/2 rounded-[64px] bg-[#E04A00] opacity-40 blur-[120px] sm:blur-[160px]" />
-
-            {/* Right middle edge – FFC700 */}
-            <div className="absolute top-1/2 -right-[8%] h-[28%] w-[22%] max-w-[360px] -translate-y-1/2 rounded-[64px] bg-[#FFC700] opacity-45 blur-[120px] sm:blur-[160px]" />
-
-            {/* Bottom left – 00C5DF */}
-            <div className="absolute -bottom-[10%] -left-[10%] h-[45%] w-[45%] max-w-[720px] rounded-full bg-[#00C5DF] opacity-55 blur-[120px] sm:blur-[160px]" />
-          </div>
-
-          {/* Foreground content */}
           <div className="relative z-10">
             <WealthSection />
             <DecorativeBannerSection />
+
+
+          </div>
+        </section>
+
+        <section className="relative">
+          <SectionGradient
+            service="incoreHome"
+            variant="homeMiddleAlt"
+          />
+          <div className="relative z-10">
             <ProcessJourneySection />
             <Container id="case-studies">
               <SectionHeader title="Case Studies" />
               <CaseStudiesSection />
             </Container>
+          </div>
+
+        </section>
+
+
+        {/* Large blurred gradient frame leading into insights */}
+        <section className="relative w-full overflow-hidden">
+          <SectionGradient
+            service="incoreHome"
+            variant="homeBottom"
+          />
+
+          <div className="relative z-10">
             <IncoreINDsightsSection />
           </div>
+          <ContactForm theme={incoreServiceTheme} />
+          <Footer theme={incoreServiceTheme} />
         </section>
 
-        {/* Large blurred gradient frame from Clients Marquee to Contact section */}
-        <section className="relative w-full overflow-x-clip">
-          {/* Background blob layer */}
-          <div
-            className="pointer-events-none absolute inset-0 z-0"
-            aria-hidden="true"
-          >
-            {/* Top center rectangular – 091E38 */}
-            <div className="absolute top-0 left-1/2 h-[18%] w-[70%] max-w-[1100px] -translate-x-1/2 rounded-[48px] bg-[#091E38] opacity-40 blur-[120px] sm:blur-[160px]"></div>
 
-            {/* Top corner – 18A0FB (top-right) */}
-            <div className="absolute -top-[6%] -right-[6%] h-[35%] w-[35%] max-w-[560px] rounded-full bg-[#18A0FB] opacity-45 blur-[120px] sm:blur-[160px]"></div>
-
-            {/* Center rectangular – 458BEA */}
-            <div className="absolute top-1/2 left-1/2 h-[22%] w-[60%] max-w-[980px] -translate-x-1/2 -translate-y-1/2 rounded-[48px] bg-[#458BEA] opacity-40 blur-[130px] sm:blur-[170px]"></div>
-
-            {/* Left middle edge – E04A00 */}
-            <div className="absolute top-1/2 -left-[8%] h-[28%] w-[22%] max-w-[360px] -translate-y-1/2 rounded-[64px] bg-[#E04A00] opacity-40 blur-[120px] sm:blur-[160px]"></div>
-
-            {/* Right middle edge – FFC700 */}
-            <div className="absolute top-1/2 -right-[8%] h-[28%] w-[22%] max-w-[360px] -translate-y-1/2 rounded-[64px] bg-[#FFC700] opacity-45 blur-[120px] sm:blur-[160px]"></div>
-
-            {/* Bottom left – 00C5DF (extended deeper to reach toward footer) */}
-            <div className="absolute -bottom-[16%] -left-[12%] h-[52%] w-[52%] max-w-[820px] rounded-full bg-[#00C5DF] opacity-55 blur-[140px] sm:blur-[180px]"></div>
-          </div>
-
-          {/* Foreground content */}
-
-          {/* <ClientsMarqueeSection /> */}
-
-          {/* <SectionHeader title="Testimonials" className="relative z-10" />
-          <Testimonials /> */}
-        </section>
-        <ContactForm theme={incoreServiceTheme} />
-        <Footer theme={incoreServiceTheme} />
       </main>
     </>
   );
