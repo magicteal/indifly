@@ -47,7 +47,7 @@ export default async function Page({
 
       {/* Approach: background gradient 1 */}
       <div className="relative z-10">
-        <SectionGradient service={ctx.service} variant={2} className="top-72" />
+        <SectionGradient service={ctx.service} variant={2} className="top-0" />
         <ApproachSection
           theme={ctx.theme}
           approach={ctx.content.ourApproach}
