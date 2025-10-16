@@ -46,32 +46,32 @@ const heroArtConfig: Record<
   }
 > = {
   indipe: {
-    container: " md:-right-[20%] md:-bottom-[18%]",
+    container: " md:-right-[15%] md:-bottom-[18%]",
     artClassName: "h-[260px] md:h-[500px] w-auto",
     imageSize: { w: 380, h: 260 },
   },
   sec2pay: {
-    container: " md:-right-[20%] md:-bottom-[18%]",
+    container: " md:-right-[15%] md:-bottom-[18%]",
     artClassName: "h-[260px] md:h-[400px] w-auto",
     imageSize: { w: 380, h: 260 },
   },
   indiconnect: {
-    container: "md:-right-[16%] md:-bottom-[14%]",
-    artClassName: "h-[270px] md:h-[500px] w-auto",
+    container: "md:-right-[10%] md:-bottom-[14%]",
+    artClassName: "h-[270px] md:h-[520px] w-auto",
     imageSize: { w: 390, h: 270 },
   },
   indikendra: {
-    container: "md:-right-[18%] md:-bottom-[16%]",
-    artClassName: "h-[285px] md:h-[520px] w-auto",
+    container: "md:-right-[11%] md:-bottom-[20%]",
+    artClassName: "h-[30rem] lg:h-[45rem] w-auto",
     imageSize: { w: 410, h: 285 },
   },
   indinxt: {
-    container: "md:-right-[18%] md:-bottom-[16%] ",
-    artClassName: "h-[275px] md:h-[500px] w-auto",
+    container: "md:-right-[10%] md:-bottom-[15%] ",
+    artClassName: "h-[275px] md:h-[550px] w-auto",
     imageSize: { w: 395, h: 275 },
   },
   indispeed: {
-    container: "md:-right-[16%] md:-bottom-[11%]",
+    container: "md:-right-[10%] md:-bottom-[2%]",
     artClassName: "h-[300px] md:h-[520px] w-auto",
     imageSize: { w: 420, h: 300 },
   },
