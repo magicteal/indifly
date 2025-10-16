@@ -109,7 +109,7 @@ export default function CoreOfferings({
 
       {/* Tagline */}
       <p
-        className={`mt-10 text-center text-2xl font-semibold text-white italic md:mt-16 md:text-3xl`}
+        className={`mt-10 text-center text-2xl font-semibold ${theme.text} italic md:mt-16 md:text-3xl`}
       >
         {offerings.tagline}
       </p>
