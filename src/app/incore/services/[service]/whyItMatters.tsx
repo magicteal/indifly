@@ -3,6 +3,10 @@
 import Container from "@/components/container";
 import type { ServiceKey, ServiceTheme } from "@/lib/serviceContext";
 import TextCircledLine from "@public/inCore/text-circled-line.svg";
+import InstackWhyItMatters from "@public/inCore/whyItMatters/instackwhyItMatters.svg?flex";
+import InsureWhyItMatters from "@public/inCore/whyItMatters/insurewhyItMatters.svg?flex";
+import InsurgeWhyItMatters from "@public/inCore/whyItMatters/insurgewhyItMatters.svg?flex";
+import InvolveWhyItMatters from "@public/inCore/whyItMatters/involvewhyItMatters.svg?flex";
 import { MoveRight } from "lucide-react";
 import type React from "react";
 
@@ -43,6 +47,16 @@ export default function WhyItMatters({
   whyItMatters,
   service,
 }: WhyItMattersProps) {
+  const artByService: Record<
+    ServiceKey,
+    React.ComponentType<React.SVGProps<SVGSVGElement>>
+  > = {
+    insurge: InsurgeWhyItMatters,
+    instack: InstackWhyItMatters,
+    involve: InvolveWhyItMatters,
+    insure: InsureWhyItMatters,
+  };
+  const Art = artByService[service];
   return (
     <div className="relative">
       <Container className="mt-36">
@@ -62,10 +76,18 @@ export default function WhyItMatters({
           {whyItMatters.description}
         </div>
 
-        {/* Card */}
-        <div className="flex flex-row justify-center">
-          {/* Left: stacked list */}
-          <div className="flex flex-col gap-4">
+        {/* Main: Left illustration (dynamic by service) + Right challenges */}
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-5 md:gap-12">
+          {/* Left: service illustration */}
+          <div className="flex w-full justify-center md:col-span-2 md:justify-end">
+            <Art
+              aria-label={`${service} why it matters illustration`}
+              className="h-auto w-full max-w-[520px]"
+            />
+          </div>
+
+          {/* Right: challenge pills */}
+          <div className="flex flex-col gap-4 md:col-span-3">
             {whyItMatters.challenges.map((ch, i) => (
               <Pill service={service} key={i}>
                 <span className="font-bold">{ch.title} </span>
@@ -79,6 +101,7 @@ export default function WhyItMatters({
             ))}
           </div>
         </div>
+
         {/* Tagline */}
         <p
           className={`mt-10 text-center text-2xl font-semibold text-white italic md:mt-16 md:text-3xl`}
