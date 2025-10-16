@@ -11,15 +11,7 @@ export type BlogMeta = {
 
 export type BlogModule = { default: ComponentType; meta?: BlogMeta };
 
-export const BLOG_CONTENT_DIR = path.join(
-  process.cwd(),
-  "src",
-  "app",
-  "(main)",
-  "blog",
-  "[slug]",
-  "content",
-);
+export const BLOG_CONTENT_DIR = path.join(process.cwd(), "src", "content");
 
 export function listBlogSlugs(): string[] {
   return fs
@@ -30,7 +22,7 @@ export function listBlogSlugs(): string[] {
 
 export async function importBlogModule(slug: string): Promise<BlogModule> {
   const mod = (await import(
-    /* webpackInclude: /\.mdx$/ */ `@/app/(main)/blog/[slug]/content/${slug}.mdx`
+    /* webpackInclude: \/\.mdx$/ */ `@/content/${slug}.mdx`
   )) as BlogModule;
   return mod;
 }
