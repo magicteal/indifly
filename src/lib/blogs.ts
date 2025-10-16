@@ -22,7 +22,7 @@ export function listBlogSlugs(): string[] {
 
 export async function importBlogModule(slug: string): Promise<BlogModule> {
   const mod = (await import(
-    /* webpackInclude: \/\.mdx$/ */ `@/content/${slug}.mdx`
+    /* webpackInclude: /\.mdx$/ */ `@/content/${slug}.mdx`
   )) as BlogModule;
   return mod;
 }
