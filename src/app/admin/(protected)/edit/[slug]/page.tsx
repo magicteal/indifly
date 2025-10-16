@@ -51,7 +51,7 @@ export default function EditPostPage() {
         method: "DELETE",
       },
     );
-    if (res.ok) router.push("/admin/(protected)/blog");
+    if (res.ok) router.push("/admin");
     else setError(await res.text());
   };
 

@@ -21,7 +21,7 @@ export default function NewPostPage() {
     });
     setSaving(false);
     if (res.ok) {
-      router.push(`/admin/(protected)/blog/edit/${encodeURIComponent(slug)}`);
+      router.push(`/admin/edit/${encodeURIComponent(slug)}`);
     } else {
       setError(await res.text());
     }
