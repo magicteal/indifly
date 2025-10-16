@@ -1,7 +1,6 @@
 import BharatSection from "./BharatSection";
 import Hero from "./Hero";
 import ImpactOnBharat from "./ImpactOnBharat";
-import VenturesGrid from "./VenturesGrid";
 import SectorsSection from "./sectors/SectorsSection";
 // import ContactFooter from "@/components/ContactFooter";
 import { ContactForm } from "@/components/layout/ContactForm";
@@ -14,7 +13,6 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <VenturesGrid />
       <BharatSection />
       <SectorsSection />
       <InCoreServices />
