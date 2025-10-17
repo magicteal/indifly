@@ -3,10 +3,10 @@
 import Container from "@/components/container";
 import type { ServiceKey, ServiceTheme } from "@/lib/serviceContext";
 import TextCircledLine from "@public/inCore/text-circled-line.svg";
-import InstackWhyItMatters from "@public/inCore/whyItMatters/instackwhyItMatters.svg?flex";
-import InsureWhyItMatters from "@public/inCore/whyItMatters/insurewhyItMatters.svg?flex";
-import InsurgeWhyItMatters from "@public/inCore/whyItMatters/insurgewhyItMatters.svg?flex";
-import InvolveWhyItMatters from "@public/inCore/whyItMatters/involvewhyItMatters.svg?flex";
+import InstackWhyItMatters from "@public/inCore/whyItMatters/instackWhyItMatters.svg?flex";
+import InsureWhyItMatters from "@public/inCore/whyItMatters/insureWhyItMatters.svg?flex";
+import InsurgeWhyItMatters from "@public/inCore/whyItMatters/insurgeWhyItMatters.svg?flex";
+import InvolveWhyItMatters from "@public/inCore/whyItMatters/involveWhyItMatters.svg?flex";
 import { MoveRight } from "lucide-react";
 import type React from "react";
 
