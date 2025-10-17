@@ -18,7 +18,7 @@ const Hero = () => {
 
       <div className="relative mx-auto w-full px-0 ">
         {/* Portrait on mobile with equal bars top/bottom; switches back to 16:9 on md+ */}
-        <div className="relative aspect-[9/16] w-full overflow-hidden sm:aspect-[16/9]">
+  <div className="relative aspect-[9/16] w-full overflow-hidden sm:aspect-[16/9] reveal-image">
           <video
             autoPlay
             loop
@@ -38,7 +38,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="-mt-20 md:-mt-28">
+      <div className="-mt-20 md:-mt-28 reveal-section">
         <VenturesGrid embedded />
       </div>
     </section>

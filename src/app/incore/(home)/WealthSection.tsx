@@ -62,13 +62,15 @@ export default function WealthSection() {
 
   const content = contentByTab[active];
   return (
-    <Section className="py-20">
-      <SectionHeader label="What Comprises" title="InCORE" />
+    <Section className="py-20 reveal-section">
+      <div className="reveal-title">
+        <SectionHeader label="What Comprises" title="InCORE" />
+      </div>
 
       <div className="relative mt-12 flex flex-col gap-6 overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 shadow-inner ring-1 ring-white/10 backdrop-blur-xl backdrop-saturate-150 sm:rounded-3xl sm:p-6 md:flex-row md:gap-8 md:rounded-[5rem] md:p-10">
         {/* Left Pills */}
-        <div className="flex w-full flex-col gap-3 sm:gap-4 md:w-auto md:min-w-[200px]">
-          {tabs.map((t) => (
+        <div className="flex w-full flex-col gap-3 sm:gap-4 md:w-auto md:min-w-[200px]" data-reveal-stagger>
+          {tabs.map((t, idx) => (
             <button
               key={t.key}
               type="button"
@@ -78,6 +80,7 @@ export default function WealthSection() {
                 "cursor-pointer rounded-full px-4 py-2 text-left text-sm font-medium text-white transition-all hover:opacity-95 focus:outline-none md:text-base",
                 active === t.key ? "ring-2 ring-white/30" : "ring-0",
                 pillGradientClass[t.key],
+                idx % 2 === 0 ? "reveal-left" : "reveal-right",
               )}
             >
               {t.label}
@@ -86,7 +89,7 @@ export default function WealthSection() {
         </div>
 
         {/* Right Content */}
-        <Card className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0e1a34]/60 shadow-xl">
+        <Card className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0e1a34]/60 shadow-xl reveal-right">
           <CardContent className="relative z-10 p-5 sm:p-6 md:p-8">
             <h2
               className={cn(
@@ -99,14 +102,15 @@ export default function WealthSection() {
                   : active === "pods"
                     ? "bg-[linear-gradient(90deg,#006FFF_0%,#0B44FF_100%)]"
                     : "bg-[linear-gradient(90deg,#04E762_0%,#00B59A_100%)]",
+                "reveal-title",
               )}
             >
               {content.title}
             </h2>
 
-            <ul className="mt-6 space-y-2 text-sm text-gray-300 md:text-base">
-              {content.bullets.map((b) => (
-                <li key={b}>• {b}</li>
+            <ul className="mt-6 space-y-2 text-sm text-gray-300 md:text-base" data-reveal-stagger>
+              {content.bullets.map((b, idx) => (
+                <li key={b} className={idx % 2 === 0 ? "reveal-left" : "reveal-right"}>• {b}</li>
               ))}
             </ul>
 
@@ -117,7 +121,7 @@ export default function WealthSection() {
               Explore More →
             </Button> */}
           </CardContent>
-          <div className="pointer-events-none hidden select-none md:block">
+          <div className="pointer-events-none hidden select-none md:block reveal-image">
             {/* Big bottom-right circle */}
             <div
               className={cn(

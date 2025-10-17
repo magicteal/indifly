@@ -45,12 +45,12 @@ export const Footer = ({
     theme.service !== "default" && theme.service !== "light"; // exclude light theme from service branding
 
   return (
-    <footer className="relative overflow-hidden font-sans">
+    <footer className="relative overflow-hidden font-sans reveal-section">
       <Container className="relative z-1 pt-24 pb-28 md:pb-36">
         {/* Footer grid layout including new left branding block */}
         <div className="grid gap-14 md:grid-cols-2 md:gap-20 lg:grid-cols-[minmax(380px,_480px)_repeat(3,minmax(0,1fr))] lg:gap-28">
           {/* Left branding / mission block */}
-          <div className="max-w-md">
+          <div className="max-w-md reveal-left" data-reveal-stagger>
             <div className="mb-6 flex items-center gap-3">
               <Image
                 src={
@@ -141,9 +141,9 @@ export const Footer = ({
           </div>
 
           {/* Link Columns (refactored to map over config) */}
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:col-span-1 md:grid-cols-3 lg:col-span-3">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:col-span-1 md:grid-cols-3 lg:col-span-3" data-reveal-stagger>
             {footerLinkGroups.map((group) => (
-              <div key={group.heading} className="relative">
+              <div key={group.heading} className="relative reveal-right">
                 <h3 className={`mb-4 text-lg font-bold ${theme.text}`}>
                   {group.heading}
                 </h3>

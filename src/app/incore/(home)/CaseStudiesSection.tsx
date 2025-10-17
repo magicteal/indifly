@@ -161,7 +161,7 @@ export default function CaseStudies() {
         </svg>
       </div>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
         {caseStudies.map((study, i) => (
           <Card
             key={i}
@@ -169,12 +169,29 @@ export default function CaseStudies() {
           >
             {/* Soft translucent gradient background */}
             <div className="absolute inset-0 bg-[linear-gradient(180deg,#FFFFFF_0%,#9AC1FF_100%)] opacity-30" />
-            <CardContent className="relative z-10 flex h-full flex-col items-center p-8 text-center">
-              <h3 className="text-2xl font-bold md:text-3xl">{study.title}</h3>
-              <p className="mt-4 text-sm leading-relaxed">
+            <CardContent
+              className={`relative z-10 flex h-full flex-col items-center p-8 text-center`}
+              data-reveal-stagger
+            >
+              <h3
+                className={`text-2xl font-bold md:text-3xl ${
+                  i % 2 === 0 ? "reveal-left" : "reveal-right"
+                }`}
+              >
+                {study.title}
+              </h3>
+              <p
+                className={`mt-4 text-sm leading-relaxed ${
+                  i % 2 === 0 ? "reveal-right" : "reveal-left"
+                }`}
+              >
                 {study.description}
               </p>
-              <span className="mt-6 font-bold tracking-wide">
+              <span
+                className={`mt-6 font-bold tracking-wide ${
+                  i % 2 === 0 ? "reveal-left" : "reveal-right"
+                }`}
+              >
                 <span className="">{study.tag.prefix}</span>
                 <span className={study.tag.color}>{study.tag.suffix}</span>
               </span>

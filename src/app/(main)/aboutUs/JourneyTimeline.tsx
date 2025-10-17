@@ -24,23 +24,23 @@ export function JourneyTimeline() {
   const activeIndex = years.indexOf(active);
 
   return (
-    <section className="mt-8">
+    <section className="mt-8 reveal-section">
       {/* Title with brush stroke + headings */}
       <div className="my-10 flex w-full items-center justify-center">
         <div className="relative">
-          <TitleBrush className="h-auto w-full" />
+          <TitleBrush className="h-auto w-full reveal-image" />
           <div className="absolute inset-0 grid place-items-center">
-            <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl">
+            <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl reveal-title">
               ROADMAP
             </h2>
           </div>
         </div>
       </div>
 
-      <p className="mx-auto text-center text-xl font-bold text-[#0B44FF]">
+      <p className="mx-auto text-center text-xl font-bold text-[#0B44FF] reveal-left">
         Our Journey
       </p>
-      <p className="mx-auto mt-2 max-w-3xl px-6 text-center text-lg text-neutral-800">
+      <p className="mx-auto mt-2 max-w-3xl px-6 text-center text-lg text-neutral-800 reveal-right">
         Empowering communities through innovative solutions since 2017.
       </p>
 
@@ -55,11 +55,11 @@ export function JourneyTimeline() {
             aria-label="Company journey timeline"
             className="relative"
           >
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-3" data-reveal-stagger>
               {years.map((y, idx) => {
                 const state = idx === activeIndex ? "active" : "inactive";
                 return (
-                  <li key={y} className="relative flex justify-center">
+                  <li key={y} className="relative flex justify-center reveal-left">
                     <button
                       onClick={() => handleSelect(y)}
                       className={cn(
@@ -85,14 +85,14 @@ export function JourneyTimeline() {
         </Stepper.Provider>
 
         {/* Active panel */}
-        <div className="self-start rounded-xl bg-[#F5F7FB] p-6 shadow-sm ring-1 ring-[#0B44FF]/10">
+        <div className="self-start rounded-xl bg-[#F5F7FB] p-6 shadow-sm ring-1 ring-[#0B44FF]/10 reveal-right">
           <div className="text-xs font-semibold tracking-wide text-[#0B44FF] uppercase">
             {active}
           </div>
           <TimelineContent content={yearDetails[active]} />
 
           {/* Mobile year selector */}
-          <div className="mt-6 flex flex-wrap gap-2 md:hidden">
+          <div className="mt-6 flex flex-wrap gap-2 md:hidden" data-reveal-stagger>
             {years.map((y) => {
               const state = y === active ? "active" : "inactive";
               return (
@@ -120,24 +120,26 @@ export function JourneyTimeline() {
 function TimelineContent({ content }: { content: YearContent }) {
   return (
     <div>
-      <h3 className="mt-2 text-lg font-semibold text-[#0B2B4A]">
+      <h3 className="mt-2 text-lg font-semibold text-[#0B2B4A] reveal-title">
         {content.title}
       </h3>
       <div className="mt-4 space-y-6">
         {content.sections.map((s, i) => (
-          <div key={i} className="space-y-3">
+          <div key={i} className="space-y-3" data-reveal-stagger>
             {s.heading && (
-              <h4 className="text-sm font-medium tracking-wide text-[#0B2B4A]">
+              <h4 className="text-sm font-medium tracking-wide text-[#0B2B4A] reveal-left">
                 {s.heading}
               </h4>
             )}
-            {s.text && <p className="text-sm text-neutral-700">{s.text}</p>}
+            {s.text && (
+              <p className="text-sm text-neutral-700 reveal-right">{s.text}</p>
+            )}
             {s.points && (
-              <ul className="space-y-2 text-sm text-neutral-800">
+              <ul className="space-y-2 text-sm text-neutral-800" data-reveal-stagger>
                 {s.points.map((p, idx) => {
                   if (typeof p === "string") {
                     return (
-                      <li key={p} className="flex items-start gap-2">
+                      <li key={p} className="flex items-start gap-2 reveal-left">
                         <span className="mt-1.5 inline-block size-2 rounded-full bg-[#0B44FF]" />
                         <span>{p}</span>
                       </li>
@@ -145,7 +147,7 @@ function TimelineContent({ content }: { content: YearContent }) {
                   }
                   // Nested group
                   return (
-                    <li key={p.heading || idx} className="space-y-2">
+                    <li key={p.heading || idx} className="space-y-2 reveal-right">
                       {p.heading && (
                         <div className="flex items-start gap-2">
                           <span className="mt-1.5 inline-block size-2 rounded-full bg-[#0B44FF]" />
@@ -158,11 +160,11 @@ function TimelineContent({ content }: { content: YearContent }) {
                         </div>
                       )}
                       {p.points && (
-                        <ul className="ml-6 list-outside list-disc space-y-1 border-l border-[#0B44FF]/20 pl-4 text-xs text-neutral-800 md:text-sm">
+                        <ul className="ml-6 list-outside list-disc space-y-1 border-l border-[#0B44FF]/20 pl-4 text-xs text-neutral-800 md:text-sm" data-reveal-stagger>
                           {p.points.map((sub) => (
                             <li
                               key={sub}
-                              className="pl-1 leading-snug marker:text-[#0B44FF]"
+                              className="pl-1 leading-snug marker:text-[#0B44FF] reveal-left"
                             >
                               {sub}
                             </li>

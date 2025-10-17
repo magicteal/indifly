@@ -33,7 +33,7 @@ export default async function INDsights() {
         </div>
 
         {/* Title with brush stroke */}
-        <div className="mb-10 flex w-full items-center justify-center md:mb-14">
+  <div className="mb-10 flex w-full items-center justify-center md:mb-14 reveal-title">
           {/* Brush */}
           <div className="relative">
             <TitleBrush className="h-auto w-full" />
@@ -46,7 +46,7 @@ export default async function INDsights() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+  <div className="grid grid-cols-1 gap-6 md:grid-cols-3" data-reveal-stagger>
           {recentBlogs.map((card) => (
             <BlogCard key={card.slug} title={card.title} slug={card.slug} />
           ))}

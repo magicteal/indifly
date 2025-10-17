@@ -177,14 +177,14 @@ export default function DecorativeBannerSection() {
   return (
     <Section
       py="py-16"
-      className="relative"
+      className="relative reveal-section"
       id="services"
       containerProps={{ className: "max-w-6xl" }}
     >
       <div className="relative w-full">
         {/* Maintain aspect ratio matching the source (1251x831 ~ 1.505) to reduce CLS */}
         <div
-          className="relative w-full overflow-hidden md:rounded-[5.5rem]"
+          className="relative w-full overflow-hidden md:rounded-[5.5rem] reveal-right"
           style={{ aspectRatio: "1251/831" }}
         >
           <Image
@@ -192,7 +192,7 @@ export default function DecorativeBannerSection() {
             alt="Puzzle graphic"
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
-            className="object-contain"
+            className="object-contain reveal-image"
             priority={false}
           />
 

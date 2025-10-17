@@ -70,7 +70,7 @@ export default function ApproachSection({
   }, []);
 
   return (
-    <Container>
+  <Container className="reveal-section">
       <div
         className="relative mt-12 flex flex-col items-center rounded-4xl px-4 sm:px-8 lg:px-12"
         style={{
@@ -83,7 +83,7 @@ export default function ApproachSection({
         <Cube className="absolute top-40 right-7 scale-30 rotate-12" />
 
         {/* heading */}
-        <div className="relative mb-8 pt-14 text-2xl font-semibold italic md:text-3xl">
+  <div className="relative mb-8 pt-14 text-2xl font-semibold italic md:text-3xl reveal-title">
           <span className="mr-12">Our</span>
           <span className={`relative ${theme.text}`}>
             Approach
@@ -92,7 +92,7 @@ export default function ApproachSection({
         </div>
 
         {/* dynamic description paragraphs */}
-        <div className="mx-auto max-w-4xl px-6 text-center">
+  <div className="mx-auto max-w-4xl px-6 text-center" data-reveal-stagger>
           {approach.description.map((p, i) => (
             <p key={i} className="mt-0 text-base text-white/90">
               {p}
@@ -101,7 +101,7 @@ export default function ApproachSection({
         </div>
 
         {/* Desktop / tablet version: keep absolute positioning so arrows in SVG point correctly */}
-        <div className="relative mx-auto mt-28 mb-32 hidden w-full max-w-[500px] sm:block">
+  <div className="relative mx-auto mt-28 mb-32 hidden w-full max-w-[500px] sm:block reveal-image">
           {isSmUp && (
             <ApproachImage
               className="mx-auto max-w-full"
@@ -130,7 +130,7 @@ export default function ApproachSection({
         </div>
 
         {/* Mobile fallback: stacked list below a smaller diagram (arrows less critical at this size) */}
-        <div className="mt-20 w-full sm:hidden">
+  <div className="mt-20 w-full sm:hidden reveal-section">
           {isSmUp === false && (
             <ApproachImage
               className="mx-auto h-auto w-full max-w-xs"
@@ -140,6 +140,7 @@ export default function ApproachSection({
           <ol
             className="mx-auto my-10 max-w-md space-y-8 text-left"
             aria-label="Process steps"
+            data-reveal-stagger
           >
             {approach.steps.map((step, index) => (
               <li key={step.title} className="flex gap-4">

@@ -165,13 +165,13 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
   };
 
   return (
-    <section className="relative overflow-clip" id="contact">
+    <section className="relative overflow-clip reveal-section" id="contact">
       <Container className="relative z-10 pt-24">
-        <div className="relative rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-lg sm:p-8 md:p-12">
+        <div className="relative rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-lg sm:p-8 md:p-12 reveal-section">
           <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-x-24 lg:gap-y-12">
-            <div className="space-y-6 sm:space-y-8">
+            <div className="space-y-6 sm:space-y-8 reveal-left" data-reveal-stagger>
               <h2
-                className={`text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl ${theme.text}`}
+                className={`text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl ${theme.text} reveal-title`}
               >
                 Let&apos;s Talk
               </h2>
@@ -191,7 +191,7 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
                 </div>
               </div>
             </div>
-            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 reveal-right" data-reveal-stagger>
               <Input
                 name="name"
                 type="text"

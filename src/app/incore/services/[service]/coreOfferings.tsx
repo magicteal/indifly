@@ -38,7 +38,7 @@ export default function CoreOfferings({
   const gradientClass = gradientBgMap[service] || gradientBgMap.insurge;
 
   return (
-    <Container className="mt-24">
+    <Container className="mt-24 reveal-section">
       <div
         className="relative rounded-4xl p-8"
         style={{
@@ -51,7 +51,7 @@ export default function CoreOfferings({
         <Cube className="absolute -top-40 left-75 hidden scale-30 rotate-12 md:block" />
 
         {/* heading */}
-        <div className="relative mb-15 pt-14 text-center text-2xl font-semibold italic md:mb-24 md:text-3xl">
+  <div className="relative mb-15 pt-14 text-center text-2xl font-semibold italic md:mb-24 md:text-3xl reveal-title">
           <span className="mr-12">Core</span>
           <span className={`relative ${theme.text}`}>
             Offerings
@@ -64,7 +64,7 @@ export default function CoreOfferings({
           <ActiveContext.Provider
             value={{ active, setActive, items: offerings.offerings }}
           >
-            <div className="relative mx-auto flex w-full max-w-5xl flex-col justify-center gap-6 pb-24 md:flex-row md:items-start">
+            <div className="relative mx-auto flex w-full max-w-5xl flex-col justify-center gap-6 pb-24 md:flex-row md:items-start" data-reveal-stagger>
               {/* left rail: offerings list */}
               <div className="w-full md:w-auto md:flex-shrink-0">
                 <OfferingsList />

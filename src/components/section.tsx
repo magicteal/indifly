@@ -36,7 +36,7 @@ export function Section<T extends ElementType = "section">({
   );
 
   return (
-    <As className={cn(py, wrapperClassName, className)} {...rest}>
+    <As className={cn("reveal-section", py, wrapperClassName, className)} {...rest}>
       {content}
     </As>
   );

@@ -35,19 +35,19 @@ export default function HeroSection({
 
   return (
     <section
-      className="relative overflow-hidden"
+      className="relative overflow-hidden reveal-section"
       role="region"
       aria-label={`${service} service hero section`}
     >
       <Container className="mt-20 mb-24 flex flex-col-reverse items-center gap-12 md:mt-40 md:mb-40 md:flex-row md:justify-between md:gap-16 lg:gap-24">
         {/* Left copy block */}
-        <div className="relative z-10 w-full max-w-xl text-center md:max-w-[560px] md:text-left">
+        <div className="relative z-10 w-full max-w-xl text-center md:max-w-[560px] md:text-left reveal-left">
           <div className="text-xl font-semibold tracking-wide sm:text-2xl">
             <span>in</span>
             <span className={`${theme.text}`}>{hero.text[0]}</span>
           </div>
 
-          <h1 className="mt-4 text-4xl leading-tight font-medium sm:text-5xl md:text-6xl/[1.1]">
+          <h1 className="mt-4 text-4xl leading-tight font-medium sm:text-5xl md:text-6xl/[1.1] reveal-title">
             <span className="block">{hero.text[1]}</span>
             <span className={`mt-2 block font-bold ${theme.text} italic`}>
               {hero.text[2]}
@@ -63,7 +63,7 @@ export default function HeroSection({
 
         {/* Right artwork */}
         {HeroArt && (
-          <div className="relative w-full max-w-[480px] sm:max-w-[560px] md:max-w-[520px] lg:max-w-[600px] xl:max-w-[640px]">
+          <div className="relative w-full max-w-[480px] sm:max-w-[560px] md:max-w-[520px] lg:max-w-[600px] xl:max-w-[640px] reveal-image">
             <HeroArt
               className="h-auto w-full drop-shadow-[0_0_40px_rgba(0,0,0,0.25)]"
               role="img"

@@ -60,9 +60,9 @@ export default function WhyItMatters({
   const Art = artByService[service];
   return (
     <div className="relative">
-      <Container className="mt-36">
+      <Container className="mt-36 reveal-section">
         {/* Heading */}
-        <div className="mb-8 text-center text-3xl font-bold italic md:mb-12 md:text-4xl">
+        <div className="mb-8 text-center text-3xl font-bold italic md:mb-12 md:text-4xl reveal-title">
           <span className="mr-10">Why it </span>
           <div className="relative inline-block">
             <span className={`${theme.text}`}>matters?</span>
@@ -80,7 +80,7 @@ export default function WhyItMatters({
         {/* Main: Left illustration (dynamic by service) + Right challenges */}
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-5 md:gap-12">
           {/* Left: service illustration */}
-          <div className="flex w-full justify-center md:col-span-2 md:justify-end">
+          <div className="flex w-full justify-center md:col-span-2 md:justify-end reveal-image">
             <Art
               aria-label={`${service} why it matters illustration`}
               className="h-auto w-full max-w-[520px]"
@@ -88,7 +88,7 @@ export default function WhyItMatters({
           </div>
 
           {/* Right: challenge pills */}
-          <div className="flex flex-col gap-4 md:col-span-3">
+          <div className="flex flex-col gap-4 md:col-span-3" data-reveal-stagger>
             {whyItMatters.challenges.map((ch, i) => (
               <Pill service={service} key={i}>
                 <span className="font-bold">{ch.title} </span>

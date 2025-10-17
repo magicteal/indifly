@@ -25,13 +25,13 @@ const collageImages: string[] = [
 
 export function CompanyCollage() {
   return (
-    <Section id="company-collage" className="py-12 md:py-16">
+    <Section id="company-collage" className="py-12 md:py-16 reveal-section">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-6">
-          <h3 className="text-xl font-semibold text-[#1B1B1F] md:text-2xl">
+          <h3 className="text-xl font-semibold text-[#1B1B1F] md:text-2xl reveal-title">
             Company Collage
           </h3>
-          <p className="text-sm text-[#3C3C3C]">
+          <p className="text-sm text-[#3C3C3C] reveal-right">
             Moments from our journey and the ecosystem we are building.
           </p>
         </div>
@@ -39,11 +39,14 @@ export function CompanyCollage() {
           className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
           role="list"
           aria-label="Company photo collage"
+          data-reveal-stagger
         >
           {collageImages.map((src, i) => (
             <figure
               key={src}
-              className="relative aspect-square w-full overflow-hidden rounded-2xl border border-black/10 bg-white dark:bg-[#0B0B0E]"
+              className={`relative aspect-square w-full overflow-hidden rounded-2xl border border-black/10 bg-white dark:bg-[#0B0B0E] ${
+                i % 2 === 0 ? "reveal-left" : "reveal-right"
+              }`}
               role="listitem"
             >
               <Image

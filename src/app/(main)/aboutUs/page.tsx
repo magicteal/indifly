@@ -9,7 +9,7 @@ import { TeamSection } from "./TeamSection";
 
 export default function AboutUsPage() {
   return (
-    <main>
+    <main className="reveal-section">
       <HeroSection />
       <JourneyTimeline />
       <TeamSection />

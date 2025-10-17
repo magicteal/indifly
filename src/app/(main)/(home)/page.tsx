@@ -12,12 +12,24 @@ import InCoreServices from "./inCoreServices";
 export default function Home() {
   return (
     <main>
-      <Hero />
-      <BharatSection />
-      <SectorsSection />
-      <InCoreServices />
-      <ImpactOnBharat />
-      <INDsights />
+      <div className="reveal-section">
+        <Hero />
+      </div>
+     
+        <BharatSection />
+     
+      <div className="reveal-section" data-reveal-stagger>
+        <SectorsSection />
+      </div>
+      <div className="reveal-section">
+        <InCoreServices />
+      </div>
+      <div className="reveal-section">
+        <ImpactOnBharat />
+      </div>
+      <div className="reveal-section">
+        <INDsights />
+      </div>
       <div className="bg-secondary">
         <ContactForm theme={defaultServiceTheme} />
       </div>

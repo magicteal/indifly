@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import GlobalAnimations from "@/components/animations/GlobalAnimations";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -65,6 +66,7 @@ export default function RootLayout({
           </noscript>
         )}
         {children}
+  <GlobalAnimations />
         <Toaster position="top-right" richColors />
       </body>
     </html>

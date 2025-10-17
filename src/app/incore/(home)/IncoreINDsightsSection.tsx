@@ -169,7 +169,7 @@ export default function IncoreINDsightsSection() {
 
       <SectionHeader title="INDsights" />
 
-      <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+  <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3" data-reveal-stagger>
         {posts.map((p) => (
           <Card
             key={p.id}

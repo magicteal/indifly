@@ -29,7 +29,7 @@ export default function InCorePage() {
       </div>
       <main className="min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-[#001631] pt-16 sm:pt-20 md:pt-28 lg:pt-36">
         <Container>
-          <div className="relative text-center">
+          <div className="relative text-center reveal-section">
             {/* Hero gradient background reusing SectionGradient utility */}
             <SectionGradient
               service="incoreHome"
@@ -48,7 +48,7 @@ export default function InCorePage() {
                 <p className="font-bold"> startup success</p>
               </h1>
 
-              <div className="mt-10 flex justify-center sm:mt-14 md:mt-16">
+              <div className="mt-10 flex justify-center sm:mt-14 md:mt-16 reveal-left">
                 <InCoreHero
                   className="h-auto w-full max-w-xl sm:max-w-2xl"
                   role="img"
@@ -56,7 +56,7 @@ export default function InCorePage() {
                 />
               </div>
 
-              <Link href="#services" className="mt-16 inline-block">
+              <Link href="#services" className="mt-16 inline-block ">
                 <span
                   className={cn(
                     "rounded-full px-5 py-2.5 text-sm font-medium text-white sm:px-6 sm:py-3 sm:text-base",
@@ -144,7 +144,7 @@ export default function InCorePage() {
 
         <Container className="w-full">
           {/* Supporting paragraphs below hero */}
-          <div className="mx-auto mt-12 max-w-7xl space-y-6 text-center text-base text-white/90 md:text-lg">
+          <div className="mx-auto mt-12 max-w-7xl space-y-6 text-center text-base text-white/90 md:text-lg reveal-section" data-reveal-stagger>
             <p>
               <span className="font-bold">The startup ecosystem&apos;s</span>{" "}
               need for integrated expertise has never been greater. In
@@ -168,13 +168,13 @@ export default function InCorePage() {
         </Container>
 
         {/* Large blurred gradient frame from Process to Insights */}
-        <section className="relative">
+  <section className="relative reveal-section">
           <SectionGradient
             service="incoreHome"
             variant="homeMiddle"
           />
 
-          <div className="relative z-10">
+          <div className="relative z-10" data-reveal-stagger>
             <WealthSection />
             <DecorativeBannerSection />
 
@@ -182,12 +182,12 @@ export default function InCorePage() {
           </div>
         </section>
 
-        <section className="relative">
+  <section className="relative reveal-section">
           <SectionGradient
             service="incoreHome"
             variant="homeMiddleAlt"
           />
-          <div className="relative z-10">
+          <div className="relative z-10" data-reveal-stagger>
             <ProcessJourneySection />
             <Container id="case-studies">
               <SectionHeader title="Case Studies" />
@@ -199,7 +199,7 @@ export default function InCorePage() {
 
 
         {/* Large blurred gradient frame leading into insights */}
-        <section className="relative w-full overflow-hidden">
+  <section className="relative w-full overflow-hidden reveal-section">
           <SectionGradient
             service="incoreHome"
             variant="homeBottom"
