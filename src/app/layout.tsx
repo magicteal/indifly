@@ -1,12 +1,8 @@
-import GlobalAnimations from "@/components/animations/GlobalAnimations";
-import { ContactForm } from "@/components/layout/ContactForm";
-import { Footer } from "@/components/layout/Footer";
-import Navbar from "@/components/layout/navbar/Navbar";
-import TopBanner from "@/components/layout/TopBanner";
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Script from "next/script";
+import GlobalAnimations from "./components/GlobalAnimations";
 import ThemeProvider from "./components/ThemeProvider";
 import "./globals.css";
 
@@ -70,21 +66,9 @@ export default function RootLayout({
             />
           </noscript>
         )}
-        <ThemeProvider>
-          <div className="fixed top-0 right-0 left-0 z-50 hidden md:block">
-            <TopBanner />
-          </div>
-          <div className="fixed top-16 right-0 left-0 z-50 md:hidden">
-            <TopBanner />
-          </div>
-          <div className="h-24 md:h-8 theme-incore:bg-black theme-incore-services:bg-black" />
-          <Navbar />
-          <div className="overflow-x-clip">{children}</div>
-          <ContactForm />
-          <Footer />
-          <GlobalAnimations />
-          <Toaster position="top-right" richColors />
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
+        <GlobalAnimations />
+        <Toaster position="top-right" richColors />
       </body>
     </html>
   );

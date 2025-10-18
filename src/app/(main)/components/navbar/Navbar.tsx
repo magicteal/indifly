@@ -1,7 +1,7 @@
 ﻿"use client";
 
-import LogoImage from "@/components/layout/LogoImage";
-import { getNavConfig } from "@/components/layout/navbar/navigation";
+import LogoImage from "@/app/(main)/components/LogoImage";
+import { getNavConfig } from "@/app/(main)/components/navbar/navigation";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Menu, X } from "lucide-react";
 import Link from "next/link";

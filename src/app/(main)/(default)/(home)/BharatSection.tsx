@@ -1,7 +1,7 @@
 // src/components/BharatSection.tsx
 
 import { Section } from "@/components/section";
-import IndiaMap from "../../../components/IndiaMap";
+import IndiaMap from "../../../../components/IndiaMap";
 
 const BharatSection = () => {
   return (
@@ -12,7 +12,7 @@ const BharatSection = () => {
       <div className="relative z-10">
         <div className="flex flex-col items-center gap-12 md:flex-row">
           {/* Text Content */}
-          <div className="text-center md:w-1/2 md:text-left reveal-left">
+          <div className="reveal-left text-center md:w-1/2 md:text-left">
             <h2 className="text-4xl leading-tight md:text-3xl">
               We create platforms and ecosystems for{" "}
               <span className="bg-gradient-to-r from-[#E5BA9F] to-[#FFFFFF] bg-clip-text text-transparent">
@@ -35,7 +35,7 @@ const BharatSection = () => {
           </div>
 
           {/* Map */}
-          <div className="flex justify-center md:w-1/2 reveal-right">
+          <div className="reveal-right flex justify-center md:w-1/2">
             <IndiaMap />
           </div>
         </div>

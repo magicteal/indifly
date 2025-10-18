@@ -3,7 +3,7 @@ import {
   getVentureContent,
   VentureKey,
   ventureKeys,
-} from "@/app/(main)/ventures/content";
+} from "@/app/(main)/(default)/ventures/content";
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 import IndiConnect from "@public/companies/indiConnectHero.svg?flex";
