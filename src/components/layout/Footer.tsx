@@ -5,7 +5,7 @@ import {
   IoLogoLinkedin,
   IoLogoTwitter,
 } from "react-icons/io5";
-import FooterImage from "./footerImage";
+import FooterImage from "./FooterImage";
 import { footerLinkGroups } from "./footerLinks";
 
 export const Footer = () => {
