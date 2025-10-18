@@ -134,8 +134,3 @@ export function SectionGradient({
     </div>
   );
 }
-
-export default function PageGradients({ service }: { service: ServiceKey }) {
-  // This component isn't used directly for layout but kept for potential future aggregation
-  return <div className="hidden" data-service={service} />;
-}

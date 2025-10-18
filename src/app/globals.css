@@ -3,6 +3,7 @@
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant theme-home (&:is(.theme-home *));
 @custom-variant theme-orange (&:is(.theme-orange *));
 @custom-variant theme-blue (&:is(.theme-blue *));
 @custom-variant theme-yellow (&:is(.theme-yellow *));

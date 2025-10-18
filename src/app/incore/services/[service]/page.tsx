@@ -55,7 +55,6 @@ export default async function Page({
         <CoreOfferings offerings={content.coreOfferings} service={service} />
       </div>
 
-      {/* Contact form only needs theme (client component) */}
       <ContactForm />
       <Footer />
     </div>

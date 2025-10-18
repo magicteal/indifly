@@ -1,34 +1,19 @@
 ﻿"use client";
 
-import {
-  getNavConfig,
-  type NavItem,
-} from "@/components/layout/navbar/navigation";
+import LogoImage from "@/components/layout/LogoImage";
+import { getNavConfig } from "@/components/layout/navbar/navigation";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Menu, X } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-interface NavbarLogoProps {
-  href: string;
-  src: string;
-  alt?: string;
-  width?: number;
-  height?: number;
-}
-
-interface NavbarProps {
-  logo: NavbarLogoProps;
-  navItems?: NavItem[];
-}
-
-const Navbar: React.FC<NavbarProps> = ({ logo, navItems }) => {
+export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
-  const currentNavItems = navItems || getNavConfig(pathname).navItems;
+  const currentNavItems = getNavConfig(pathname).navItems;
+  const homeHref = pathname.startsWith("/incore") ? "/incore" : "/";
 
   return (
     <nav className="fixed top-0 left-0 z-[60] w-full md:top-14">
@@ -55,18 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ logo, navItems }) => {
 
           {/* Logo - centered on mobile, left-aligned on desktop */}
           <div className="absolute left-1/2 flex-shrink-0 -translate-x-1/2 md:static md:mr-auto md:ml-0 md:translate-x-0">
-            <Link
-              href={logo.href}
-              aria-label={logo.alt ?? "Logo"}
-              className="inline-flex items-center"
-            >
-              <Image
-                src={logo.src}
-                alt={logo.alt ?? "Logo"}
-                width={logo.width ?? 100}
-                height={logo.height ?? 40}
-              />
-            </Link>
+            <LogoImage variant="navbar" href={homeHref} />
           </div>
 
           {/* Desktop Nav Links - centered */}
@@ -132,6 +106,4 @@ const Navbar: React.FC<NavbarProps> = ({ logo, navItems }) => {
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}

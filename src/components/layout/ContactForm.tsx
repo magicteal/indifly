@@ -160,7 +160,7 @@ export const ContactForm = () => {
 
   return (
     <section
-      className="reveal-section relative overflow-clip text-foreground"
+      className="reveal-section relative overflow-clip theme-home:bg-secondary theme-home:text-white"
       id="contact"
     >
       <Container className="relative z-10 pt-24">
