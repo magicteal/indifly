@@ -1,9 +1,8 @@
 "use client";
 import { Container } from "@/components/container";
-import type { VentureKey } from "@/lib/ventureContext";
 import Middle1 from "@public/companies/bg/middle1.svg?flex";
 import Middle2 from "@public/companies/bg/middle2.svg?flex";
-import { getVentureContent } from "../content";
+import { getVentureContent, VentureKey } from "../content";
 
 type Card = { title: string; subtitle: string; points: string[] };
 

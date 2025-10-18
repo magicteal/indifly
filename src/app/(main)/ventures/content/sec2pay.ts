@@ -1,6 +1,6 @@
-import { defineVenture, type VentureContent } from "./types";
+import { type VentureContent } from "./types";
 
-const content: VentureContent = defineVenture({
+const content: VentureContent = {
   key: "sec2pay",
   hero: {
     tagline: "Your brand. Our rails.",
@@ -46,6 +46,6 @@ const content: VentureContent = defineVenture({
       ],
     },
   ],
-});
+};
 
 export default content;

@@ -1,34 +1,24 @@
 import { ContactForm } from "@/components/layout/ContactForm";
 import { Footer } from "@/components/layout/Footer";
-import { VentureKey } from "@/lib/ventureContext";
 import Bottom1 from "@public/companies/bg/bottom1.svg?flex";
 import Bottom2 from "@public/companies/bg/bottom2.svg?flex";
 import Top1 from "@public/companies/bg/top1.svg?flex";
 import Top2 from "@public/companies/bg/top2.svg?flex";
 import TopBg from "@public/companies/topBg.svg?flex";
 import { notFound } from "next/navigation";
-import VenturesHero from "../components/Hero";
-import HighlightsSection from "../components/HighlightsSection";
+import { isVentureKey, VentureKey, ventureKeys } from "../content";
+import VenturesHero from "./Hero";
+import HighlightsSection from "./HighlightsSection";
 
 export default async function VentureDetailPage({
   params,
 }: {
-  params: Promise<{ venture: VentureKey }>;
+  params: Promise<{ venture: string }>;
 }) {
   const { venture } = await params;
-  const validKeys: VentureKey[] = [
-    "indipe",
-    "sec2pay",
-    "indiconnect",
-    "indikendra",
-    "indinxt",
-    "indispeed",
-  ];
-  if (!validKeys.includes(venture)) {
+  if (!isVentureKey(venture)) {
     return notFound();
   }
-
-  // Get venture theme for ContactForm/Footer theming
 
   let theme = "theme-orange";
   if (venture === "sec2pay" || venture === "indikendra") {
@@ -94,12 +84,5 @@ export default async function VentureDetailPage({
 }
 
 export function generateStaticParams() {
-  return [
-    { venture: "indipe" },
-    { venture: "sec2pay" },
-    { venture: "indiconnect" },
-    { venture: "indikendra" },
-    { venture: "indinxt" },
-    { venture: "indispeed" },
-  ];
+  return ventureKeys.map((venture) => ({ venture }));
 }

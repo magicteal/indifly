@@ -1,8 +1,11 @@
 "use client";
-import { getVentureContent } from "@/app/(main)/ventures/content";
+import {
+  getVentureContent,
+  VentureKey,
+  ventureKeys,
+} from "@/app/(main)/ventures/content";
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
-import { VentureKey, getAllVentureThemes } from "@/lib/ventureContext";
 import IndiConnect from "@public/companies/indiConnectHero.svg?flex";
 import IndiKendraWordmark from "@public/companies/indiKendra.svg?flex";
 import IndiKendraHero from "@public/companies/indiKendraHero.svg?flex";
@@ -95,7 +98,6 @@ export default function VentureCards({
   active: VentureKey;
   onChangeAction: (k: VentureKey) => void;
 }) {
-  const ventures = useMemo(() => getAllVentureThemes(), []);
   const content = useMemo(() => getVentureContent(active), [active]);
   const tabsContainerRef = useRef<HTMLDivElement>(null);
   const activeTabRef = useRef<HTMLButtonElement>(null);
@@ -137,17 +139,17 @@ export default function VentureCards({
             role="tablist"
             aria-label="Ventures"
           >
-            {ventures.map((v) => (
+            {ventureKeys.map((v) => (
               <Button
-                variant={active === v.key ? "default" : "secondary"}
-                key={v.key}
-                ref={active === v.key ? activeTabRef : null}
-                onClick={() => onChangeAction(v.key)}
+                variant={active === v ? "default" : "secondary"}
+                key={v}
+                ref={active === v ? activeTabRef : null}
+                onClick={() => onChangeAction(v)}
                 role="tab"
                 size="sm"
-                aria-selected={active === v.key}
+                aria-selected={active === v}
               >
-                {v.name}
+                {ventureNameMap[v]}
               </Button>
             ))}
           </div>
