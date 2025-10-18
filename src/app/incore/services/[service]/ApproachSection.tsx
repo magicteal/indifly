@@ -1,7 +1,6 @@
 "use client";
 
 import Container from "@/components/container";
-import type { ServiceKey } from "@/lib/serviceContext";
 import InStackApproach from "@public/inCore/approach/instackApproach.svg?flex";
 import InSureApproach from "@public/inCore/approach/insureApproach.svg?flex";
 import InSurgeApproach from "@public/inCore/approach/insurgeApproach.svg?flex";
@@ -10,6 +9,7 @@ import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
 import type { FC, SVGProps } from "react";
 import { useEffect, useState } from "react";
+import { ServiceKey } from "./content";
 
 const approachImages: Record<ServiceKey, FC<SVGProps<SVGElement>>> = {
   instack: InStackApproach,

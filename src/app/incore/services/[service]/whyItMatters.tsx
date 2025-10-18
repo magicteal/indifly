@@ -1,7 +1,6 @@
 "use client";
 
 import Container from "@/components/container";
-import type { ServiceKey } from "@/lib/serviceContext";
 import TextCircledLine from "@public/inCore/text-circled-line.svg";
 import InstackWhyItMatters from "@public/inCore/whyItMatters/instackWhyItMatters.svg?flex";
 import InsureWhyItMatters from "@public/inCore/whyItMatters/insureWhyItMatters.svg?flex";
@@ -9,6 +8,7 @@ import InsurgeWhyItMatters from "@public/inCore/whyItMatters/insurgeWhyItMatters
 import InvolveWhyItMatters from "@public/inCore/whyItMatters/involveWhyItMatters.svg?flex";
 import { MoveRight } from "lucide-react";
 import type React from "react";
+import { ServiceKey } from "./content";
 
 interface WhyItMattersProps {
   whyItMatters: {

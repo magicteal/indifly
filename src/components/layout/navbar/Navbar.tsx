@@ -5,7 +5,6 @@ import {
   type NavItem,
 } from "@/components/layout/navbar/navigation";
 import { Button } from "@/components/ui/button";
-import { ServiceTheme } from "@/lib/serviceContext";
 import { ChevronRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,10 +22,9 @@ interface NavbarLogoProps {
 interface NavbarProps {
   logo: NavbarLogoProps;
   navItems?: NavItem[];
-  theme?: ServiceTheme;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ logo, navItems, theme }) => {
+const Navbar: React.FC<NavbarProps> = ({ logo, navItems }) => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -41,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ logo, navItems, theme }) => {
             <Button
               variant="ghost"
               size="icon"
-              className={`${theme?.service === "incore" ? "text-white" : "text-gray-900"} transition-colors hover:bg-white/20`}
+              // className={`${theme?.service === "incore" ? "text-white" : "text-gray-900"} transition-colors hover:bg-white/20`}
               onClick={() => setIsOpen((v) => !v)}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"

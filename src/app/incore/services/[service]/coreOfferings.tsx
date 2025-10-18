@@ -7,13 +7,14 @@ import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
 import Link from "next/link";
 import React, { useContext } from "react";
+import { ServiceKey } from "./content";
 
 interface CoreOfferingsProps {
   offerings: {
     offerings: { name: string; description?: string }[];
     tagline: string;
   };
-  service: string;
+  service: ServiceKey;
 }
 
 export default function CoreOfferings({

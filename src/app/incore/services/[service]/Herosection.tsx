@@ -2,12 +2,12 @@
 
 import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
-import type { ServiceKey } from "@/lib/serviceContext";
 import InstackHero from "@public/inCore/hero/instackHero.svg?flex";
 import InsureHero from "@public/inCore/hero/insureHero.svg?flex";
 import InsurgeHero from "@public/inCore/hero/insurgeHero.svg?flex";
 import InvolveHero from "@public/inCore/hero/involveHero.svg?flex";
 import Link from "next/link";
+import { ServiceKey } from "./content";
 
 interface HeroSectionProps {
   hero: { text: [string, string, string]; button: string };

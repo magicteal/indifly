@@ -2,7 +2,6 @@ import { Container } from "@/components/container";
 import { ContactForm } from "@/components/layout/ContactForm";
 import { Footer } from "@/components/layout/Footer";
 import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
-import { lightTheme } from "@/lib/serviceContext";
 import { notFound } from "next/navigation";
 import type { ComponentType } from "react";
 import GradientFrame from "../gradient";
@@ -81,11 +80,11 @@ export default async function BlogDetail({
         <div className="relative overflow-hidden rounded-2xl">
           <GradientFrame variant="v1" className="opacity-70" />
           <div className="relative z-10">
-            <ContactForm theme={lightTheme} />
+            <ContactForm />
           </div>
         </div>
       </div>
-      <Footer theme={lightTheme} />
+      <Footer />
     </main>
   );
 }
