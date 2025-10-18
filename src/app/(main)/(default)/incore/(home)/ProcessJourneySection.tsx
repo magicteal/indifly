@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function ProcessJourney() {
   return (
-    <Section className="py-20 reveal-section">
+    <Section className="reveal-section py-20">
       <SectionHeader label="Process Journey" title="InCORE" />
 
       <div className="mt-10 flex justify-center">
@@ -16,7 +16,7 @@ export default function ProcessJourney() {
           alt="InCORE process journey"
           width={1280}
           height={600}
-          className="h-auto w-full max-w-6xl reveal-image"
+          className="reveal-image h-auto w-full max-w-6xl"
           priority
         />
       </div>

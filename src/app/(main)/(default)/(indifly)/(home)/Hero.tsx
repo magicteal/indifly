@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import VenturesGrid from "./VenturesGrid";
 import heroBgUrl from "@public/home/heroBg.svg?url";
+import VenturesGrid from "./VenturesGrid";
 
 const Hero = () => {
   return (
@@ -16,9 +16,9 @@ const Hero = () => {
         aria-hidden
       />
 
-      <div className="relative mx-auto w-full px-0 ">
+      <div className="relative mx-auto w-full px-0">
         {/* Portrait on mobile with equal bars top/bottom; switches back to 16:9 on md+ */}
-  <div className="relative aspect-[9/16] w-full overflow-hidden sm:aspect-[16/9] reveal-image">
+        <div className="reveal-image relative aspect-[9/16] w-full overflow-hidden sm:aspect-[16/9]">
           <video
             autoPlay
             loop
@@ -38,7 +38,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="-mt-20 md:-mt-28 reveal-section">
+      <div className="reveal-section -mt-20 md:-mt-28">
         <VenturesGrid embedded />
       </div>
     </section>

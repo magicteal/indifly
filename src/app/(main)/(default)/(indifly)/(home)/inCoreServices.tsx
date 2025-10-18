@@ -11,10 +11,10 @@ export default function InCoreServices() {
           Integrated expertise, delivered at{" "}
           <span className="text-primary">every stage.</span>
         </h2>
-        <p className="mt-8 mb-0 text-2xl font-medium reveal-title">
+        <p className="reveal-title mt-8 mb-0 text-2xl font-medium">
           We don’t just advise – we embed.
         </p>
-        <p className="text-xl reveal-left">
+        <p className="reveal-left text-xl">
           With <span className="font-medium">inSTACK, inSURGE, inSURE,</span>{" "}
           and <span className="font-medium">inVOLVE</span> founders gain the
           muscle of execution alongside strategic leadership guidance.

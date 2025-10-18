@@ -29,7 +29,7 @@ export default function ImpactOnBharat() {
       </div>
 
       {/* Title Section */}
-  <div className="relative z-10 mb-18 text-center reveal-title">
+      <div className="reveal-title relative z-10 mb-18 text-center">
         <div className="relative isolate inline-block px-6">
           {/* Brush stroke background */}
           <TitleBg
@@ -43,7 +43,10 @@ export default function ImpactOnBharat() {
       </div>
 
       {/* Stats Cards */}
-  <div className="relative z-20 mx-auto mb-10 grid max-w-6xl grid-cols-1 gap-8 px-6 md:grid-cols-3" data-reveal-stagger>
+      <div
+        className="relative z-20 mx-auto mb-10 grid max-w-6xl grid-cols-1 gap-8 px-6 md:grid-cols-3"
+        data-reveal-stagger
+      >
         {stats.map((stat, index) => (
           <div
             key={index}

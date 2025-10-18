@@ -27,7 +27,9 @@ type ZohoRecruitEmbedProps = {
 
 const DEFAULT_BRAND_COLOR = "#F26926";
 
-export function ZohoRecruitEmbed({ brandColor = DEFAULT_BRAND_COLOR }: ZohoRecruitEmbedProps) {
+export function ZohoRecruitEmbed({
+  brandColor = DEFAULT_BRAND_COLOR,
+}: ZohoRecruitEmbedProps) {
   useEffect(() => {
     if (typeof document === "undefined") return;
 
@@ -35,7 +37,8 @@ export function ZohoRecruitEmbed({ brandColor = DEFAULT_BRAND_COLOR }: ZohoRecru
       const link = document.createElement("link");
       link.id = ZOHO_EMBED_STYLESHEET_ID;
       link.rel = "stylesheet";
-      link.href = "https://static.zohocdn.com/recruit/embed_careers_site/css/v1.1/embed_jobs.css";
+      link.href =
+        "https://static.zohocdn.com/recruit/embed_careers_site/css/v1.1/embed_jobs.css";
       link.type = "text/css";
       document.head.appendChild(link);
     }
@@ -110,7 +113,9 @@ export function ZohoRecruitEmbed({ brandColor = DEFAULT_BRAND_COLOR }: ZohoRecru
       }
     `;
 
-    let styleEl = document.getElementById(ZOHO_CUSTOM_STYLE_ID) as HTMLStyleElement | null;
+    let styleEl = document.getElementById(
+      ZOHO_CUSTOM_STYLE_ID,
+    ) as HTMLStyleElement | null;
     if (!styleEl) {
       styleEl = document.createElement("style");
       styleEl.id = ZOHO_CUSTOM_STYLE_ID;
@@ -140,7 +145,7 @@ export function ZohoRecruitEmbed({ brandColor = DEFAULT_BRAND_COLOR }: ZohoRecru
 
   return (
     <div className="w-full">
-      <div className="relative overflow-hidden rounded-3xl border border-[#F26926]/25 bg-white/80  backdrop-blur-3xl px-4 py-8 sm:px-8 sm:py-10">
+      <div className="relative overflow-hidden rounded-3xl border border-[#F26926]/25 bg-white/80 px-4 py-8 backdrop-blur-3xl sm:px-8 sm:py-10">
         <Script
           src="https://static.zohocdn.com/recruit/embed_careers_site/javascript/v1.1/embed_jobs.js"
           strategy="afterInteractive"
