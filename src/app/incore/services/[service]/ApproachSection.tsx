@@ -1,16 +1,17 @@
 "use client";
 
 import Container from "@/components/container";
-import type { ServiceTheme } from "@/lib/serviceContext";
+import type { ServiceKey } from "@/lib/serviceContext";
 import InStackApproach from "@public/inCore/approach/instackApproach.svg?flex";
 import InSureApproach from "@public/inCore/approach/insureApproach.svg?flex";
 import InSurgeApproach from "@public/inCore/approach/insurgeApproach.svg?flex";
 import InVolveApproach from "@public/inCore/approach/involveApproach.svg?flex";
 import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
+import type { FC, SVGProps } from "react";
 import { useEffect, useState } from "react";
 
-const approachImages = {
+const approachImages: Record<ServiceKey, FC<SVGProps<SVGElement>>> = {
   instack: InStackApproach,
   insure: InSureApproach,
   involve: InVolveApproach,
@@ -18,25 +19,22 @@ const approachImages = {
 };
 
 interface ApproachSectionProps {
-  theme: ServiceTheme;
   approach: {
     description: string[];
     steps: { title: string; description: string }[];
   };
-  service: string;
+  service: ServiceKey;
 }
 
 export default function ApproachSection({
-  theme,
   approach,
   service,
 }: ApproachSectionProps) {
-  const serviceKey = service as keyof typeof approachImages;
   const positions =
-    (stepPositions as Record<string, string[]>)[serviceKey] ||
+    (stepPositions as Record<string, string[]>)[service] ||
     stepPositions._default;
   // Resolve the SVG component for this service once
-  const ApproachImage = approachImages[serviceKey];
+  const ApproachImage = approachImages[service];
 
   // Only mount ONE svg at a time (desktop OR mobile) to avoid duplicate inline
   // <defs>/<mask>/<gradient> ids colliding in the DOM and wiping fills.
@@ -70,7 +68,7 @@ export default function ApproachSection({
   }, []);
 
   return (
-  <Container className="reveal-section">
+    <Container className="reveal-section">
       <div
         className="relative mt-12 flex flex-col items-center rounded-4xl px-4 sm:px-8 lg:px-12"
         style={{
@@ -83,16 +81,16 @@ export default function ApproachSection({
         <Cube className="absolute top-40 right-7 scale-30 rotate-12" />
 
         {/* heading */}
-  <div className="relative mb-8 pt-14 text-2xl font-semibold italic md:text-3xl reveal-title">
+        <div className="reveal-title relative mb-8 pt-14 text-2xl font-semibold italic md:text-3xl">
           <span className="mr-12">Our</span>
-          <span className={`relative ${theme.text}`}>
+          <span className="relative text-primary">
             Approach
             <CircledLine className="pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 scale-70" />
           </span>
         </div>
 
         {/* dynamic description paragraphs */}
-  <div className="mx-auto max-w-4xl px-6 text-center" data-reveal-stagger>
+        <div className="mx-auto max-w-4xl px-6 text-center" data-reveal-stagger>
           {approach.description.map((p, i) => (
             <p key={i} className="mt-0 text-base text-white/90">
               {p}
@@ -101,7 +99,7 @@ export default function ApproachSection({
         </div>
 
         {/* Desktop / tablet version: keep absolute positioning so arrows in SVG point correctly */}
-  <div className="relative mx-auto mt-28 mb-32 hidden w-full max-w-[500px] sm:block reveal-image">
+        <div className="reveal-image relative mx-auto mt-28 mb-32 hidden w-full max-w-[500px] sm:block">
           {isSmUp && (
             <ApproachImage
               className="mx-auto max-w-full"
@@ -116,9 +114,7 @@ export default function ApproachSection({
                 className={pos}
                 aria-label={`${index + 1}. ${step.title}`}
               >
-                <div
-                  className={`text-lg font-medium ${theme.text} md:text-2xl`}
-                >
+                <div className="text-lg font-medium text-primary md:text-2xl">
                   {step.title}
                 </div>
                 <div className="max-w-60 text-sm md:text-base">
@@ -130,7 +126,7 @@ export default function ApproachSection({
         </div>
 
         {/* Mobile fallback: stacked list below a smaller diagram (arrows less critical at this size) */}
-  <div className="mt-20 w-full sm:hidden reveal-section">
+        <div className="reveal-section mt-20 w-full sm:hidden">
           {isSmUp === false && (
             <ApproachImage
               className="mx-auto h-auto w-full max-w-xs"
@@ -144,9 +140,7 @@ export default function ApproachSection({
           >
             {approach.steps.map((step, index) => (
               <li key={step.title} className="flex gap-4">
-                <div
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/20 text-sm font-semibold ${theme.text}`}
-                >
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/20 text-sm font-semibold text-primary">
                   {index + 1}
                 </div>
                 <div>

@@ -2,15 +2,13 @@
 
 import Container from "@/components/container";
 import { Button } from "@/components/ui/button";
-import type { ServiceTheme } from "@/lib/serviceContext";
 import { cn } from "@/lib/utils";
 import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 
 interface CoreOfferingsProps {
-  theme: ServiceTheme;
   offerings: {
     offerings: { name: string; description?: string }[];
     tagline: string;
@@ -19,7 +17,6 @@ interface CoreOfferingsProps {
 }
 
 export default function CoreOfferings({
-  theme,
   offerings,
   service,
 }: CoreOfferingsProps) {
@@ -38,7 +35,7 @@ export default function CoreOfferings({
   const gradientClass = gradientBgMap[service] || gradientBgMap.insurge;
 
   return (
-    <Container className="mt-24 reveal-section">
+    <Container className="reveal-section mt-24">
       <div
         className="relative rounded-4xl p-8"
         style={{
@@ -51,66 +48,57 @@ export default function CoreOfferings({
         <Cube className="absolute -top-40 left-75 hidden scale-30 rotate-12 md:block" />
 
         {/* heading */}
-  <div className="relative mb-15 pt-14 text-center text-2xl font-semibold italic md:mb-24 md:text-3xl reveal-title">
+        <div className="reveal-title relative mb-15 pt-14 text-center text-2xl font-semibold italic md:mb-24 md:text-3xl">
           <span className="mr-12">Core</span>
-          <span className={`relative ${theme.text}`}>
+          <span className="relative text-primary">
             Offerings
             <CircledLine className="pointer-events-none absolute -top-2 left-1/2 -translate-x-1/2 scale-70" />
           </span>
         </div>
 
         {/* content grid */}
-        <ThemeContext.Provider value={theme}>
-          <ActiveContext.Provider
-            value={{ active, setActive, items: offerings.offerings }}
+        <ActiveContext.Provider
+          value={{ active, setActive, items: offerings.offerings }}
+        >
+          <div
+            className="relative mx-auto flex w-full max-w-5xl flex-col justify-center gap-6 pb-24 md:flex-row md:items-start"
+            data-reveal-stagger
           >
-            <div className="relative mx-auto flex w-full max-w-5xl flex-col justify-center gap-6 pb-24 md:flex-row md:items-start" data-reveal-stagger>
-              {/* left rail: offerings list */}
-              <div className="w-full md:w-auto md:flex-shrink-0">
-                <OfferingsList />
-              </div>
-
-              {/* right card */}
-              <div
-                className={cn(
-                  "relative w-full overflow-hidden rounded-[28px] p-6 sm:p-8 md:min-h-[380px] md:flex-1 md:p-12",
-                  gradientClass,
-                )}
-              >
-                <RightCopy offerings={offerings.offerings} active={active} />
-
-                <Button
-                  className="mt-10"
-                  variant={theme.buttonVariant}
-                  size="lg"
-                  asChild
-                >
-                  <Link href="#contact">Book a Consultation Call</Link>
-                </Button>
-
-                <div
-                  className={`pointer-events-none absolute -top-15 -right-10 size-56 rounded-full border ${theme.border}`}
-                />
-                <div
-                  className={`pointer-events-none absolute top-39 right-15 size-4 rounded-full ${theme.bg}`}
-                />
-                <div
-                  className={`pointer-events-none absolute top-45 right-2 size-6 rounded-full ${theme.bg}`}
-                />
-                <div
-                  className={`pointer-events-none absolute right-10 -bottom-10 size-36 rounded-full bg-gradient-to-b ${theme.gradientFrom}/40 to-black/0`}
-                />
-                <div className="pointer-events-none absolute -right-8 -bottom-16 size-44 rounded-full border border-white/5 bg-white/5" />
-              </div>
+            {/* left rail: offerings list */}
+            <div className="w-full md:w-auto md:flex-shrink-0">
+              <OfferingsList />
             </div>
-          </ActiveContext.Provider>
-        </ThemeContext.Provider>
+
+            {/* right card */}
+            <div
+              className={cn(
+                "relative w-full overflow-hidden rounded-[28px] p-6 sm:p-8 md:min-h-[380px] md:flex-1 md:p-12",
+                gradientClass,
+              )}
+            >
+              <RightCopy offerings={offerings.offerings} active={active} />
+
+              <Button
+                className="mt-10 border-primary text-primary hover:bg-primary/10 hover:text-primary"
+                variant={"outline"}
+                size="lg"
+                asChild
+              >
+                <Link href="#contact">Book a Consultation Call</Link>
+              </Button>
+
+              <div className="pointer-events-none absolute -top-15 -right-10 size-56 rounded-full border border-primary" />
+              <div className="pointer-events-none absolute top-39 right-15 size-4 rounded-full bg-primary" />
+              <div className="pointer-events-none absolute top-45 right-2 size-6 rounded-full bg-primary" />
+              <div className="pointer-events-none absolute right-10 -bottom-10 size-36 rounded-full bg-primary/40" />
+              <div className="pointer-events-none absolute -right-8 -bottom-16 size-44 rounded-full border border-white/5 bg-white/5" />
+            </div>
+          </div>
+        </ActiveContext.Provider>
       </div>
 
       {/* Tagline */}
-      <p
-        className={`mt-10 text-center text-2xl font-semibold ${theme.text} italic md:mt-16 md:text-3xl`}
-      >
+      <p className="mt-10 text-center text-2xl font-semibold text-primary italic md:mt-16 md:text-3xl">
         {offerings.tagline}
       </p>
     </Container>
@@ -120,30 +108,17 @@ export default function CoreOfferings({
 // Local components to keep file tidy and state-contained
 function OfferingsList() {
   const { active, setActive, items } = useActive();
-  const theme = React.useContext(ThemeContext);
-  if (!theme) return null;
 
   return (
     <ul className="flex w-full flex-col gap-4 md:w-auto md:items-end">
       {items.map((item, idx) => {
         const isActive = idx === active;
-        const variant = isActive
-          ? theme.buttonVariant
-          : (theme.buttonSecondaryVariant as
-              | "insurgeSecondary"
-              | "instackSecondary"
-              | "involveSecondary"
-              | "insureSecondary");
 
         return (
           <li key={item.name}>
             <Button
-              variant={variant}
-              className={cn(
-                "justify-start md:justify-center",
-                !isActive && "w-full font-light",
-                isActive && "w-full md:w-auto",
-              )}
+              variant={isActive ? "default" : "secondary"}
+              className="w-full md:w-auto"
               size="lg"
               onClick={() => setActive(idx)}
               aria-pressed={isActive}
@@ -163,10 +138,8 @@ const ActiveContext = React.createContext<{
   items: { name: string; description?: string }[];
 } | null>(null);
 
-const ThemeContext = React.createContext<ServiceTheme | null>(null);
-
 function useActive() {
-  const ctx = React.useContext(ActiveContext);
+  const ctx = useContext(ActiveContext);
   if (!ctx) throw new Error("useActive must be used within provider");
   return ctx;
 }

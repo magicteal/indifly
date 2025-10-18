@@ -4,7 +4,6 @@ import {
   allServiceParams,
   getServiceContext,
   isServiceKey,
-  type ServiceKey,
 } from "@/lib/serviceContext";
 import { notFound } from "next/navigation";
 import ApproachSection from "./ApproachSection";
@@ -28,55 +27,49 @@ export default async function Page({
   if (!isServiceKey(service)) {
     notFound();
   }
-  const ctx = getServiceContext(service as ServiceKey);
+  const ctx = getServiceContext(service);
+
+  const theme = `theme-${service}`;
 
   return (
-    <div className="relative z-0 bg-[#171717]">
+    <div
+      className={`theme-incore-services ${theme} relative z-0 bg-background text-foreground`}
+    >
       {/* Full-width header gradient anchored to the top of the page content (just below navbar) */}
-      <HeaderGradient service={ctx.service} />
-      <SectionGradient service={ctx.service} variant={1} />
+      <HeaderGradient service={service} />
+      <SectionGradient service={service} variant={1} />
 
       {/* Hero needs hero1 slice & theme */}
       <div className="relative z-10">
-        <HeroSection
-          theme={ctx.theme}
-          hero={ctx.content.hero1}
-          service={ctx.service}
-        />
+        <HeroSection hero={ctx.content.hero1} service={service} />
       </div>
 
       {/* Approach: background gradient 1 */}
       <div className="relative z-10">
-        <SectionGradient service={ctx.service} variant={2} className="top-0" />
-        <ApproachSection
-          theme={ctx.theme}
-          approach={ctx.content.ourApproach}
-          service={ctx.service}
-        />
+        <SectionGradient service={service} variant={2} className="top-0" />
+        <ApproachSection approach={ctx.content.ourApproach} service={service} />
       </div>
 
       {/* Why it matters: background gradient 2 */}
       <div className="relative z-10">
         <WhyItMatters
-          theme={ctx.theme}
           whyItMatters={ctx.content.whyItMatters}
-          service={ctx.service}
+          service={service}
         />
       </div>
 
       {/* Core offerings: background gradient 3 */}
       <div className="relative z-10">
-        <SectionGradient service={ctx.service} variant={3} className="top-0" />
+        <SectionGradient service={service} variant={3} className="top-0" />
         <CoreOfferings
-          theme={ctx.theme}
           offerings={ctx.content.coreOfferings}
-          service={ctx.service}
+          service={service}
         />
       </div>
 
       {/* Contact form only needs theme (client component) */}
-      <ContactForm theme={ctx.theme} />
-      <Footer theme={ctx.theme} />
+      <ContactForm />
+      <Footer service={service} />
     </div>
   );
 }

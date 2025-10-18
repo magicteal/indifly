@@ -1,7 +1,7 @@
 "use client";
 
 import Container from "@/components/container";
-import type { ServiceKey, ServiceTheme } from "@/lib/serviceContext";
+import type { ServiceKey } from "@/lib/serviceContext";
 import TextCircledLine from "@public/inCore/text-circled-line.svg";
 import InstackWhyItMatters from "@public/inCore/whyItMatters/instackWhyItMatters.svg?flex";
 import InsureWhyItMatters from "@public/inCore/whyItMatters/insureWhyItMatters.svg?flex";
@@ -11,7 +11,6 @@ import { MoveRight } from "lucide-react";
 import type React from "react";
 
 interface WhyItMattersProps {
-  theme: ServiceTheme;
   whyItMatters: {
     description: string;
     challenges: { title: string; description: string }[];
@@ -44,7 +43,6 @@ function Pill({
 }
 
 export default function WhyItMatters({
-  theme,
   whyItMatters,
   service,
 }: WhyItMattersProps) {
@@ -60,27 +58,25 @@ export default function WhyItMatters({
   const Art = artByService[service];
   return (
     <div className="relative">
-      <Container className="mt-36 reveal-section">
+      <Container className="reveal-section mt-36">
         {/* Heading */}
-        <div className="mb-8 text-center text-3xl font-bold italic md:mb-12 md:text-4xl reveal-title">
+        <div className="reveal-title mb-8 text-center text-3xl font-bold italic md:mb-12 md:text-4xl">
           <span className="mr-10">Why it </span>
           <div className="relative inline-block">
-            <span className={`${theme.text}`}>matters?</span>
+            <span className="text-primary">matters?</span>
             <TextCircledLine className="absolute -top-2 left-1/2 translate-x-[-50%] scale-80" />
           </div>
         </div>
 
         {/* description */}
-        <div
-          className={`mb-8 text-center text-lg font-light md:mb-12 md:text-xl`}
-        >
+        <div className="mb-8 text-center text-lg font-light md:mb-12 md:text-xl">
           {whyItMatters.description}
         </div>
 
         {/* Main: Left illustration (dynamic by service) + Right challenges */}
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-5 md:gap-12">
           {/* Left: service illustration */}
-          <div className="flex w-full justify-center md:col-span-2 md:justify-end reveal-image">
+          <div className="reveal-image flex w-full justify-center md:col-span-2 md:justify-end">
             <Art
               aria-label={`${service} why it matters illustration`}
               className="h-auto w-full max-w-[520px]"
@@ -88,7 +84,10 @@ export default function WhyItMatters({
           </div>
 
           {/* Right: challenge pills */}
-          <div className="flex flex-col gap-4 md:col-span-3" data-reveal-stagger>
+          <div
+            className="flex flex-col gap-4 md:col-span-3"
+            data-reveal-stagger
+          >
             {whyItMatters.challenges.map((ch, i) => (
               <Pill service={service} key={i}>
                 <span className="font-bold">{ch.title} </span>
@@ -104,9 +103,7 @@ export default function WhyItMatters({
         </div>
 
         {/* Tagline */}
-        <p
-          className={`mt-10 text-center text-2xl font-semibold ${theme.text} italic md:mt-16 md:text-3xl`}
-        >
+        <p className="mt-10 text-center text-2xl font-semibold text-primary italic md:mt-16 md:text-3xl">
           {whyItMatters.tagline}
         </p>
       </Container>
