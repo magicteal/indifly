@@ -159,7 +159,10 @@ export const ContactForm = () => {
   };
 
   return (
-    <section className="reveal-section relative overflow-clip" id="contact">
+    <section
+      className="reveal-section relative overflow-clip text-foreground"
+      id="contact"
+    >
       <Container className="relative z-10 pt-24">
         <div className="reveal-section relative rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-lg sm:p-8 md:p-12">
           <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-x-24 lg:gap-y-12">

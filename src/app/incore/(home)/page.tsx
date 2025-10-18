@@ -14,7 +14,7 @@ import WealthSection from "./WealthSection";
 
 export default function InCorePage() {
   return (
-    <main className="theme-incore min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-background pt-16 text-foreground sm:pt-20 md:pt-28 lg:pt-36">
+    <main className="theme-incore theme-default min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-background pt-16 text-foreground sm:pt-20 md:pt-28 lg:pt-36">
       <Container>
         <div className="reveal-section relative text-center">
           {/* Hero gradient background reusing SectionGradient utility */}
@@ -184,7 +184,7 @@ export default function InCorePage() {
           <IncoreINDsightsSection />
         </div>
         <ContactForm />
-        <Footer service="incore" />
+        <Footer />
       </section>
     </main>
   );
