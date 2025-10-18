@@ -3,7 +3,6 @@
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
-@custom-variant theme-default (&:is(.theme-default *));
 @custom-variant theme-orange (&:is(.theme-orange *));
 @custom-variant theme-blue (&:is(.theme-blue *));
 @custom-variant theme-yellow (&:is(.theme-yellow *));
@@ -64,6 +63,10 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.6992 0.1996 41.93);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.29 0.1011 256.99);
+  --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
@@ -85,13 +88,6 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-}
-
-.theme-default {
-  --primary: oklch(0.6992 0.1996 41.93);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.29 0.1011 256.99);
-  --secondary-foreground: oklch(0.985 0 0);
 }
 
 .theme-orange {

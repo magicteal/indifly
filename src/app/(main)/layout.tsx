@@ -18,7 +18,7 @@ export default function MainLayout({
       <Navbar
         logo={{ href: "/", src: "/indiflyLogo.svg", alt: "Indifly Logo" }}
       />
-      <div className="theme-default">{children}</div>
+      <div className="">{children}</div>
     </>
   );
 }
