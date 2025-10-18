@@ -1,8 +1,9 @@
-import GlobalAnimations from "@/components/animations/GlobalAnimations";
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Script from "next/script";
+import GlobalAnimations from "./components/GlobalAnimations";
+import ThemeProvider from "./components/ThemeProvider";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -65,7 +66,7 @@ export default function RootLayout({
             />
           </noscript>
         )}
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <GlobalAnimations />
         <Toaster position="top-right" richColors />
       </body>

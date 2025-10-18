@@ -1,24 +1,26 @@
-import Navbar from "@/components/layout/navbar/Navbar";
-import TopBanner from "@/components/layout/TopBanner";
+import { Footer } from "./components/Footer";
+import Navbar from "./components/navbar/Navbar";
+import TopBanner from "./components/TopBanner";
 
 export default function MainLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <>
-      {/* Fixed TopBanner on all viewports */}
       <div className="fixed top-0 right-0 left-0 z-50 hidden md:block">
         <TopBanner />
       </div>
       <div className="fixed top-16 right-0 left-0 z-50 md:hidden">
         <TopBanner />
       </div>
-      {/* Add spacer to account for fixed banner + fixed navbar heights */}
-      <div className="h-24 md:h-8" />
-      <Navbar
-        logo={{ href: "/", src: "/indiflyLogo.svg", alt: "Indifly Logo" }}
-      />
-      <div className="">{children}</div>
+      <div className="h-24 md:h-8 theme-incore:bg-black theme-incore-services:bg-black" />
+      <Navbar />
+      <div className="overflow-x-clip">
+        {children}
+        <Footer />
+      </div>
     </>
   );
 }
