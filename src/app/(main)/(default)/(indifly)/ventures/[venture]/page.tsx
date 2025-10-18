@@ -2,7 +2,7 @@ import Top1 from "@public/companies/bg/top1.svg?flex";
 import Top2 from "@public/companies/bg/top2.svg?flex";
 import TopBg from "@public/companies/topBg.svg?flex";
 import { notFound } from "next/navigation";
-import { isVentureKey, VentureKey, ventureKeys } from "../content";
+import { isVentureKey, VentureKey, ventureKeys } from "./content";
 import VenturesHero from "./Hero";
 import HighlightsSection from "./HighlightsSection";
 

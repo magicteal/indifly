@@ -2,7 +2,7 @@
 import { Container } from "@/components/container";
 import Middle1 from "@public/companies/bg/middle1.svg?flex";
 import Middle2 from "@public/companies/bg/middle2.svg?flex";
-import { getVentureContent, VentureKey } from "../content";
+import { getVentureContent, VentureKey } from "./content";
 
 type Card = { title: string; subtitle: string; points: string[] };
 

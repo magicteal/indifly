@@ -2,7 +2,7 @@
 import { Container } from "@/components/container";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
-import { VentureKey } from "../content";
+import { VentureKey } from "./content";
 import VentureCards from "./VentureCards";
 
 export default function VenturesHero({

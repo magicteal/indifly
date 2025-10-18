@@ -1,9 +1,4 @@
 "use client";
-import {
-  getVentureContent,
-  VentureKey,
-  ventureKeys,
-} from "@/app/(main)/(default)/ventures/content";
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 import IndiConnect from "@public/companies/indiConnectHero.svg?flex";
@@ -20,6 +15,7 @@ import Sec2PayHero from "@public/companies/sec2payHero.svg?flex";
 import Sec2PayIcon from "@public/companies/sec2payIcon.svg";
 import Image, { StaticImageData } from "next/image";
 import { ComponentType, SVGProps, useEffect, useMemo, useRef } from "react";
+import { getVentureContent, VentureKey, ventureKeys } from "./content";
 
 // map of venturekey to venture name
 const ventureNameMap: Record<VentureKey, string> = {

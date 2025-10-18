@@ -1,10 +1,10 @@
-import { SectionGradient } from "@/app/incore/services/[service]/PageGradients";
 import { Container } from "@/components/container";
 import DecorativeBannerSection from "@/components/DecorativeBannerSection";
 import SectionHeader from "@/components/section-header";
 import { cn } from "@/lib/utils";
 import InCoreHero from "@public/inCore/inCoreHero.svg?flex";
 import Link from "next/link";
+import { SectionGradient } from "../services/[service]/PageGradients";
 import CaseStudiesSection from "./CaseStudiesSection";
 import IncoreINDsightsSection from "./IncoreINDsightsSection";
 import ProcessJourneySection from "./ProcessJourneySection";

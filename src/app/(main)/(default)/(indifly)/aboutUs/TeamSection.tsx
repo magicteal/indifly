@@ -1,7 +1,7 @@
-import { teamGroups } from "@/app/(main)/(default)/aboutUs/content/team";
 import Section from "@/components/section";
 import TitleBrush from "@public/home/titieINDsights.svg";
 import { ProfileCard } from "./components/ProfileCard";
+import { teamGroups } from "./content/team";
 
 export function TeamSection() {
   return (
