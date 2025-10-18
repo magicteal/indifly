@@ -1,6 +1,5 @@
 import Navbar from "@/components/layout/navbar/Navbar";
 import TopBanner from "@/components/layout/TopBanner";
-import { incoreServiceTheme } from "@/lib/serviceContext";
 
 export default function IncoreLayout({
   children,
@@ -17,7 +16,6 @@ export default function IncoreLayout({
 
       <Navbar
         logo={{ href: "/incore", src: "/incorelogo2.png", alt: "inCORE Logo" }}
-        theme={incoreServiceTheme}
       />
       <div className="h-24 bg-black md:h-8" />
       <div className="overflow-x-clip">{children}</div>

@@ -1,8 +1,8 @@
 "use client";
 import { Container } from "@/components/container";
-import { VentureKey, getVentureTheme } from "@/lib/ventureContext";
 import { useRouter } from "next/navigation";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
+import { VentureKey } from "../content";
 import VentureCards from "./VentureCards";
 
 export default function VenturesHero({
@@ -12,7 +12,6 @@ export default function VenturesHero({
 }) {
   const router = useRouter();
   const [active, setActive] = useState<VentureKey>(defaultActive ?? "indipe");
-  const theme = useMemo(() => getVentureTheme(active), [active]);
 
   const handleChange = useCallback(
     (k: VentureKey) => {
@@ -28,7 +27,7 @@ export default function VenturesHero({
       <Container>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-[#3C3C3C] sm:text-3xl">
-            Our <span className={theme.text}>Ventures</span>
+            Our <span className="text-primary">Ventures</span>
           </h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-[#3C3C3C] sm:text-base">
             Building and backing platforms and products, bringing about digital

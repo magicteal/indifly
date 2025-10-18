@@ -1,13 +1,13 @@
+import GlobalAnimations from "@/components/animations/GlobalAnimations";
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import GlobalAnimations from "@/components/animations/GlobalAnimations";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-montserrat",
 });
 
@@ -42,7 +42,7 @@ export default function RootLayout({
   const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
-    <html lang="en">
+    <html lang="en" className={`${montserrat.variable} antialiased`}>
       <head>
         {isProd && GTM_ID && (
           <>
@@ -54,7 +54,7 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className={`${montserrat.variable} font-sans antialiased`}>
+      <body>
         {isProd && GTM_ID && (
           <noscript>
             <iframe
@@ -66,7 +66,7 @@ export default function RootLayout({
           </noscript>
         )}
         {children}
-  <GlobalAnimations />
+        <GlobalAnimations />
         <Toaster position="top-right" richColors />
       </body>
     </html>

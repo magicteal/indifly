@@ -3,18 +3,12 @@ import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import type { ServiceTheme } from "@/lib/serviceContext";
 import { MapPin } from "lucide-react";
 import { usePathname } from "next/navigation"; // Import the hook
 import { useEffect, useState } from "react";
 import { toast } from "sonner"; // swapped from react-hot-toast to sonner
 
-// The component no longer needs the 'sheetName' prop
-interface ContactFormProps {
-  theme: ServiceTheme;
-}
-
-export const ContactForm = ({ theme }: ContactFormProps) => {
+export const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -165,33 +159,41 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
   };
 
   return (
-    <section className="relative overflow-clip reveal-section" id="contact">
+    <section
+      className="reveal-section relative overflow-clip text-foreground"
+      id="contact"
+    >
       <Container className="relative z-10 pt-24">
-        <div className="relative rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-lg sm:p-8 md:p-12 reveal-section">
+        <div className="reveal-section relative rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-lg sm:p-8 md:p-12">
           <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-2 lg:gap-x-24 lg:gap-y-12">
-            <div className="space-y-6 sm:space-y-8 reveal-left" data-reveal-stagger>
+            <div
+              className="reveal-left space-y-6 sm:space-y-8"
+              data-reveal-stagger
+            >
               <h2
-                className={`text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl ${theme.text} reveal-title`}
+                className={`reveal-title text-3xl font-bold text-primary sm:text-4xl md:text-5xl lg:text-6xl`}
               >
                 Let&apos;s Talk
               </h2>
-              <p
-                className={`max-w-md text-base ${theme.textForeground} sm:text-lg`}
-              >
+              <p className={`max-w-md text-base sm:text-lg`}>
                 Reach out to us with your queries, suggestions and applications.
                 We’d be happy to explore the next growth opportunity!
               </p>
               <div className="space-y-6 pt-4">
                 <div className="flex items-center gap-4">
-                  <MapPin className={`h-5 w-5 sm:h-6 sm:w-6 ${theme.text}`} />
-                  <span className={`text-lg ${theme.textForeground}`}>
+                  <MapPin className="h-5 w-5 text-primary sm:h-6 sm:w-6" />
+                  <span className="text-lg">
                     Office No. 706, 7th Floor, TOWER-2, WORLD TRADE CENTER, EON
                     Free Zone, Kharadi, Pune, Maharashtra 411014
                   </span>
                 </div>
               </div>
             </div>
-            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 reveal-right" data-reveal-stagger>
+            <form
+              onSubmit={handleSubmit}
+              className="reveal-right space-y-3 sm:space-y-4"
+              data-reveal-stagger
+            >
               <Input
                 name="name"
                 type="text"
@@ -232,7 +234,6 @@ export const ContactForm = ({ theme }: ContactFormProps) => {
               ></Textarea>
               <Button
                 type="submit"
-                variant={theme.buttonVariant}
                 size={"lg"}
                 className="w-full"
                 disabled={isSubmitting}

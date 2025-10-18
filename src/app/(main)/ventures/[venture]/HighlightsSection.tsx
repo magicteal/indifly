@@ -1,9 +1,8 @@
 "use client";
 import { Container } from "@/components/container";
-import type { VentureKey, VentureTheme } from "@/lib/ventureContext";
 import Middle1 from "@public/companies/bg/middle1.svg?flex";
 import Middle2 from "@public/companies/bg/middle2.svg?flex";
-import { getVentureContent } from "../content";
+import { getVentureContent, VentureKey } from "../content";
 
 type Card = { title: string; subtitle: string; points: string[] };
 
@@ -18,10 +17,8 @@ const ventureMiddleVariant: Record<VentureKey, "middle1" | "middle2"> = {
 
 export default function HighlightsSection({
   venture,
-  theme,
 }: {
   venture: VentureKey;
-  theme: VentureTheme;
 }) {
   const variant = ventureMiddleVariant[venture];
   const Overlay = variant === "middle1" ? Middle1 : Middle2;
@@ -44,7 +41,7 @@ export default function HighlightsSection({
               className="group relative flex h-full min-h-[260px] flex-col rounded-lg border border-white/20 bg-white/60 p-6 shadow-sm backdrop-blur-md transition hover:shadow-md sm:min-h-[280px] md:min-h-[300px]"
             >
               {/* Small bold gradient title */}
-              <h3 className={`text-sm font-semibold ${theme.text}`}>
+              <h3 className={`text-sm font-semibold text-primary`}>
                 {card.title}
               </h3>
               {/* Medium subtitle in #3C3C3C */}
@@ -57,10 +54,7 @@ export default function HighlightsSection({
                   <li key={i} className="flex items-start gap-3">
                     <span
                       aria-hidden
-                      className="mt-1 h-5 w-1 rounded-full"
-                      style={{
-                        background: `linear-gradient(180deg, ${theme.gradientFrom}, ${theme.gradientTo})`,
-                      }}
+                      className="mt-1 h-5 w-1 rounded-full bg-primary"
                     />
                     <span className="text-sm text-[#3C3C3C]">{pt}</span>
                   </li>

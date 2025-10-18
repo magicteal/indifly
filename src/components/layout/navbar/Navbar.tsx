@@ -5,7 +5,6 @@ import {
   type NavItem,
 } from "@/components/layout/navbar/navigation";
 import { Button } from "@/components/ui/button";
-import { ServiceTheme } from "@/lib/serviceContext";
 import { ChevronRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,17 +22,16 @@ interface NavbarLogoProps {
 interface NavbarProps {
   logo: NavbarLogoProps;
   navItems?: NavItem[];
-  theme?: ServiceTheme;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ logo, navItems, theme }) => {
+const Navbar: React.FC<NavbarProps> = ({ logo, navItems }) => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
   const currentNavItems = navItems || getNavConfig(pathname).navItems;
 
   return (
-    <nav className="fixed top-0 left-0 z-[60] w-full font-sans md:top-14">
+    <nav className="fixed top-0 left-0 z-[60] w-full md:top-14">
       <div className="mx-auto max-w-7xl px-0 md:px-4 lg:px-8">
         <div className="relative flex h-16 items-center justify-between border-b border-white bg-white/30 px-4 backdrop-blur-lg md:rounded-xl md:border md:border-white md:px-6">
           {/* Mobile Hamburger Menu Button  */}
@@ -41,7 +39,7 @@ const Navbar: React.FC<NavbarProps> = ({ logo, navItems, theme }) => {
             <Button
               variant="ghost"
               size="icon"
-              className={`${theme?.service === "incore" ? "text-white" : "text-gray-900"} transition-colors hover:bg-white/20`}
+              // className={`${theme?.service === "incore" ? "text-white" : "text-gray-900"} transition-colors hover:bg-white/20`}
               onClick={() => setIsOpen((v) => !v)}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"

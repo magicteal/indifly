@@ -1,12 +1,4 @@
-// Keep this in sync with src/lib/ventureContext.ts, but avoid importing from it
-// to prevent circular dependencies between content and theme context.
-export type VentureKey =
-  | "indipe"
-  | "sec2pay"
-  | "indiconnect"
-  | "indikendra"
-  | "indinxt"
-  | "indispeed";
+import { VentureKey } from ".";
 
 export type VentureContent = {
   key: VentureKey;
@@ -18,9 +10,4 @@ export type VentureContent = {
   highlights?: Array<{ title: string; description: string }>;
   features?: Array<{ title: string; points: string[] }>;
   cards?: Array<{ title: string; subtitle: string; points: string[] }>;
-  // extend as we build pages
 };
-
-export function defineVenture(content: VentureContent) {
-  return content;
-}

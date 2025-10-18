@@ -1,27 +1,35 @@
 "use client";
-import { getVentureContent } from "@/app/(main)/ventures/content";
-import { Container } from "@/components/container";
 import {
+  getVentureContent,
   VentureKey,
-  getAllVentureThemes,
-  getVentureTheme,
-} from "@/lib/ventureContext";
+  ventureKeys,
+} from "@/app/(main)/ventures/content";
+import { Container } from "@/components/container";
+import { Button } from "@/components/ui/button";
 import IndiConnect from "@public/companies/indiConnectHero.svg?flex";
+import IndiKendraWordmark from "@public/companies/indiKendra.svg?flex";
 import IndiKendraHero from "@public/companies/indiKendraHero.svg?flex";
+import IndiNXTWordmark from "@public/companies/indiNXT.svg?flex";
 import IndiNXTHero from "@public/companies/indiNXTHero.svg?flex";
 import IndipeHero from "@public/companies/indipeHero.svg?flex";
+import IndipeIcon from "@public/companies/indipeIcon.svg";
+import IndiSpeedWordmark from "@public/companies/indiSpeed.svg?flex";
 import IndiSpeedHero from "@public/companies/indispeedHero.svg?flex";
 import PlayStore from "@public/companies/playStore.svg";
 import Sec2PayHero from "@public/companies/sec2payHero.svg?flex";
+import Sec2PayIcon from "@public/companies/sec2payIcon.svg";
 import Image, { StaticImageData } from "next/image";
 import { ComponentType, SVGProps, useEffect, useMemo, useRef } from "react";
-// top-left icons
-import IndipeIcon from "@public/companies/indipeIcon.svg";
-import Sec2PayIcon from "@public/companies/sec2payIcon.svg";
-// wordmark titles for specific ventures
-import IndiKendraWordmark from "@public/companies/indiKendra.svg?flex";
-import IndiNXTWordmark from "@public/companies/indiNXT.svg?flex";
-import IndiSpeedWordmark from "@public/companies/indiSpeed.svg?flex";
+
+// map of venturekey to venture name
+const ventureNameMap: Record<VentureKey, string> = {
+  indipe: "Indipe",
+  sec2pay: "Sec2Pay",
+  indiconnect: "IndiConnect",
+  indikendra: "IndiKendra",
+  indinxt: "IndiNXT",
+  indispeed: "IndiSpeed",
+};
 
 type SvgOrUrl =
   | ComponentType<SVGProps<SVGSVGElement>>
@@ -90,8 +98,6 @@ export default function VentureCards({
   active: VentureKey;
   onChangeAction: (k: VentureKey) => void;
 }) {
-  const ventures = useMemo(() => getAllVentureThemes(), []);
-  const theme = getVentureTheme(active);
   const content = useMemo(() => getVentureContent(active), [active]);
   const tabsContainerRef = useRef<HTMLDivElement>(null);
   const activeTabRef = useRef<HTMLButtonElement>(null);
@@ -133,36 +139,25 @@ export default function VentureCards({
             role="tablist"
             aria-label="Ventures"
           >
-            {ventures.map((v) => (
-              <button
-                key={v.key}
-                ref={active === v.key ? activeTabRef : null}
-                onClick={() => onChangeAction(v.key)}
-                className={`${active === v.key ? "text-white" : "bg-[#E6EAEF] text-[#446FA7]"} rounded-md px-3 py-1 text-sm font-semibold whitespace-nowrap`}
-                style={
-                  active === v.key
-                    ? {
-                        background: `linear-gradient(90deg, ${v.gradientFrom}, ${v.gradientTo})`,
-                      }
-                    : undefined
-                }
+            {ventureKeys.map((v) => (
+              <Button
+                variant={active === v ? "default" : "secondary"}
+                key={v}
+                ref={active === v ? activeTabRef : null}
+                onClick={() => onChangeAction(v)}
                 role="tab"
-                aria-selected={active === v.key}
+                size="sm"
+                aria-selected={active === v}
               >
-                {v.name}
-              </button>
+                {ventureNameMap[v]}
+              </Button>
             ))}
           </div>
         </div>
 
         {/* Gradient Card wrapper to match Figma width */}
         <div className="relative mx-auto w-full max-w-[1071px] overflow-visible">
-          <div
-            className="relative z-10 flex h-auto min-h-[400px] w-full flex-col overflow-visible rounded-3xl border text-white sm:min-h-[450px] md:h-[558px]"
-            style={{
-              background: `linear-gradient(90deg, ${theme.gradientFrom}, ${theme.gradientTo})`,
-            }}
-          >
+          <div className="relative z-10 flex h-auto min-h-[400px] w-full flex-col overflow-visible rounded-3xl border bg-gradient-to-r from-primary to-primary/60 text-white sm:min-h-[450px] md:h-[558px]">
             <div className="flex-1 p-5 pr-5 md:p-8 md:pr-[420px]">
               {/* top-left icon (only for indipe, sec2pay) */}
               {(() => {
@@ -186,7 +181,7 @@ export default function VentureCards({
                           return src ? (
                             <Image
                               src={src}
-                              alt={`${theme.name} icon`}
+                              alt={`${active} icon`}
                               width={56}
                               height={56}
                               style={{
@@ -211,7 +206,7 @@ export default function VentureCards({
                   <IndiSpeedWordmark className="h-8 w-auto overflow-visible sm:h-10 md:h-12" />
                 ) : (
                   <h3 className="text-2xl leading-none font-bold sm:text-[28px] md:text-[32px]">
-                    {theme.name}
+                    {ventureNameMap[active]}
                   </h3>
                 )}
               </div>
@@ -242,7 +237,7 @@ export default function VentureCards({
               return src ? (
                 <Image
                   src={src}
-                  alt={`${theme.name} hero`}
+                  alt={`${active} hero`}
                   width={cfg.imageSize?.w ?? 360}
                   height={cfg.imageSize?.h ?? 240}
                   className={`object-contain ${cfg.artClassName}`}

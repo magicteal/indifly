@@ -13,38 +13,9 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40",
         outline:
-          "!rounded-full border !border-black shadow-xs hover:bg-input/50 hover:text-accent-foreground",
+          "!rounded-full border shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        // insurge variants
-        insurge: "bg-insurge text-insurge-foreground hover:bg-insurge/90",
-        insurgeSecondary:
-          "bg-insurge-accent text-insurge hover:bg-insurge-accent/90",
-        // instack variants
-        instack: "bg-instack text-instack-foreground hover:bg-instack/90",
-        instackSecondary:
-          "bg-instack-accent text-instack hover:bg-instack-accent/90",
-        // involve variants
-        involve: "bg-involve text-involve-foreground hover:bg-involve/90",
-        involveSecondary:
-          "bg-involve-accent text-involve hover:bg-involve-accent/90",
-        // insure variants
-        insure: "bg-insure text-insure-foreground hover:bg-insure/90",
-        insureSecondary:
-          "bg-insure-accent text-insure hover:bg-insure-accent/90",
-        // venture variants (gradient buttons)
-        indipe:
-          "bg-gradient-to-r from-[#E04A00] to-[#FF915C] text-white hover:opacity-90",
-        sec2pay:
-          "bg-gradient-to-r from-[#006FFF] to-[#8EC0FF] text-white hover:opacity-90",
-        indiconnect:
-          "bg-gradient-to-r from-[#E04A00] to-[#FF915C] text-white hover:opacity-90",
-        indikendra:
-          "bg-gradient-to-r from-[#006FFF] to-[#8EC0FF] text-white hover:opacity-90",
-        indinxt:
-          "bg-gradient-to-r from-[#E04A00] to-[#FF915C] text-white hover:opacity-90",
-        indispeed:
-          "bg-gradient-to-r from-[#FF990B] to-[#AF6C4C] text-white hover:opacity-90",
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",

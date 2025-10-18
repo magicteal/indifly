@@ -2,24 +2,20 @@
  * Central export for all service content
  * Provides type-safe content access for all services (excluding 'incore' which reuses another set)
  */
-
-import type { ContentfulService } from "@/lib/serviceContext";
 import { instackContent } from "./instack";
 import { insureContent } from "./insure";
 import { insurgeContent } from "./insurge";
 import { involveContent } from "./involve";
 import type { ServiceContent } from "./types";
 
-// Export individual content
+// Re-export all content and types
+export type * from "./types";
 export { instackContent, insureContent, insurgeContent, involveContent };
 
-// Export types
-export type * from "./types";
+export const serviceKeys = ["insurge", "instack", "involve", "insure"] as const;
+export type ServiceKey = (typeof serviceKeys)[number];
 
-// Services that actually have dedicated content files (exclude 'incore')
-
-// Content map for easy access
-export const serviceContentMap: Record<ContentfulService, ServiceContent> = {
+export const serviceContentMap: Record<ServiceKey, ServiceContent> = {
   insurge: insurgeContent,
   instack: instackContent,
   involve: involveContent,
@@ -29,6 +25,10 @@ export const serviceContentMap: Record<ContentfulService, ServiceContent> = {
 /**
  * Get content for a specific service.
  */
-export function getServiceContent(service: ContentfulService): ServiceContent {
+export function getServiceContent(service: ServiceKey): ServiceContent {
   return serviceContentMap[service] || insurgeContent;
+}
+
+export function isServiceKey(v: string): v is ServiceKey {
+  return v in serviceContentMap;
 }
