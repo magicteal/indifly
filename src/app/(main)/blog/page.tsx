@@ -1,10 +1,8 @@
+import BlogCard from "@/components/BlogCard";
 import { Container } from "@/components/container";
 import { ContactForm } from "@/components/layout/ContactForm";
-
-import BlogCard from "@/components/BlogCard";
 import { Footer } from "@/components/layout/Footer";
 import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
-import { lightTheme } from "@/lib/serviceContext";
 import GradientFrame from "./gradient";
 
 export default async function BlogPage() {
@@ -57,11 +55,11 @@ export default async function BlogPage() {
           <div className="relative overflow-hidden rounded-2xl">
             <GradientFrame variant="v1" className="opacity-40" />
             <div className="relative z-10">
-              <ContactForm theme={lightTheme} />
+              <ContactForm />
             </div>
           </div>
         </div>
-        <Footer theme={lightTheme} />
+        <Footer />
       </div>
     </main>
   );

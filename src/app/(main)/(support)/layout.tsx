@@ -1,6 +1,5 @@
 import Container from "@/components/container";
 import { Footer } from "@/components/layout/Footer";
-import { lightTheme } from "@/lib/serviceContext";
 import React from "react";
 
 export default function layout({ children }: { children: React.ReactNode }) {
@@ -9,7 +8,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
       <Container className="prose mt-36 mb-24 prose-h2:text-primary prose-p:text-justify prose-ol:text-justify prose-ul:text-justify">
         {children}
       </Container>
-      <Footer theme={lightTheme} />
+      <Footer />
     </>
   );
 }

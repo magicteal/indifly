@@ -1,16 +1,14 @@
 import { Container } from "@/components/container";
-import Image from "next/image";
 import {
   IoLogoFacebook,
   IoLogoInstagram,
   IoLogoLinkedin,
   IoLogoTwitter,
 } from "react-icons/io5";
+import FooterImage from "./footerImage";
 import { footerLinkGroups } from "./footerLinks";
 
-export const Footer = ({ service }: { service: string }) => {
-  const isServiceTheme = service !== "default" && service !== "light";
-
+export const Footer = () => {
   return (
     <footer className="reveal-section relative overflow-hidden font-sans">
       <Container className="relative z-1 pt-24 pb-28 md:pb-36">
@@ -19,20 +17,7 @@ export const Footer = ({ service }: { service: string }) => {
           {/* Left branding / mission block */}
           <div className="reveal-left max-w-md" data-reveal-stagger>
             <div className="mb-6 flex items-center gap-3">
-              <Image
-                src={
-                  isServiceTheme
-                    ? "/incorelogo2.png"
-                    : service === "light"
-                      ? "/indiflyLogo.svg"
-                      : "/indiflyLogo2.svg"
-                }
-                alt={isServiceTheme ? "inCORE" : "IndiFly"}
-                width={isServiceTheme ? 240 : 210}
-                height={70}
-                priority
-                className="h-auto w-[210px] md:w-[240px]"
-              />
+              <FooterImage />
             </div>
             <h2 className={`text-xl leading-snug font-extrabold md:text-2xl`}>
               Building <span className="text-primary">Ventures,</span> Building
@@ -123,9 +108,7 @@ export const Footer = ({ service }: { service: string }) => {
       </Container>
 
       {/* Big Background Heading at bottom */}
-      <h1
-        className={`pointer-events-none absolute bottom-0 left-1/2 mb-[-0.5vw] -translate-x-1/2 transform text-[5.7vw] font-extrabold whitespace-nowrap text-[#021D41] theme-incore-services:text-primary/10`}
-      >
+      <h1 className="pointer-events-none absolute bottom-0 left-1/2 mb-[-0.5vw] -translate-x-1/2 transform text-[5.7vw] font-extrabold whitespace-nowrap text-[#021D41] theme-orange:text-[#FFE3D9] dark:theme-orange:text-[#021D41] theme-blue:text-[#BBCDE466] theme-yellow:text-[#FFE3D9] theme-incore-services:text-primary/10">
         Building Ventures. Building Nation.
       </h1>
     </footer>

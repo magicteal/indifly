@@ -1,6 +1,5 @@
 import { ContactForm } from "@/components/layout/ContactForm";
 import { Footer } from "@/components/layout/Footer";
-import { lightTheme } from "@/lib/serviceContext";
 import GradientFrame from "../blog/gradient";
 import { CompanyCollage } from "./CompanyCollage";
 import { HeroSection } from "./HeroSection";
@@ -9,16 +8,16 @@ import { TeamSection } from "./TeamSection";
 
 export default function AboutUsPage() {
   return (
-    <main className="reveal-section">
+    <main className="theme-orange reveal-section">
       <HeroSection />
       <JourneyTimeline />
       <TeamSection />
       <CompanyCollage />
       <div className="relative">
         <GradientFrame variant="v1" className="opacity-40" />
-        <ContactForm theme={lightTheme} />
+        <ContactForm />
+        <Footer />
       </div>
-      <Footer theme={lightTheme} />
     </main>
   );
 }

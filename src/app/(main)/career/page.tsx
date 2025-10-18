@@ -1,14 +1,8 @@
-
-import { Footer } from "@/components/layout/Footer";
 import Container from "@/components/container";
-import type { ServiceTheme } from "@/lib/serviceContext";
-import { getVentureTheme } from "@/lib/ventureContext";
+import { Footer } from "@/components/layout/Footer";
 import Top1 from "@public/companies/bg/top1.svg?flex";
 import TopBg from "@public/companies/topBg.svg?flex";
-
 import { ZohoRecruitEmbed } from "./ZohoRecruitEmbed";
-
-const ventureTheme = getVentureTheme("indipe");
 
 export default function Career() {
   return (
@@ -23,7 +17,7 @@ export default function Career() {
 
       <section className="relative z-10 py-24 sm:py-28">
         <Container className="max-w-6xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-wide text-[#E04A00]">
+          <p className="text-sm font-semibold tracking-wide text-[#E04A00] uppercase">
             Find the career of your dreams
           </p>
           <h1 className="mt-4 text-3xl font-semibold text-[#353636] sm:text-4xl">
@@ -33,22 +27,22 @@ export default function Career() {
             </span>
           </h1>
           <p className="mt-6 text-base leading-relaxed text-[#3C3C3C] sm:text-lg">
-            We know that finding a meaningful and rewarding job can be a long journey. Our goal is to make that process as easy as possible for you, and to create a work environment that&apos;s satisfying—one where you&apos;ll look forward to coming to every day. Start your journey with us by browsing available jobs.
+            We know that finding a meaningful and rewarding job can be a long
+            journey. Our goal is to make that process as easy as possible for
+            you, and to create a work environment that&apos;s satisfying—one
+            where you&apos;ll look forward to coming to every day. Start your
+            journey with us by browsing available jobs.
           </p>
         </Container>
       </section>
 
       <section className="relative z-10 pb-24">
-        <Container className="max-w-7xl text-center space-y-6">
+        <Container className="max-w-7xl space-y-6 text-center">
           <ZohoRecruitEmbed brandColor="#F26926" />
         </Container>
       </section>
 
-      
-          <Footer theme={ventureTheme as unknown as ServiceTheme} isVenture />
-        
+      <Footer />
     </main>
   );
 }
-
-

@@ -69,7 +69,7 @@ export default async function Page({
 
       {/* Contact form only needs theme (client component) */}
       <ContactForm />
-      <Footer service={service} />
+      <Footer />
     </div>
   );
 }
