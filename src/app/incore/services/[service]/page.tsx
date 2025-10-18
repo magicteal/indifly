@@ -1,6 +1,3 @@
-import { ContactForm } from "@/components/layout/ContactForm";
-import { Footer } from "@/components/layout/Footer";
-
 import { notFound } from "next/navigation";
 import ApproachSection from "./ApproachSection";
 import { getServiceContent, isServiceKey, serviceKeys } from "./content";
@@ -54,9 +51,6 @@ export default async function Page({
         <SectionGradient service={service} variant={3} className="top-0" />
         <CoreOfferings offerings={content.coreOfferings} service={service} />
       </div>
-
-      <ContactForm />
-      <Footer />
     </div>
   );
 }

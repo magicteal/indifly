@@ -1,5 +1,4 @@
 import Container from "@/components/container";
-import { Footer } from "@/components/layout/Footer";
 import Top1 from "@public/companies/bg/top1.svg?flex";
 import TopBg from "@public/companies/topBg.svg?flex";
 import { ZohoRecruitEmbed } from "./ZohoRecruitEmbed";
@@ -41,8 +40,6 @@ export default function Career() {
           <ZohoRecruitEmbed brandColor="#F26926" />
         </Container>
       </section>
-
-      <Footer />
     </main>
   );
 }

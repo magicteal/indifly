@@ -1,8 +1,6 @@
 import { SectionGradient } from "@/app/incore/services/[service]/PageGradients";
 import { Container } from "@/components/container";
 import DecorativeBannerSection from "@/components/DecorativeBannerSection";
-import { ContactForm } from "@/components/layout/ContactForm";
-import { Footer } from "@/components/layout/Footer";
 import SectionHeader from "@/components/section-header";
 import { cn } from "@/lib/utils";
 import InCoreHero from "@public/inCore/inCoreHero.svg?flex";
@@ -179,12 +177,7 @@ export default function InCorePage() {
       {/* Large blurred gradient frame leading into insights */}
       <section className="reveal-section relative w-full overflow-hidden">
         <SectionGradient service="incoreHome" variant="homeBottom" />
-
-        <div className="relative z-10">
-          <IncoreINDsightsSection />
-        </div>
-        <ContactForm />
-        <Footer />
+        <IncoreINDsightsSection />
       </section>
     </main>
   );

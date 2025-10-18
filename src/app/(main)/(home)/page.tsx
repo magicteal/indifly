@@ -1,5 +1,3 @@
-import { ContactForm } from "@/components/layout/ContactForm";
-import { Footer } from "@/components/layout/Footer";
 import BharatSection from "./BharatSection";
 import Hero from "./Hero";
 import INDsights from "./INDsights";
@@ -27,12 +25,6 @@ export default function Home() {
       </div>
       <div className="reveal-section">
         <INDsights />
-      </div>
-      <div className="dark bg-secondary text-foreground">
-        <ContactForm />
-      </div>
-      <div className="dark bg-gradient-to-b from-[#01295C] to-[#00142D] text-foreground">
-        <Footer />
       </div>
     </main>
   );

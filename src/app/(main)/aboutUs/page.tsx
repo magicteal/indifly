@@ -1,6 +1,3 @@
-import { ContactForm } from "@/components/layout/ContactForm";
-import { Footer } from "@/components/layout/Footer";
-import GradientFrame from "../blog/gradient";
 import { CompanyCollage } from "./CompanyCollage";
 import { HeroSection } from "./HeroSection";
 import { JourneyTimeline } from "./JourneyTimeline";
@@ -13,11 +10,6 @@ export default function AboutUsPage() {
       <JourneyTimeline />
       <TeamSection />
       <CompanyCollage />
-      <div className="relative">
-        <GradientFrame variant="v1" className="opacity-40" />
-        <ContactForm />
-        <Footer />
-      </div>
     </main>
   );
 }

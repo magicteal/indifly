@@ -79,7 +79,7 @@ export default function RootLayout({
           </div>
           <div className="h-24 md:h-8 theme-incore:bg-black theme-incore-services:bg-black" />
           <Navbar />
-          <div className="overflow-clip">{children}</div>
+          <div className="overflow-x-clip">{children}</div>
           <ContactForm />
           <Footer />
           <GlobalAnimations />

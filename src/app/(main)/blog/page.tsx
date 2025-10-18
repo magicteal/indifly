@@ -1,7 +1,5 @@
 import BlogCard from "@/components/BlogCard";
 import { Container } from "@/components/container";
-import { ContactForm } from "@/components/layout/ContactForm";
-import { Footer } from "@/components/layout/Footer";
 import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
 import GradientFrame from "./gradient";
 
@@ -51,15 +49,6 @@ export default async function BlogPage() {
             {/* Pagination intentionally omitted for MDX-based listing (add later if needed) */}
           </section>
         </Container>
-        <div className="relative overflow-hidden">
-          <div className="relative overflow-hidden rounded-2xl">
-            <GradientFrame variant="v1" className="opacity-40" />
-            <div className="relative z-10">
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-        <Footer />
       </div>
     </main>
   );
