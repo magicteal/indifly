@@ -3,25 +3,10 @@ import VenturesGridMan from "@public/VenturesGridMan.svg?flex";
 import Image from "next/image";
 import Link from "next/link";
 
-type VenturesGridProps = {
-  embedded?: boolean;
-};
-
-export default function VenturesGrid({ embedded = false }: VenturesGridProps) {
-  const sectionClasses = embedded
-    ? "relative w-full overflow-hidden pt-16 pb-20"
-    : "relative -mt-32 w-full overflow-hidden pt-40 pb-20";
-
-  const backgroundStyle = embedded
-    ? undefined
-    : ({
-        background:
-          "linear-gradient(180deg, rgba(7, 23, 44, 0) 0%, #07172C 37.5%)",
-      } as const);
-
+export default function VenturesGrid() {
   return (
     // Ventures grid cards, optionally embedded within hero
-    <section className={sectionClasses} style={backgroundStyle}>
+    <section className="relative w-full overflow-hidden pt-16 pb-20">
       {/* Centered content wrapper (controls max width & horizontal padding) */}
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
         {/* Grid container: 4 columns on md+ so we can place tiles precisely */}
@@ -110,23 +95,11 @@ export default function VenturesGrid({ embedded = false }: VenturesGridProps) {
       {/* Decorative blue hexagons */}
       <div className="pointer-events-none absolute inset-0 -z-0 select-none">
         {/* Left hex */}
-        <div
-          className={
-            embedded
-              ? "absolute top-[58%] left-[-70px] hidden -translate-y-1/2 -rotate-12 opacity-30 md:block"
-              : "absolute top-[46%] left-[-70px] hidden -translate-y-1/2 -rotate-12 opacity-30 md:block"
-          }
-        >
+        <div className="absolute top-[58%] left-[-70px] hidden -translate-y-1/2 -rotate-12 opacity-30 md:block">
           <BlueHex width={260} height={300} />
         </div>
         {/* Right hex */}
-        <div
-          className={
-            embedded
-              ? "absolute -right-30 bottom-0 hidden translate-y-1/3 rotate-12 opacity-30 md:block"
-              : "absolute -right-30 -bottom-65 hidden -translate-y-1/2 scale-125 rotate-12 opacity-30 md:block"
-          }
-        >
+        <div className="absolute -right-30 bottom-0 hidden translate-y-1/3 rotate-12 opacity-30 md:block">
           <BlueHex width={300} height={340} />
         </div>
       </div>
