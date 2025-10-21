@@ -5,6 +5,10 @@ import InStackApproach from "@public/inCore/approach/instackApproach.svg?flex";
 import InSureApproach from "@public/inCore/approach/insureApproach.svg?flex";
 import InSurgeApproach from "@public/inCore/approach/insurgeApproach.svg?flex";
 import InVolveApproach from "@public/inCore/approach/involveApproach.svg?flex";
+import InStackMobile from "@public/inCore/approach/inStackMobile.svg?flex";
+import InSureMobile from "@public/inCore/approach/inSureMobile.svg?flex";
+import InSurgeMobile from "@public/inCore/approach/inSurgeMobile.svg?flex";
+import InVolveMobile from "@public/inCore/approach/inVolveMobile.svg?flex";
 import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
 import type { FC, SVGProps } from "react";
@@ -16,6 +20,13 @@ const approachImages: Record<ServiceKey, FC<SVGProps<SVGElement>>> = {
   insure: InSureApproach,
   involve: InVolveApproach,
   insurge: InSurgeApproach,
+};
+
+const approachMobileImages: Record<ServiceKey, FC<SVGProps<SVGElement>>> = {
+  instack: InStackMobile,
+  insure: InSureMobile,
+  involve: InVolveMobile,
+  insurge: InSurgeMobile,
 };
 
 interface ApproachSectionProps {
@@ -35,22 +46,20 @@ export default function ApproachSection({
     stepPositions._default;
   // Resolve the SVG component for this service once
   const ApproachImage = approachImages[service];
+  const ApproachMobileImage = approachMobileImages[service];
 
   // Only mount ONE svg at a time (desktop OR mobile) to avoid duplicate inline
   // <defs>/<mask>/<gradient> ids colliding in the DOM and wiping fills.
-  const [isSmUp, setIsSmUp] = useState<boolean | null>(null);
+  const [isMdUp, setIsMdUp] = useState<boolean | null>(null);
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const mql = window.matchMedia("(min-width: 640px)");
+    const mql = window.matchMedia("(min-width: 768px)");
     const handler = (e: MediaQueryListEvent | MediaQueryList) => {
-      // Some browsers fire event, others need initial read
-      // Normalize by reading .matches from either
-      setIsSmUp("matches" in e ? e.matches : (e as MediaQueryList).matches);
+      setIsMdUp("matches" in e ? e.matches : (e as MediaQueryList).matches);
     };
     // Set initial state
     handler(mql);
     // Subscribe to changes
-    // addEventListener is modern; fallback to addListener for older engines
     if (typeof mql.addEventListener === "function") {
       mql.addEventListener("change", handler as (ev: Event) => void);
       return () =>
@@ -99,8 +108,8 @@ export default function ApproachSection({
         </div>
 
         {/* Desktop / tablet version: keep absolute positioning so arrows in SVG point correctly */}
-        <div className="reveal-image relative mx-auto mt-28 mb-32 hidden w-full max-w-[500px] sm:block">
-          {isSmUp && (
+        <div className="reveal-image relative mx-auto mt-28 mb-32 hidden w-full max-w-[500px] md:block">
+          {isMdUp && (
             <ApproachImage
               className="mx-auto max-w-full"
               aria-label={`${service} approach diagram`}
@@ -110,7 +119,7 @@ export default function ApproachSection({
             const pos = positions[index] || stepPositions._default[index];
             return (
               <div
-                key={step.title}
+                key={`step-${index}-${step.title}`}
                 className={pos}
                 aria-label={`${index + 1}. ${step.title}`}
               >
@@ -125,35 +134,14 @@ export default function ApproachSection({
           })}
         </div>
 
-        {/* Mobile fallback: stacked list below a smaller diagram (arrows less critical at this size) */}
-        <div className="reveal-section mt-20 w-full sm:hidden">
-          {isSmUp === false && (
-            <ApproachImage
-              className="mx-auto h-auto w-full max-w-xs"
-              aria-hidden="true"
+        {/* Mobile version: show mobile-specific image */}
+        <div className="reveal-image mt-20 mb-12 w-full md:hidden">
+          {isMdUp === false && (
+            <ApproachMobileImage
+              className="mx-auto h-auto w-full max-w-md"
+              aria-label={`${service} approach diagram`}
             />
           )}
-          <ol
-            className="mx-auto my-10 max-w-md space-y-8 text-left"
-            aria-label="Process steps"
-            data-reveal-stagger
-          >
-            {approach.steps.map((step, index) => (
-              <li key={step.title} className="flex gap-4">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/20 text-sm font-semibold text-primary">
-                  {index + 1}
-                </div>
-                <div>
-                  <div className="text-base font-semibold tracking-wide">
-                    {step.title}
-                  </div>
-                  <p className="mt-1 text-sm text-white/80">
-                    {step.description}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
         </div>
       </div>
     </Container>

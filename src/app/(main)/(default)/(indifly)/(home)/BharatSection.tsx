@@ -35,7 +35,7 @@ const BharatSection = () => {
           </div>
 
           {/* Map */}
-          <div className="reveal-right flex justify-center md:w-1/2">
+          <div className="reveal-right flex justify-center  md:w-1/2 ">
             <IndiaMap />
           </div>
         </div>
