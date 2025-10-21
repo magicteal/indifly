@@ -10,15 +10,17 @@ export default function ProcessJourney() {
     <Section className="reveal-section py-20">
       <SectionHeader label="Process Journey" title="InCORE" />
 
-      <div className="mt-10 flex justify-center">
-        <Image
-          src="/process.svg"
-          alt="InCORE process journey"
-          width={1280}
-          height={600}
-          className="reveal-image h-auto w-full max-w-6xl"
-          priority
-        />
+      <div className="mt-10 overflow-x-auto md:overflow-x-visible">
+        <div className="flex min-w-max justify-center md:min-w-0">
+          <Image
+            src="/process.svg"
+            alt="InCORE process journey"
+            width={1280}
+            height={600}
+            className="reveal-image h-auto w-[1280px] md:w-full md:max-w-6xl"
+            priority
+          />
+        </div>
       </div>
     </Section>
   );
