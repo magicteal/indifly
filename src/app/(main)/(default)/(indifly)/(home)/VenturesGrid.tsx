@@ -44,47 +44,56 @@ export default function VenturesGrid() {
           <div className="flex h-full flex-col gap-6 md:col-start-2 md:row-span-2 md:gap-4">
             {/* Top-right row */}
             <div
-              className="flex flex-col gap-6 md:flex-row md:gap-6"
+              className="flex items-center justify-between gap-6"
               data-reveal-stagger
             >
-              <div className="reveal-right flex h-full flex-1 items-center justify-center rounded-2xl bg-[#F56522] p-6 shadow-lg md:h-[165px]">
+              <div className="reveal-right flex h-full flex-1 items-center justify-center rounded-2xl bg-[#F56522] p-6 shadow-lg ">
                 <Link href="/incore">
                   <Image
                     src="/inCore.svg"
                     alt="inCORE"
-                    width={160}
-                    height={48}
-                    className="object-contain"
+                      width={160}
+                      height={48}
+                      className="object-contain md:w-[160px] md:h-[48px]"
                     priority
                   />
                 </Link>
               </div>
               <div className="reveal-right flex h-full flex-1 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1677FF] to-[#4AA3FF] p-6 shadow-lg md:h-[165px]">
-                <h3 className="text-3xl font-bold tracking-tight text-white">
-                  <Link href="/blog">INDsights</Link>
+                <h3 className="text-lg md:text-3xl font-bold tracking-tight text-white">
+                   <Image
+                    src="/home/INDsights.svg"
+                    alt="inCORE"
+                      width={160}
+                      height={48}
+                      className="object-contain md:w-[160px] md:h-[48px]"
+                    priority
+                  />
                 </h3>
               </div>
             </div>
 
             {/* Bottom row */}
             <div
-              className="flex flex-col gap-6 md:flex-row md:gap-6"
+              className="flex gap-6"
               data-reveal-stagger
             >
-              <div className="reveal-right flex h-full flex-[0.65] items-center justify-center rounded-2xl bg-gradient-to-r from-white/70 to-sky-100/70 p-6 text-center shadow-lg backdrop-blur-md md:h-[158px]">
+              <div className="reveal-right flex h-[100px] flex-[1.5] md:flex-[0.65] items-center justify-center rounded-2xl bg-gradient-to-r from-white/70 to-sky-100/70 p-6 text-center shadow-lg backdrop-blur-md md:h-[158px]">
                 <Link
                   href="/aboutUs#company-collage"
-                  className="text-2xl leading-snug font-extrabold text-sky-700 transition-colors hover:text-sky-500 lg:text-3xl"
+                  className="text-lg md:text-6xl leading-snug font-extrabold text-sky-700 transition-colors hover:text-sky-500 lg:text-3xl text-center"
                 >
-                  Life at <p className="text-blue-400">IndiFly →</p>
+                  <span className="block text-lg md:text-2xl">Life at</span>
+                  <span className="block text-lg md:text-2xl text-blue-400">IndiFly →</span>
                 </Link>
               </div>
-              <div className="reveal-right flex h-full flex-[0.35] items-center justify-center rounded-2xl bg-gradient-to-br from-[#FBF6F4] to-[#F6EFE9] p-6 text-center shadow-lg md:h-[158px]">
+              <div className="reveal-right flex h-[100px] flex-1 md:flex-[0.35] items-center justify-center rounded-2xl bg-gradient-to-br from-[#FBF6F4] to-[#F6EFE9] p-6 text-center shadow-lg md:h-[158px]">
                 <Link
                   href="#contact"
-                  className="text-2xl leading-snug font-extrabold text-black transition-colors hover:text-[#F56522] lg:text-3xl"
+                  className="text-lg md:text-6xl leading-snug font-extrabold text-black transition-colors hover:text-[#F56522] lg:text-3xl text-center"
                 >
-                  Get in <span className="text-[#F56522]">Touch →</span>
+                  <span className="block text-lg md:text-2xl">Get in</span>
+                  <span className="block text-lg md:text-2xl text-[#F56522]">Touch →</span>
                 </Link>
               </div>
             </div>
