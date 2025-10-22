@@ -81,7 +81,7 @@ export default function VenturesGrid() {
               <div className="reveal-right flex h-[100px] flex-[1.5] md:flex-[0.65] items-center justify-center rounded-2xl bg-gradient-to-r from-white/70 to-sky-100/70 p-6 text-center shadow-lg backdrop-blur-md md:h-[158px]">
                 <Link
                   href="/aboutUs#company-collage"
-                  className="text-lg md:text-6xl leading-snug font-extrabold text-sky-700 transition-colors hover:text-sky-500 lg:text-3xl text-center"
+                  className="text-lg md:text-6xl leading-snug font-extrabold text-sky-700 transition-colors hover:text-sky-500 lg:text-3xl text-start"
                 >
                   <span className="block text-lg md:text-2xl">Life at</span>
                   <span className="block text-lg md:text-2xl text-blue-400">IndiFly →</span>
@@ -90,7 +90,7 @@ export default function VenturesGrid() {
               <div className="reveal-right flex h-[100px] flex-1 md:flex-[0.35] items-center justify-center rounded-2xl bg-gradient-to-br from-[#FBF6F4] to-[#F6EFE9] p-6 text-center shadow-lg md:h-[158px]">
                 <Link
                   href="#contact"
-                  className="text-lg md:text-6xl leading-snug font-extrabold text-black transition-colors hover:text-[#F56522] lg:text-3xl text-center"
+                  className="text-lg md:text-6xl leading-snug font-extrabold text-black transition-colors hover:text-[#F56522] lg:text-3xl text-start"
                 >
                   <span className="block text-lg md:text-2xl">Get in</span>
                   <span className="block text-lg md:text-2xl text-[#F56522]">Touch →</span>
