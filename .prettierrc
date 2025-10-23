@@ -4,6 +4,5 @@
     "prettier-plugin-tailwindcss"
   ],
   "tailwindStylesheet": "./src/app/globals.css",
-  "tailwindFunctions": ["clsx", "cva"],
-  "organizeImportsSkipDestructiveCodeActions": true
+  "tailwindFunctions": ["clsx", "cva"]
 }
