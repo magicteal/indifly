@@ -179,14 +179,12 @@ export const ContactForm = () => {
                 Reach out to us with your queries, suggestions and applications.
                 We’d be happy to explore the next growth opportunity!
               </p>
-              <div className="space-y-6 pt-4">
-                <div className="flex items-center gap-4">
-                  <MapPin className="h-5 w-5 text-primary sm:h-6 sm:w-6" />
-                  <span className="text-lg">
-                    Office No. 706, 7th Floor, TOWER-2, WORLD TRADE CENTER, EON
-                    Free Zone, Kharadi, Pune, Maharashtra 411014
-                  </span>
-                </div>
+              <div className="flex items-center gap-4">
+                <MapPin className="shrink-0 text-primary" />
+                <span>
+                  Office No. 706, 7th Floor, TOWER-2, WORLD TRADE CENTER, EON
+                  Free Zone, Kharadi, Pune, Maharashtra 411014
+                </span>
               </div>
             </div>
             <form
