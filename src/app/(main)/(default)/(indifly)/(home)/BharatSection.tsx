@@ -13,7 +13,7 @@ const BharatSection = () => {
         <div className="flex flex-col items-center gap-12 md:flex-row">
           {/* Text Content */}
           <div className="reveal-left text-center md:w-1/2 md:text-left">
-            <h2 className="text-4xl leading-tight md:text-3xl">
+            <h2 className="text-2xl leading-tight sm:text-3xl md:text-3xl lg:text-4xl">
               We create platforms and ecosystems for{" "}
               <span className="bg-gradient-to-r from-[#E5BA9F] to-[#FFFFFF] bg-clip-text text-transparent">
                 mission-driven founders
@@ -21,12 +21,12 @@ const BharatSection = () => {
               that cultivate brands bringing about digital inclusion and
               transformative growth in the emerging regions of
               <br />
-              <span className="bg-gradient-to-r from-[#FF9933] via-[#FFFFFF] to-[#138808] bg-clip-text text-6xl font-bold text-transparent">
+              <span className="bg-gradient-to-r from-[#FF9933] via-[#FFFFFF] to-[#138808] bg-clip-text text-4xl font-bold text-transparent sm:text-5xl md:text-6xl">
                 Bharat.
               </span>
             </h2>
             {/* Corrected Sub-heading */}
-            <p className="mt-8 text-4xl md:text-3xl">
+            <p className="mt-6 text-2xl sm:text-3xl md:mt-8 md:text-3xl lg:text-4xl">
               We are a venture builder co-creating alongside founders in their
               journey{" "}
               <span className="font-semibold">from idea to industry</span> and{" "}

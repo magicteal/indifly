@@ -138,18 +138,15 @@ const SectorsSection = () => {
               {currentCategory.sectors.map((sector) => {
                 const selected = sector.name === currentSector.name;
                 return (
-                  <button
+                  <Button
                     key={sector.name}
+                    variant={selected ? "secondary" : "outline"}
+                    className={`!border-secondary ${!selected && "text-secondary"}`}
                     onClick={() => setActiveSector(sector.name)}
-                    className={
-                      selected
-                        ? "rounded-md border bg-secondary px-3 py-1 text-xs font-semibold text-white"
-                        : "rounded-md border !border-secondary px-3 py-1 text-xs font-semibold text-secondary hover:bg-secondary/10"
-                    }
                     aria-pressed={selected}
                   >
                     {sector.name}
-                  </button>
+                  </Button>
                 );
               })}
             </div>
@@ -184,11 +181,13 @@ const SectorsSection = () => {
                     ? "Install the App"
                     : currentSector.actions}
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full">
-                  <Link
-                    href={`/ventures/${currentSector.name.toLowerCase()}`}
-                    className="inline-flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold"
-                  >
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full"
+                  asChild
+                >
+                  <Link href={`/ventures/${currentSector.name.toLowerCase()}`}>
                     Explore More <FiArrowRight />
                   </Link>
                 </Button>

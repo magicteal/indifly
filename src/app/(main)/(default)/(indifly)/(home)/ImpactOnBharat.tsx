@@ -44,28 +44,23 @@ export default function ImpactOnBharat() {
 
       {/* Stats Cards */}
       <div
-        className="relative z-20 mx-auto mb-10 grid max-w-6xl grid-cols-1 gap-8 px-6 md:grid-cols-3"
+        className="relative z-20 mx-auto mb-10 grid max-w-6xl grid-cols-1 gap-6 px-6 md:grid-cols-3 md:gap-8"
         data-reveal-stagger
       >
         {stats.map((stat, index) => (
           <div
             key={index}
-            className="group relative rounded-[24px] border-2 border-solid border-red-800 bg-[#FFFFFF4D] p-10 text-center shadow-[0_20px_60px_rgba(0,0,0,0.15)] transition-all duration-300 hover:scale-[1.02] hover:bg-[#FFFFFF66]"
+            className="group relative rounded-[24px] border-2 border-solid border-red-800 bg-[#FFFFFF4D] p-6 text-center shadow-[0_20px_60px_rgba(0,0,0,0.15)] transition-all duration-300 hover:scale-[1.02] hover:bg-[#FFFFFF66] md:p-10"
             style={{
               backdropFilter: "blur(4px)",
               WebkitBackdropFilter: "blur(4px)",
-              // borderImageSource:
-              //   "linear-gradient(297.05deg, rgba(255, 255, 255, 0.8) 14.79%, rgba(255, 183, 148, 0.8) 88.65%)",
-              // borderImageSlice: 1,
-              // borderStyle: "solid",
-              // borderWidth: 2,
             }}
           >
-            <div className="space-y-4">
-              <h3 className="text-5xl font-extrabold text-white drop-shadow-sm md:text-6xl">
+            <div className="space-y-2 md:space-y-4">
+              <h3 className="text-4xl font-extrabold text-white drop-shadow-sm md:text-5xl lg:text-6xl">
                 {stat.value}
               </h3>
-              <p className="text-lg font-medium tracking-wide text-white/90 md:text-xl">
+              <p className="text-base font-medium tracking-wide text-white/90 md:text-lg lg:text-xl">
                 {stat.label}
               </p>
             </div>

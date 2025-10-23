@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Button } from "./ui/button";
 
 type BlogCardProps = {
   title: string;
@@ -32,7 +33,7 @@ export default function BlogCard({
         <div>{readTime}</div>
       </div> */}
 
-      <h3 className="] mt-2 text-2xl font-bold text-black">{title}</h3>
+      <h3 className="mt-2 text-xl font-bold text-black sm:text-2xl">{title}</h3>
       {excerpt ? (
         <p className="mt-3 text-base leading-relaxed text-slate-600">
           {excerpt}
@@ -60,15 +61,19 @@ export default function BlogCard({
       </div> */}
 
       <div className="mt-6">
-        <Link
-          href={`/blog/${slug}`}
-          className="inline-flex w-full items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 font-medium text-slate-800 transition-colors hover:bg-slate-50 md:w-auto"
+        <Button
+          variant="outline"
+          size="lg"
+          className="w-full rounded-full"
+          asChild
         >
-          Read more
-          <span aria-hidden className="ml-2">
-            →
-          </span>
-        </Link>
+          <Link href={`/blog/${slug}`}>
+            Read more
+            <span aria-hidden className="ml-2">
+              →
+            </span>
+          </Link>
+        </Button>
       </div>
     </article>
   );

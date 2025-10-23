@@ -108,8 +108,8 @@ export const Footer = () => {
       </Container>
 
       {/* Big Background Heading at bottom */}
-      <h1 className="pointer-events-none absolute bottom-0 left-1/2 mb-[-0.5vw] -translate-x-1/2 transform text-[5.7vw] font-extrabold whitespace-nowrap text-[#FFE3D9] theme-home:text-[#021D41] theme-blue:text-[#BBCDE466] theme-yellow:text-[#FFE3D9] theme-incore:text-[#071B36] theme-incore-services:text-primary/10">
-        Building Ventures. Building Nation.
+      <h1 className="pointer-events-none absolute bottom-0 left-1/2 mb-[-3.7vw] -translate-x-1/2 transform text-[9.6vw] font-extrabold whitespace-nowrap text-[#FFE3D9] theme-home:text-[#021D41] theme-blue:text-[#BBCDE466] theme-yellow:text-[#FFE3D9] theme-incore:text-[#071B36] theme-incore-services:text-primary/10">
+        Badhna Aasaan Hai
       </h1>
     </footer>
   );
