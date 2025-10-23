@@ -99,7 +99,7 @@ export default function CoreOfferings({
       </div>
 
       {/* Tagline */}
-      <p className="mt-6 px-4 text-center text-lg font-semibold italic text-primary sm:mt-8 sm:text-xl md:mt-10 md:text-2xl lg:mt-16 lg:text-3xl">
+      <p className="mt-6 px-4 text-center text-lg font-semibold text-primary italic sm:mt-8 sm:text-xl md:mt-10 md:text-2xl lg:mt-16 lg:text-3xl">
         {offerings.tagline}
       </p>
     </Container>
@@ -155,7 +155,7 @@ function RightCopy({
   const current = offerings[active];
 
   return (
-    <h3 className="text-xl font-semibold leading-tight sm:text-2xl md:text-3xl lg:text-5xl">
+    <h3 className="text-xl leading-tight font-semibold sm:text-2xl md:text-3xl lg:text-5xl">
       <span>{current.description || current.name}</span>
     </h3>
   );

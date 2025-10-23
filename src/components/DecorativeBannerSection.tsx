@@ -3,12 +3,6 @@ import Section from "@/components/section";
 import Image from "next/image";
 import Link from "next/link";
 
-
-
-
-
-
-
 export default function DecorativeBannerSection() {
   return (
     <Section
@@ -19,7 +13,10 @@ export default function DecorativeBannerSection() {
     >
       {/* Mobile: show mobile puzzle image and service summaries */}
       <div className="block md:hidden">
-        <div className="reveal-right relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "1251/831" }}>
+        <div
+          className="reveal-right relative w-full overflow-hidden rounded-2xl"
+          style={{ aspectRatio: "1251/831" }}
+        >
           <Image
             src="/puzzleMobile.svg"
             alt="inCORE services"
@@ -40,7 +37,8 @@ export default function DecorativeBannerSection() {
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               <span className="font-bold italic">Product & Technology</span>
               <br />
-              Build, scale, and secure your tech with agile product engineering, cloud, and compliance support tailored for startups.
+              Build, scale, and secure your tech with agile product engineering,
+              cloud, and compliance support tailored for startups.
             </p>
           </div>
           <div>
@@ -53,7 +51,8 @@ export default function DecorativeBannerSection() {
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               <span className="font-bold italic">Marketing & Growth</span>
               <br />
-              From brand positioning to performance campaigns, fuel your visibility and demand to drive sustainable growth.
+              From brand positioning to performance campaigns, fuel your
+              visibility and demand to drive sustainable growth.
             </p>
           </div>
           <div>
@@ -66,7 +65,8 @@ export default function DecorativeBannerSection() {
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               <span className="font-bold italic">People & Culture</span>
               <br />
-              HR that goes beyond hiring—helping you attract, nurture, and retain talent while shaping resilient company culture.
+              HR that goes beyond hiring—helping you attract, nurture, and
+              retain talent while shaping resilient company culture.
             </p>
           </div>
           <div>
@@ -79,7 +79,8 @@ export default function DecorativeBannerSection() {
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               <span className="font-bold italic">Legal & Compliance</span>
               <br />
-              Simplify the complex. Robust legal frameworks and compliance services to safeguard your venture at every stage.
+              Simplify the complex. Robust legal frameworks and compliance
+              services to safeguard your venture at every stage.
             </p>
           </div>
         </div>
