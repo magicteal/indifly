@@ -2,12 +2,12 @@
 
 import Container from "@/components/container";
 import InStackApproach from "@public/inCore/approach/instackApproach.svg?flex";
-import InSureApproach from "@public/inCore/approach/insureApproach.svg?flex";
-import InSurgeApproach from "@public/inCore/approach/insurgeApproach.svg?flex";
-import InVolveApproach from "@public/inCore/approach/involveApproach.svg?flex";
 import InStackMobile from "@public/inCore/approach/inStackMobile.svg?flex";
+import InSureApproach from "@public/inCore/approach/insureApproach.svg?flex";
 import InSureMobile from "@public/inCore/approach/inSureMobile.svg?flex";
+import InSurgeApproach from "@public/inCore/approach/insurgeApproach.svg?flex";
 import InSurgeMobile from "@public/inCore/approach/inSurgeMobile.svg?flex";
+import InVolveApproach from "@public/inCore/approach/involveApproach.svg?flex";
 import InVolveMobile from "@public/inCore/approach/inVolveMobile.svg?flex";
 import Cube from "@public/inCore/cube.svg";
 import CircledLine from "@public/inCore/text-circled-line.svg";
