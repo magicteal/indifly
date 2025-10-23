@@ -17,10 +17,8 @@ export default function MainLayout({
       </div>
       <div className="h-24 md:h-8 theme-incore:bg-black theme-incore-services:bg-black" />
       <Navbar />
-      <div className="overflow-x-clip">
-        {children}
-        <Footer />
-      </div>
+      {children}
+      <Footer />
     </>
   );
 }

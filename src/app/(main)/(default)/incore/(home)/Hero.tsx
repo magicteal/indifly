@@ -2,7 +2,6 @@ import Container from "@/components/container";
 import { cn } from "@/lib/utils";
 import InCoreHero from "@public/inCore/inCoreHero.svg?flex";
 import Link from "next/link";
-import React from "react";
 
 export default function Hero() {
   return (
@@ -39,7 +38,7 @@ export default function Hero() {
       </div>
       {/* Supporting paragraphs below hero */}
       <div
-        className="reveal-section mx-auto mt-12 max-w-7xl space-y-6 text-center text-base text-white/90 md:text-lg"
+        className="reveal-section relative z-10 mx-auto mt-12 max-w-7xl space-y-6 text-center text-base md:text-lg"
         data-reveal-stagger
       >
         <p>

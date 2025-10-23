@@ -66,7 +66,9 @@ export default function RootLayout({
             />
           </noscript>
         )}
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <div className="overflow-clip">{children}</div>
+        </ThemeProvider>
         <GlobalAnimations />
         <Toaster position="top-right" richColors />
       </body>

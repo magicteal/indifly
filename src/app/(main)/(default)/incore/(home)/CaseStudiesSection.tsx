@@ -1,7 +1,7 @@
-// components/CaseStudies.tsx
 "use client";
 
-import Section from "@/components/section";
+import { Container } from "@/components/container";
+import SectionHeader from "@/components/section-header";
 import { Card, CardContent } from "@/components/ui/card";
 
 const caseStudies = [
@@ -45,7 +45,8 @@ const caseStudies = [
 
 export default function CaseStudies() {
   return (
-    <Section className="relative overflow-hidden py-20">
+    <Container id="case-studies" className="relative overflow-hidden py-20">
+      <SectionHeader title="Case Studies" />
       {/* Decorative SVGs behind header */}
       <div
         className="pointer-events-none absolute top-6 -left-4 z-0 md:top-10 md:-left-6"
@@ -202,6 +203,6 @@ export default function CaseStudies() {
           </Card>
         ))}
       </div>
-    </Section>
+    </Container>
   );
 }
