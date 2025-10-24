@@ -10,7 +10,7 @@ import { footerLinkGroups } from "./footerLinks";
 
 export const Footer = () => {
   return (
-    <footer className="reveal-section relative overflow-hidden font-sans text-foreground theme-home:bg-gradient-to-b theme-home:from-[#01295C] theme-home:to-[#00142D] theme-home:text-white">
+    <footer className="relative overflow-hidden font-sans text-foreground theme-home:bg-gradient-to-b theme-home:from-[#01295C] theme-home:to-[#00142D] theme-home:text-white">
       <Container className="relative z-1 pt-24 pb-28 md:pb-36">
         {/* Footer grid layout including new left branding block */}
         <div className="grid gap-14 md:grid-cols-2 md:gap-20 lg:grid-cols-[minmax(380px,_480px)_repeat(3,minmax(0,1fr))] lg:gap-28">

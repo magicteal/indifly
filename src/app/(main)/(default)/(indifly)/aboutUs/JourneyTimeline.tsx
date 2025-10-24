@@ -3,6 +3,7 @@
 import { defineStepper } from "@/components/stepper";
 import { cn } from "@/lib/utils";
 import TitleBrush from "@public/home/titieINDsights.svg";
+import { AnimatePresence, easeOut, motion } from "framer-motion";
 import * as React from "react";
 import journeyData, { YearContent } from "./content/journeyTimelineData";
 
@@ -15,9 +16,20 @@ export function JourneyTimeline() {
 
   // Active step local state (default first year)
   const [active, setActive] = React.useState<(typeof years)[number]>(years[0]);
+  // track previous index & direction for tab-change animations
+  const prevIndexRef = React.useRef<number | null>(null);
+  const [direction, setDirection] = React.useState<
+    "left" | "right" | "up" | "down"
+  >("right");
 
   // Provide a click handler to jump to a year
   const handleSelect = (id: string) => {
+    const newIndex = years.indexOf(id as (typeof years)[number]);
+    const prev = prevIndexRef.current ?? years.indexOf(active);
+    if (newIndex > prev) setDirection("right");
+    else if (newIndex < prev) setDirection("left");
+    else setDirection("up");
+    prevIndexRef.current = newIndex;
     setActive(id as (typeof years)[number]);
   };
 
@@ -28,7 +40,28 @@ export function JourneyTimeline() {
       {/* Title with brush stroke + headings */}
       <div className="my-10 flex w-full items-center justify-center">
         <div className="relative">
-          <TitleBrush className="reveal-image h-auto w-full" />
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={active}
+              className="reveal-image h-auto w-full"
+              initial={{
+                opacity: 0,
+                y: direction === "up" ? -18 : direction === "down" ? 18 : 12,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, ease: easeOut },
+              }}
+              exit={{
+                opacity: 0,
+                y: direction === "up" ? 18 : direction === "down" ? -18 : -12,
+                transition: { duration: 0.45, ease: easeOut },
+              }}
+            >
+              <TitleBrush className="h-auto w-full" />
+            </motion.div>
+          </AnimatePresence>
           <div className="absolute inset-0 grid place-items-center">
             <h2 className="reveal-title text-2xl font-bold text-white md:text-3xl lg:text-4xl">
               ROADMAP
@@ -92,7 +125,37 @@ export function JourneyTimeline() {
           <div className="text-xs font-semibold tracking-wide text-[#0B44FF] uppercase">
             {active}
           </div>
-          <TimelineContent content={yearDetails[active]} />
+          {/** directional variants for tab-change animations */}
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div
+              key={active}
+              variants={{
+                enter: (dir: string) => ({
+                  opacity: 0,
+                  x: dir === "left" ? -48 : dir === "right" ? 48 : 0,
+                  y: dir === "up" ? -28 : dir === "down" ? 28 : 0,
+                }),
+                center: {
+                  opacity: 1,
+                  x: 0,
+                  y: 0,
+                  transition: { duration: 0.45, ease: easeOut },
+                },
+                exit: (dir: string) => ({
+                  opacity: 0,
+                  x: dir === "left" ? 36 : dir === "right" ? -36 : 0,
+                  y: dir === "up" ? 22 : dir === "down" ? -22 : 0,
+                  transition: { duration: 0.38, ease: easeOut },
+                }),
+              }}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              custom={direction}
+            >
+              <TimelineContent content={yearDetails[active]} />
+            </motion.div>
+          </AnimatePresence>
 
           {/* Mobile year selector */}
           <div
