@@ -44,9 +44,7 @@ export function CompanyCollage() {
           {collageImages.map((src, i) => (
             <figure
               key={src}
-              className={`relative aspect-square w-full overflow-hidden rounded-2xl border border-black/10 bg-white dark:bg-[#0B0B0E] ${
-                i % 2 === 0 ? "reveal-left" : "reveal-right"
-              }`}
+              className="relative aspect-square w-full overflow-hidden rounded-2xl border border-black/10 bg-white dark:bg-[#0B0B0E]"
               role="listitem"
             >
               <Image

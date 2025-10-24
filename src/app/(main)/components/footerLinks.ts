@@ -51,6 +51,10 @@ export const footerLinkGroups: FooterLinkGroup[] = [
         label: "Terms & Conditions",
         href: "/terms-and-conditions",
       },
+      {
+        label: "Career",
+        href: "/career",
+      },
       // { label: "SiteMap", href: "/sitemap.xml" },
     ],
   },
