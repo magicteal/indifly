@@ -3,8 +3,8 @@
 import { defineStepper } from "@/components/stepper";
 import { cn } from "@/lib/utils";
 import TitleBrush from "@public/home/titieINDsights.svg";
+import { AnimatePresence, easeOut, motion } from "framer-motion";
 import * as React from "react";
-import { motion, AnimatePresence, easeOut } from "framer-motion";
 import journeyData, { YearContent } from "./content/journeyTimelineData";
 
 const { years, details: yearDetails } = journeyData;
@@ -18,7 +18,9 @@ export function JourneyTimeline() {
   const [active, setActive] = React.useState<(typeof years)[number]>(years[0]);
   // track previous index & direction for tab-change animations
   const prevIndexRef = React.useRef<number | null>(null);
-  const [direction, setDirection] = React.useState<"left" | "right" | "up" | "down">("right");
+  const [direction, setDirection] = React.useState<
+    "left" | "right" | "up" | "down"
+  >("right");
 
   // Provide a click handler to jump to a year
   const handleSelect = (id: string) => {
@@ -42,9 +44,20 @@ export function JourneyTimeline() {
             <motion.div
               key={active}
               className="reveal-image h-auto w-full"
-              initial={{ opacity: 0, y: direction === "up" ? -18 : direction === "down" ? 18 : 12 }}
-              animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } }}
-              exit={{ opacity: 0, y: direction === "up" ? 18 : direction === "down" ? -18 : -12, transition: { duration: 0.45, ease: easeOut } }}
+              initial={{
+                opacity: 0,
+                y: direction === "up" ? -18 : direction === "down" ? 18 : 12,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, ease: easeOut },
+              }}
+              exit={{
+                opacity: 0,
+                y: direction === "up" ? 18 : direction === "down" ? -18 : -12,
+                transition: { duration: 0.45, ease: easeOut },
+              }}
             >
               <TitleBrush className="h-auto w-full" />
             </motion.div>
@@ -117,9 +130,23 @@ export function JourneyTimeline() {
             <motion.div
               key={active}
               variants={{
-                enter: (dir: string) => ({ opacity: 0, x: dir === "left" ? -48 : dir === "right" ? 48 : 0, y: dir === "up" ? -28 : dir === "down" ? 28 : 0 }),
-                center: { opacity: 1, x: 0, y: 0, transition: { duration: 0.45, ease: easeOut } },
-                exit: (dir: string) => ({ opacity: 0, x: dir === "left" ? 36 : dir === "right" ? -36 : 0, y: dir === "up" ? 22 : dir === "down" ? -22 : 0, transition: { duration: 0.38, ease: easeOut } }),
+                enter: (dir: string) => ({
+                  opacity: 0,
+                  x: dir === "left" ? -48 : dir === "right" ? 48 : 0,
+                  y: dir === "up" ? -28 : dir === "down" ? 28 : 0,
+                }),
+                center: {
+                  opacity: 1,
+                  x: 0,
+                  y: 0,
+                  transition: { duration: 0.45, ease: easeOut },
+                },
+                exit: (dir: string) => ({
+                  opacity: 0,
+                  x: dir === "left" ? 36 : dir === "right" ? -36 : 0,
+                  y: dir === "up" ? 22 : dir === "down" ? -22 : 0,
+                  transition: { duration: 0.38, ease: easeOut },
+                }),
               }}
               initial="enter"
               animate="center"

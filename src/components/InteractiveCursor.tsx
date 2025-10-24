@@ -73,12 +73,12 @@ export default function InteractiveCursor() {
     <div
       ref={ref}
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-[9999] opacity-0 transition-opacity duration-150"
+      className="pointer-events-none fixed top-0 left-0 z-[9999] opacity-0 transition-opacity duration-150"
       style={{ transform: "translate3d(0,0,0) translate(-50%,-50%)" }}
     >
-      <div className="inline-flex items-center justify-center rounded-full bg-white/95 text-black text-sm font-semibold px-4 py-2 shadow-lg">
-        <span className="text-[#01295C] font-bold text-[13px]">{prefix}</span>
-        <span className="uppercase tracking-wider text-sm" style={{ color }}>
+      <div className="inline-flex items-center justify-center rounded-full bg-white/95 px-4 py-2 text-sm font-semibold text-black shadow-lg">
+        <span className="text-[13px] font-bold text-[#01295C]">{prefix}</span>
+        <span className="text-sm tracking-wider uppercase" style={{ color }}>
           {label}
         </span>
       </div>

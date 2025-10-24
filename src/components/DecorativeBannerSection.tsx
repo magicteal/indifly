@@ -1,8 +1,8 @@
 import Section from "@/components/section";
 
+import InteractiveCursor from "@/components/InteractiveCursor";
 import Image from "next/image";
 import Link from "next/link";
-import InteractiveCursor from "@/components/InteractiveCursor";
 
 export default function DecorativeBannerSection() {
   return (

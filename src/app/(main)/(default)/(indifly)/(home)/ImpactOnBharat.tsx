@@ -1,10 +1,10 @@
 import { Section } from "@/components/section";
 // SVGs as React components via SVGR
+import CountUp from "@/components/CountUp";
 import Circle from "@public/home/circle.svg";
 import Hexagon from "@public/home/hexagon.svg";
 import Silhoutte from "@public/home/silhoutte.svg";
 import TitleBg from "@public/home/titilebg.svg";
-import CountUp from "@/components/CountUp";
 
 export default function ImpactOnBharat() {
   const stats = [
@@ -58,16 +58,16 @@ export default function ImpactOnBharat() {
             }}
           >
             <div className="space-y-2 md:space-y-4">
-                <h3 className="text-5xl font-extrabold text-white drop-shadow-sm md:text-6xl">
-                  <CountUp
-                    end={stat.end}
-                    suffix={stat.suffix}
-                    decimals={stat.decimals}
-                    duration={3000}
-                    replayOnReveal={true}
-                    className="leading-none"
-                  />
-                </h3>
+              <h3 className="text-5xl font-extrabold text-white drop-shadow-sm md:text-6xl">
+                <CountUp
+                  end={stat.end}
+                  suffix={stat.suffix}
+                  decimals={stat.decimals}
+                  duration={3000}
+                  replayOnReveal={true}
+                  className="leading-none"
+                />
+              </h3>
               <p className="text-base font-medium tracking-wide text-white/90 md:text-lg lg:text-xl">
                 {stat.label}
               </p>

@@ -4,7 +4,7 @@
 import { Container } from "@/components/container";
 import { Button } from "@/components/ui/button";
 import TitleBrush from "@public/home/titieINDsights.svg";
-import { easeOut, motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, easeOut, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -21,7 +21,9 @@ const SectorsSection = () => {
   // Track previous indices to derive animation direction on change
   const prevCategoryIndexRef = useRef<number | null>(null);
   const prevSectorIndexRef = useRef<number | null>(null);
-  const [direction, setDirection] = useState<"left" | "right" | "up" | "down">("right");
+  const [direction, setDirection] = useState<"left" | "right" | "up" | "down">(
+    "right",
+  );
 
   // Derive lists for render
   const categories = useMemo(() => ourSectors.map((c) => c.title), []);
@@ -77,11 +79,21 @@ const SectorsSection = () => {
       const y = dir === "up" ? -36 : dir === "down" ? 36 : 0;
       return { opacity: 0, x, y };
     },
-    center: { opacity: 1, x: 0, y: 0, transition: { duration: 0.5, ease: easeOut } },
+    center: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: { duration: 0.5, ease: easeOut },
+    },
     exit: (dir: string) => {
       const x = dir === "left" ? 48 : dir === "right" ? -48 : 0;
       const y = dir === "up" ? 28 : dir === "down" ? -28 : 0;
-      return { opacity: 0, x, y, transition: { duration: 0.38, ease: easeOut } };
+      return {
+        opacity: 0,
+        x,
+        y,
+        transition: { duration: 0.38, ease: easeOut },
+      };
     },
   };
 
@@ -91,24 +103,34 @@ const SectorsSection = () => {
       const y = dir === "up" ? 48 : dir === "down" ? -48 : 0;
       return { opacity: 0, x, y };
     },
-    center: { opacity: 1, x: 0, y: 0, transition: { duration: 0.6, ease: easeOut } },
+    center: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: { duration: 0.6, ease: easeOut },
+    },
     exit: (dir: string) => {
       const x = dir === "left" ? -64 : dir === "right" ? 64 : 0;
       const y = dir === "up" ? -36 : dir === "down" ? 36 : 0;
-      return { opacity: 0, x, y, transition: { duration: 0.45, ease: easeOut } };
+      return {
+        opacity: 0,
+        x,
+        y,
+        transition: { duration: 0.45, ease: easeOut },
+      };
     },
   };
 
   return (
     <motion.section
       id="our-portfolio"
-      className="mt-24 bg-white text-black reveal-section"
+      className="reveal-section mt-24 bg-white text-black"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
     >
-      <Container className="relative ">
+      <Container className="relative">
         {/* Header */}
         <motion.div className="text-center" variants={itemVariants}>
           {/* Title with brush stroke */}
@@ -116,18 +138,18 @@ const SectorsSection = () => {
             <div className="relative">
               <TitleBrush className="h-auto w-full" />
               <div className="absolute inset-0 grid place-items-center">
-                <h2 className="text-2xl font-bold text-white md:text-3xl lg:text-4xl reveal-title">
+                <h2 className="reveal-title text-2xl font-bold text-white md:text-3xl lg:text-4xl">
                   Our Portfolio
                 </h2>
               </div>
             </div>
           </div>
 
-          <p className="text-xl font-bold text-primary reveal-left">
+          <p className="reveal-left text-xl font-bold text-primary">
             Integrated, <span className="text-[#0252D4]">Inclusive</span> &
             Innovative
           </p>
-          <p className="mx-auto mt-2 max-w-3xl text-lg text-gray-500 reveal-right">
+          <p className="reveal-right mx-auto mt-2 max-w-3xl text-lg text-gray-500">
             Equipping diverse brands in multiple sectors with essential
             resources, expertise, and unwavering support
           </p>
@@ -173,9 +195,12 @@ const SectorsSection = () => {
           }}
         >
           {/* Text Content */}
-          <div className="w-full p-6 md:w-3/5 md:p-8 reveal-right">
+          <div className="reveal-right w-full p-6 md:w-3/5 md:p-8">
             {/* Sector (brand) tabs inside selected category */}
-            <div className="flex flex-wrap gap-2 overflow-x-auto pb-2" data-reveal-stagger>
+            <div
+              className="flex flex-wrap gap-2 overflow-x-auto pb-2"
+              data-reveal-stagger
+            >
               {currentCategory.sectors.map((sector, sIdx) => {
                 const selected = sector.name === currentSector.name;
                 return (
@@ -206,42 +231,44 @@ const SectorsSection = () => {
                 exit="exit"
                 custom={direction}
               >
-              <div className="text-md mt-3 mb-2 font-semibold text-secondary">
-                {currentSector.focusArea}
-              </div>
-              <h3 className="text-2xl leading-tight text-gray-700">
-                {currentSector.description[0]}
-              </h3>
-              <p className="mt-2 text-gray-600">
-                {currentSector.description[1]}
-              </p>
-              <ul className="mt-4 space-y-1 font-medium text-gray-700">
-                {currentSector.bulletPoints.map((point) => (
-                  <li key={point} className="flex">
-                    <span className="mr-2" aria-hidden>
-                      •
-                    </span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-10 flex flex-wrap items-center gap-4">
-                <Button size="lg" className="min-w-[160px] rounded-full">
-                  {currentSector.actions === "Install App"
-                    ? "Install the App"
-                    : currentSector.actions}
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full"
-                  asChild
-                >
-                  <Link href={`/ventures/${currentSector.name.toLowerCase()}`}>
-                    Explore More <FiArrowRight />
-                  </Link>
-                </Button>
-              </div>
+                <div className="text-md mt-3 mb-2 font-semibold text-secondary">
+                  {currentSector.focusArea}
+                </div>
+                <h3 className="text-2xl leading-tight text-gray-700">
+                  {currentSector.description[0]}
+                </h3>
+                <p className="mt-2 text-gray-600">
+                  {currentSector.description[1]}
+                </p>
+                <ul className="mt-4 space-y-1 font-medium text-gray-700">
+                  {currentSector.bulletPoints.map((point) => (
+                    <li key={point} className="flex">
+                      <span className="mr-2" aria-hidden>
+                        •
+                      </span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-10 flex flex-wrap items-center gap-4">
+                  <Button size="lg" className="min-w-[160px] rounded-full">
+                    {currentSector.actions === "Install App"
+                      ? "Install the App"
+                      : currentSector.actions}
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="rounded-full"
+                    asChild
+                  >
+                    <Link
+                      href={`/ventures/${currentSector.name.toLowerCase()}`}
+                    >
+                      Explore More <FiArrowRight />
+                    </Link>
+                  </Button>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -250,7 +277,7 @@ const SectorsSection = () => {
             <AnimatePresence initial={false} mode="wait">
               <motion.div
                 key={`img-${activeCategory}-${currentSector.name}`}
-                className="relative h-[280px] w-full sm:h-[320px] md:h-[360px] lg:h-[420px] reveal-image reveal-right"
+                className="reveal-image reveal-right relative h-[280px] w-full sm:h-[320px] md:h-[360px] lg:h-[420px]"
                 variants={imageVariants}
                 initial="enter"
                 animate="center"

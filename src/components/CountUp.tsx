@@ -79,7 +79,7 @@ export default function CountUp({
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     io.observe(el);
@@ -107,7 +107,10 @@ export default function CountUp({
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
       }
-      document.removeEventListener("reveal:enter", onRevealGlobal as EventListener);
+      document.removeEventListener(
+        "reveal:enter",
+        onRevealGlobal as EventListener,
+      );
       el.removeEventListener("reveal:enter", onRevealLocal as EventListener);
     };
   }, [end, duration, replayOnReveal]);
