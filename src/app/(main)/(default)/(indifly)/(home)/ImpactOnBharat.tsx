@@ -58,9 +58,16 @@ export default function ImpactOnBharat() {
             }}
           >
             <div className="space-y-2 md:space-y-4">
-              <h3 className="text-5xl font-extrabold text-white drop-shadow-sm md:text-6xl">
-                <CountUp end={stat.end} suffix={stat.suffix} decimals={stat.decimals} className="leading-none" />
-              </h3>
+                <h3 className="text-5xl font-extrabold text-white drop-shadow-sm md:text-6xl">
+                  <CountUp
+                    end={stat.end}
+                    suffix={stat.suffix}
+                    decimals={stat.decimals}
+                    duration={3000}
+                    replayOnReveal={true}
+                    className="leading-none"
+                  />
+                </h3>
               <p className="text-base font-medium tracking-wide text-white/90 md:text-lg lg:text-xl">
                 {stat.label}
               </p>
