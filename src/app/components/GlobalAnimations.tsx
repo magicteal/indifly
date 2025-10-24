@@ -39,6 +39,7 @@ export default function GlobalAnimations() {
                 start: "top 82%",
                 end: "bottom 60%",
                 toggleActions: "play none none reverse",
+                onEnter: () => el.dispatchEvent(new CustomEvent('reveal:enter')),
               },
               delay: idx === 0 ? 0.06 : 0,
               clearProps: "transform,opacity",
@@ -63,6 +64,7 @@ export default function GlobalAnimations() {
                 trigger: el,
                 start: "top 85%",
                 toggleActions: "play none none reverse",
+                onEnter: () => el.dispatchEvent(new CustomEvent('reveal:enter')),
               },
               clearProps: "transform,opacity",
             },
@@ -85,6 +87,7 @@ export default function GlobalAnimations() {
                 trigger: el,
                 start: "top 85%",
                 toggleActions: "play none none reverse",
+                onEnter: () => el.dispatchEvent(new CustomEvent('reveal:enter')),
               },
               clearProps: "transform,opacity",
             },
@@ -107,6 +110,7 @@ export default function GlobalAnimations() {
                 trigger: el,
                 start: "top 85%",
                 toggleActions: "play none none reverse",
+                onEnter: () => el.dispatchEvent(new CustomEvent('reveal:enter')),
               },
               clearProps: "transform,opacity",
             },
@@ -129,6 +133,7 @@ export default function GlobalAnimations() {
                 trigger: el,
                 start: "top 85%",
                 toggleActions: "play none none reverse",
+                onEnter: () => el.dispatchEvent(new CustomEvent('reveal:enter')),
               },
               clearProps: "transform,opacity",
             },
@@ -158,6 +163,15 @@ export default function GlobalAnimations() {
               clearProps: "transform,opacity",
             },
           );
+          // Also create individual ScrollTriggers for each item so we can notify when a child reveals
+          items.forEach((item) => {
+            ScrollTrigger.create({
+              trigger: item,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+              onEnter: () => item.dispatchEvent(new CustomEvent('reveal:enter')),
+            });
+          });
         });
     });
 

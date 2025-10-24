@@ -2,6 +2,7 @@ import Section from "@/components/section";
 
 import Image from "next/image";
 import Link from "next/link";
+import InteractiveCursor from "@/components/InteractiveCursor";
 
 export default function DecorativeBannerSection() {
   return (
@@ -106,48 +107,46 @@ export default function DecorativeBannerSection() {
           <Link
             href="/incore/services/insurge"
             aria-label="Open inSurge"
+            data-cursor="SURGE"
+            data-cursor-prefix="in"
+            data-cursor-color="#FF990B"
             className="group absolute top-0 left-1/2 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
           >
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 group-active:opacity-100"
-            />
             <span className="sr-only">Top right – inSurge</span>
           </Link>
           <Link
             href="/incore/services/instack"
             aria-label="Open inStack"
+            data-cursor="STACK"
+            data-cursor-prefix="in"
+            data-cursor-color="#8338EC"
             className="group absolute top-0 left-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
           >
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 group-active:opacity-100"
-            />
             <span className="sr-only">Top left – inStack</span>
           </Link>
           <Link
             href="/incore/services/involve"
             aria-label="Open inVolve"
+            data-cursor="VOLVE"
+            data-cursor-prefix="in"
+            data-cursor-color="#3A86FF"
             className="group absolute bottom-0 left-1/2 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
           >
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 group-active:opacity-100"
-            />
-            <span className="sr-only">Bottom right – inSure</span>
+            <span className="sr-only">Bottom right – inVolve</span>
           </Link>
           <Link
             href="/incore/services/insure"
             aria-label="Open inSure"
+            data-cursor="SURE"
+            data-cursor-prefix="in"
+            data-cursor-color="#04E762"
             className="group absolute bottom-0 left-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
           >
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 group-active:opacity-100"
-            />
-            <span className="sr-only">Bottom left – inVolve</span>
+            <span className="sr-only">Bottom left – inSure</span>
           </Link>
         </div>
+        {/* Custom interactive cursor that mirrors the pill design on hover */}
+        <InteractiveCursor />
       </div>
     </Section>
   );

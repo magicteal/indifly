@@ -76,7 +76,7 @@ function VenturesGrid() {
         <div className="flex flex-col items-stretch gap-6 md:flex-row md:gap-6">
           {/* Left: big card */}
           <div
-            className="relative origin-bottom-right overflow-hidden rounded-2xl bg-gradient-to-br from-[#F7ECE6] to-[#EFDCD4] shadow-lg transition-transform duration-300 ease-out hover:scale-[1.03] md:h-[339px] md:w-[356px] md:overflow-visible"
+            className="relative origin-bottom-right overflow-visible z-50 rounded-2xl bg-gradient-to-br from-[#F7ECE6] to-[#EFDCD4] shadow-lg transition-transform duration-300 ease-out hover:scale-[1.03] md:h-[339px] md:w-[356px] reveal-left"
             onMouseEnter={() => setHovered("ventures")}
             onMouseLeave={() => setHovered(null)}
           >
@@ -85,7 +85,7 @@ function VenturesGrid() {
                 <p className="text-sm font-semibold tracking-wide text-blue-700 uppercase">
                   OUR
                 </p>
-                <h2 className="mt-1 text-4xl font-bold text-[#0B2B4A] lg:text-5xl">
+                <h2 className="mt-1 text-4xl font-bold text-[#0B2B4A] lg:text-5xl reveal-title">
                   Ventures
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-[#4B5563]">
@@ -102,16 +102,14 @@ function VenturesGrid() {
                 </Link>
               </Button>
             </div>
-            <VenturesGridMan className="pointer-events-none absolute -right-5 -bottom-2 z-20 w-40 sm:w-48 md:-right-20 md:-bottom-2.5 md:w-56 lg:w-60 xl:-right-30 xl:-bottom-3 xl:w-72" />
+            {/* Decorative SVG placed inside left card but with high z so it stays above siblings */}
+            <VenturesGridMan className="pointer-events-none absolute -right-5 -bottom-2 z-[60] w-40 sm:w-48 md:-right-20 md:-bottom-2.5 md:w-56 lg:w-60 xl:-right-30 xl:-bottom-3 xl:w-72 reveal-image" />
           </div>
 
           {/* Right: two rows */}
           <div className="flex flex-1 flex-col gap-6 md:gap-4">
             {/* Top row: two equal tiles */}
-            <div
-              className="flex items-stretch gap-6 md:gap-4"
-              onMouseLeave={() => setHovered(null)}
-            >
+            <div className="flex items-stretch gap-6 md:gap-4" data-reveal-stagger="" onMouseLeave={() => setHovered(null)}>
               <div
                 className={`flex flex-1 origin-top-right items-center justify-center rounded-2xl bg-[#F56522] p-6 shadow-lg transition-all duration-300 ease-out md:h-[165px] ${incoreFlex} ${
                   hovered === "incore" ? "scale-[1.03]" : ""
@@ -129,32 +127,29 @@ function VenturesGrid() {
                   />
                 </Link>
               </div>
-              <div
-                className={`flex flex-1 origin-top-right items-center justify-center rounded-2xl bg-gradient-to-br from-[#1677FF] to-[#4AA3FF] p-6 shadow-lg transition-all duration-300 ease-out md:h-[165px] ${indsightsFlex} ${
-                  hovered === "indsights" ? "scale-[1.03]" : ""
-                }`}
-                onMouseEnter={() => setHovered("indsights")}
-              >
-                <Image
-                  src="/home/INDsights.svg"
-                  alt="INDsights"
-                  width={160}
-                  height={48}
-                  className="object-contain md:h-[48px] md:w-[160px]"
-                  priority
-                />
-              </div>
+                <div
+                  className={`flex flex-1 origin-top-right items-center justify-center rounded-2xl bg-gradient-to-br from-[#1677FF] to-[#4AA3FF] p-6 shadow-lg transition-all duration-300 ease-out md:h-[165px] ${indsightsFlex} ${
+                    hovered === "indsights" ? "scale-[1.03]" : ""
+                  } reveal-right`}
+                  onMouseEnter={() => setHovered("indsights")}
+                >
+                  <Image
+                    src="/home/INDsights.svg"
+                    alt="INDsights"
+                    width={160}
+                    height={48}
+                    className="object-contain md:h-[48px] md:w-[160px]"
+                    priority
+                  />
+                </div>
             </div>
 
             {/* Bottom row: asymmetric tiles */}
-            <div
-              className="flex items-stretch gap-6 md:gap-4"
-              onMouseLeave={() => setHovered(null)}
-            >
+            <div className="flex items-stretch gap-6 md:gap-4" data-reveal-stagger="" onMouseLeave={() => setHovered(null)}>
               <div
                 className={`flex h-[100px] origin-bottom-right items-center justify-center rounded-2xl bg-gradient-to-r from-white/70 to-sky-100/70 p-6 text-center shadow-lg backdrop-blur-md transition-all duration-300 ease-out md:h-[158px] ${lifeFlex} ${
                   hovered === "life" ? "scale-[1.03]" : ""
-                }`}
+                } reveal-left`}
                 onMouseEnter={() => setHovered("life")}
               >
                 <Link
@@ -170,7 +165,7 @@ function VenturesGrid() {
               <div
                 className={`flex h-[100px] origin-bottom-right items-center justify-center rounded-2xl bg-gradient-to-br from-[#FBF6F4] to-[#F6EFE9] p-6 text-center shadow-lg transition-all duration-300 ease-out md:h-[158px] ${contactFlex} ${
                   hovered === "contact" ? "scale-[1.02]" : ""
-                }`}
+                } reveal-right`}
                 onMouseEnter={() => setHovered("contact")}
               >
                 <Link
