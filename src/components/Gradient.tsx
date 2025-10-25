@@ -16,12 +16,12 @@ export function Gradient({
 }) {
   if (children) {
     return (
-      <div className="relative z-10">
+      <div className="relative z-0">
         {children}
         <div
           aria-hidden
           className={cn(
-            "pointer-events-none absolute inset-x-0 z-0 select-none",
+            "pointer-events-none absolute inset-x-0 -z-1 select-none",
             className,
           )}
         >
