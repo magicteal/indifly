@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function ProcessJourney() {
   return (
     <Section className="reveal-section py-20">
-      <SectionHeader  title="From Idea to Evolution" />
+      <SectionHeader title="From Idea to Evolution" />
 
       <div className="mt-10 overflow-x-auto md:overflow-x-visible">
         <div className="flex min-w-max justify-center md:min-w-0">
