@@ -6,10 +6,12 @@ export type SvgComponent = React.FC<React.SVGProps<SVGSVGElement>>;
 export function Gradient({
   Cmp,
   className,
+  svgClassName,
   children,
 }: {
   Cmp: SvgComponent;
   className?: string;
+  svgClassName?: string;
   children?: React.ReactNode;
 }) {
   if (children) {
@@ -23,7 +25,7 @@ export function Gradient({
             className,
           )}
         >
-          <Cmp className="h-auto w-screen max-w-none" />
+          <Cmp className={cn("h-auto w-screen max-w-none", svgClassName)} />
         </div>
       </div>
     );
@@ -37,7 +39,7 @@ export function Gradient({
         className,
       )}
     >
-      <Cmp className="h-auto w-screen max-w-none" />
+      <Cmp className={cn("h-auto w-screen max-w-none", svgClassName)} />
     </div>
   );
 }
