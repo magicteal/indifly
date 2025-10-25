@@ -1,4 +1,5 @@
 import Section from "@/components/section";
+import { cn } from "@/lib/utils";
 import TitleBrush from "@public/home/titieINDsights.svg";
 import { ProfileCard } from "./components/ProfileCard";
 import { teamGroups } from "./content/team";
@@ -35,9 +36,10 @@ export function TeamSection() {
               {group.members.map((member, mIdx) => (
                 <div
                   key={member.name}
-                  className={
-                    (gIdx + mIdx) % 2 === 0 ? "reveal-left" : "reveal-right"
-                  }
+                  className={cn(
+                    (gIdx + mIdx) % 2 === 0 ? "reveal-left" : "reveal-right",
+                    "w-full",
+                  )}
                 >
                   <ProfileCard {...member} />
                 </div>
