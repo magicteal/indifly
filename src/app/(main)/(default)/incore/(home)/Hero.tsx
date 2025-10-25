@@ -38,7 +38,7 @@ export default function Hero() {
       </div>
       {/* Supporting paragraphs below hero */}
       <div
-        className="reveal-section relative z-10 mx-auto mt-12 max-w-7xl space-y-6 text-center text-base md:text-lg"
+        className="reveal-section relative z-10 mx-auto mt-12 max-w-7xl space-y-6 text-left text-base md:text-xl"
         data-reveal-stagger
       >
         <p>

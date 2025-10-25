@@ -24,7 +24,7 @@ export default async function VentureDetailPage({
   }
 
   return (
-    <main className={`relative ${theme} overflow-hidden bg-white text-black`}>
+    <main className={`relative ${theme} `}>
       {/* Global background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <TopBg className="absolute top-0 left-1/2 w-[130%] max-w-none -translate-x-1/2" />

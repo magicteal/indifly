@@ -13,7 +13,11 @@ import WealthSection from "./WealthSection";
 export default function InCorePage() {
   return (
     <main className="theme-incore min-h-[80vh] flex-col items-center justify-center overflow-x-clip bg-background pt-16 text-foreground sm:pt-20 md:pt-28 lg:pt-36">
-      <Gradient Cmp={IncoreHomeHero} className="top-0">
+      <Gradient
+        Cmp={IncoreHomeHero}
+        className="top-16 -translate-y-1/2"
+        svgClassName="mx-auto w-[100vw] max-w-[100%] opacity-90 reveal-section"
+      >
         <div className="reveal-section text-center">
           <Hero />
         </div>

@@ -5,8 +5,8 @@ import { ZohoRecruitEmbed } from "./ZohoRecruitEmbed";
 
 export default function Career() {
   return (
-    <main className="relative overflow-hidden bg-white text-black">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+    <main className="relative">
+      <div className="pointer-events-none absolute inset-0">
         <TopBg className="absolute top-0 left-1/2 w-[130%] max-w-none -translate-x-1/2" />
       </div>
 

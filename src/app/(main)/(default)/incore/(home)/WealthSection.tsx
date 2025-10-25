@@ -5,6 +5,9 @@ import SectionHeader from "@/components/section-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import CircleVector1 from "@public/inCore/wealth/circlevector1.svg?flex";
+import CircleVector2 from "@public/inCore/wealth/circlevector2.svg?flex";
+import CircleVector3 from "@public/inCore/wealth/circlevector3.svg?flex";
 
 export default function WealthSection() {
   const [active, setActive] = useState<"cxo" | "pods" | "execution">("cxo");
@@ -64,7 +67,7 @@ export default function WealthSection() {
   return (
     <Section className="reveal-section py-20">
       <div className="reveal-title">
-        <SectionHeader label="What Comprises" title="InCORE" />
+        <SectionHeader title="What Comprises InCORE" />
       </div>
 
       <div className="relative mt-12 flex flex-col gap-6 overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 shadow-inner ring-1 ring-white/10 backdrop-blur-xl backdrop-saturate-150 sm:rounded-3xl sm:p-6 md:flex-row md:gap-8 md:rounded-[5rem] md:p-10">
@@ -132,35 +135,43 @@ export default function WealthSection() {
               Explore More →
             </Button> */}
           </CardContent>
-          <div className="reveal-image pointer-events-none hidden select-none md:block">
+          <div className="pointer-events-none hidden select-none md:block">
             {/* Big bottom-right circle */}
             <div
               className={cn(
-                "absolute -right-1 -bottom-4 h-24 w-24 rounded-full opacity-100",
+                "absolute -right-1 -bottom-4 grid h-24 w-24 place-items-center rounded-full opacity-100",
                 bubbleGradientClass[active],
               )}
-            />
+            >
+              <CircleVector1 className="h-auto w-[40%]" />
+            </div>
             {/* Second smaller above-left of big */}
             <div
               className={cn(
-                "absolute right-16 bottom-[4rem] h-14 w-14 rounded-full opacity-90",
+                "absolute right-16 bottom-[4rem] grid h-14 w-14 place-items-center rounded-full opacity-90",
                 bubbleGradientClass[active],
               )}
-            />
+            >
+              <CircleVector2 className="h-auto w-[60%]" />
+            </div>
             {/* Third smaller just above first */}
             <div
               className={cn(
-                "absolute right-6 bottom-[7rem] h-10 w-10 rounded-full opacity-90",
+                "absolute right-6 bottom-[7rem] grid h-10 w-10 place-items-center rounded-full opacity-90",
                 bubbleGradientClass[active],
               )}
-            />
+            >
+              <CircleVector3 className="h-auto w-[70%]" />
+            </div>
             {/* Fourth smallest just above third */}
             <div
               className={cn(
-                "absolute right-14 bottom-[11rem] h-6 w-6 rounded-full opacity-90",
+                "absolute right-14 bottom-[11rem] grid h-6 w-6 place-items-center rounded-full opacity-90",
                 bubbleGradientClass[active],
               )}
-            />
+            >
+       
+            </div>
           </div>
         </Card>
       </div>
