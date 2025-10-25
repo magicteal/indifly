@@ -4,10 +4,10 @@ import Section from "@/components/section";
 import SectionHeader from "@/components/section-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import CircleVector1 from "@public/inCore/wealth/circlevector1.svg?flex";
 import CircleVector2 from "@public/inCore/wealth/circlevector2.svg?flex";
 import CircleVector3 from "@public/inCore/wealth/circlevector3.svg?flex";
+import { useState } from "react";
 
 export default function WealthSection() {
   const [active, setActive] = useState<"cxo" | "pods" | "execution">("cxo");
@@ -169,9 +169,7 @@ export default function WealthSection() {
                 "absolute right-14 bottom-[11rem] grid h-6 w-6 place-items-center rounded-full opacity-90",
                 bubbleGradientClass[active],
               )}
-            >
-       
-            </div>
+            ></div>
           </div>
         </Card>
       </div>

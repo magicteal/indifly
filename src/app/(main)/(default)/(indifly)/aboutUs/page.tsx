@@ -1,3 +1,7 @@
+import { Gradient } from "@/components/Gradient";
+import Bottom1 from "@public/companies/bg/bottom1.svg?flex";
+import Middle1 from "@public/companies/bg/middle1.svg?flex";
+import Top1 from "@public/companies/bg/top1.svg?flex";
 import { CompanyCollage } from "./CompanyCollage";
 import { HeroSection } from "./HeroSection";
 import { JourneyTimeline } from "./JourneyTimeline";
@@ -7,9 +11,14 @@ export default function AboutUsPage() {
   return (
     <main className="theme-orange reveal-section">
       <HeroSection />
-      <JourneyTimeline />
-      <TeamSection />
-      <CompanyCollage />
+      <Gradient Cmp={Top1} className="-top-12">
+        <JourneyTimeline />
+      </Gradient>
+      <Gradient Cmp={Middle1} className="bottom-33">
+        <TeamSection />
+        <CompanyCollage />
+      </Gradient>
+      <Gradient Cmp={Bottom1} />
     </main>
   );
 }
