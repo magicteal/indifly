@@ -16,10 +16,9 @@ export default function AboutUsPage() {
       </Gradient>
       <Gradient Cmp={Middle1} className="bottom-33">
         <TeamSection />
-        <Gradient Cmp={Bottom1}>
-          <CompanyCollage />
-        </Gradient>
+        <CompanyCollage />
       </Gradient>
+      <Gradient Cmp={Bottom1} />
     </main>
   );
 }

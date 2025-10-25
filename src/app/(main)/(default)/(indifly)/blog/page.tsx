@@ -1,7 +1,9 @@
 import BlogCard from "@/components/BlogCard";
 import { Container } from "@/components/container";
+import { Gradient } from "@/components/Gradient";
 import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
-import GradientFrame from "./gradient";
+import Bottom1 from "@public/companies/bg/bottom1.svg?flex";
+import Top1 from "@public/companies/bg/top1.svg?flex";
 
 export default async function BlogPage() {
   const slugs = listBlogSlugs();
@@ -14,10 +16,8 @@ export default async function BlogPage() {
 
   return (
     <main style={{ background: "#FFFFFF" }}>
-      {/* Top container: header + featured hero with gradient v2 */}
-      <div className="relative">
-        <GradientFrame variant="v2" className="opacity-50" />
-        <Container className="relative z-10 pt-24 pb-16 md:pt-32 md:pb-24">
+      <Gradient Cmp={Top1} className="-top-12">
+        <Container className="pt-24 pb-16 md:pt-32 md:pb-24">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-[#3C3C3C]">
               Catch Up with Our{" "}
@@ -30,13 +30,10 @@ export default async function BlogPage() {
             </p>
           </div>
         </Container>
-      </div>
+      </Gradient>
 
-      {/* Gradient background wrapper for all sections below hero */}
-      <div className="relative">
-        <GradientFrame className="opacity-40" />
-
-        <Container className="relative z-10 pt-12 pb-16 md:pt-16 md:pb-24">
+      <Gradient Cmp={Bottom1}>
+        <Container className="pt-12 pb-16 md:pt-16 md:pb-24">
           {/* List */}
           <section>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -49,7 +46,7 @@ export default async function BlogPage() {
             {/* Pagination intentionally omitted for MDX-based listing (add later if needed) */}
           </section>
         </Container>
-      </div>
+      </Gradient>
     </main>
   );
 }

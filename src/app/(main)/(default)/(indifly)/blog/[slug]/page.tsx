@@ -1,5 +1,7 @@
 import { Container } from "@/components/container";
+import { Gradient } from "@/components/Gradient";
 import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
+import Bottom1 from "@public/companies/bg/bottom1.svg?flex";
 import { notFound } from "next/navigation";
 import type { ComponentType } from "react";
 
@@ -25,7 +27,6 @@ export default async function BlogDetail({
   return (
     <main className="pt-16" style={{ background: "#FFFFFF" }}>
       <Container className="my-20 md:my-24">
-        {/* <GradientFrame variant="v2" className="opacity-50" /> */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Main column */}
           <article className="lg:col-span-2">
@@ -72,6 +73,7 @@ export default async function BlogDetail({
           </aside>
         </div>
       </Container>
+      <Gradient Cmp={Bottom1} />
     </main>
   );
 }
