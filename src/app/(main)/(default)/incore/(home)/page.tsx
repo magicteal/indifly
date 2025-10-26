@@ -26,7 +26,7 @@ export default function InCorePage() {
       <Gradient Cmp={IncoreHomeMiddle}>
         <div className="reveal-section" data-reveal-stagger>
           <WealthSection />
-          <DecorativeBannerSection />
+          <DecorativeBannerSection variant="dark" />
         </div>
       </Gradient>
 

@@ -4,7 +4,67 @@ import InteractiveCursor from "@/components/InteractiveCursor";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function DecorativeBannerSection() {
+type Variant = "light" | "dark";
+
+export default function DecorativeBannerSection({
+  variant = "light",
+}: {
+  variant?: Variant;
+}) {
+  // Route-based asset selection
+  const mobileSrc =
+    variant === "dark" ? "/inCore/puzzlemobiledark.svg" : "/puzzleMobile.svg";
+  const desktopSrc =
+    variant === "dark" ? "/inCore/puzzledark.svg" : "/inCoreServices.svg";
+
+  // Shared overlay links (DRY for mobile/desktop)
+  const baseLinkClass =
+    "group absolute z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2";
+
+  const QuadrantLinks = ({ extraClass = "" }: { extraClass?: string }) => (
+    <>
+      <Link
+        href="/incore/services/insurge"
+        aria-label="Open inSurge"
+        data-cursor="SURGE"
+        data-cursor-prefix="in"
+        data-cursor-color="#FF990B"
+        className={`${baseLinkClass} top-0 left-1/2 ${extraClass}`}
+      >
+        <span className="sr-only">Top right – inSurge</span>
+      </Link>
+      <Link
+        href="/incore/services/instack"
+        aria-label="Open inStack"
+        data-cursor="STACK"
+        data-cursor-prefix="in"
+        data-cursor-color="#8338EC"
+        className={`${baseLinkClass} top-0 left-0 ${extraClass}`}
+      >
+        <span className="sr-only">Top left – inStack</span>
+      </Link>
+      <Link
+        href="/incore/services/involve"
+        aria-label="Open inVolve"
+        data-cursor="VOLVE"
+        data-cursor-prefix="in"
+        data-cursor-color="#3A86FF"
+        className={`${baseLinkClass} bottom-0 left-1/2 ${extraClass}`}
+      >
+        <span className="sr-only">Bottom right – inVolve</span>
+      </Link>
+      <Link
+        href="/incore/services/insure"
+        aria-label="Open inSure"
+        data-cursor="SURE"
+        data-cursor-prefix="in"
+        data-cursor-color="#04E762"
+        className={`${baseLinkClass} bottom-0 left-0 ${extraClass}`}
+      >
+        <span className="sr-only">Bottom left – inSure</span>
+      </Link>
+    </>
+  );
   return (
     <Section
       py="py-16"
@@ -19,13 +79,15 @@ export default function DecorativeBannerSection() {
           style={{ aspectRatio: "1251/831" }}
         >
           <Image
-            src="/puzzleMobile.svg"
+            src={mobileSrc}
             alt="inCORE services"
             fill
             sizes="100vw"
             className="object-contain"
             priority={false}
           />
+          {/* Clickable quadrants overlay (mobile) */}
+          <QuadrantLinks extraClass="select-none touch-manipulation transition-transform active:scale-[0.985] active:bg-white/10" />
         </div>
         <div className="mt-8 space-y-6">
           <div>
@@ -63,11 +125,12 @@ export default function DecorativeBannerSection() {
                 <span className="ml-1 text-[#04E762]">SURE</span>
               </h3>
             </Link>
+            
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              <span className="font-bold italic">People & Culture</span>
+              <span className="font-bold italic">Legal & Compliance</span>
               <br />
-              HR that goes beyond hiring—helping you attract, nurture, and
-              retain talent while shaping resilient company culture.
+              Simplify the complex. Robust legal frameworks and compliance
+              services to safeguard your venture at every stage.
             </p>
           </div>
           <div>
@@ -78,10 +141,10 @@ export default function DecorativeBannerSection() {
               </h3>
             </Link>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              <span className="font-bold italic">Legal & Compliance</span>
+              <span className="font-bold italic">People & Culture</span>
               <br />
-              Simplify the complex. Robust legal frameworks and compliance
-              services to safeguard your venture at every stage.
+              HR that goes beyond hiring—helping you attract, nurture, and
+              retain talent while shaping resilient company culture.
             </p>
           </div>
         </div>
@@ -95,7 +158,7 @@ export default function DecorativeBannerSection() {
           style={{ aspectRatio: "1251/831" }}
         >
           <Image
-            src="/inCoreServices.svg"
+            src={desktopSrc}
             alt="Puzzle graphic"
             fill
             sizes="(max-width: 1024px) 90vw, 1024px"
@@ -104,46 +167,7 @@ export default function DecorativeBannerSection() {
           />
 
           {/* Clickable quadrants overlay */}
-          <Link
-            href="/incore/services/insurge"
-            aria-label="Open inSurge"
-            data-cursor="SURGE"
-            data-cursor-prefix="in"
-            data-cursor-color="#FF990B"
-            className="group absolute top-0 left-1/2 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
-          >
-            <span className="sr-only">Top right – inSurge</span>
-          </Link>
-          <Link
-            href="/incore/services/instack"
-            aria-label="Open inStack"
-            data-cursor="STACK"
-            data-cursor-prefix="in"
-            data-cursor-color="#8338EC"
-            className="group absolute top-0 left-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
-          >
-            <span className="sr-only">Top left – inStack</span>
-          </Link>
-          <Link
-            href="/incore/services/involve"
-            aria-label="Open inVolve"
-            data-cursor="VOLVE"
-            data-cursor-prefix="in"
-            data-cursor-color="#3A86FF"
-            className="group absolute bottom-0 left-1/2 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
-          >
-            <span className="sr-only">Bottom right – inVolve</span>
-          </Link>
-          <Link
-            href="/incore/services/insure"
-            aria-label="Open inSure"
-            data-cursor="SURE"
-            data-cursor-prefix="in"
-            data-cursor-color="#04E762"
-            className="group absolute bottom-0 left-0 z-10 block h-1/2 w-1/2 cursor-pointer focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
-          >
-            <span className="sr-only">Bottom left – inSure</span>
-          </Link>
+          <QuadrantLinks />
         </div>
         {/* Custom interactive cursor that mirrors the pill design on hover */}
         <InteractiveCursor />
