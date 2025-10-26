@@ -103,7 +103,7 @@ function VenturesGrid() {
               </Button>
             </div>
             {/* Decorative SVG placed inside left card but with high z so it stays above siblings */}
-            <VenturesGridMan className="reveal-image pointer-events-none absolute -right-5 -bottom-3.5 z-[60] w-40 sm:w-48 sm:-bottom-4.5 md:-right-20 md:-bottom-6 md:w-64 lg:-bottom-6.5 xl:-right-30 xl:-bottom-7 xl:w-80" />
+            <VenturesGridMan className="reveal-image pointer-events-none absolute -right-5 -bottom-3.5 z-[60] w-40 sm:-bottom-4.5 sm:w-48 md:-right-20 md:-bottom-6 md:w-64 lg:-bottom-6.5 xl:-right-30 xl:-bottom-7 xl:w-80" />
           </div>
 
           {/* Right: two rows */}

@@ -125,7 +125,7 @@ export default function DecorativeBannerSection({
                 <span className="ml-1 text-[#04E762]">SURE</span>
               </h3>
             </Link>
-            
+
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               <span className="font-bold italic">Legal & Compliance</span>
               <br />

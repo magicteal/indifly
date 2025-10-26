@@ -1,8 +1,8 @@
 import { Container } from "@/components/container";
-import Image from "next/image";
 import { Gradient } from "@/components/Gradient";
 import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
 import Bottom1 from "@public/companies/bg/bottom1.svg?flex";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { ComponentType } from "react";
 type MDXMeta = { authorNote?: string; image?: string; title?: string };
