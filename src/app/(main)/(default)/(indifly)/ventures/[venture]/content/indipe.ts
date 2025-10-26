@@ -46,6 +46,13 @@ const content: VentureContent = {
       ],
     },
   ],
+  links: {
+    website: "https://www.indipe.in/",
+    app: {
+      type: "playstore",
+      url: "https://play.google.com/store/apps/details?id=in.indipe.consumer&hl=en",
+    },
+  },
 };
 
 export default content;

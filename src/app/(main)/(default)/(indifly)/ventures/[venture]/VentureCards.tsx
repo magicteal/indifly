@@ -10,10 +10,12 @@ import IndipeHero from "@public/companies/indipeHero.svg?flex";
 import IndipeIcon from "@public/companies/indipeIcon.svg";
 import IndiSpeedWordmark from "@public/companies/indiSpeed.svg?flex";
 import IndiSpeedHero from "@public/companies/indispeedHero.svg?flex";
-import PlayStore from "@public/companies/playStore.svg";
+import PlayStore from "@public/companies/playStore.svg?flex";
 import Sec2PayHero from "@public/companies/sec2payHero.svg?flex";
 import Sec2PayIcon from "@public/companies/sec2payIcon.svg";
+import { ArrowRight } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
 import { ComponentType, SVGProps, useEffect, useMemo, useRef } from "react";
 import { getVentureContent, VentureKey, ventureKeys } from "./content";
 
@@ -212,10 +214,49 @@ export default function VentureCards({
             </div>
 
             {/* Play Store button - always at bottom */}
-            <div className="p-5 pt-0 md:p-8 md:pt-0">
-              <button className="inline-flex items-center justify-center transition-opacity hover:opacity-80">
-                <PlayStore className="h-auto w-[180px]" />
-              </button>
+            <div className="flex gap-4 p-5 pt-0 md:p-8 md:pt-0">
+              {content.links.app?.type === "playstore" && (
+                <Link
+                  href={content.links.app.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-opacity hover:opacity-80"
+                >
+                  <PlayStore className="h-10" />
+                </Link>
+              )}
+              {content.links.app?.type === "portal" && (
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="rounded-full"
+                  asChild
+                >
+                  <Link
+                    href={content.links.app.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Partner with Us
+                    <ArrowRight />
+                  </Link>
+                </Button>
+              )}
+              <Button
+                variant="outline"
+                size="lg"
+                className="rounded-full border-white hover:text-white"
+                asChild
+              >
+                <Link
+                  href={content.links.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Know More
+                  <ArrowRight />
+                </Link>
+              </Button>
             </div>
           </div>
           {/* Right hero image overlay above the card */}

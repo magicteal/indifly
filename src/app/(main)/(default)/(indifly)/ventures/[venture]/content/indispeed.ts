@@ -45,6 +45,13 @@ const content: VentureContent = {
       ],
     },
   ],
+  links: {
+    website: "https://www.indispeed.com/",
+    app: {
+      type: "portal",
+      url: "https://app.indispeed.com/login",
+    },
+  },
 };
 
 export default content;

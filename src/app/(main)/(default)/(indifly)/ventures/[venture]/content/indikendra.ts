@@ -45,6 +45,13 @@ const content: VentureContent = {
       ],
     },
   ],
+  links: {
+    website: "https://www.indikendra.in/",
+    app: {
+      type: "playstore",
+      url: "https://play.google.com/store/apps/details?id=com.india.Sec2Pay&hl=en_IN",
+    },
+  },
 };
 
 export default content;

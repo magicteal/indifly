@@ -46,6 +46,13 @@ const content: VentureContent = {
       ],
     },
   ],
+  links: {
+    website: "https://www.sec2payindia.com/",
+    app: {
+      type: "portal",
+      url: "https://app.sec2pay.in/?src=website",
+    },
+  },
 };
 
 export default content;

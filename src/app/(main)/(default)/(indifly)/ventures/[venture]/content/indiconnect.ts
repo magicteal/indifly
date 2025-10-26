@@ -45,6 +45,13 @@ const content: VentureContent = {
       ],
     },
   ],
+  links: {
+    website: "https://www.indiconnect.in/",
+    app: {
+      type: "portal",
+      url: "https://merchant.indiconnect.in/pages/login?src=website",
+    },
+  },
 };
 
 export default content;

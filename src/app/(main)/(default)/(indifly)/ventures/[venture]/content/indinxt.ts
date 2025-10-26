@@ -46,6 +46,9 @@ const content: VentureContent = {
       ],
     },
   ],
+  links: {
+    website: "https://indinxt.com/",
+  },
 };
 
 export default content;
