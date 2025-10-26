@@ -1,18 +1,12 @@
 import BlogCard from "@/components/BlogCard";
 import { Container } from "@/components/container";
 import { Gradient } from "@/components/Gradient";
-import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
+import { getAllBlogs } from "@/lib/blogs";
 import Bottom1 from "@public/companies/bg/bottom1.svg?flex";
 import Top1 from "@public/companies/bg/top1.svg?flex";
 
 export default async function BlogPage() {
-  const slugs = listBlogSlugs();
-  const posts = await Promise.all(
-    slugs.map(async (slug) => {
-      const mod = await importBlogModule(slug);
-      return { slug, title: mod.meta?.title ?? slug, image: mod.meta?.image };
-    }),
-  );
+  const posts = await getAllBlogs();
 
   return (
     <main style={{ background: "#FFFFFF" }}>
@@ -37,8 +31,8 @@ export default async function BlogPage() {
           {/* List */}
           <section>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              {posts.map((b) => (
-                <BlogCard key={b.slug} title={b.title} slug={b.slug} image={b.image} />
+              {posts.map((post) => (
+                <BlogCard key={post.slug} {...post} />
               ))}
             </div>
 

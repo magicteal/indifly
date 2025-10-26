@@ -7,7 +7,6 @@ export type BlogMeta = {
   image?: string;
   authorNote?: string;
   date?: string;
-  excerpt?: string;
 };
 
 export type BlogModule = { default: ComponentType; meta?: BlogMeta };
@@ -28,7 +27,30 @@ export async function importBlogModule(slug: string): Promise<BlogModule> {
   return mod;
 }
 
-export type BlogListItem = { slug: string; title: string; date?: string };
+export type BlogListItem = {
+  slug: string;
+  title: string;
+  image?: string;
+};
+
+/**
+ * Fetches all blogs as lightweight list items (slug, title, image).
+ * Used by listing pages to avoid duplicating fetch logic.
+ */
+export async function getAllBlogs(): Promise<BlogListItem[]> {
+  const slugs = listBlogSlugs();
+  const items = await Promise.all(
+    slugs.map(async (slug) => {
+      const mod = await importBlogModule(slug);
+      return {
+        slug,
+        title: mod.meta?.title ?? slug,
+        image: mod.meta?.image,
+      } satisfies BlogListItem;
+    }),
+  );
+  return items;
+}
 
 /**
  * Returns the most recent blogs (default 3), sorted by:
@@ -40,7 +62,6 @@ export async function getRecentBlogs(limit = 3): Promise<BlogListItem[]> {
   const items = await Promise.all(
     slugs.map(async (slug) => {
       const mod = await importBlogModule(slug);
-      const title = mod.meta?.title ?? slug;
       const date = mod.meta?.date;
       const filePath = path.join(BLOG_CONTENT_DIR, `${slug}.mdx`);
       let ts = date ? new Date(date).getTime() : Number.NaN;
@@ -51,11 +72,16 @@ export async function getRecentBlogs(limit = 3): Promise<BlogListItem[]> {
           ts = 0;
         }
       }
-      return { slug, title, date, ts } as const;
+      return {
+        slug,
+        title: mod.meta?.title ?? slug,
+        ts,
+        image: mod.meta?.image,
+      } as const;
     }),
   );
   const sorted = items.sort((a, b) => b.ts - a.ts);
   return sorted
     .slice(0, limit)
-    .map(({ slug, title, date }) => ({ slug, title, date }));
+    .map(({ slug, title, image }) => ({ slug, title, image }));
 }

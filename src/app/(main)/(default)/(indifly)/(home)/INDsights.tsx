@@ -50,8 +50,8 @@ export default async function INDsights() {
           className="grid grid-cols-1 gap-6 md:grid-cols-3"
           data-reveal-stagger
         >
-          {recentBlogs.map((card) => (
-            <BlogCard key={card.slug} title={card.title} slug={card.slug} />
+          {recentBlogs.map((blog) => (
+            <BlogCard key={blog.slug} {...blog} />
           ))}
         </div>
       </Container>
