@@ -150,13 +150,6 @@ export default function ApproachSection({
 
 // Each service holds an array of 3 className strings corresponding to the 3 steps.
 const stepPositions: Record<string, string[]> = {
-  // Defaults for all services (will be used if service not explicitly overridden)
-  _default: [
-    "absolute -top-10 -left-23 text-right",
-    "absolute -top-10 -right-23 text-left",
-    "absolute -bottom-20 left-1/2 -translate-x-1/2 text-center",
-  ],
-  // Per-service customizations
   insurge: [
     "absolute -top-14 -left-20 text-right",
     "absolute -top-14 -right-24 text-left",
@@ -175,6 +168,6 @@ const stepPositions: Record<string, string[]> = {
   insure: [
     "absolute -top-22 -left-21 text-right",
     "absolute -top-22 -right-21 text-left",
-    "absolute -bottom-21 left-1/2 -translate-x-1/2 text-center",
+    "absolute -bottom-28 left-1/2 -translate-x-1/2 text-center",
   ],
 };
