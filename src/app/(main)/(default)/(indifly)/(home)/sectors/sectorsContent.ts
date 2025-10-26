@@ -3,7 +3,10 @@ type Sector = {
   focusArea: string;
   description: [string, string];
   bulletPoints: string[];
-  actions: "Install App" | "Partner with Us";
+  actions?: {
+    label: "Install App" | "Partner with Us";
+    link: string;
+  };
 };
 
 type SectorCategory = {
@@ -29,7 +32,10 @@ export const ourSectors: SectorCategory[] = [
           "Advanced portfolio tracking tools",
           "Partner program for mutual fund distribution",
         ],
-        actions: "Install App",
+        actions: {
+          label: "Install App",
+          link: "https://play.google.com/store/apps/details?id=in.indipe.consumer&hl=en",
+        },
       },
       {
         name: "Indiconnect",
@@ -45,7 +51,10 @@ export const ourSectors: SectorCategory[] = [
           "KYC, KYB & credit rating tools",
           "Tailored for businesses & co-operatives",
         ],
-        actions: "Install App",
+        actions: {
+          label: "Partner with Us",
+          link: "https://merchant.indiconnect.in/pages/login?src=website",
+        },
       },
       {
         name: "IndiNXT",
@@ -61,7 +70,6 @@ export const ourSectors: SectorCategory[] = [
           "Merchant management platform",
           "Intelligent routing & high availability",
         ],
-        actions: "Partner with Us",
       },
     ],
   },
@@ -82,7 +90,10 @@ export const ourSectors: SectorCategory[] = [
           "Lending & credit enablement",
           "Enterprise-grade compliance & security",
         ],
-        actions: "Partner with Us",
+        actions: {
+          label: "Partner with Us",
+          link: "https://app.sec2pay.in/?src=website",
+        },
       },
       {
         name: "Indikendra",
@@ -98,7 +109,10 @@ export const ourSectors: SectorCategory[] = [
           "Insurance services (health, vehicle, life)",
           "eGovernance support: Aadhaar, PAN, other government services",
         ],
-        actions: "Install App",
+        actions: {
+          label: "Install App",
+          link: "https://play.google.com/store/apps/details?id=com.india.Sec2Pay&hl=en_IN",
+        },
       },
     ],
   },
@@ -119,7 +133,10 @@ export const ourSectors: SectorCategory[] = [
           "Intercity & hyperlocal delivery",
           "Transparent pricing & SLA tracking",
         ],
-        actions: "Partner with Us",
+        actions: {
+          label: "Partner with Us",
+          link: "https://app.indispeed.com/login",
+        },
       },
     ],
   },

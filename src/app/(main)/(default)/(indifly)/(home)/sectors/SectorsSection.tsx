@@ -251,11 +251,23 @@ const SectorsSection = () => {
                   ))}
                 </ul>
                 <div className="mt-10 flex flex-wrap items-center gap-4">
-                  <Button size="lg" className="min-w-[160px] rounded-full">
-                    {currentSector.actions === "Install App"
-                      ? "Install the App"
-                      : currentSector.actions}
-                  </Button>
+                  {currentSector.actions && (
+                    <Button
+                      size="lg"
+                      className="min-w-[160px] rounded-full"
+                      asChild
+                    >
+                      <Link
+                        href={currentSector.actions.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {currentSector.actions.label === "Install App"
+                          ? "Install the App"
+                          : currentSector.actions.label}
+                      </Link>
+                    </Button>
+                  )}
                   <Button
                     size="lg"
                     variant="outline"
