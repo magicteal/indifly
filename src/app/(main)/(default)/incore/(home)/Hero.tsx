@@ -32,7 +32,7 @@ export default function Hero() {
               "transition-opacity hover:opacity-95",
             )}
           >
-            Explore Our Services
+            Let's Build Together
           </span>
         </Link>
       </div>
@@ -47,7 +47,7 @@ export default function Hero() {
           fast-paced business environment, founders need more than just funding—{" "}
           <span className="font-medium">they need comprehensive support.</span>
         </p>
-        <p className="text-[#FEA173]">
+        <p className="font-bold">
           We build with the founders as co-creators, not as service vendors
         </p>
         <p>

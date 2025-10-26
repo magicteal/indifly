@@ -4,6 +4,7 @@ import type { ComponentType } from "react";
 
 export type BlogMeta = {
   title?: string;
+  image?: string;
   authorNote?: string;
   date?: string;
   excerpt?: string;
