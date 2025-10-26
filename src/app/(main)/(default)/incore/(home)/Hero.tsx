@@ -32,7 +32,7 @@ export default function Hero() {
               "transition-opacity hover:opacity-95",
             )}
           >
-            Let's Build Together
+            Let&apos;s Build Together
           </span>
         </Link>
       </div>
