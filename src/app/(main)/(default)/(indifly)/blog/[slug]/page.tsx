@@ -1,11 +1,11 @@
 import { Container } from "@/components/container";
+import Image from "next/image";
 import { Gradient } from "@/components/Gradient";
 import { importBlogModule, listBlogSlugs } from "@/lib/blogs";
 import Bottom1 from "@public/companies/bg/bottom1.svg?flex";
 import { notFound } from "next/navigation";
 import type { ComponentType } from "react";
-
-type MDXMeta = { authorNote?: string };
+type MDXMeta = { authorNote?: string; image?: string; title?: string };
 
 export default async function BlogDetail({
   params,
@@ -27,9 +27,23 @@ export default async function BlogDetail({
   return (
     <main className="pt-16" style={{ background: "#FFFFFF" }}>
       <Container className="my-20 md:my-24">
+        {/* <GradientFrame variant="v2" className="opacity-50" /> */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Main column */}
           <article className="lg:col-span-2">
+            {/* Optional hero image above content */}
+            {meta?.image ? (
+              <div className="mb-6 overflow-hidden rounded-xl">
+                <Image
+                  src={meta.image}
+                  alt={meta?.title ?? slug}
+                  width={1200}
+                  height={630}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+            ) : null}
             {/* Render MDX content */}
             <div className="prose max-w-none prose-p:text-justify prose-ol:text-justify prose-ul:text-justify prose-hr:!border-black">
               {Post ? <Post /> : null}
