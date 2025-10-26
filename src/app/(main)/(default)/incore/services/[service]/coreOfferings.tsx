@@ -62,18 +62,18 @@ export default function CoreOfferings({
           value={{ active, setActive, items: offerings.offerings }}
         >
           <div
-            className="relative mx-auto flex w-full max-w-5xl flex-col justify-center gap-4 pb-12 sm:gap-6 sm:pb-16 md:flex-row md:items-start md:pb-24"
+            className="relative mx-auto flex w-full max-w-5xl flex-col-reverse justify-center gap-4 pb-12 sm:gap-6 sm:pb-16 md:flex-row md:items-start md:pb-24"
             data-reveal-stagger
           >
             {/* left rail: offerings list */}
-            <div className="w-full md:w-auto md:flex-shrink-0">
+            <div className="md:w-1/3">
               <OfferingsList />
             </div>
 
             {/* right card */}
             <div
               className={cn(
-                "relative w-full overflow-hidden rounded-2xl p-4 sm:rounded-3xl sm:p-6 md:min-h-[380px] md:flex-1 md:rounded-[28px] md:p-12",
+                "relative overflow-hidden rounded-2xl p-4 sm:rounded-3xl sm:p-6 md:min-h-[380px] md:w-2/3 md:flex-1 md:rounded-[28px] md:p-12",
                 gradientClass,
               )}
             >
@@ -119,7 +119,7 @@ function OfferingsList() {
           <li key={item.name}>
             <Button
               variant={isActive ? "default" : "secondary"}
-              className="w-full text-sm sm:text-base md:w-auto"
+              className="h-auto min-h-10 w-full text-sm whitespace-break-spaces sm:text-base md:w-auto"
               size="lg"
               onClick={() => setActive(idx)}
               aria-pressed={isActive}
