@@ -25,7 +25,7 @@ export const indiflyNavConfig: SiteConfig = {
 export const incoreNavConfig: SiteConfig = {
   name: "incore",
   navItems: [
-    { href: "/incore#services", label: "Services" },
+    { href: "", label: "Services" },
     { href: "/aboutUs", label: "About Indifly Ventures" },
     { href: "#contact", label: "Contact" },
   ],
