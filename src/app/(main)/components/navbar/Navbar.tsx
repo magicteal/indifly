@@ -80,12 +80,12 @@ export default function Navbar() {
                   {/* Dropdown panel */}
                   <div
                     className={`invisible absolute left-1/2 top-full z-[80] mt-3 -translate-x-1/2 inline-block rounded-2xl p-4 opacity-0 backdrop-blur-md transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 min-w-[464px] ${
-                      isIncore ? "theme-incore bg-background/40" : "bg-background/40"
+                      isIncore ? "theme-incore bg-background" : "bg-background/40"
                     }`}
                   >
                     <div className="grid w-full grid-cols-4 gap-4">
                       {/* inSURGE */}
-                      <div className="flex flex-col items-center">
+                      <div className="flex h-[140px] flex-col items-center">
                         <Link
                           href="/incore/services/insurge"
                           className="theme-insurge h-[99px] w-[99px] shrink-0 rounded-[24px] text-center font-extrabold text-primary-foreground shadow-sm transition-transform hover:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
@@ -98,12 +98,13 @@ export default function Navbar() {
                             inSURGE
                           </span>
                         </Link>
-                        <span className="mt-2 text-center text-xs font-semibold text-white">
-                          Marketing &amp; Growth
+                        <span className="mt-auto pt-2 text-center text-xs font-semibold text-white leading-tight">
+                          Marketing &amp;<br />
+                          Growth
                         </span>
                       </div>
                       {/* inSTACK */}
-                      <div className="flex flex-col items-center">
+                      <div className="flex h-[140px] flex-col items-center">
                         <Link
                           href="/incore/services/instack"
                           className="theme-instack h-[99px] w-[99px] shrink-0 rounded-[24px] text-center font-extrabold text-primary-foreground shadow-sm transition-transform hover:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
@@ -116,12 +117,13 @@ export default function Navbar() {
                             inSTACK
                           </span>
                         </Link>
-                        <span className="mt-2 text-center text-xs font-semibold text-white">
-                          Tech &amp; Product
+                        <span className="mt-auto pt-2 text-center text-xs font-semibold text-white leading-tight">
+                          Tech &amp;<br />
+                          Product
                         </span>
                       </div>
                       {/* inVOLVE */}
-                      <div className="flex flex-col items-center">
+                      <div className="flex h-[140px] flex-col items-center">
                         <Link
                           href="/incore/services/involve"
                           className="theme-involve h-[99px] w-[99px] shrink-0 rounded-[24px] text-center font-extrabold text-primary-foreground shadow-sm transition-transform hover:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
@@ -134,12 +136,13 @@ export default function Navbar() {
                             inVOLVE
                           </span>
                         </Link>
-                        <span className="mt-2 text-center text-xs font-semibold text-white">
-                          HR &amp; Culture
+                        <span className="mt-auto pt-2 text-center text-xs font-semibold text-white leading-tight">
+                          HR &amp;<br />
+                          Culture
                         </span>
                       </div>
                       {/* inSURE */}
-                      <div className="flex flex-col items-center">
+                      <div className="flex h-[140px] flex-col items-center">
                         <Link
                           href="/incore/services/insure"
                           className="theme-insure relative h-[99px] w-[99px] shrink-0 rounded-[24px] text-center font-extrabold text-primary-foreground shadow-sm transition-transform hover:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2"
@@ -154,8 +157,9 @@ export default function Navbar() {
                             inSURE
                           </span>
                         </Link>
-                        <span className="mt-2 text-center text-xs font-semibold text-white">
-                          Legal &amp; Compliance
+                        <span className="mt-auto pt-2 text-center text-xs font-semibold text-white leading-tight">
+                          Legal &amp;<br />
+                          Compliance
                         </span>
                       </div>
                     </div>
